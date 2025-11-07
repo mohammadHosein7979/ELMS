@@ -1,0 +1,715 @@
+<div>
+  <div class="row">
+    @for (item of data;track item){
+      <div class="col-12 col-lg-6 mb-3">
+        <div class="bg-white border-radius-20 p-3">
+          <div class="d-flex gap-2 align-items-center mb-2">
+            <img src="{{item?.event?.avatar}}" class="border-radius-50 main-records-1">
+            <div>
+              <h3 class="color-1 font-family-regular font-14">
+                {{item?.event?.title}}
+              </h3>
+              <p class="color-1 opacity-50 font-family-regular font-12">
+                {{item?.event?.description}}
+              </p>
+            </div>
+          </div>
+          <div class="d-flex gap-3">
+            <div class="main-records-5 d-flex flex-column justify-content-between">
+              <div class="d-flex justify-content-between">
+                <h3 class="font-family-regular font-12 color-1">نام دوره :</h3>
+                <h3 class="font-family-bold font-12 color-1">{{item?.event?.title}}</h3>
+              </div>
+              <div class="d-flex justify-content-between">
+                <h3 class="font-family-regular font-12 color-1">نوع دوره :</h3>
+                <h3 class="font-family-bold font-12 color-1">{{item?.event?.eventTypeTitle}}</h3>
+              </div>
+              <div class="d-flex justify-content-between">
+                <h3 class="font-family-regular font-12 color-1">تاریخ شروع دوره :</h3>
+                <h3 class="font-family-bold font-12 color-1">{{item?.event?.startDateTimeShamsi.split(' ',2)[0]}}</h3>
+              </div>
+              <div class="d-flex justify-content-between">
+                <h3 class="font-family-regular font-12 color-1">تاریخ پایان دوره :</h3>
+                <h3 class="font-family-bold font-12 color-1">{{item?.event?.endDateTimeShamsi.split(' ',2)[0]}}</h3>
+              </div>
+<!--              <div class="d-flex justify-content-between">-->
+<!--                <h3 class="font-family-regular font-12 color-1">تاریخ انقضاء دوره :</h3>-->
+<!--                <h3 class="font-family-bold font-12 color-1">1403/06/01</h3>-->
+<!--              </div>-->
+              <div class="d-flex justify-content-between">
+                <h3 class="font-family-regular font-12 color-1">وضعیت دوره :</h3>
+                <h3 class="font-family-bold font-12 color-8">{{item?.event?.statusName}}</h3>
+              </div>
+
+            </div>
+            <div class="w-100">
+              @if (item?.retest){
+                <button class="text-white font-family-regular font-12 py-1 px-3 border-radius-4 bg-color-8 border-color-8 mb-2">
+                  درخواست آزمون مجدد
+                </button>
+                <p class="color-1 font-family-regular font-12 mb-2">
+                  شما میتوانید بار دیگر در آزمون این مدرک شرکت کنید
+                </p>
+              }
+
+              <div class="main-records-2 border-radius-10 p-3">
+                <div class="d-flex flex-wrap gap-3">
+                  <div class="text-center">
+                    <app-status-record [status]="item?.isRegister"/>
+                    <p class="text-white font-family-regular font-12">
+                      ثبت نام در دوره
+                    </p>
+                  </div>
+                  <div class="text-center">
+                    <app-status-record [status]="item?.isParticipateEvent"/>
+                    <p class="text-white font-family-regular font-12">
+                      شرکت در دوره
+                    </p>
+                  </div>
+                  <div class="text-center">
+                    <app-status-record [status]="item?.isParticipateExam"/>
+
+                    <p class="text-white font-family-regular font-12">
+                      شرکت در آزمون
+                    </p>
+                  </div>
+                  <div class="text-center">
+                    <app-status-record [status]="item?.isPassed"/>
+                    <p class="text-white font-family-regular font-12">
+                      قبولی در آزمون
+                    </p>
+                  </div>
+                  <div class="text-center">
+                    <app-status-record [status]="item?.isCertificate"/>
+                    <p class="text-white font-family-regular font-12">
+                      در خواست مدرک
+                    </p>
+                  </div>
+                  <div class="text-center">
+                    <app-status-record [status]="item?.isCertificateApproved"/>
+                    <p class="text-white font-family-regular font-12">
+                      تایید مدارک
+                    </p>
+                  </div>
+                  <div class="text-center">
+                    <app-status-record [status]="item?.isCertificateIssue"/>
+                    <p class="text-white font-family-regular font-12">
+                      صدور مدرک
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    }
+<!--    <div class="col-12 col-lg-6 mb-3">-->
+<!--      <div class="bg-white border-radius-20 p-3">-->
+<!--        <div class="d-flex gap-2 align-items-center mb-2">-->
+<!--          <img src="assets/image/remove/Frame63.png" class="border-radius-50 main-records-1">-->
+<!--          <div>-->
+<!--            <h3 class="color-1 font-family-regular font-14">-->
+<!--              دوره مربی گری تدبری در زیارت عاشورا-->
+<!--            </h3>-->
+<!--            <p class="color-1 opacity-50 font-family-regular font-12">-->
+<!--              دوره تدبر در زیارت عاشورا دوره ای برای بررسی وقایع و دقیق تر زیارت نامه است-->
+<!--            </p>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div class="d-flex gap-3">-->
+<!--          <div class="main-records-5 d-flex flex-column justify-content-between">-->
+<!--            <div class="d-flex justify-content-between">-->
+<!--              <h3 class="font-family-regular font-12 color-1">نام دوره :</h3>-->
+<!--              <h3 class="font-family-bold font-12 color-1">تدبری در زیارت عاشورا</h3>-->
+<!--            </div>-->
+<!--            <div class="d-flex justify-content-between">-->
+<!--              <h3 class="font-family-regular font-12 color-1">نوع دوره :</h3>-->
+<!--              <h3 class="font-family-bold font-12 color-1">آزاد</h3>-->
+<!--            </div>-->
+<!--            <div class="d-flex justify-content-between">-->
+<!--              <h3 class="font-family-regular font-12 color-1">تاریخ شروع دوره :</h3>-->
+<!--              <h3 class="font-family-bold font-12 color-1">1403/06/01</h3>-->
+<!--            </div>-->
+<!--            <div class="d-flex justify-content-between">-->
+<!--              <h3 class="font-family-regular font-12 color-1">تاریخ پایان دوره :</h3>-->
+<!--              <h3 class="font-family-bold font-12 color-1">1403/06/01</h3>-->
+<!--            </div>-->
+<!--            <div class="d-flex justify-content-between">-->
+<!--              <h3 class="font-family-regular font-12 color-1">تاریخ انقضاء دوره :</h3>-->
+<!--              <h3 class="font-family-bold font-12 color-1">1403/06/01</h3>-->
+<!--            </div>-->
+<!--            <div class="d-flex justify-content-between">-->
+<!--              <h3 class="font-family-regular font-12 color-1">وضعیت دوره :</h3>-->
+<!--              <h3 class="font-family-bold font-12 main-records-4"> قبولی در آزمون</h3>-->
+<!--            </div>-->
+
+<!--          </div>-->
+<!--          <div class="w-100">-->
+<!--            <button class="text-white font-family-regular font-12 py-1 px-3 border-radius-4 main-records-3 mb-2">-->
+<!--              ارسال مدرک-->
+<!--            </button>-->
+<!--            <p class="color-1 font-family-regular font-12 mb-2">-->
+<!--              شما میتوانید بار دیگر در آزمون این مدرک شرکت کنید-->
+<!--            </p>-->
+<!--            <div class="main-records-2 border-radius-10 p-3">-->
+<!--              <div class="d-flex flex-wrap gap-3">-->
+<!--                <div class="text-center">-->
+<!--                  <img src="assets/image/my-training/Check_Ok.svg">-->
+<!--                  <p class="text-white font-family-regular font-12">-->
+<!--                    ثبت نام در دوره-->
+<!--                  </p>-->
+<!--                </div>-->
+<!--                <div class="text-center">-->
+<!--                  <img src="assets/image/my-training/Check_Ok.svg">-->
+<!--                  <p class="text-white font-family-regular font-12">-->
+<!--                    ثبت نام در دوره-->
+<!--                  </p>-->
+<!--                </div>-->
+<!--                <div class="text-center">-->
+<!--                  <img src="assets/image/my-training/Check_Ok.svg">-->
+<!--                  <p class="text-white font-family-regular font-12">-->
+<!--                    ثبت نام در دوره-->
+<!--                  </p>-->
+<!--                </div>-->
+<!--                <div class="text-center">-->
+<!--                  <img src="assets/image/my-training/Check_Ok.svg">-->
+<!--                  <p class="text-white font-family-regular font-12">-->
+<!--                    ثبت نام در دوره-->
+<!--                  </p>-->
+<!--                </div>-->
+<!--                <div class="text-center">-->
+<!--                  <img src="assets/image/my-training/Check_Ok.svg">-->
+<!--                  <p class="text-white font-family-regular font-12">-->
+<!--                    ثبت نام در دوره-->
+<!--                  </p>-->
+<!--                </div>-->
+<!--                <div class="text-center">-->
+<!--                  <img src="assets/image/my-training/Check_Ok.svg">-->
+<!--                  <p class="text-white font-family-regular font-12">-->
+<!--                    ثبت نام در دوره-->
+<!--                  </p>-->
+<!--                </div>-->
+<!--                <div class="text-center">-->
+<!--                  <img src="assets/image/my-training/Check_Ok.svg">-->
+<!--                  <p class="text-white font-family-regular font-12">-->
+<!--                    ثبت نام در دوره-->
+<!--                  </p>-->
+<!--                </div>-->
+
+<!--              </div>-->
+
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+
+<!--      </div>-->
+<!--    </div>-->
+<!--    <div class="col-12 col-lg-6 mb-3">-->
+<!--      <div class="bg-white border-radius-20 p-3">-->
+<!--        <div class="d-flex gap-2 align-items-center mb-2">-->
+<!--          <img src="assets/image/remove/Frame63.png" class="border-radius-50 main-records-1">-->
+<!--          <div>-->
+<!--            <h3 class="color-1 font-family-regular font-14">-->
+<!--              دوره مربی گری تدبری در زیارت عاشورا-->
+<!--            </h3>-->
+<!--            <p class="color-1 opacity-50 font-family-regular font-12">-->
+<!--              دوره تدبر در زیارت عاشورا دوره ای برای بررسی وقایع و دقیق تر زیارت نامه است-->
+<!--            </p>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div class="d-flex gap-3">-->
+<!--          <div class="main-records-5 d-flex flex-column justify-content-between">-->
+<!--            <div class="d-flex justify-content-between">-->
+<!--              <h3 class="font-family-regular font-12 color-1">نام دوره :</h3>-->
+<!--              <h3 class="font-family-bold font-12 color-1">تدبری در زیارت عاشورا</h3>-->
+<!--            </div>-->
+<!--            <div class="d-flex justify-content-between">-->
+<!--              <h3 class="font-family-regular font-12 color-1">نوع دوره :</h3>-->
+<!--              <h3 class="font-family-bold font-12 color-1">آزاد</h3>-->
+<!--            </div>-->
+<!--            <div class="d-flex justify-content-between">-->
+<!--              <h3 class="font-family-regular font-12 color-1">تاریخ شروع دوره :</h3>-->
+<!--              <h3 class="font-family-bold font-12 color-1">1403/06/01</h3>-->
+<!--            </div>-->
+<!--            <div class="d-flex justify-content-between">-->
+<!--              <h3 class="font-family-regular font-12 color-1">تاریخ پایان دوره :</h3>-->
+<!--              <h3 class="font-family-bold font-12 color-1">1403/06/01</h3>-->
+<!--            </div>-->
+<!--            <div class="d-flex justify-content-between">-->
+<!--              <h3 class="font-family-regular font-12 color-1">تاریخ انقضاء دوره :</h3>-->
+<!--              <h3 class="font-family-bold font-12 color-1">1403/06/01</h3>-->
+<!--            </div>-->
+<!--            <div class="d-flex justify-content-between">-->
+<!--              <h3 class="font-family-regular font-12 color-1">وضعیت دوره :</h3>-->
+<!--              <h3 class="font-family-bold font-12 main-records-4"> قبولی در آزمون</h3>-->
+<!--            </div>-->
+
+<!--          </div>-->
+<!--          <div class="w-100">-->
+<!--            <button class="text-white font-family-regular font-12 py-1 px-3 border-radius-4 main-records-3 mb-2">-->
+<!--              ارسال مدرک-->
+<!--            </button>-->
+<!--            <p class="color-1 font-family-regular font-12 mb-2">-->
+<!--              شما میتوانید بار دیگر در آزمون این مدرک شرکت کنید-->
+<!--            </p>-->
+<!--            <div class="main-records-2 border-radius-10 p-3">-->
+<!--              <div class="d-flex flex-wrap gap-3">-->
+<!--                <div class="text-center">-->
+<!--                  <img src="assets/image/my-training/Check_Ok.svg">-->
+<!--                  <p class="text-white font-family-regular font-12">-->
+<!--                    ثبت نام در دوره-->
+<!--                  </p>-->
+<!--                </div>-->
+<!--                <div class="text-center">-->
+<!--                  <img src="assets/image/my-training/Check_Ok.svg">-->
+<!--                  <p class="text-white font-family-regular font-12">-->
+<!--                    ثبت نام در دوره-->
+<!--                  </p>-->
+<!--                </div>-->
+<!--                <div class="text-center">-->
+<!--                  <img src="assets/image/my-training/Check_Ok.svg">-->
+<!--                  <p class="text-white font-family-regular font-12">-->
+<!--                    ثبت نام در دوره-->
+<!--                  </p>-->
+<!--                </div>-->
+<!--                <div class="text-center">-->
+<!--                  <img src="assets/image/my-training/Check_Ok.svg">-->
+<!--                  <p class="text-white font-family-regular font-12">-->
+<!--                    ثبت نام در دوره-->
+<!--                  </p>-->
+<!--                </div>-->
+<!--                <div class="text-center">-->
+<!--                  <img src="assets/image/my-training/Check_Ok.svg">-->
+<!--                  <p class="text-white font-family-regular font-12">-->
+<!--                    ثبت نام در دوره-->
+<!--                  </p>-->
+<!--                </div>-->
+<!--                <div class="text-center">-->
+<!--                  <img src="assets/image/my-training/Check_Ok.svg">-->
+<!--                  <p class="text-white font-family-regular font-12">-->
+<!--                    ثبت نام در دوره-->
+<!--                  </p>-->
+<!--                </div>-->
+<!--                <div class="text-center">-->
+<!--                  <img src="assets/image/my-training/Check_Ok.svg">-->
+<!--                  <p class="text-white font-family-regular font-12">-->
+<!--                    ثبت نام در دوره-->
+<!--                  </p>-->
+<!--                </div>-->
+
+<!--              </div>-->
+
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+
+<!--      </div>-->
+<!--    </div>-->
+<!--    <div class="col-12 col-lg-6 mb-3">-->
+<!--      <div class="bg-white border-radius-20 p-3">-->
+<!--        <div class="d-flex gap-2 align-items-center mb-2">-->
+<!--          <img src="assets/image/remove/Frame63.png" class="border-radius-50 main-records-1">-->
+<!--          <div>-->
+<!--            <h3 class="color-1 font-family-regular font-14">-->
+<!--              دوره مربی گری تدبری در زیارت عاشورا-->
+<!--            </h3>-->
+<!--            <p class="color-1 opacity-50 font-family-regular font-12">-->
+<!--              دوره تدبر در زیارت عاشورا دوره ای برای بررسی وقایع و دقیق تر زیارت نامه است-->
+<!--            </p>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div class="d-flex gap-3">-->
+<!--          <div class="main-records-5 d-flex flex-column justify-content-between">-->
+<!--            <div class="d-flex justify-content-between">-->
+<!--              <h3 class="font-family-regular font-12 color-1">نام دوره :</h3>-->
+<!--              <h3 class="font-family-bold font-12 color-1">تدبری در زیارت عاشورا</h3>-->
+<!--            </div>-->
+<!--            <div class="d-flex justify-content-between">-->
+<!--              <h3 class="font-family-regular font-12 color-1">نوع دوره :</h3>-->
+<!--              <h3 class="font-family-bold font-12 color-1">آزاد</h3>-->
+<!--            </div>-->
+<!--            <div class="d-flex justify-content-between">-->
+<!--              <h3 class="font-family-regular font-12 color-1">تاریخ شروع دوره :</h3>-->
+<!--              <h3 class="font-family-bold font-12 color-1">1403/06/01</h3>-->
+<!--            </div>-->
+<!--            <div class="d-flex justify-content-between">-->
+<!--              <h3 class="font-family-regular font-12 color-1">تاریخ پایان دوره :</h3>-->
+<!--              <h3 class="font-family-bold font-12 color-1">1403/06/01</h3>-->
+<!--            </div>-->
+<!--            <div class="d-flex justify-content-between">-->
+<!--              <h3 class="font-family-regular font-12 color-1">تاریخ انقضاء دوره :</h3>-->
+<!--              <h3 class="font-family-bold font-12 color-1">1403/06/01</h3>-->
+<!--            </div>-->
+<!--            <div class="d-flex justify-content-between">-->
+<!--              <h3 class="font-family-regular font-12 color-1">وضعیت دوره :</h3>-->
+<!--              <h3 class="font-family-bold font-12 main-records-4"> قبولی در آزمون</h3>-->
+<!--            </div>-->
+
+<!--          </div>-->
+<!--          <div class="w-100">-->
+<!--            <button class="text-white font-family-regular font-12 py-1 px-3 border-radius-4 main-records-3 mb-2">-->
+<!--              ارسال مدرک-->
+<!--            </button>-->
+<!--            <p class="color-1 font-family-regular font-12 mb-2">-->
+<!--              شما میتوانید بار دیگر در آزمون این مدرک شرکت کنید-->
+<!--            </p>-->
+<!--            <div class="main-records-2 border-radius-10 p-3">-->
+<!--              <div class="d-flex flex-wrap gap-3">-->
+<!--                <div class="text-center">-->
+<!--                  <img src="assets/image/my-training/Check_Ok.svg">-->
+<!--                  <p class="text-white font-family-regular font-12">-->
+<!--                    ثبت نام در دوره-->
+<!--                  </p>-->
+<!--                </div>-->
+<!--                <div class="text-center">-->
+<!--                  <img src="assets/image/my-training/Check_Ok.svg">-->
+<!--                  <p class="text-white font-family-regular font-12">-->
+<!--                    ثبت نام در دوره-->
+<!--                  </p>-->
+<!--                </div>-->
+<!--                <div class="text-center">-->
+<!--                  <img src="assets/image/my-training/Check_Ok.svg">-->
+<!--                  <p class="text-white font-family-regular font-12">-->
+<!--                    ثبت نام در دوره-->
+<!--                  </p>-->
+<!--                </div>-->
+<!--                <div class="text-center">-->
+<!--                  <img src="assets/image/my-training/Check_Ok.svg">-->
+<!--                  <p class="text-white font-family-regular font-12">-->
+<!--                    ثبت نام در دوره-->
+<!--                  </p>-->
+<!--                </div>-->
+<!--                <div class="text-center">-->
+<!--                  <img src="assets/image/my-training/Check_Ok.svg">-->
+<!--                  <p class="text-white font-family-regular font-12">-->
+<!--                    ثبت نام در دوره-->
+<!--                  </p>-->
+<!--                </div>-->
+<!--                <div class="text-center">-->
+<!--                  <img src="assets/image/my-training/Check_Ok.svg">-->
+<!--                  <p class="text-white font-family-regular font-12">-->
+<!--                    ثبت نام در دوره-->
+<!--                  </p>-->
+<!--                </div>-->
+<!--                <div class="text-center">-->
+<!--                  <img src="assets/image/my-training/Check_Ok.svg">-->
+<!--                  <p class="text-white font-family-regular font-12">-->
+<!--                    ثبت نام در دوره-->
+<!--                  </p>-->
+<!--                </div>-->
+
+<!--              </div>-->
+
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+
+<!--      </div>-->
+<!--    </div>-->
+<!--    <div class="col-12 col-lg-6 mb-3">-->
+<!--      <div class="bg-white border-radius-20 p-3">-->
+<!--        <div class="d-flex gap-2 align-items-center mb-2">-->
+<!--          <img src="assets/image/remove/Frame63.png" class="border-radius-50 main-records-1">-->
+<!--          <div>-->
+<!--            <h3 class="color-1 font-family-regular font-14">-->
+<!--              دوره مربی گری تدبری در زیارت عاشورا-->
+<!--            </h3>-->
+<!--            <p class="color-1 opacity-50 font-family-regular font-12">-->
+<!--              دوره تدبر در زیارت عاشورا دوره ای برای بررسی وقایع و دقیق تر زیارت نامه است-->
+<!--            </p>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div class="d-flex gap-3">-->
+<!--          <div class="main-records-5 d-flex flex-column justify-content-between">-->
+<!--            <div class="d-flex justify-content-between">-->
+<!--              <h3 class="font-family-regular font-12 color-1">نام دوره :</h3>-->
+<!--              <h3 class="font-family-bold font-12 color-1">تدبری در زیارت عاشورا</h3>-->
+<!--            </div>-->
+<!--            <div class="d-flex justify-content-between">-->
+<!--              <h3 class="font-family-regular font-12 color-1">نوع دوره :</h3>-->
+<!--              <h3 class="font-family-bold font-12 color-1">آزاد</h3>-->
+<!--            </div>-->
+<!--            <div class="d-flex justify-content-between">-->
+<!--              <h3 class="font-family-regular font-12 color-1">تاریخ شروع دوره :</h3>-->
+<!--              <h3 class="font-family-bold font-12 color-1">1403/06/01</h3>-->
+<!--            </div>-->
+<!--            <div class="d-flex justify-content-between">-->
+<!--              <h3 class="font-family-regular font-12 color-1">تاریخ پایان دوره :</h3>-->
+<!--              <h3 class="font-family-bold font-12 color-1">1403/06/01</h3>-->
+<!--            </div>-->
+<!--            <div class="d-flex justify-content-between">-->
+<!--              <h3 class="font-family-regular font-12 color-1">تاریخ انقضاء دوره :</h3>-->
+<!--              <h3 class="font-family-bold font-12 color-1">1403/06/01</h3>-->
+<!--            </div>-->
+<!--            <div class="d-flex justify-content-between">-->
+<!--              <h3 class="font-family-regular font-12 color-1">وضعیت دوره :</h3>-->
+<!--              <h3 class="font-family-bold font-12 main-records-4"> قبولی در آزمون</h3>-->
+<!--            </div>-->
+
+<!--          </div>-->
+<!--          <div class="w-100">-->
+<!--            <button class="text-white font-family-regular font-12 py-1 px-3 border-radius-4 main-records-3 mb-2">-->
+<!--              ارسال مدرک-->
+<!--            </button>-->
+<!--            <p class="color-1 font-family-regular font-12 mb-2">-->
+<!--              شما میتوانید بار دیگر در آزمون این مدرک شرکت کنید-->
+<!--            </p>-->
+<!--            <div class="main-records-2 border-radius-10 p-3">-->
+<!--              <div class="d-flex flex-wrap gap-3">-->
+<!--                <div class="text-center">-->
+<!--                  <img src="assets/image/my-training/Check_Ok.svg">-->
+<!--                  <p class="text-white font-family-regular font-12">-->
+<!--                    ثبت نام در دوره-->
+<!--                  </p>-->
+<!--                </div>-->
+<!--                <div class="text-center">-->
+<!--                  <img src="assets/image/my-training/Check_Ok.svg">-->
+<!--                  <p class="text-white font-family-regular font-12">-->
+<!--                    ثبت نام در دوره-->
+<!--                  </p>-->
+<!--                </div>-->
+<!--                <div class="text-center">-->
+<!--                  <img src="assets/image/my-training/Check_Ok.svg">-->
+<!--                  <p class="text-white font-family-regular font-12">-->
+<!--                    ثبت نام در دوره-->
+<!--                  </p>-->
+<!--                </div>-->
+<!--                <div class="text-center">-->
+<!--                  <img src="assets/image/my-training/Check_Ok.svg">-->
+<!--                  <p class="text-white font-family-regular font-12">-->
+<!--                    ثبت نام در دوره-->
+<!--                  </p>-->
+<!--                </div>-->
+<!--                <div class="text-center">-->
+<!--                  <img src="assets/image/my-training/Check_Ok.svg">-->
+<!--                  <p class="text-white font-family-regular font-12">-->
+<!--                    ثبت نام در دوره-->
+<!--                  </p>-->
+<!--                </div>-->
+<!--                <div class="text-center">-->
+<!--                  <img src="assets/image/my-training/Check_Ok.svg">-->
+<!--                  <p class="text-white font-family-regular font-12">-->
+<!--                    ثبت نام در دوره-->
+<!--                  </p>-->
+<!--                </div>-->
+<!--                <div class="text-center">-->
+<!--                  <img src="assets/image/my-training/Check_Ok.svg">-->
+<!--                  <p class="text-white font-family-regular font-12">-->
+<!--                    ثبت نام در دوره-->
+<!--                  </p>-->
+<!--                </div>-->
+
+<!--              </div>-->
+
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+
+<!--      </div>-->
+<!--    </div>-->
+<!--    <div class="col-12 col-lg-6 mb-3">-->
+<!--      <div class="bg-white border-radius-20 p-3">-->
+<!--        <div class="d-flex gap-2 align-items-center mb-2">-->
+<!--          <img src="assets/image/remove/Frame63.png" class="border-radius-50 main-records-1">-->
+<!--          <div>-->
+<!--            <h3 class="color-1 font-family-regular font-14">-->
+<!--              دوره مربی گری تدبری در زیارت عاشورا-->
+<!--            </h3>-->
+<!--            <p class="color-1 opacity-50 font-family-regular font-12">-->
+<!--              دوره تدبر در زیارت عاشورا دوره ای برای بررسی وقایع و دقیق تر زیارت نامه است-->
+<!--            </p>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div class="d-flex gap-3">-->
+<!--          <div class="main-records-5 d-flex flex-column justify-content-between">-->
+<!--            <div class="d-flex justify-content-between">-->
+<!--              <h3 class="font-family-regular font-12 color-1">نام دوره :</h3>-->
+<!--              <h3 class="font-family-bold font-12 color-1">تدبری در زیارت عاشورا</h3>-->
+<!--            </div>-->
+<!--            <div class="d-flex justify-content-between">-->
+<!--              <h3 class="font-family-regular font-12 color-1">نوع دوره :</h3>-->
+<!--              <h3 class="font-family-bold font-12 color-1">آزاد</h3>-->
+<!--            </div>-->
+<!--            <div class="d-flex justify-content-between">-->
+<!--              <h3 class="font-family-regular font-12 color-1">تاریخ شروع دوره :</h3>-->
+<!--              <h3 class="font-family-bold font-12 color-1">1403/06/01</h3>-->
+<!--            </div>-->
+<!--            <div class="d-flex justify-content-between">-->
+<!--              <h3 class="font-family-regular font-12 color-1">تاریخ پایان دوره :</h3>-->
+<!--              <h3 class="font-family-bold font-12 color-1">1403/06/01</h3>-->
+<!--            </div>-->
+<!--            <div class="d-flex justify-content-between">-->
+<!--              <h3 class="font-family-regular font-12 color-1">تاریخ انقضاء دوره :</h3>-->
+<!--              <h3 class="font-family-bold font-12 color-1">1403/06/01</h3>-->
+<!--            </div>-->
+<!--            <div class="d-flex justify-content-between">-->
+<!--              <h3 class="font-family-regular font-12 color-1">وضعیت دوره :</h3>-->
+<!--              <h3 class="font-family-bold font-12 main-records-4"> قبولی در آزمون</h3>-->
+<!--            </div>-->
+
+<!--          </div>-->
+<!--          <div class="w-100">-->
+<!--            <button class="text-white font-family-regular font-12 py-1 px-3 border-radius-4 main-records-3 mb-2">-->
+<!--              ارسال مدرک-->
+<!--            </button>-->
+<!--            <p class="color-1 font-family-regular font-12 mb-2">-->
+<!--              شما میتوانید بار دیگر در آزمون این مدرک شرکت کنید-->
+<!--            </p>-->
+<!--            <div class="main-records-2 border-radius-10 p-3">-->
+<!--              <div class="d-flex flex-wrap gap-3">-->
+<!--                <div class="text-center">-->
+<!--                  <img src="assets/image/my-training/Check_Ok.svg">-->
+<!--                  <p class="text-white font-family-regular font-12">-->
+<!--                    ثبت نام در دوره-->
+<!--                  </p>-->
+<!--                </div>-->
+<!--                <div class="text-center">-->
+<!--                  <img src="assets/image/my-training/Check_Ok.svg">-->
+<!--                  <p class="text-white font-family-regular font-12">-->
+<!--                    ثبت نام در دوره-->
+<!--                  </p>-->
+<!--                </div>-->
+<!--                <div class="text-center">-->
+<!--                  <img src="assets/image/my-training/Check_Ok.svg">-->
+<!--                  <p class="text-white font-family-regular font-12">-->
+<!--                    ثبت نام در دوره-->
+<!--                  </p>-->
+<!--                </div>-->
+<!--                <div class="text-center">-->
+<!--                  <img src="assets/image/my-training/Check_Ok.svg">-->
+<!--                  <p class="text-white font-family-regular font-12">-->
+<!--                    ثبت نام در دوره-->
+<!--                  </p>-->
+<!--                </div>-->
+<!--                <div class="text-center">-->
+<!--                  <img src="assets/image/my-training/Check_Ok.svg">-->
+<!--                  <p class="text-white font-family-regular font-12">-->
+<!--                    ثبت نام در دوره-->
+<!--                  </p>-->
+<!--                </div>-->
+<!--                <div class="text-center">-->
+<!--                  <img src="assets/image/my-training/Check_Ok.svg">-->
+<!--                  <p class="text-white font-family-regular font-12">-->
+<!--                    ثبت نام در دوره-->
+<!--                  </p>-->
+<!--                </div>-->
+<!--                <div class="text-center">-->
+<!--                  <img src="assets/image/my-training/Check_Ok.svg">-->
+<!--                  <p class="text-white font-family-regular font-12">-->
+<!--                    ثبت نام در دوره-->
+<!--                  </p>-->
+<!--                </div>-->
+
+<!--              </div>-->
+
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+
+<!--      </div>-->
+<!--    </div>-->
+<!--    <div class="col-12 col-lg-6 mb-3">-->
+<!--      <div class="bg-white border-radius-20 p-3">-->
+<!--        <div class="d-flex gap-2 align-items-center mb-2">-->
+<!--          <img src="assets/image/remove/Frame63.png" class="border-radius-50 main-records-1">-->
+<!--          <div>-->
+<!--            <h3 class="color-1 font-family-regular font-14">-->
+<!--              دوره مربی گری تدبری در زیارت عاشورا-->
+<!--            </h3>-->
+<!--            <p class="color-1 opacity-50 font-family-regular font-12">-->
+<!--              دوره تدبر در زیارت عاشورا دوره ای برای بررسی وقایع و دقیق تر زیارت نامه است-->
+<!--            </p>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div class="d-flex gap-3">-->
+<!--          <div class="main-records-5 d-flex flex-column justify-content-between">-->
+<!--            <div class="d-flex justify-content-between">-->
+<!--              <h3 class="font-family-regular font-12 color-1">نام دوره :</h3>-->
+<!--              <h3 class="font-family-bold font-12 color-1">تدبری در زیارت عاشورا</h3>-->
+<!--            </div>-->
+<!--            <div class="d-flex justify-content-between">-->
+<!--              <h3 class="font-family-regular font-12 color-1">نوع دوره :</h3>-->
+<!--              <h3 class="font-family-bold font-12 color-1">آزاد</h3>-->
+<!--            </div>-->
+<!--            <div class="d-flex justify-content-between">-->
+<!--              <h3 class="font-family-regular font-12 color-1">تاریخ شروع دوره :</h3>-->
+<!--              <h3 class="font-family-bold font-12 color-1">1403/06/01</h3>-->
+<!--            </div>-->
+<!--            <div class="d-flex justify-content-between">-->
+<!--              <h3 class="font-family-regular font-12 color-1">تاریخ پایان دوره :</h3>-->
+<!--              <h3 class="font-family-bold font-12 color-1">1403/06/01</h3>-->
+<!--            </div>-->
+<!--            <div class="d-flex justify-content-between">-->
+<!--              <h3 class="font-family-regular font-12 color-1">تاریخ انقضاء دوره :</h3>-->
+<!--              <h3 class="font-family-bold font-12 color-1">1403/06/01</h3>-->
+<!--            </div>-->
+<!--            <div class="d-flex justify-content-between">-->
+<!--              <h3 class="font-family-regular font-12 color-1">وضعیت دوره :</h3>-->
+<!--              <h3 class="font-family-bold font-12 main-records-4"> قبولی در آزمون</h3>-->
+<!--            </div>-->
+
+<!--          </div>-->
+<!--          <div class="w-100">-->
+<!--            <button class="text-white font-family-regular font-12 py-1 px-3 border-radius-4 main-records-3 mb-2">-->
+<!--              ارسال مدرک-->
+<!--            </button>-->
+<!--            <p class="color-1 font-family-regular font-12 mb-2">-->
+<!--              شما میتوانید بار دیگر در آزمون این مدرک شرکت کنید-->
+<!--            </p>-->
+<!--            <div class="main-records-2 border-radius-10 p-3">-->
+<!--              <div class="d-flex flex-wrap gap-3">-->
+<!--                <div class="text-center">-->
+<!--                  <img src="assets/image/my-training/Check_Ok.svg">-->
+<!--                  <p class="text-white font-family-regular font-12">-->
+<!--                    ثبت نام در دوره-->
+<!--                  </p>-->
+<!--                </div>-->
+<!--                <div class="text-center">-->
+<!--                  <img src="assets/image/my-training/Check_Ok.svg">-->
+<!--                  <p class="text-white font-family-regular font-12">-->
+<!--                    ثبت نام در دوره-->
+<!--                  </p>-->
+<!--                </div>-->
+<!--                <div class="text-center">-->
+<!--                  <img src="assets/image/my-training/Check_Ok.svg">-->
+<!--                  <p class="text-white font-family-regular font-12">-->
+<!--                    ثبت نام در دوره-->
+<!--                  </p>-->
+<!--                </div>-->
+<!--                <div class="text-center">-->
+<!--                  <img src="assets/image/my-training/Check_Ok.svg">-->
+<!--                  <p class="text-white font-family-regular font-12">-->
+<!--                    ثبت نام در دوره-->
+<!--                  </p>-->
+<!--                </div>-->
+<!--                <div class="text-center">-->
+<!--                  <img src="assets/image/my-training/Check_Ok.svg">-->
+<!--                  <p class="text-white font-family-regular font-12">-->
+<!--                    ثبت نام در دوره-->
+<!--                  </p>-->
+<!--                </div>-->
+<!--                <div class="text-center">-->
+<!--                  <img src="assets/image/my-training/Check_Ok.svg">-->
+<!--                  <p class="text-white font-family-regular font-12">-->
+<!--                    ثبت نام در دوره-->
+<!--                  </p>-->
+<!--                </div>-->
+<!--                <div class="text-center">-->
+<!--                  <img src="assets/image/my-training/Check_Ok.svg">-->
+<!--                  <p class="text-white font-family-regular font-12">-->
+<!--                    ثبت نام در دوره-->
+<!--                  </p>-->
+<!--                </div>-->
+
+<!--              </div>-->
+
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+
+<!--      </div>-->
+<!--    </div>-->
+
+  </div>
+</div>

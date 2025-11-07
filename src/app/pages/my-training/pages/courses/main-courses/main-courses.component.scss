@@ -1,0 +1,26 @@
+.item-courses-1{
+  background: rgba(7, 168, 255, 0.5);
+}
+.item-courses-2{
+  width: 35px;
+  height: 35px;
+}
+.item-courses-3{
+  background: rgba(119, 217, 158, 0.5);
+}
+.item-courses-4{
+  border : 1px solid transparent;
+}
+.main-courses-2{
+  height: fit-content;
+}
+
+@media (max-width: 767px) and (min-width: 300px) {
+
+}
+@media  (min-width: 768px) {
+  .main-courses-1{
+    //height: calc(100vh - 200px);
+    overflow-y: scroll;
+  }
+}

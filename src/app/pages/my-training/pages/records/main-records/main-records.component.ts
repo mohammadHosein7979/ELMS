@@ -1,0 +1,27 @@
+import {Component, Injector, OnInit} from '@angular/core';
+import {BaseService} from "../../../../../shared/services/base.service";
+import {CoursesService} from "../../courses/services/courses.service";
+import {RecordsService} from "../services/records.service";
+
+@Component({
+  selector: 'app-main-records',
+  templateUrl: './main-records.component.html',
+  styleUrl: './main-records.component.scss'
+})
+export class MainRecordsComponent extends BaseService implements OnInit{
+  constructor(injector:Injector,private recordsService:RecordsService) {
+    super(injector);
+  }
+
+  ngOnInit() {
+    this.getData()
+
+  }
+  getData(){
+    this.recordsService.getAllRecords().subscribe((data:any)=>{
+      this.data = data.data
+    })
+
+  }
+
+}

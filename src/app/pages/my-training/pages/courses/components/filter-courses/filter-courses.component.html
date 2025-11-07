@@ -1,0 +1,21 @@
+<div>
+<!--  [initialSlide]="IDataSeasonResponsive"-->
+  <swiper
+    [config]="swiperConfig"
+    [slidesPerView]="'auto'"
+    [spaceBetween]="12"
+    class=" FilterCourses "
+  >
+      <ng-template swiperSlide *ngFor="let item of data;let i =index">
+          <div (click)="changeEventType(item)" class="filter-courses-2 border-radius-20 font-12 font-family-bold px-3  cursorPointer d-flex align-items-center {{item?.id == selectedItem?.id ? 'bg-color-8 text-white' : 'bg-white color-2'}} ">
+<!--            {{item?.id != 0 ? 'ps-2 pe-3  gap-2' : 'px-5'}}-->
+            @if (item?.id != 0){
+<!--              <div class="border-radius-50 filter-courses-1 d-flex align-items-center justify-content-center {{item?.id == selectedItem?.id ? 'bg-white color-2' : 'bg-color-2 text-white'}}">-->
+<!--                {{item?.counter}}-->
+<!--              </div>-->
+            }
+            {{item?.name}}
+          </div>
+      </ng-template>
+  </swiper>
+</div>
