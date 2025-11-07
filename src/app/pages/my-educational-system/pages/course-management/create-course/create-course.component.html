@@ -1,0 +1,720 @@
+<div>
+  <br/>
+  <br/>
+
+  <div class="create-question-1 overflow-hidden">
+    <div class="bg-color-10 py-3 px-4 create-question-2">
+      <h2 class=" text-white font-family-bold font-20 ">
+        فرایند ایجاد دوره
+      </h2>
+
+    </div>
+    <form [formGroup]="form">
+      <div class="bg-white py-4 px-3 create-question-11">
+
+        <!--      step 1-->
+        <div [hidden]="step != 1">
+          <div class="mb-3">
+            <h3 class="font-family-bold font-14 color-1 mb-1">
+              در این بخش باید یکی از گروه های آموزشی را انتخاب کنید
+            </h3>
+            <p class="color-1 opacity-50 font-family-regular font-12">
+              با انتخاب یک گروه آموزشی یعنی قرار است یک دوره آموزشی در مورد گروه مورد نظر ایجاد کنید
+            </p>
+          </div>
+          <div class="border-color-10 border-radius-15 px-3 py-2 create-question-3">
+            <div class=" d-flex gap-2 align-items-center">
+              <img src="assets/image/searchIcon.svg">
+              <div class="example-input w-100">
+                <input
+                  placeholder='جست و جو'
+                  nz-input
+                  [(ngModel)]="inputValue"
+                  (ngModelChange)="onChangeStepOne($event)"
+                  [nzAutocomplete]="auto"
+                  class="create-question-4"
+                />
+                <nz-autocomplete [nzOverlayClassName]="'autocompleteCreateQuestion'" [nzDataSource]="filteredOptions"
+                                 #auto></nz-autocomplete>
+              </div>
+              <img src="assets/image/reloadIcon.svg">
+            </div>
+
+
+          </div>
+          <div>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+          </div>
+        </div>
+        <!--      end step 1-->
+
+
+        <!--      step 2-->
+        <div [hidden]="step != 2">
+          <div class="mb-5">
+            <h3 class="font-family-bold font-14 color-1 mb-1">
+              نوع دوره را مشخص کنید
+            </h3>
+            <p class="color-1 opacity-50 font-family-regular font-12">
+              برای انتخاب هر یک از روش های انتشار دوره شرایط زیر را در نظر بگیرید
+              <br/>
+              آفلاین : باید ویدئو های ضبط شده دوره آماده باشند برای ارائه
+              <br/>
+
+              آنلاین : باید سر فصل های آموزش و مستندات آموزش را آماده کرده باشید
+              <br/>
+
+              حضوری : باید سر فصل های آموزش و مستندات آموزشی را آماده کرده باشید و محل برگزاری را هماهنگ کرده باشید (
+              محل
+              های مورد تایید تدبر )
+            </p>
+          </div>
+          <div class="d-flex gap-5 flex-column flex-lg-row justify-content-evenly">
+            <div (click)="changeType(1)" class="text-center cursorPointer">
+              <img src="assets/image/my-educational-system/Group345.svg"
+                   class="{{form?.value?.type != 1 ? 'opacity-50' : ''}}">
+              <h3 class="color-1 font-12 font-family-bold">
+                دوره آفلاین
+              </h3>
+
+            </div>
+            <div (click)="changeType(2)" class="text-center cursorPointer">
+              <img src="assets/image/my-educational-system/Group343.svg"
+                   class="{{form?.value?.type != 2 ? 'opacity-50' : ''}}">
+              <h3 class="color-1 font-12 font-family-bold">
+                دوره آنلاین
+              </h3>
+            </div>
+            <div (click)="changeType(3)" class="text-center cursorPointer">
+              <img src="assets/image/my-educational-system/Group344.svg"
+                   class="{{form?.value?.type != 3 ? 'opacity-50' : ''}}">
+              <h3 class="color-1 font-12 font-family-bold">
+                دوره حضوری
+              </h3>
+            </div>
+
+          </div>
+          <div>
+            <br/>
+            <br/>
+            <br/>
+          </div>
+        </div>
+        <!--      end step 2-->
+
+
+        <!--      step 3-->
+        <div [hidden]="step != 3">
+          <div class="mb-5">
+            <h3 class="font-family-bold font-14 color-1 mb-1">
+              مشخصات دوره
+            </h3>
+            <p class="color-1 opacity-50 font-family-regular font-12">
+              شما در این بخش هزینه مدت زمان آموزش را مشخص می کنید و خالص دریافتی خود را مشاهده می کنید
+              اگر دوره رایگان است هزینه را 0 وارد کنید
+            </p>
+          </div>
+          <div class="row align-items-center">
+            <div class="col-12 col-lg-9">
+              <div class="row">
+                <div class="col-12 col-lg-6 create-course-1">
+                  <div class="d-flex justify-content-between gap-2 mb-3">
+                    <h3 class="font-family-regular font-14 color-1 opacity-50 w-100">
+                      نام دوره :
+                    </h3>
+                    <input class="input-style" nz-input placeholder="" type="text" />
+                  </div>
+                  <div class="d-flex justify-content-between gap-2 mb-3">
+                    <h3 class="font-family-regular font-14 color-1 opacity-50 w-100">
+                      مدت زمان آموزش :
+                    </h3>
+                    <div class="d-flex justify-content-between gap-2 w-100">
+                      <input class="input-style text-center" nz-input placeholder="00" type="text" />
+                      <span class="font-20 color-1 opacity-50 font-family-bold">
+                        :
+                      </span>
+                      <input class="input-style" nz-input placeholder="00" type="text" />
+
+                    </div>
+                  </div>
+                  <div class="d-flex justify-content-between gap-2">
+                    <h3 class="font-family-regular font-14 color-1 opacity-50 w-100">
+                      هزینه دوره آموزشی :
+                    </h3>
+                    <input class="input-style" nz-input placeholder="0" type="text" />
+                  </div>
+                </div>
+                <div class="col-12 col-lg-6">
+                   <div class="d-flex justify-content-between align-items-center gap-2 mb-3 input-height">
+                     <h3 class="font-family-regular font-14 color-1 opacity-50 w-100">
+                       مالیات :
+                     </h3>
+                     <p class="opacity-50 color-1 font-family-regular font-12">
+                       0
+                     </p>
+                   </div>
+                   <div class="d-flex justify-content-between gap-2 mb-3 align-items-center input-height">
+                     <h3 class="font-family-regular font-14 color-1 opacity-50 w-100">
+                       سهم تدبر :
+                     </h3>
+                     <p class="opacity-50 color-1 font-family-regular font-12">
+                       0
+                     </p>
+                   </div>
+                   <div class="d-flex justify-content-between gap-2 align-items-center input-height">
+                     <h3 class="font-family-regular font-14 color-1 opacity-50 w-100">
+                       خالص دریافتی :
+                     </h3>
+                     <p class="opacity-50 color-1 font-family-regular font-12">
+                       0
+                     </p>
+                   </div>
+                </div>
+              </div>
+
+
+            </div>
+            <div class="col-12 col-lg-3">
+             <app-type-selected-course [type]="form?.value?.type"/>
+            </div>
+          </div>
+          <div>
+            <br/>
+            <br/>
+            <br/>
+          </div>
+        </div>
+        <!--      end step 3-->
+
+
+        <!--      step 4-->
+        <div [hidden]="step != 4">
+          <div class="mb-5">
+            <h3 class="font-family-bold font-14 color-1 mb-1">
+              توضیحات تکمیلی
+            </h3>
+            <p class="color-1 opacity-50 font-family-regular font-12">
+              در این بخش متنی را به عنوان توضیحات تکمیلی برای نمایش به کاربران وارد کنید
+            </p>
+          </div>
+          <div class="row align-items-center">
+            <div class="col-12 col-lg-9">
+              <ckeditor [config]="config" [editor]="Editor"></ckeditor>
+            </div>
+            <div class="col-12 col-lg-3">
+              <app-type-selected-course [type]="form?.value?.type"/>
+            </div>
+          </div>
+          <div>
+            <br/>
+            <br/>
+            <br/>
+          </div>
+        </div>
+        <!--      end step 4-->
+
+
+
+        <!--      step 5-->
+        <div [hidden]="step != 5">
+          <div class="mb-5">
+            <h3 class="font-family-bold font-14 color-1 mb-1">
+              توضیحات تکمیلی مدیران
+            </h3>
+            <p class="color-1 opacity-50 font-family-regular font-12">
+              در این بخش باید توضحات خود را در خصوص دوره آموزشی برای مدیران تدبر وارد کنید نکاتی را بیان کنید که مدیران برای ارائه بهتر دوره باید در نظر بگیرند
+            </p>
+          </div>
+          <div class="row align-items-center">
+            <div class="col-12 col-lg-9">
+              <ckeditor [config]="config" [editor]="Editor"></ckeditor>
+            </div>
+            <div class="col-12 col-lg-3">
+              <app-type-selected-course [type]="form?.value?.type"/>
+            </div>
+          </div>
+          <div>
+            <br/>
+            <br/>
+            <br/>
+          </div>
+        </div>
+        <!--      end step 5-->
+
+
+        <!--      step 6-->
+        <div [hidden]="step != 6">
+          <div class="mb-5">
+            <h3 class="font-family-bold font-14 color-1 mb-1">
+              سر فصل های آموزشی
+            </h3>
+            <p class="color-1 opacity-50 font-family-regular font-12">
+              در این بخش عنوان هر فصل مدت زمان ارائه فصل و جزئیات فصل را وارد کنید
+            </p>
+          </div>
+          <div class="row align-items-center">
+            <div class="col-12 col-lg-9">
+              <div class="row">
+                <div class="col-12 col-lg-6">
+                  <div class="d-flex gap-2 create-course-5 mb-2">
+                    <input nz-input class="input-style create-course-2"  placeholder="عنوان فصل" type="text" />
+                    <input class="input-style create-course-3" nz-input placeholder="زمان" type="text" />
+                    <button nz-button class="create-course-4 color-1 font-family-regular font-14 border-radius-5  create-course-6  mb-2 px-4" >ثبت</button>
+
+                  </div>
+                  <div class="border-color-2 border-radius-5 p-2 create-course-9 overflow-y-scroll">
+                    <div>
+                      <div class="d-flex gap-1 justify-content-between py-12 px-1 ">
+                        <div class="d-flex gap-1 w-100">
+                          <img src="assets/image/my-educational-system/Frame460.svg">
+                          <p class="font-family-regular color-1 font-14 w-100">
+                            فصل 1
+                          </p>
+                        </div>
+                        <div class="d-flex gap-1">
+                          <p class="font-family-regular color-1 font-14">
+                            10:20
+                          </p>
+                          <div class="d-flex gap-2 create-course-7">
+                            <img src="assets/image/my-educational-system/Frame461.svg">
+                            <img src="assets/image/my-educational-system/Frame459.svg">
+
+                          </div>
+                        </div>
+
+
+
+                      </div>
+                      <hr class="create-course-8"/>
+                    </div>
+                    <div>
+                      <div class="d-flex gap-1 justify-content-between py-12 px-1">
+                        <div class="d-flex gap-1 w-100">
+                          <img src="assets/image/my-educational-system/Frame460.svg">
+                          <p class="font-family-regular color-1 font-14 w-100">
+                            فصل 1
+                          </p>
+                        </div>
+                        <div class="d-flex gap-1">
+                          <p class="font-family-regular color-1 font-14">
+                            10:20
+                          </p>
+                          <div class="d-flex gap-2 create-course-7">
+                            <img src="assets/image/my-educational-system/Frame461.svg">
+                            <img src="assets/image/my-educational-system/Frame459.svg">
+
+                          </div>
+                        </div>
+
+
+
+                      </div>
+                      <hr class="create-course-8"/>
+                    </div>
+                    <div>
+                      <div class="d-flex gap-1 justify-content-between py-12 px-1 create-course-11">
+                        <div class="d-flex gap-1 w-100">
+                          <img src="assets/image/my-educational-system/Frame460.svg">
+                          <p class="font-family-regular color-1 font-14 w-100">
+                            فصل 1
+                          </p>
+                        </div>
+                        <div class="d-flex gap-1">
+                          <p class="font-family-regular color-1 font-14">
+                            10:20
+                          </p>
+                          <div class="d-flex gap-2 create-course-7">
+                            <img src="assets/image/my-educational-system/Frame461.svg">
+                            <img src="assets/image/my-educational-system/Frame459.svg">
+
+                          </div>
+                        </div>
+
+
+
+                      </div>
+                      <hr class="create-course-8"/>
+                    </div>
+                    <div>
+                      <div class="d-flex gap-1 justify-content-between py-12 px-1">
+                        <div class="d-flex gap-1 w-100">
+                          <img src="assets/image/my-educational-system/Frame460.svg">
+                          <p class="font-family-regular color-1 font-14 w-100">
+                            فصل 1
+                          </p>
+                        </div>
+                        <div class="d-flex gap-1">
+                          <p class="font-family-regular color-1 font-14">
+                            10:20
+                          </p>
+                          <div class="d-flex gap-2 create-course-7">
+                            <img src="assets/image/my-educational-system/Frame461.svg">
+                            <img src="assets/image/my-educational-system/Frame459.svg">
+
+                          </div>
+                        </div>
+
+
+
+                      </div>
+                      <hr class="create-course-8"/>
+                    </div>
+                    <div>
+                      <div class="d-flex gap-1 justify-content-between py-12 px-1">
+                        <div class="d-flex gap-1 w-100">
+                          <img src="assets/image/my-educational-system/Frame460.svg">
+                          <p class="font-family-regular color-1 font-14 w-100">
+                            فصل 1
+                          </p>
+                        </div>
+                        <div class="d-flex gap-1">
+                          <p class="font-family-regular color-1 font-14">
+                            10:20
+                          </p>
+                          <div class="d-flex gap-2 create-course-7">
+                            <img src="assets/image/my-educational-system/Frame461.svg">
+                            <img src="assets/image/my-educational-system/Frame459.svg">
+
+                          </div>
+                        </div>
+
+
+
+                      </div>
+                      <hr class="create-course-8"/>
+                    </div>
+                    <div>
+                      <div class="d-flex gap-1 justify-content-between py-12 px-1">
+                        <div class="d-flex gap-1 w-100">
+                          <img src="assets/image/my-educational-system/Frame460.svg">
+                          <p class="font-family-regular color-1 font-14 w-100">
+                            فصل 1
+                          </p>
+                        </div>
+                        <div class="d-flex gap-1">
+                          <p class="font-family-regular color-1 font-14">
+                            10:20
+                          </p>
+                          <div class="d-flex gap-2 create-course-7">
+                            <img src="assets/image/my-educational-system/Frame461.svg">
+                            <img src="assets/image/my-educational-system/Frame459.svg">
+
+                          </div>
+                        </div>
+
+
+
+                      </div>
+                      <hr class="create-course-8"/>
+                    </div>
+                    <div>
+                      <div class="d-flex gap-1 justify-content-between py-12 px-1">
+                        <div class="d-flex gap-1 w-100">
+                          <img src="assets/image/my-educational-system/Frame460.svg">
+                          <p class="font-family-regular color-1 font-14 w-100">
+                            فصل 1
+                          </p>
+                        </div>
+                        <div class="d-flex gap-1">
+                          <p class="font-family-regular color-1 font-14">
+                            10:20
+                          </p>
+                          <div class="d-flex gap-2 create-course-7">
+                            <img src="assets/image/my-educational-system/Frame461.svg">
+                            <img src="assets/image/my-educational-system/Frame459.svg">
+
+                          </div>
+                        </div>
+
+
+
+                      </div>
+                      <hr class="create-course-8"/>
+                    </div>
+                    <div>
+                      <div class="d-flex gap-1 justify-content-between py-12 px-1">
+                        <div class="d-flex gap-1 w-100">
+                          <img src="assets/image/my-educational-system/Frame460.svg">
+                          <p class="font-family-regular color-1 font-14 w-100">
+                            فصل 1
+                          </p>
+                        </div>
+                        <div class="d-flex gap-1">
+                          <p class="font-family-regular color-1 font-14">
+                            10:20
+                          </p>
+                          <div class="d-flex gap-2 create-course-7">
+                            <img src="assets/image/my-educational-system/Frame461.svg">
+                            <img src="assets/image/my-educational-system/Frame459.svg">
+
+                          </div>
+                        </div>
+
+
+
+                      </div>
+                      <hr class="create-course-8"/>
+                    </div>
+
+                  </div>
+                </div>
+                <div class="col-12 col-lg-6">
+                  <div class="d-flex gap-2 create-course-5 mb-2">
+                    <input nz-input class="input-style create-course-10"  placeholder="عنوان جزئبات " type="text" />
+                    <button nz-button class="create-course-4 color-1 font-family-regular font-14 border-radius-5  create-course-6  mb-2 px-4" >ثبت</button>
+
+                  </div>
+                  <div class="border-color-2 border-radius-5 p-2 create-course-9 overflow-y-scroll">
+                    <div>
+                      <div class="d-flex gap-1 justify-content-between py-12 px-1">
+                        <div class="d-flex gap-1 w-100">
+                          <img src="assets/image/my-educational-system/Frame460.svg">
+                          <p class="font-family-regular color-1 font-14 w-100">
+                            جزئبات 1
+                          </p>
+                        </div>
+                        <div class="d-flex gap-1">
+                          <div class="d-flex gap-2 create-course-7">
+                            <img src="assets/image/my-educational-system/Frame461.svg">
+                            <img src="assets/image/my-educational-system/Frame459.svg">
+
+                          </div>
+                        </div>
+
+
+
+                      </div>
+                      <hr class="create-course-8"/>
+                    </div>
+                    <div>
+                      <div class="d-flex gap-1 justify-content-between py-12 px-1">
+                        <div class="d-flex gap-1 w-100">
+                          <img src="assets/image/my-educational-system/Frame460.svg">
+                          <p class="font-family-regular color-1 font-14 w-100">
+                            جزئبات 1
+                          </p>
+                        </div>
+                        <div class="d-flex gap-1">
+                          <div class="d-flex gap-2 create-course-7">
+                            <img src="assets/image/my-educational-system/Frame461.svg">
+                            <img src="assets/image/my-educational-system/Frame459.svg">
+
+                          </div>
+                        </div>
+
+
+
+                      </div>
+                      <hr class="create-course-8"/>
+                    </div>
+                    <div>
+                      <div class="d-flex gap-1 justify-content-between py-12 px-1">
+                        <div class="d-flex gap-1 w-100">
+                          <img src="assets/image/my-educational-system/Frame460.svg">
+                          <p class="font-family-regular color-1 font-14 w-100">
+                            جزئبات 1
+                          </p>
+                        </div>
+                        <div class="d-flex gap-1">
+                          <div class="d-flex gap-2 create-course-7">
+                            <img src="assets/image/my-educational-system/Frame461.svg">
+                            <img src="assets/image/my-educational-system/Frame459.svg">
+
+                          </div>
+                        </div>
+
+
+
+                      </div>
+                      <hr class="create-course-8"/>
+                    </div>
+                    <div>
+                      <div class="d-flex gap-1 justify-content-between py-12 px-1">
+                        <div class="d-flex gap-1 w-100">
+                          <img src="assets/image/my-educational-system/Frame460.svg">
+                          <p class="font-family-regular color-1 font-14 w-100">
+                            جزئبات 1
+                          </p>
+                        </div>
+                        <div class="d-flex gap-1">
+                          <div class="d-flex gap-2 create-course-7">
+                            <img src="assets/image/my-educational-system/Frame461.svg">
+                            <img src="assets/image/my-educational-system/Frame459.svg">
+
+                          </div>
+                        </div>
+
+
+
+                      </div>
+                      <hr class="create-course-8"/>
+                    </div>
+                    <div>
+                      <div class="d-flex gap-1 justify-content-between py-12 px-1">
+                        <div class="d-flex gap-1 w-100">
+                          <img src="assets/image/my-educational-system/Frame460.svg">
+                          <p class="font-family-regular color-1 font-14 w-100">
+                            جزئبات 1
+                          </p>
+                        </div>
+                        <div class="d-flex gap-1">
+                          <div class="d-flex gap-2 create-course-7">
+                            <img src="assets/image/my-educational-system/Frame461.svg">
+                            <img src="assets/image/my-educational-system/Frame459.svg">
+
+                          </div>
+                        </div>
+
+
+
+                      </div>
+                      <hr class="create-course-8"/>
+                    </div>
+                    <div>
+                      <div class="d-flex gap-1 justify-content-between py-12 px-1">
+                        <div class="d-flex gap-1 w-100">
+                          <img src="assets/image/my-educational-system/Frame460.svg">
+                          <p class="font-family-regular color-1 font-14 w-100">
+                            جزئبات 1
+                          </p>
+                        </div>
+                        <div class="d-flex gap-1">
+                          <div class="d-flex gap-2 create-course-7">
+                            <img src="assets/image/my-educational-system/Frame461.svg">
+                            <img src="assets/image/my-educational-system/Frame459.svg">
+
+                          </div>
+                        </div>
+
+
+
+                      </div>
+                      <hr class="create-course-8"/>
+                    </div>
+
+
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-lg-3">
+              <app-type-selected-course [type]="form?.value?.type"/>
+            </div>
+
+          </div>
+          <div>
+            <br/>
+            <br/>
+            <br/>
+          </div>
+        </div>
+        <!--      end step 6-->
+
+        <!--      step 8-->
+        <div [hidden]="step != 7">
+          <div class="mb-5">
+            <h3 class="font-family-bold font-14 color-1 mb-1">
+              پایان ثبت دوره
+            </h3>
+            <p class="color-1 opacity-50 font-family-regular font-12">
+              ثبت دوره شما با موفقیت به پایان رسید با تایید شما تنها تاییده مدیران تدبر نیاز است
+            </p>
+          </div>
+          <div class="row align-items-center">
+            <div class="col-12 col-lg-9">
+              <div class="row">
+                <div class="col-12 col-lg-4">
+                  <div class="mb-2">
+                    <h3 class="font-family-bold font-14 color-1">
+                      عنوان دوره
+                    </h3>
+                    <p class="font-family-regular font-14 color-1">
+                      تدبری در قرآن
+                    </p>
+                  </div>
+                  <div class="mb-2">
+                    <h3 class="font-family-bold font-14 color-1">
+                      تعداد فصل های دوره
+                    </h3>
+                    <p class="font-family-regular font-14 color-1">
+                      4 فصل
+                    </p>
+                  </div>
+                  <div class="mb-2">
+                    <h3 class="font-family-bold font-14 color-1">
+                      زمان آموزش
+                    </h3>
+                    <p class="font-family-regular font-14 color-1">
+                      110 ساعت 20 دقیقه
+                    </p>
+                  </div>
+                  <div class="mb-2">
+                    <h3 class="font-family-bold font-14 color-1">
+                      هزینه دوره
+                    </h3>
+                    <p class="font-family-regular font-14 color-1">
+                      2,500,000 تومان
+                    </p>
+                  </div>
+                </div>
+                <div class="col-12 col-lg-8">
+                  <h3 class="font-family-bold font-14 color-1">
+                    توضیحات تکمیلی شما
+                  </h3>
+                  <p class="font-family-regular font-14 color-1">
+                    توضیحات تکمیلی آموزشی شما که برای کاربران نمایش داده می شود توضیحات تکمیلی آموزشی شما که برای کاربران نمایش داده می شود توضیحات تکمیلی آموزشی شما که برای کاربران نمایش داده می شود توضیحات تکمیلی آموزشی شما که برای کاربر
+                  </p>
+                </div>
+              </div>
+
+
+            </div>
+            <div class="col-12 col-lg-3">
+              <app-type-selected-course [type]="form?.value?.type"/>
+            </div>
+          </div>
+          <div>
+            <br/>
+            <br/>
+            <br/>
+          </div>
+        </div>
+        <!--      end step 8-->
+
+        <div class="d-flex gap-2 justify-content-center">
+          <button *ngIf="step != 7" (click)="changeStep('next')"
+                  class="bg-color-10 border-color-10 border-radius-10 px-3 py-1 text-white font-family-bold font-14">
+            مرحله بعد
+          </button>
+          <button *ngIf="step == 7"
+                  class="bg-color-10 border-color-10 border-radius-10 px-3 py-1 text-white font-family-bold font-14">
+            ثبت نهایی
+          </button>
+<!--          <button *ngIf="step == 7"-->
+<!--                  class="bg-color-10 border-color-10 border-radius-10 px-3 py-1 text-white font-family-bold font-14">-->
+<!--            ثبت و ورود سوال-->
+<!--          </button>-->
+          <button (click)="changeStep('prev')" [disabled]="step == 1"
+                  class="create-question-5 border-radius-10 px-3 py-1 text-white font-family-bold font-14 {{step == 1 && 'opacity-25'}} ">
+            مرحله قبل
+          </button>
+          <button [disabled]="step == 1"
+                  class="create-question-6 border-radius-10 px-3 py-1 text-white font-family-bold font-14 {{step == 1 && 'opacity-25'}} ">
+            شروع مجدد
+          </button>
+
+        </div>
+
+      </div>
+    </form>
+  </div>
+</div>

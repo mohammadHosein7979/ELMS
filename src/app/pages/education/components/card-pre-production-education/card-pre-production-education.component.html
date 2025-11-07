@@ -1,0 +1,31 @@
+<div class="bg-white border-radius-16 py-4 px-2 card-pre-production-education-3 cursorPointer" >
+  <div class="d-flex justify-content-between mb-3">
+    <div class="border-radius-16">
+      <img src="{{data?.cover}}" class="border-radius-8 card-pre-production-education-1">
+    </div>
+    <div>
+<!--      <nz-avatar-group>-->
+<!--        <nz-avatar nzIcon="user" nzSrc="//zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"></nz-avatar>-->
+<!--        <nz-avatar style="background-color: #f56a00" nzText="U"></nz-avatar>-->
+<!--        <nz-avatar style="background-color: #fde3cf; color: #f56a00" nzText="+2"></nz-avatar>-->
+<!--      </nz-avatar-group>-->
+      <nz-avatar-group dir="ltr">
+        @for (item of data?.ostadImage;track item){
+          <nz-avatar nzIcon="user" nzSrc="{{item}}" class="card-pre-production-education-2"></nz-avatar>
+
+<!--          <img src="{{item}}" class="card-pre-production-education-2 border-radius-50">-->
+        }
+      </nz-avatar-group>
+
+    </div>
+  </div>
+  <div class="d-flex justify-content-between flex-column flex-lg-row">
+    <h3 class="font-family-regular font-12 color-1">
+      {{data?.title}}
+    </h3>
+    <p class="color-2 font-family-bold font-12">
+      {{data?.time}}
+    </p>
+  </div>
+  <h3 class="color-2 font-family-regular font-12">{{data?.type}}</h3>
+</div>

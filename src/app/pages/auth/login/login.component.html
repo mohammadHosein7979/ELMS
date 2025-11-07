@@ -1,0 +1,12 @@
+
+<div class="min-vh-100 bg-color-8 d-flex align-items-center justify-content-center">
+  <form [formGroup]="formAuthenticate" (ngSubmit)="submitForm()">
+    <div class="bg-white border-radius-15 p-4">
+      <input class="input-style mb-4" placeholder="نام کاربری / ایمیل / شماره موبایل" type="text" formControlName="userNameOrEmailAddress">
+      <input class="input-style" placeholder="کلمه عبور" type="password" formControlName="password">
+      <hr/>
+      <button nz-button [nzLoading]="loadingButton" class="bg-color-8 border-color-8 border-radius-4 py-2 w-100 text-center text-white font-family-500">ورود</button>
+    </div>
+
+  </form>
+</div>
