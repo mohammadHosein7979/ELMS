@@ -1,0 +1,300 @@
+
+@font-face {
+  font-family: regular;
+  src: url("../../fonts/YekanBakhFaNum-Regular.woff");
+}
+
+@font-face {
+  font-family: boldfanum;
+  src: url("../../fonts/YekanBakhFaNum-Bold.woff");
+}
+
+.font-family-bold {
+  font-family: boldfanum !important;
+}
+
+.font-family-regular {
+  font-family: regular !important;
+}
+
+
+@media (max-width: 767px) and (min-width: 300px) {
+
+  .sidbar{
+    width: 100%;
+  }
+  .sidbarBody{
+    width: 100%;
+  }
+
+
+  //7px
+  .font-7 {
+    font-size: 7px !important;
+
+  }
+
+  //8px
+  .font-8 {
+    font-size: 8px !important;
+
+  }
+
+  .font-9 {
+    font-size: 9px !important;
+
+  }
+
+
+  //10 px
+  .font-10 {
+    font-size: 10px !important;
+  }
+
+  //11px
+  .font-11 {
+    font-size: 11px !important;
+
+  }
+
+
+  //12 px
+  .font-12 {
+    font-size: 12px !important;
+
+  }
+  //13 px
+  .font-13 {
+    font-size: 11px !important;
+
+  }
+
+
+  //14px
+  .font-14 {
+    font-size: 12px !important;
+  }
+  //16px
+  .font-16 {
+    font-size: 14px !important;
+  }
+  .font-18 {
+    font-size: 15px;
+  }
+  .font-20 {
+    font-size: 18px !important;
+  }
+  //22px
+  .font-22 {
+    font-size: 18px !important;
+  }
+  //24px
+  .font-24 {
+    font-size: 20px !important;
+  }
+  //26px
+  .font-26 {
+    font-size: 22px !important;
+  }
+
+  .font-28 {
+    font-size: 24px !important;
+  }
+  .font-30 {
+    font-size: 26px !important;
+  }
+  .font-32 {
+    font-size: 24px !important;
+  }
+  .font-36 {
+    font-size: 30px;
+  }
+  .font-38 {
+    font-size: 26px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1020px) {
+  .sidbar{
+    width: min(400px , 29%);
+  }
+  .sidbarBody{
+    width: max(400px , 70%);
+  }
+  //7px
+  .font-7 {
+    font-size: 7px !important;
+
+  }
+
+  //8px
+  .font-8 {
+    font-size: 8px !important;
+
+  }
+
+  .font-9 {
+    font-size: 9px !important;
+
+  }
+
+
+  //10 px
+  .font-10 {
+    font-size: 9px !important;
+  }
+
+  //11px
+  .font-11 {
+    font-size: 10px !important;
+
+  }
+
+
+  //12 px
+  .font-12 {
+    font-size: 11px !important;
+
+  }
+  //13 px
+  .font-13 {
+    font-size: 12px !important;
+
+  }
+
+  //14px
+  .font-14 {
+    font-size: 13px !important;
+  }
+  //16px
+  .font-16 {
+    font-size: 15px !important;
+  }
+  //24px
+  .font-24 {
+    font-size: 22px !important;
+  }
+  //22px
+  .font-22 {
+    font-size: 20px !important;
+  }
+
+  .font-18 {
+    font-size: 18px !important;
+  }
+  .font-28 {
+    font-size: 25px !important;
+  }
+  .font-30 {
+    font-size: 26px !important;
+  }
+  .font-32 {
+    font-size: 28px !important;
+  }
+  .font-20 {
+    font-size: 18px !important;
+  }
+  .font-36 {
+    font-size: 34px;
+  }
+  .font-38 {
+    font-size: 34px;
+  }
+
+}
+
+@media (min-width: 1022px) {
+  .sidbar{
+    width: min(400px , 29%);
+  }
+  .sidbarBody{
+    width: max(400px , 70%);
+  }
+
+  //7px
+  .font-7 {
+    font-size: 7px !important;
+
+  }
+
+  //8px
+  .font-8 {
+    font-size: 8px !important;
+
+  }
+
+  //9px
+  .font-9 {
+    font-size: 9px !important;
+
+  }
+
+
+  //10 px
+  .font-10 {
+    font-size: 10px !important;
+  }
+
+  //11px
+  .font-11 {
+    font-size: 11px !important;
+
+  }
+
+
+  //12 px
+  .font-12 {
+    font-size: 12px !important;
+
+  }
+  //13 px
+  .font-13 {
+    font-size: 13px !important;
+
+  }
+
+  //14px
+  .font-14 {
+    font-size: 14px !important;
+  }
+  //16px
+  .font-16 {
+    font-size: 16px !important;
+  }
+  .font-18 {
+    font-size: 18px !important;
+  }
+  //24px
+  .font-24 {
+    font-size: 24px !important;
+  }
+  //22px
+  .font-22 {
+    font-size: 22px !important;
+  }
+  //26px
+  .font-26 {
+    font-size: 26px !important;
+  }
+  .font-28 {
+    font-size: 28px !important;
+  }
+  .font-20 {
+    font-size: 20px !important;
+  }
+  .font-30 {
+    font-size: 30px !important;
+  }
+  .font-32 {
+    font-size: 32px !important;
+  }
+  .font-36 {
+    font-size: 36px;
+  }
+  .font-38 {
+    font-size: 38px;
+  }
+
+}
+
+

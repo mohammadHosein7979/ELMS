@@ -1,0 +1,230 @@
+
+$color-1: #000; //dd
+$color-2: #829BB0; //dd
+$color-3: #07A8FF; //dd
+$color-4: #EEF0F9; //dd
+$color-5: #829BB0; //dd
+$color-6: #555F61; //dd
+$color-7: rgba(130, 155, 176, 0.63); //dd
+$color-8: #FC4A7E; //dd
+$color-9: rgba(0, 0, 0, 0.5); //dd
+$color-10: #785ACE; //dd
+$color-11: #D81F26;   //dd
+$color-12: #6AA5FF; //dd
+$color-13: #FCC429; //dd
+$color-14: #093B3B; //dd
+$color-15: #1E1E1E; //dd
+$color-16: #494949; //dd
+$color-17: #ABABAB;
+$color-18: #C7C9D9;
+
+
+.color-1 {
+  color: $color-1;
+}
+.color-2 {
+  color: $color-2;
+}
+.color-3 {
+  color: $color-3;
+}
+.color-4 {
+  color: $color-4;
+}
+.color-5 {
+  color: $color-5;
+}
+.color-6 {
+  color: $color-6;
+}
+.color-7 {
+  color: $color-7;
+}
+.color-8 {
+  color: $color-8;
+}
+.color-9 {
+  color: $color-9;
+}
+.color-10 {
+  color: $color-10;
+}
+.color-11 {
+  color: $color-11;
+}
+.color-12 {
+  color: $color-12;
+}
+.color-13 {
+  color: $color-13;
+}
+.color-15 {
+  color: $color-15;
+}
+.color-16 {
+  color: $color-16;
+}
+.color-17 {
+  color: $color-17;
+}
+
+.bg-color-1 {
+  background: $color-1;
+}
+.bg-color-2 {
+  background: $color-2;
+}
+.bg-color-3 {
+  background: $color-3;
+}
+.bg-color-4 {
+  background: $color-4 !important;
+}
+.bg-color-5 {
+  background: $color-5;
+}
+.bg-color-6 {
+  background: $color-6;
+}
+.bg-color-7 {
+  background: $color-7;
+}
+.bg-color-8 {
+  background: $color-8 !important;
+}
+.bg-color-9 {
+  background: $color-9;
+}
+.bg-color-10 {
+  background: $color-10 !important;
+}
+.bg-color-11 {
+  background: $color-11;
+}
+.bg-color-12 {
+  background: $color-12;
+}
+.bg-color-13 {
+  background: $color-13;
+}
+.bg-color-14 {
+  background: $color-14;
+}
+.bg-color-15 {
+  background: $color-15;
+}
+.bg-color-16 {
+  background: $color-16;
+}
+.bg-color-17 {
+  background: $color-17;
+}
+.border-color-1{
+  border: 1px solid $color-1;
+}
+.border-color-2{
+  border: 1px solid $color-2;
+}
+.border-color-3{
+  border: 1px solid $color-3;
+}
+.border-color-4{
+  border: 1px solid $color-4;
+}
+.border-color-5{
+  border: 1px solid $color-5;
+}
+.border-color-6{
+  border: 1px solid $color-6;
+}
+.border-color-7{
+  border: 1px solid $color-7;
+}
+.border-color-8{
+  border: 1px solid $color-8 !important;
+}
+.border-color-9{
+  border: 1px solid $color-9;
+}
+.border-color-10{
+  border: 1px solid $color-10 !important;
+}
+.border-color-11{
+  border: 1px solid $color-11;
+}
+.border-color-12{
+  border: 1px solid $color-12;
+}
+.border-color-13{
+  border: 1px solid $color-13;
+}
+.border-color-14{
+  border: 1px solid $color-14;
+}
+.border-color-15{
+  border: 1px solid $color-15;
+}
+.border-color-16{
+  border: 1px solid $color-16;
+}
+.border-color-18{
+  border: 1px solid $color-18;
+}
+
+.text-justify {
+  text-align: justify;
+}
+
+.border-radius-4 {
+  border-radius: 4px !important;
+}
+.border-radius-5 {
+  border-radius: 5px !important;
+}
+.border-radius-8 {
+  border-radius: 8px;
+}
+
+.border-radius-10 {
+  border-radius: 10px !important;
+}
+
+.border-radius-15 {
+  border-radius: 15px;
+}
+
+.border-radius-16 {
+  border-radius: 16px;
+}
+.border-radius-19 {
+  border-radius: 19px;
+}
+.border-radius-20 {
+  border-radius: 20px;
+}
+.border-radius-24 {
+  border-radius: 24px;
+}
+
+.border-radius-50 {
+  border-radius: 50%;
+}
+
+.border-radius-custom2 {
+  border-radius: 0 0 8px 8px;
+}
+
+.line-height-20 {
+  line-height: 20px;
+}
+.line-height-24 {
+  line-height: 24px;
+}
+
+.line-height-30 {
+  line-height: 30px;
+}
+
+.line-height-48 {
+  line-height: 48px;
+}
