@@ -1,0 +1,35 @@
+include:
+    - project: "ali.m/ci-templates"
+      file:
+          - build-dotnet.yml
+          - push-api2.yml
+          - deploy-to-api2-docker.yml
+
+
+stages:
+    - build
+    - deploy
+
+variables:
+    SERVICE_NAME: pazad-panel
+    VERSION: "1.0.$CI_PIPELINE_IID"
+
+build:
+    only:
+        - main
+
+push-api2:
+  stage: deploy
+  needs: ["build"]
+  only:
+    - main
+    - master
+
+
+deploy-api2:
+  needs: ["push-api2"]
+  stage: 'deploy'
+  only:
+    - main
+    - master
+
