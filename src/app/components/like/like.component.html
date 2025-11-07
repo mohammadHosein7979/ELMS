@@ -1,0 +1,16 @@
+<div class="border-radius-5 bg-color-2 p-3 gap-2 d-flex align-items-center py-2">
+  <div class="like-1">
+    <button class="like-2" nz-button [nzLoading]="loadingDisLike" (click)="like(false)">
+      <img src="assets/image/disLikeIcon.svg"  >
+
+    </button>
+  </div>
+  <div class="text-white font-family-regular font-14">
+    {{likeCount}}
+    <button class="like-2" nz-button [nzLoading]="loadingLike" (click)="like(true)">
+      <img src="assets/image/likeIcon.svg" >
+
+    </button>
+
+  </div>
+</div>

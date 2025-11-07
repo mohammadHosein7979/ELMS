@@ -1,0 +1,101 @@
+
+.home-page-1 {
+  max-width: 90px;
+}
+
+.home-page-2 {
+  border-radius: 15px 15px 0 0;
+  background: #093B3B;
+}
+
+
+.home-page-3 {
+  right: 30px;
+  top: 10px;
+  z-index: 3
+}
+.home-page-4 {
+  border-radius: 0 0 15px 15px;
+}
+.home-page-5 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  /* overflow-y: scroll; */
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.swiper-button-next-EducationP {
+
+  background-image: url("/assets/image/landing/homePage/Frame1509.svg");
+  background-size: 40px;
+  background-repeat: no-repeat;
+  width: 40px;
+  height: 40px;
+  margin-right: 8px;
+  position: static;
+  transform: rotate(1deg);
+
+}
+
+.swiper-button-prev-EducationP {
+  background-image: url("/assets/image/landing/homePage/Frame1509.svg");
+  background-size: 40px;
+  background-repeat: no-repeat;
+  width: 40px;
+  height: 40px;
+  position: static;
+  //right:calc(5% - 26px);;
+  //top: 50%;
+  //left: auto;
+  transform: rotate(180deg);
+
+}
+
+.swiper-button-next::after, .swiper-button-prev::after {
+  content: "";
+}
+
+.swiper-horizontal > .swiper-pagination-bullets, .swiper-pagination-bullets.swiper-pagination-horizontal, .swiper-pagination-custom, .swiper-pagination-fraction {
+  bottom: -6px !important;
+}
+
+
+.swiper-button-next-Goft {
+
+  background-image: url("/assets/image/landing/Frame534.svg");
+  background-size: 20px;
+  background-repeat: no-repeat;
+  width: 20px;
+  height: 20px;
+  //margin-right: 8px;
+  position: static;
+  transform: rotate(1deg);
+  margin-top: 6px;
+
+}
+
+.swiper-button-prev-Goft {
+  background-image: url("/assets/image/landing/Frame534.svg");
+  background-size: 20px;
+  background-repeat: no-repeat;
+  width: 20px;
+  height: 20px;
+  position: static;
+  //right:calc(5% - 26px);;
+  //top: 50%;
+  //left: auto;
+  transform: rotate(180deg);
+
+}
+
+.swiper-button-next::after, .swiper-button-prev::after {
+  content: "";
+}
+
+.swiper-horizontal > .swiper-pagination-bullets, .swiper-pagination-bullets.swiper-pagination-horizontal, .swiper-pagination-custom, .swiper-pagination-fraction {
+  bottom: -6px !important;
+}
+

@@ -1,0 +1,41 @@
+<div class="py-3 py-lg-4 px-3 d-flex flex-column justify-content-between sidebar-layout-2">
+  <div class="">
+    <div class="logo mb-4">
+      <img src="assets/image/layout/logoTitle.svg" class="w-100">
+    </div>
+    <div>
+      @for (item of menus;track item){
+        <div class="mb-3">
+          <h5 class="color-2 font-family-regular font-10 mb-2">{{item?.title}}</h5>
+          @for (subMenu of item.subMenu;track subMenu){
+            <div (click)="layoutService.changeRoutMap(subMenu.router)" routerLink="{{subMenu?.router}}" class="{{url == subMenu?.router || subMenu?.routerChildOne == url  || subMenu?.routerChildTwo == url ? 'sidebar-layout-1' : ''}}
+             mb-2 position-relative cursorPointer">
+              <h3 class=" font-10 font-family-regular
+                {{url == subMenu?.router || subMenu?.routerChildOne == url  || subMenu?.routerChildTwo == url? 'color-1' : 'color-2'}}
+                ">
+                <img src="assets/image/layout/{{url == subMenu?.router || subMenu?.routerChildOne == url  || subMenu?.routerChildTwo == url ? subMenu?.iconSelect : subMenu?.iconDeSelect}}" class="me-2">
+                {{subMenu?.title}}
+              </h3>
+            </div>
+          }
+
+        </div>
+      }
+
+    </div>
+  </div>
+  <div class="sidebar-layout-3 border-radius-5 py-3 px-12">
+    <div class="text-center sidebar-layout-4"> 
+
+      <img src="assets/image/layout/Frame46.svg">
+    </div>
+    <h3 class="color-1 opacity-50 font-family-regular font-10 mb-3 text-justify">
+      اطلاعات احراز هویت شما ناقص است و ممکن است در زمان صدور مدرک با مشکل رو به رو شوید
+    </h3>
+    <div class="text-center">
+      <button class="bg-color-8 border-color-8 border-radius-5 py-2 px-4 text-white font-family-regular font-12">
+        تکمیل مدارک
+      </button>
+    </div>
+  </div>
+</div>

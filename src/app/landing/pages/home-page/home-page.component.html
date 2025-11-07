@@ -1,0 +1,429 @@
+<div>
+  <div class="container">
+    <div>
+      <app-slider-education/>
+    </div>
+    <div class="mt-5">
+      <div class="row justify-content-center">
+        <div class="col-12 col-lg-8">
+          <div class="text-center">
+            <img src="assets/image/landing/homePage/Frame16.svg" class="mb-3">
+            <h3 class="color-1 font-24 font-family-bold mb-3">
+              درباره سیستم آموزشی تدبر زندگی
+            </h3>
+            <p class="text-justify color-1 font-family-regular font-18">
+              “ سیستم جامع تدبر زندگی با هدف ارائه دوره های آموزشی تدبر در راستای دردسترس قرار گرفتن راحت تر آموزش ها در
+              سال 1390 با مدیریت سعید عباسی راه اندازی شد و تا به امروز بیش 1200 دوره آموزشی تولید و به هنر جویان خود
+              ارائه داده است که بیش از 5400 هنر جو فارغ التحصیل در این حوضه داشته است از این رو باور داریم که هر روز به
+              لطف خدای بزرگ در این راستا و وظیفه مهم قدم هم بزرگ و مهمی خواهیم برداشت “
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mt-5">
+      <h3 class="font-24 font-family-bold color-1 mb-4">
+        پیش تولید ویژه
+      </h3>
+
+      <div class="row px-4 px-lg-5">
+        @for (item of dataPre; track item) {
+          <div class="col-12 col-lg-4">
+            <app-card-pre-production-education [data]="item"/>
+          </div>
+        }
+
+      </div>
+    </div>
+    <div class="mt-5" *ngIf="dataEducation && dataEducation.length > 0">
+      <h3 class="font-24 font-family-bold color-1 mb-4">
+        دوره های آموزشی محبوب
+      </h3>
+      <div>
+        <swiper
+          style="--swiper-navigation-color: #fff;--swiper-pagination-color: #fff"
+          #swiperEducationP
+          [config]="swiperConfig"
+          (slideChange)="onSlideChangeEducationP($event)"
+
+          class=""
+        >
+          @for (item of dataEducation; track item) {
+            <ng-template swiperSlide>
+              <app-card-education [data]="item"/>
+            </ng-template>
+          }
+        </swiper>
+        <div class="mt-4 d-flex justify-content-end">
+          <div (click)="swipePrevEducationP(swiperEducationP)"
+               class="cursorPointer swiper-button-prev-EducationP d-inline-block mt-0 rotate-180 opacity-25"
+               id="SwiperPrevEducationP"></div>
+          <div (click)="swipeNextEducationP(swiperEducationP)"
+               class="cursorPointer swiper-button-next-EducationP d-inline-block mt-0" id="SwiperNextEducationP"></div>
+        </div>
+
+      </div>
+    </div>
+    <div class="mt-5">
+      <h3 class="font-24 font-family-bold color-1 mb-4">
+        دوره های آموزشی
+      </h3>
+      <div>
+        <nz-tabset>
+          <nz-tab nzTitle="تدبر">
+            <div>
+              <swiper
+                style="--swiper-navigation-color: #fff;--swiper-pagination-color: #fff"
+                #swiperEducation
+                [config]="swiperConfig"
+                (slideChange)="onSlideChangeEducation($event)"
+
+                class=""
+              >
+                @for (item of dataEducation; track item) {
+                  <ng-template swiperSlide>
+                    <app-card-education [data]="item"/>
+                  </ng-template>
+                }
+              </swiper>
+              <div class="mt-4 d-flex justify-content-end">
+                <div (click)="swipePrevEducation(swiperEducation)"
+                     class="cursorPointer swiper-button-prev-EducationP d-inline-block mt-0 rotate-180 opacity-25"
+                     id="SwiperPrevEducation"></div>
+                <div (click)="swipeNextEducation(swiperEducation)"
+                     class="cursorPointer swiper-button-next-EducationP d-inline-block mt-0"
+                     id="SwiperNextEducation"></div>
+              </div>
+
+            </div>
+
+          </nz-tab>
+          <nz-tab nzTitle="تدبر زندگی">
+            <div>
+              <swiper
+                style="--swiper-navigation-color: #fff;--swiper-pagination-color: #fff"
+                #swiperEducation
+                [config]="swiperConfig"
+                (slideChange)="onSlideChangeEducation($event)"
+
+                class=""
+              >
+                @for (item of dataEducation; track item) {
+                  <ng-template swiperSlide>
+                    <app-card-education [data]="item"/>
+                  </ng-template>
+                }
+              </swiper>
+              <div class="mt-4 d-flex justify-content-end">
+                <div (click)="swipePrevEducation(swiperEducation)"
+                     class="cursorPointer swiper-button-prev-EducationP d-inline-block mt-0 rotate-180 opacity-25"
+                     id="SwiperPrevEducation"></div>
+                <div (click)="swipeNextEducation(swiperEducation)"
+                     class="cursorPointer swiper-button-next-EducationP d-inline-block mt-0"
+                     id="SwiperNextEducation"></div>
+              </div>
+
+            </div>
+
+          </nz-tab>
+          <nz-tab nzTitle="تدبر نو جوان">
+            <div>
+              <swiper
+                style="--swiper-navigation-color: #fff;--swiper-pagination-color: #fff"
+                #swiperEducation
+                [config]="swiperConfig"
+                (slideChange)="onSlideChangeEducation($event)"
+
+                class=""
+              >
+                @for (item of dataEducation; track item) {
+                  <ng-template swiperSlide>
+                    <app-card-education [data]="item"/>
+                  </ng-template>
+                }
+              </swiper>
+              <div class="mt-4 d-flex justify-content-end">
+                <div (click)="swipePrevEducation(swiperEducation)"
+                     class="cursorPointer swiper-button-prev-EducationP d-inline-block mt-0 rotate-180 opacity-25"
+                     id="SwiperPrevEducation"></div>
+                <div (click)="swipeNextEducation(swiperEducation)"
+                     class="cursorPointer swiper-button-next-EducationP d-inline-block mt-0"
+                     id="SwiperNextEducation"></div>
+              </div>
+
+            </div>
+
+          </nz-tab>
+          <nz-tab nzTitle="تدبر جوان">
+            <div>
+              <swiper
+                style="--swiper-navigation-color: #fff;--swiper-pagination-color: #fff"
+                #swiperEducation
+                [config]="swiperConfig"
+                (slideChange)="onSlideChangeEducation($event)"
+
+                class=""
+              >
+                @for (item of dataEducation; track item) {
+                  <ng-template swiperSlide>
+                    <app-card-education [data]="item"/>
+                  </ng-template>
+                }
+              </swiper>
+              <div class="mt-4 d-flex justify-content-end">
+                <div (click)="swipePrevEducation(swiperEducation)"
+                     class="cursorPointer swiper-button-prev-EducationP d-inline-block mt-0 rotate-180 opacity-25"
+                     id="SwiperPrevEducation"></div>
+                <div (click)="swipeNextEducation(swiperEducation)"
+                     class="cursorPointer swiper-button-next-EducationP d-inline-block mt-0"
+                     id="SwiperNextEducation"></div>
+              </div>
+
+            </div>
+
+          </nz-tab>
+        </nz-tabset>
+      </div>
+    </div>
+    <div class="mt-5">
+      <h3 class="font-24 font-family-bold color-1 mb-4">
+        مسیر های یادگیری
+      </h3>
+      <div>
+        <div>
+          <swiper
+            style="--swiper-navigation-color: #fff;--swiper-pagination-color: #fff"
+            #swiperRoadMap
+            [config]="swiperConfig2"
+            (slideChange)="onSlideChangeRoadMap($event)"
+
+            class=""
+          >
+            @for (item of dataEducation; track item) {
+              <ng-template swiperSlide>
+                <div class="text-center">
+                  <img src="assets/image/remove/Frame161.svg" class="w-100 home-page-1">
+                  <p class="font-family-regular mt-2 font-20 color-1">
+                    تدبر
+                  </p>
+                </div>
+              </ng-template>
+            }
+          </swiper>
+          <div class="mt-4 d-flex justify-content-end">
+            <div (click)="swipePrevRoadMap(swiperRoadMap)"
+                 class="cursorPointer swiper-button-prev-EducationP d-inline-block mt-0 rotate-180 opacity-25"
+                 id="SwiperPrevRoadMap"></div>
+            <div (click)="swipeNextRoadMap(swiperRoadMap)"
+                 class="cursorPointer swiper-button-next-EducationP d-inline-block mt-0" id="SwiperNextRoadMap"></div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+    <div class="mt-5">
+      <h3 class="font-24 font-family-regular color-1 mb-4 text-center">
+        ویژگی‌های دوره‌های تدبر زندگی چیست؟
+      </h3>
+      <div class="row justify-content-evenly">
+        <div class="col-12 col-lg-3">
+          <div class="text-center">
+            <img src="assets/image/landing/homePage/Frame523.svg" class="mb-2">
+            <h3 class="font-family-regular font-14 color-1 mb-2">
+              گواهی نامه تدبر زندگی
+            </h3>
+            <p class="font-family-regular font-10 color-16">
+              ارائه گواهی‌نامه رسمی تدبر زندگی یا موسسه برگزارکننده دوره در صورت کسب نمره قبولی
+            </p>
+          </div>
+        </div>
+        <div class="col-12 col-lg-3">
+          <div class="text-center">
+            <img src="assets/image/landing/homePage/Frame5231.svg" class="mb-2">
+            <h3 class="font-family-regular font-14 color-1 mb-2">
+              تسهیل استخدام
+            </h3>
+            <p class="font-family-regular font-10 color-16">
+              شانس استخدام بیشتر برای فارغ‌التحصیلان دوره‌ها در مراکز مرتبط و موسسات
+            </p>
+          </div>
+        </div>
+        <div class="col-12 col-lg-3">
+          <div class="text-center">
+            <img src="assets/image/landing/homePage/Frame5232.svg" class="mb-2">
+            <h3 class="font-family-regular font-14 color-1 mb-2">
+              همیار تدبر
+            </h3>
+            <p class="font-family-regular font-10 color-16">
+              پاسخ‌گویی به سوالات و راهنمایی توسط استاد یا همیار دوره که توسط خود فرد انتخاب می شود
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="mt-5">
+      <h3 class="font-24 font-family-regular color-1 mb-4 text-center">
+        چرا تدبر زندگی ؟
+      </h3>
+      <div class="row justify-content-evenly">
+        <div class="col-12 col-lg-3">
+          <div class="text-center">
+            <img src="assets/image/landing/homePage/Frame5233.svg" class="mb-2">
+            <p class="font-family-regular font-10 color-16">
+              +6000 ساعت ویدئوی
+              <br/>
+              آموزشی رایگان
+            </p>
+          </div>
+        </div>
+        <div class="col-12 col-lg-3">
+          <div class="text-center">
+            <img src="assets/image/landing/homePage/Frame5234.svg" class="mb-2">
+            <p class="font-family-regular font-10 color-16">
+              امکان شرکت در دوره های
+              <br/>
+              آموزشی آنلاین
+            </p>
+          </div>
+        </div>
+        <div class="col-12 col-lg-3">
+          <div class="text-center">
+            <img src="assets/image/landing/homePage/Frame5235.svg" class="mb-2">
+            <p class="font-family-regular font-10 color-16">
+              امکان شرکت در دوره های
+              <br/>
+              آموزشی حضوری
+            </p>
+          </div>
+        </div>
+        <div class="col-12 col-lg-3">
+          <div class="text-center">
+            <img src="assets/image/landing/homePage/Frame5236.svg" class="mb-2">
+            <p class="font-family-regular font-10 color-16">
+              ارائه گواهی نامه معتبر و
+              <br/>
+              رسمی برای سازمان های دولتی
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="mt-5">
+      <h3 class="font-24 font-family-regular color-1 mb-4 text-center">
+        تدبر زندگی از زبان شما و مسئولین
+      </h3>
+      <div class="row justify-content-center">
+        <div class="col-12 col-lg-8 position-relative">
+          <swiper
+            style="--swiper-navigation-color: #fff;--swiper-pagination-color: #fff"
+            #swiperGoft
+            [config]="swiperConfig3"
+            (slideChange)="onSlideChangeGoft($event)"
+            class="swiperGoft"
+          >
+            <!--            @for (item of dataEducation; track item) {-->
+            <ng-template swiperSlide>
+              <div>
+                <div
+                  class="home-page-2 pe-3 ps-5 py-2 d-flex justify-content-between gap-2 align-items-center flex-column flex-lg-row">
+                  <div class="d-flex gap-2 align-items-center">
+                    <img src="assets/image/remove/Frame29.svg">
+                    <div>
+                      <h3 class="color-13 font-family-regular font-20">حضرت سید علی خامنه ای</h3>
+                      <h3 class="color-13 font-family-regular font-10">رهبر معظم انقلاب اسلامی ایران</h3>
+                    </div>
+                  </div>
+                  <div>
+                    <h3 class="color-13 font-family-regular font-20">26 مرداد سال 1404</h3>
+
+                  </div>
+                </div>
+                <div class="bg-white home-page-4 p-3">
+                  <p class="color-1 font-18 font-family-regular  line-height-30 home-page-5">
+                    وقتى انس با قرآن پيدا شد، مجال تدبر و تأمل و تفكر در معارف قرآن به دست خواهد آمد. قرآن را نمی شود
+                    سرسرى خواند و گذشت؛ قرآن احتياج دارد به تدبر، تكيه‌ بر روى هر كلمه‌اى از كلمات و هر تركيبى از تركيب
+                    هاى كلامى و لفظى. انسان هرچه بيشتر تدبر كند، تأمل كند، انس بيشترى پيدا كند، بهره‌ى بيشترى خواهد برد؛
+                    قرآن اينجور است
+                  </p>
+                </div>
+              </div>
+            </ng-template>
+            <ng-template swiperSlide>
+              <div>
+                <div
+                  class="home-page-2 pe-3 ps-5 py-2 d-flex justify-content-between gap-2 align-items-center flex-column flex-lg-row">
+                  <div class="d-flex gap-2 align-items-center">
+                    <img src="assets/image/remove/Frame29.svg">
+                    <div>
+                      <h3 class="color-13 font-family-regular font-20">حضرت سید علی خامنه ای</h3>
+                      <h3 class="color-13 font-family-regular font-10">رهبر معظم انقلاب اسلامی ایران</h3>
+                    </div>
+                  </div>
+                  <div>
+                    <h3 class="color-13 font-family-regular font-20">26 مرداد سال 1404</h3>
+
+                  </div>
+                </div>
+                <div class="bg-white home-page-4 p-3">
+                  <p class="color-1 font-18 font-family-regular  line-height-30 home-page-5">
+                    وقتى انس با قرآن پيدا شد، مجال تدبر و تأمل و تفكر در معارف قرآن به دست خواهد آمد. قرآن را نمی شود
+                    سرسرى خواند و گذشت؛ قرآن احتياج دارد به تدبر، تكيه‌ بر روى هر كلمه‌اى از كلمات و هر تركيبى از تركيب
+                    هاى كلامى و لفظى. انسان هرچه بيشتر تدبر كند، تأمل كند، انس بيشترى پيدا كند، بهره‌ى بيشترى خواهد برد؛
+                    قرآن اينجور است
+                  </p>
+                </div>
+              </div>
+            </ng-template>
+            <ng-template swiperSlide>
+              <div>
+                <div
+                  class="home-page-2 pe-3 ps-5 py-2 d-flex justify-content-between gap-2 align-items-center flex-column flex-lg-row">
+                  <div class="d-flex gap-2 align-items-center">
+                    <img src="assets/image/remove/Frame29.svg">
+                    <div>
+                      <h3 class="color-13 font-family-regular font-20">حضرت سید علی خامنه ای</h3>
+                      <h3 class="color-13 font-family-regular font-10">رهبر معظم انقلاب اسلامی ایران</h3>
+                    </div>
+                  </div>
+                  <div>
+                    <h3 class="color-13 font-family-regular font-20">26 مرداد سال 1404</h3>
+
+                  </div>
+                </div>
+                <div class="bg-white home-page-4 p-3">
+                  <p class="color-1 font-18 font-family-regular  line-height-30 home-page-5">
+                    وقتى انس با قرآن پيدا شد، مجال تدبر و تأمل و تفكر در معارف قرآن به دست خواهد آمد. قرآن را نمی شود
+                    سرسرى خواند و گذشت؛ قرآن احتياج دارد به تدبر، تكيه‌ بر روى هر كلمه‌اى از كلمات و هر تركيبى از تركيب
+                    هاى كلامى و لفظى. انسان هرچه بيشتر تدبر كند، تأمل كند، انس بيشترى پيدا كند، بهره‌ى بيشترى خواهد برد؛
+                    قرآن اينجور است
+                  </p>
+                </div>
+              </div>
+            </ng-template>
+
+
+            <!--            }-->
+          </swiper>
+          <div class="position-absolute home-page-3">
+            <div class="flex-column d-flex align-items-center justify-content-center">
+              <div (click)="swipePrevGoft(swiperGoft)"
+                   class="cursorPointer swiper-button-prev-Goft d-inline-block mt-0 rotate-180 opacity-25"
+                   id="SwiperPrevGoft"></div>
+              <div (click)="swipeNextGoft(swiperGoft)"
+                   class="cursorPointer swiper-button-next-Goft d-inline-block" id="SwiperNextGoft"></div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="mt-5">
+
+    </div>
+
+  </div>
+</div>

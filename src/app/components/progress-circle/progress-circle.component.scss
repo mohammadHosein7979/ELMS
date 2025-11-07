@@ -1,0 +1,44 @@
+.progress-circle-1{
+  width: 30px;
+  height: 30px;
+}
+.card-classes-3{
+  background: #479696;
+}
+.card-classes-4{
+  background: #413673;
+}
+.card-classes-5{
+  background: #FC4A7E;
+}
+.card-classes-6{
+  background: #C93F8D;
+}
+.card-classes-7{
+  background: rgba(120, 90, 206, 0.1);
+}
+.card-classes-8{
+  background: #77D99E;
+}
+.card-classes-9{
+  background: #51C2FF;
+}
+.card-classes-10{
+  background: #b41b1b;
+}
+
+
+.pie-chart-container {
+  position: relative;
+  border-radius: 50%;
+}
+
+.pie-chart-container .percentage {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 16px;
+  font-weight: bold;
+  color: black;
+}

@@ -1,0 +1,17 @@
+<nz-layout class="min-vh-100 gap-3 bg-color-4">
+  <nz-sider class="d-none d-lg-inline-block" nzCollapsible [(nzCollapsed)]="isCollapsed" [nzTrigger]="null">
+   <app-sidebar-layout/>
+  </nz-sider>
+  <nz-layout class="bg-color-4 py-3 py-lg-4 index-layout-2">
+    <nz-header class="bg-color-4">
+      <app-header-layout />
+    </nz-header>
+    <nz-content>
+      <router-outlet/>
+    </nz-content>
+<!--    <nz-footer>-->
+<!--      <app-footer-layout/>-->
+<!--    </nz-footer>-->
+  </nz-layout>
+</nz-layout>
+

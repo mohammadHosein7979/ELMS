@@ -1,0 +1,35 @@
+import {Component, Input, OnInit} from '@angular/core';
+import {NgStyle} from "@angular/common";
+
+@Component({
+  selector: 'app-progress-circle',
+  standalone: true,
+  imports: [
+    NgStyle
+  ],
+  templateUrl: './progress-circle.component.html',
+  styleUrl: './progress-circle.component.scss'
+})
+export class ProgressCircleComponent implements OnInit{
+  @Input('active') active : any = true
+  @Input('text') text : any ;
+  @Input('width') width : any =30;
+  @Input('font') font : any =12;
+  @Input('value') value : any =15;
+  @Input('bgColorDiv') bgColorDiv : any ='bg-white';
+  bgSelected : any
+
+
+  ngOnInit() {
+    if (this.value < 31){
+      this.bgSelected = '77D99E'
+    }else if(this.value >=31 && this.value <=60){
+      this.bgSelected = '51C2FF'
+
+    }else {
+      this.bgSelected = 'b41b1b'
+
+    }
+  }
+
+}
