@@ -12,13 +12,15 @@ import {AuthService} from "./shared/services/auth.service";
 })
 export class AppComponent extends BaseService implements OnInit {
   title = 'Angular17Project';
-  constructor(injector:Injector,private UpdateService: UpdateService) {
+  constructor(injector:Injector,private UpdateService: UpdateService,private auth: AuthService) {
     super(injector)
   }
   flag: boolean = true
   ngOnInit() {
     // this.authService.initialize();
     // this.seoService.boot();
+    this.auth.loadUser();
+
     this.UpdateService.checkForUpdate();
   }
 }

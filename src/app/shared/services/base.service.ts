@@ -25,7 +25,7 @@ export class BaseService {
   isSubmitting = false;
   loadingTable: boolean = true
   loadingButton: boolean = false
-  personId:any = 13
+  personId:any = null
 
   dataSelectedRow: any = ''
 
@@ -59,7 +59,7 @@ export class BaseService {
     this.route = injector.get(ActivatedRoute);
     this.httpClient = injector.get(HttpClient);
     this.titleService = injector.get(Title);
-    this.getDataUser()
+    // this.getDataUser()
     this.flagMobile = window.screen.width < 765
   }
 
@@ -93,9 +93,9 @@ export class BaseService {
     return http
   }
 
-  getDataUser() {
-    return this.userService.user
-  }
+  // getDataUser() {
+  //   return this.userService.user
+  // }
 
   handelError(e: any) {
     return this.http.handelErrorHttp(e)

@@ -11,6 +11,7 @@ import {BrowserModule} from "@angular/platform-browser";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { HTTP_INTERCEPTORS } from "@angular/common/http";
 import {CustomErrorHandlerService} from "./shared/services/CustomErrorHandler.service";
+import {AuthInterceptor} from "./core/interceptors/auth.interceptor";
 
 
 @NgModule({
@@ -35,6 +36,8 @@ import {CustomErrorHandlerService} from "./shared/services/CustomErrorHandler.se
 
   ],
   providers: [UpdateService, provideAnimationsAsync(),
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+
     // {
     //   provide: APP_INITIALIZER,
     //   useFactory: (appInitializer: AppInitializer) => appInitializer.init(),

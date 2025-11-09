@@ -67,11 +67,19 @@
 <!--    </div>-->
 <!--  </div>-->
   <div>
-    @for (item of data;track item){
-      <div class="mb-12">
+    @if (loading) {
+      <div class="bg-white border-radius-20 p-12">
+        <nz-skeleton  [nzParagraph]="{rows: 2}"></nz-skeleton>
 
-        <app-card-classes [data]="item"/>
       </div>
+    } @else {
+      @for (item of data;track item){
+        <div class="mb-12">
+
+          <app-card-classes [data]="item"/>
+        </div>
+      }
+
     }
   </div>
 </div>

@@ -17,12 +17,7 @@ import {
   styleUrl: './type-selected-course.component.scss',
   imports: [
     NgIf,
-    RouterLink,
-    EnteringClassComponent,
-    OnlineClassLinkComponent,
-    ClassLinkConnectionComponent,
-    LocationComponent,
-    PresenceAndAbsenceComponent
+
   ],
   standalone: true
 })

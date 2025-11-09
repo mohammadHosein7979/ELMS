@@ -16,7 +16,7 @@ export class AuthGuardService{
   }
 
   canActivate(route: any, state: any): Observable<boolean> | boolean {
-    if (!this.userService.user) {
+    if (!this.userService.getUser()) {
       this.router.navigate(['/auth/login']).then();
       return of(false);
     }

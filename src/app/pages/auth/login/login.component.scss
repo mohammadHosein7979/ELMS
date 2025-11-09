@@ -1,0 +1,24 @@
+.login-page {
+  height: 100vh;
+  background-color: #093B3B;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 48px 17px;
+  .login-card {
+    width: 420px;
+    border-radius: 8px;
+  }
+
+  .tab-content {
+    padding: 16px 8px;
+  }
+
+  .actions {
+    margin-top: 12px;
+    display: flex;
+    gap: 8px;
+    justify-content: flex-start;
+
+  }
+}

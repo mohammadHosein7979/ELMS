@@ -7,10 +7,12 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {SharedModule} from "../../shared/shared.module";
 import {ConvertPricePipe} from "../../shared/pipes/convertPrice.pipe";
 import {LoginComponent} from "./login/login.component";
+import {RegisterComponent} from "./register/register.component";
 @NgModule({
   declarations: [
 
-    LoginComponent
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     CommonModule,

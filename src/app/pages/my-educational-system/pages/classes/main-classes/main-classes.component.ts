@@ -5,6 +5,7 @@ import {Params} from "@angular/router";
 import {LayoutService} from "../../../../../layout/services/layout.service";
 import {ClassesService, TypeClasses} from "../services/classes.service";
 import {data} from "autoprefixer";
+import {finalize} from "rxjs";
 
 @Component({
   selector: 'app-main-classes',
@@ -34,11 +35,14 @@ export class MainClassesComponent extends BaseService implements OnInit{
     })
   }
   getData(){
+    this.loading = true
     let body = {
       masterId : this.personId,
       eventTypeId : this.type
     }
-    this.classesService.getMasters(body).subscribe((data:any)=>{
+    this.classesService.getMasters(body).pipe(finalize(()=>{
+      this.loading = false
+    })).subscribe((data:any)=>{
       this.data = data?.data
     })
   }

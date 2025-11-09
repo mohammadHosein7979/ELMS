@@ -1,8 +1,13 @@
 <div class="border-radius-10 p-2 d-flex justify-content-between location-1 align-items-center ">
-  <div class="d-flex gap-4 align-items-center flex-column flex-lg-row">
-    <h3 class="color-1 font-family-regular font-14">
-      {{data}}
-    </h3>
-  </div>
+  @if (data) {
+    <div class="d-flex gap-4 align-items-center flex-column flex-lg-row">
+      <h3 class="color-1 font-family-regular font-14">
+        {{data}}
+      </h3>
+    </div>
+
+  } @else {
+    ___
+  }
   <img src="assets/image/my-educational-system/Frame402.svg">
 </div>

@@ -27,6 +27,7 @@ export class DetailCoursesComponent extends BaseService implements OnInit{
     })
   }
   getEventDetails(){
+    console.log(this.userService.getUser())
     let body = {
       "eventId":this.eventId,
       "personId": 12

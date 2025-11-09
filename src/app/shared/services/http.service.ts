@@ -30,23 +30,42 @@ export class HttpService {
     this.apiUrl = `${environment.apiUrl}`;
   }
 
-  getHttp(url: string,body:any = '') {
-    let headers = new HttpHeaders().set('accept', 'application/json');
-    headers = new HttpHeaders().set('accept', 'application/json').append('accept-language', 'fa');
+  getHttp(url: string, body: any = '', extraHeaders?: Record<string, string>) {
+    // هدر پایه
+    let headers = new HttpHeaders()
+      .set('accept', 'application/json')
+      .append('accept-language', 'fa');
 
+    // اضافه کردن هدرهای سفارشی در صورت وجود
+    if (extraHeaders && typeof extraHeaders === 'object') {
+      Object.entries(extraHeaders).forEach(([key, value]) => {
+        if (value !== undefined && value !== null) {
+          headers = headers.append(key, value.toString());
+        }
+      });
+    }
+
+    // اصلاح URL
     if (url.indexOf('http') !== 0) {
-      url = this.apiUrl + url
+      url = this.apiUrl + url;
     }
     if (url.indexOf('https') === -1) {
-      url = url.replace('http', 'https')
+      url = url.replace('http', 'https');
     }
-    const params = new HttpParams({fromObject: body});
 
-    return this.httpClient.get(url, {
-      headers: headers,
-      params
-    }).pipe(catchError(this.formatErrors));
+    // پارامترهای GET
+    const params = new HttpParams({ fromObject: body });
+
+    // ارسال درخواست
+    return this.httpClient
+      .get(url, {
+        headers,
+        withCredentials: true,
+        params
+      })
+      .pipe(catchError(this.formatErrors));
   }
+
   deleteHttp(url: string,body:any = '') {
     let headers = new HttpHeaders().set('accept', 'application/json');
     headers = new HttpHeaders().set('accept', 'application/json').append('accept-language', 'fa');
@@ -61,24 +80,42 @@ export class HttpService {
 
     return this.httpClient.delete(url, {
       headers: headers,
+      withCredentials: true,
       params
     }).pipe(catchError(this.formatErrors));
   }
 
 
-  postHttp(url: string, params: any) {
+  postHttp(url: string, params: any, extraHeaders?: Record<any, any>) {
     let token = this.tokenService.token();
+
+    // پایه هدرها
     let headers = new HttpHeaders().set('accept', 'application/json');
-    if (token && token != '') {
-      headers = new HttpHeaders().set('accept', 'application/json').append('Authorization', token);
+
+    // اضافه کردن Authorization در صورت وجود
+    if (token && token !== '') {
+      headers = headers.append('Authorization', token);
     }
-    // if (url.indexOf('http')!==0){
-    url = this.apiUrl + url
-    // }
+
+    // اضافه کردن هدرهای سفارشی در صورت پاس دادن
+    if (extraHeaders && typeof extraHeaders === 'object') {
+      Object.entries(extraHeaders).forEach(([key, value]) => {
+        if (value !== undefined && value !== null) {
+          headers = headers.append(key, value.toString());
+        }
+      });
+    }
+
+    // اتصال base URL
+    url = this.apiUrl + url;
+
+    // ارسال درخواست
     return this.httpClient.post(url, params, {
-      headers: headers
+      headers,
+      withCredentials: true
     });
   }
+
   putHttp(url: string, params: any) {
     let token = this.tokenService.token();
     let headers = new HttpHeaders().set('accept', 'application/json');
