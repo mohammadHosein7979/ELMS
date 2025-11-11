@@ -130,7 +130,7 @@ export class AuthService {
       this.currentUserSubject.next(null);
       this.loaded = false;
       this.sessionCreated = false;
-      this.router.navigate(['/']);
+      this.router.navigateByUrl('/');
     })
 
   }

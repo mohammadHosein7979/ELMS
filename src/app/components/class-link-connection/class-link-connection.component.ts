@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {BaseService} from "../../shared/services/base.service";
+import {BaseService, microService} from "../../shared/services/base.service";
 
 @Component({
   selector: 'app-class-link-connection',
@@ -12,7 +12,6 @@ export class ClassLinkConnectionComponent extends BaseService{
   @Input('active') active : any = true
   @Input('link') link : any
   @Input('eventId') eventId : any
-  microService:string = '/courseapi'
 
 
   changeLinkEvent(){
@@ -20,7 +19,7 @@ export class ClassLinkConnectionComponent extends BaseService{
       eventId : this.eventId,
       link : this.link
     }
-    this.post(`${this.microService}/Event/ChangeLinkEvent`, body).subscribe((data:any)=>{
+    this.post(`${microService.course}/Event/ChangeLinkEvent`, body).subscribe((data:any)=>{
 
     })
   }

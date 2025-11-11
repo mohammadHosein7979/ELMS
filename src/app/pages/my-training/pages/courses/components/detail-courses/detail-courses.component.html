@@ -1,149 +1,154 @@
-<div>
-  <div class="d-flex justify-content-between align-items-center">
-    <div class="d-flex align-items-center gap-2">
-      <img src="{{data?.event?.avatar}}" class="border-radius-50 item-courses-2">
-      <div>
-        <h4 class="font-family-regular font-12 color-1 text-no-wrap line-height-20">
-          {{ data?.event?.title }}
-        </h4>
-        <p class="color-9 font-family-regular font-10  text-no-wrap line-height-20">
-          {{ data?.event?.description }}
-        </p>
+@if (data){
+  <div>
+    <div class="d-flex justify-content-between align-items-center">
+      <div class="d-flex align-items-center gap-2">
+        <img src="{{data?.event?.avatar}}" class="border-radius-50 item-courses-2">
+        <div>
+          <h4 class="font-family-regular font-12 color-1 text-no-wrap line-height-20">
+            {{ data?.event?.title }}
+          </h4>
+          <p class="color-9 font-family-regular font-10  text-no-wrap line-height-20">
+            {{ data?.event?.description }}
+          </p>
+        </div>
       </div>
-    </div>
-    <div>
-      <app-like [eventId]="data?.event?.id" [url]="'/EventStudent/EventLike'" [likeCount]="data?.event?.likeCount"/>
-    </div>
+      <div>
+        <app-like [eventId]="data?.event?.id" [url]="'/EventStudent/EventLike'" [likeCount]="data?.event?.likeCount"/>
+      </div>
 
-  </div>
-  <div class="d-flex justify-content-between align-items-center mt-4 mt-lg-5">
-    <div>
-      <app-entering-class *ngIf="data?.event?.eventTypeId == TypeClasses.online" [link]="data?.event?.link"/>
     </div>
-    <div>
-      <div class="bg-color-8 border-radius-10 p-2 d-flex justify-content-between gap-4 gap-lg-5">
-        @for (eventMaster of data?.event?.eventMasters; track eventMaster; let index = $index) {
-          @if (selectedEventMaster.id == eventMaster.id) {
-            <div class="d-flex justify-content-between flex-column">
-              <img src="assets/image/my-training/arrowUp.svg"
-                   (click)="changeEventMaster(data?.event?.eventMasters,index,+1)">
-              <img src="assets/image/my-training/arrowDown.svg"
-                   (click)="changeEventMaster(data?.event?.eventMasters,index,-1)">
-            </div>
-            <div class="d-flex gap-3 align-items-center">
-              <div>
-                <h3 class="text-white font-family-regular font-12 line-height-20">
-                  {{ eventMaster?.person?.name + ' ' + eventMaster?.person?.family }}
-                </h3>
-                <!--              <h3 class="text-white font-family-regular font-10 opacity-50 line-height-20">-->
-                <!--                استاد حسن عطایی-->
-                <!--              </h3>-->
+    <div class="d-flex justify-content-between align-items-center mt-4 mt-lg-5">
+      <div>
+        <app-entering-class *ngIf="data?.event?.eventTypeId == TypeClasses.online" [link]="data?.event?.link"/>
+      </div>
+      <div>
+        <div class="bg-color-8 border-radius-10 p-2 d-flex justify-content-between gap-4 gap-lg-5">
+          @for (eventMaster of data?.event?.eventMasters; track eventMaster; let index = $index) {
+            @if (selectedEventMaster.id == eventMaster.id) {
+              <div class="d-flex justify-content-between flex-column">
+                <img src="assets/image/my-training/arrowUp.svg"
+                     (click)="changeEventMaster(data?.event?.eventMasters,index,+1)">
+                <img src="assets/image/my-training/arrowDown.svg"
+                     (click)="changeEventMaster(data?.event?.eventMasters,index,-1)">
               </div>
-              <img src="assets/image/remove/Frame63.png" class="border-radius-5 detail-courses-1">
-            </div>
-          }
-
-        }
-      </div>
-
-    </div>
-
-  </div>
-
-  <!--  eventAttendance-->
-  <div class=" mt-4 mt-lg-5" *ngIf="data?.eventAttendance">
-    <h3 class="color-1 font-family-regular font-14 mb-4">
-      بلاتکلیف
-      وضعیت حضور شما :
-      10:00 صبح
-      زمان پایان کلاس :
-      08:00 صبح
-      زمان شروع کلاس :
-      1403/07/08
-      تاریخ برگزاری کلاس :
-    </h3>
-    <h3 class="color-1 font-family-regular font-14 mb-4">
-      8 خرداد ماه سال 1403 روز دوشنبه ساعت 8 صبح الی 10 صبح
-      شرح زمان برگزاری کلاس :
-    </h3>
-  </div>
-
-  <!--  eventInfos-->
-  <div class=" mt-4 mt-lg-5" *ngIf="data?.event?.eventInfos?.length > 0">
-    @for (eventInfo of data?.event?.eventInfos; track eventInfo) {
-      <h3 class="color-1 font-family-regular font-14 mb-4">
-        {{ eventInfo?.value }}
-      </h3>
-    }
-  </div>
-
-  <!--  محتوای دوره-->
-  <div class=" mt-4 mt-lg-5">
-    <div class="mb-4">
-      <h3 class="color-1 font-family-bold font-16 mb-2">
-        محتوای دوره
-      </h3>
-      <div class="d-flex gap-3">
-        <p class="color-2 font-family-regular font-14">
-          <img src="assets/image/my-training/Ellipse.svg" class="">
-          {{ data?.headlineCount }}
-          فصل
-        </p>
-        <p class="color-2 font-family-regular font-14">
-          <img src="assets/image/my-training/Ellipse.svg" class="">
-          {{ data?.headLineDetailsCount }}
-          جلسه
-        </p>
-        <p class="color-2 font-family-regular font-14">
-          <img src="assets/image/my-training/Ellipse.svg" class="">
-          {{ data?.duration }}
-
-          ساعت آموزش
-        </p>
-
-      </div>
-    </div>
-    <div>
-      <div>
-        <nz-timeline>
-          @for (item of data?.eventHeadlines; track item) {
-            <nz-timeline-item>
-              <div (click)="changeEpisode(item)" class="cursorPointer d-flex justify-content-between">
-                <h3 class="color-1 font-family-regular font-16">{{ item?.name }}</h3>
-                <div class="d-flex gap-3">
-                  <p class="color-2 font-family-regular font-14">
-                    <img src="assets/image/my-training/Ellipse.svg" class="">
-
-                    {{ item?.duration }}
-                    ساعت
-                  </p>
-<!--                  <p class="color-2 font-family-regular font-14">-->
-<!--                    <img src="assets/image/my-training/Ellipse.svg" class="">-->
-<!--                    30 جلسه-->
-<!--                  </p>-->
-
+              <div class="d-flex gap-3 align-items-center">
+                <div>
+                  <h3 class="text-white font-family-regular font-12 line-height-20">
+                    {{ eventMaster?.person?.name + ' ' + eventMaster?.person?.family }}
+                  </h3>
+                  <!--              <h3 class="text-white font-family-regular font-10 opacity-50 line-height-20">-->
+                  <!--                استاد حسن عطایی-->
+                  <!--              </h3>-->
                 </div>
+                <img src="assets/image/remove/Frame63.png" class="border-radius-5 detail-courses-1">
               </div>
-              <div class="mt-3" *ngIf="selectEpisode?.id == item?.id">
-                @for (eventHeadlineDetail of item?.eventHeadlineDetails; track eventHeadlineDetail) {
-                  <div class="d-flex justify-content-between mb-3">
-                    <h3 class="color-1 font-family-regular font-12">
-                      فصل اول -
-                      {{ eventHeadlineDetail?.name }}
-                    </h3>
-                    <h3 class="color-2 font-family-regular font-12">
-                      00:20
-                    </h3>
-                  </div>
-
-                }
-              </div>
-            </nz-timeline-item>
+            }
 
           }
+        </div>
 
-        </nz-timeline>
+      </div>
+
+    </div>
+
+    <!--  eventAttendance-->
+    <div class=" mt-4 mt-lg-5" *ngIf="data?.eventAttendance">
+      <h3 class="color-1 font-family-regular font-14 mb-4">
+        بلاتکلیف
+        وضعیت حضور شما :
+        10:00 صبح
+        زمان پایان کلاس :
+        08:00 صبح
+        زمان شروع کلاس :
+        1403/07/08
+        تاریخ برگزاری کلاس :
+      </h3>
+      <h3 class="color-1 font-family-regular font-14 mb-4">
+        8 خرداد ماه سال 1403 روز دوشنبه ساعت 8 صبح الی 10 صبح
+        شرح زمان برگزاری کلاس :
+      </h3>
+    </div>
+
+    <!--  eventInfos-->
+    <div class=" mt-4 mt-lg-5" *ngIf="data?.event?.eventInfos?.length > 0">
+      @for (eventInfo of data?.event?.eventInfos; track eventInfo) {
+        <h3 class="color-1 font-family-regular font-14 mb-4">
+          {{ eventInfo?.value }}
+        </h3>
+      }
+    </div>
+
+    <!--  محتوای دوره-->
+    <div class=" mt-4 mt-lg-5">
+      <div class="mb-4">
+        <h3 class="color-1 font-family-bold font-16 mb-2">
+          محتوای دوره
+        </h3>
+        <div class="d-flex gap-3">
+          <p class="color-2 font-family-regular font-14">
+            <img src="assets/image/my-training/Ellipse.svg" class="">
+            {{ data?.headlineCount }}
+            فصل
+          </p>
+          <p class="color-2 font-family-regular font-14">
+            <img src="assets/image/my-training/Ellipse.svg" class="">
+            {{ data?.headLineDetailsCount }}
+            جلسه
+          </p>
+          <p class="color-2 font-family-regular font-14">
+            <img src="assets/image/my-training/Ellipse.svg" class="">
+            {{ data?.duration }}
+
+            ساعت آموزش
+          </p>
+
+        </div>
+      </div>
+      <div>
+        <div>
+          <nz-timeline>
+            @for (item of data?.eventHeadlines; track item) {
+              <nz-timeline-item>
+                <div (click)="changeEpisode(item)" class="cursorPointer d-flex justify-content-between">
+                  <h3 class="color-1 font-family-regular font-16">{{ item?.name }}</h3>
+                  <div class="d-flex gap-3">
+                    <p class="color-2 font-family-regular font-14">
+                      <img src="assets/image/my-training/Ellipse.svg" class="">
+
+                      {{ item?.duration }}
+                      ساعت
+                    </p>
+                    <!--                  <p class="color-2 font-family-regular font-14">-->
+                    <!--                    <img src="assets/image/my-training/Ellipse.svg" class="">-->
+                    <!--                    30 جلسه-->
+                    <!--                  </p>-->
+
+                  </div>
+                </div>
+                <div class="mt-3" *ngIf="selectEpisode?.id == item?.id">
+                  @for (eventHeadlineDetail of item?.eventHeadlineDetails; track eventHeadlineDetail) {
+                    <div class="d-flex justify-content-between mb-3">
+                      <h3 class="color-1 font-family-regular font-12">
+                        فصل اول -
+                        {{ eventHeadlineDetail?.name }}
+                      </h3>
+                      <h3 class="color-2 font-family-regular font-12">
+                        00:20
+                      </h3>
+                    </div>
+
+                  }
+                </div>
+              </nz-timeline-item>
+
+            }
+
+          </nz-timeline>
+        </div>
       </div>
     </div>
   </div>
-</div>
+
+} @else {
+  وجود ندارد
+}

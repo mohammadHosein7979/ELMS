@@ -1,0 +1,57 @@
+<div class="container">
+  <div class="bg-white p-3 border-radius-20 mb-4">
+    <div class="d-flex gap-3 align-items-end flex-wrap flex-lg-nowrap">
+      <div class="w-100">
+        <label class="label-form">
+          عنوان درسی
+        </label>
+        <nz-select ngModel="lucy" class="input-style">
+          <nz-option nzValue="jack" nzLabel="Jack"></nz-option>
+          <nz-option nzValue="lucy" nzLabel="Lucy"></nz-option>
+          <nz-option nzValue="disabled" nzLabel="Disabled" nzDisabled></nz-option>
+        </nz-select>
+      </div>
+      <div class="w-100">
+        <label class="label-form">
+          وضعیت سوال
+        </label>
+        <nz-select ngModel="lucy" class="input-style">
+          <nz-option nzValue="jack" nzLabel="Jack"></nz-option>
+          <nz-option nzValue="lucy" nzLabel="Lucy"></nz-option>
+          <nz-option nzValue="disabled" nzLabel="Disabled" nzDisabled></nz-option>
+        </nz-select>
+      </div>
+      <div class="w-100">
+        <label class="label-form">
+          سختی سوال
+        </label>
+        <nz-select ngModel="lucy" class="input-style">
+          <nz-option nzValue="jack" nzLabel="Jack"></nz-option>
+          <nz-option nzValue="lucy" nzLabel="Lucy"></nz-option>
+          <nz-option nzValue="disabled" nzLabel="Disabled" nzDisabled></nz-option>
+        </nz-select>
+      </div>
+      <div class="w-100">
+        <label class="label-form">
+          جست و جو در متن
+        </label>
+        <input class="input-style" nz-input placeholder="متن خود را وارد کنید" type="text"/>
+      </div>
+      <div class="w-100 main-online-classes-2">
+
+        <button nz-button
+                class="text-white font-family-bold font-14 border-radius-10 bg-color-10 border-color-10 h-35 mb-2 px-4">
+          فیلتر کن
+        </button>
+
+      </div>
+
+    </div>
+  </div>
+  @for (item of data;track  item?.id){
+    <div class="mb-12 bg-white mb-2 border-radius-8 p-3">
+        {{item.eventId}}
+    </div>
+  }
+
+</div>

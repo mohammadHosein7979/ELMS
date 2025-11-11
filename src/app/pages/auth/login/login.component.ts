@@ -16,6 +16,7 @@ export class LoginComponent implements OnInit {
   activeTabIndex = 0;
   // OTP flow state
   otpStep: 'enterPhone' | 'verifyCode' = 'enterPhone';
+  loadingButton = false;
   otpSending = false;
   otpVerifying = false;
   resendDisabled = false;
@@ -92,6 +93,7 @@ export class LoginComponent implements OnInit {
       this.otpForm.markAllAsTouched();
       return;
     }
+    this.loadingButton = true
     const Phone = this.phoneForm.value.Phone;
     const Code = this.otpForm.value.Code;
     this.otpVerifying = true;
@@ -100,7 +102,10 @@ export class LoginComponent implements OnInit {
     // مثال فرضی: POST /Login/VerifyOtp  body: { phone, code }
     const url = `${this.apiBase}/Login/LoginPhoneAcept`; // اگر endpoint متفاوت است تغییر بده
     this.http.postHttp(url, null, {Phone : Phone , Code : Code}).pipe(
-      finalize(() => this.otpVerifying = false)
+      finalize(() => {
+        this.otpVerifying = false
+          this.loadingButton = false
+      })
     ).subscribe({
       next: (res: any) => {
         // فرض: backend بعد از تایید سشن/لاگین را برقرار می کند
@@ -149,10 +154,17 @@ export class LoginComponent implements OnInit {
       this.passwordForm.markAllAsTouched();
       return;
     }
+    this.loadingButton = true
+
     const { username, password } = this.passwordForm.value;
 
 
-    this.auth.login(username!, password!).subscribe({
+    this.auth.login(username!, password!).pipe(
+      finalize(() => {
+        this.loadingButton = false
+
+      })
+    ).subscribe({
       next: () => {
         // this.loading = false;
         this.router.navigate(['/panel']);

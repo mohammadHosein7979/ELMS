@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {BaseService} from "../../shared/services/base.service";
+import {BaseService, microService} from "../../shared/services/base.service";
 import {NzButtonComponent} from "ng-zorro-antd/button";
 
 @Component({
@@ -25,7 +25,7 @@ export class LikeComponent extends BaseService{
     }else {
       this.loadingDisLike = true
     }
-    this.post(`/courseapi${this.url}`,{
+    this.post(`/${microService.course}${this.url}`,{
       "personId": this.personId,
       "eventId": this.eventId,
       "likeStatus": type

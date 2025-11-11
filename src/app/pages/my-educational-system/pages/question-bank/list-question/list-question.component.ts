@@ -1,6 +1,6 @@
 import {Component, Injector, OnInit, ViewChild} from '@angular/core';
 import {SwiperComponent} from "swiper/angular";
-import {BaseService} from "../../../../../shared/services/base.service";
+import {BaseService, microService} from "../../../../../shared/services/base.service";
 import {TypeQuestionBank} from "../services/question-bank.service";
 import {LayoutService} from "../../../../../layout/services/layout.service";
 
@@ -18,6 +18,9 @@ export class ListQuestionComponent extends BaseService implements OnInit{
   }
 
   ngOnInit() {
+    this.post(`/${microService.course}/Question/Report`,null).subscribe((data:any)=>{
+
+    })
   }
 
 

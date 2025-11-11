@@ -15,8 +15,6 @@ import {HttpClient, HttpParams} from "@angular/common/http";
 import {catchError} from "rxjs/operators";
 import {NzTableQueryParams} from "ng-zorro-antd/table";
 import {FormBuilder} from "@angular/forms";
-
-
 @Injectable({
   providedIn: 'root'
 })
@@ -61,12 +59,13 @@ export class BaseService {
     this.titleService = injector.get(Title);
     // this.getDataUser()
     this.flagMobile = window.screen.width < 765
+    this.personId = this.authService.getCurrentUser()?.id
   }
 
 
-  get(url: string,body:any = '') {
+  get(url: string,body:any = '',extraHeaders?: Record<string, string>) {
     this.loading = true
-    let http = this.http.getHttp(url,body)
+    let http = this.http.getHttp(url,body,extraHeaders)
     this.loading = false
     return http
   }
@@ -224,4 +223,7 @@ export class BaseService {
   trackByFn(index:any, item:any): number {
     return item.id || index;
   }
+}
+export enum microService {
+  course = 'courseapi'
 }

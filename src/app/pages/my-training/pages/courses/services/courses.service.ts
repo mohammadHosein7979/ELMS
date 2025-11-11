@@ -1,20 +1,19 @@
 import { Injectable } from '@angular/core';
 import {map, Observable} from "rxjs";
-import {BaseService} from "../../../../../shared/services/base.service";
+import {BaseService, microService} from "../../../../../shared/services/base.service";
 
 @Injectable({
   providedIn: 'root'
 })
  export class CoursesService extends BaseService{
-  microService:string = '/courseapi'
   getAllEventList(){
-   return  this.get(`${this.microService}/EventStudent/EventList`)
+   return  this.get(`/${microService.course}/EventStudent/EventList`)
   }
   getAllEventType(){
-   return  this.post(`${this.microService}/EventType/Report`,{})
+   return  this.post(`/${microService.course}/EventType/Report`,{})
   }
   getEventDetails(body:any){
-   return  this.post(`${this.microService}/EventStudent/EventDetails`,body)
+   return  this.post(`/${microService.course}/EventStudent/EventDetails`,body)
   }
 
 

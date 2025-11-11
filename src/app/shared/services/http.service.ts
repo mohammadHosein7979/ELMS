@@ -152,24 +152,27 @@ export class HttpService {
   }
 
   handelErrorHttp(e: any) {
-    if (e.status == 401) {
-      localStorage.clear()
-      this.router.navigateByUrl('/auth/login')
-      // this.toast.error('ابتدا باید در سامانه ثبت نام کنید ، در حال ورود به صفحه ثبت نام ...')
-      // setTimeout(() => {
-      //   this.openLogin()
-      // }, 1000)
+    this.setLoading(false);
 
-
-    } else if (e.status == 500) {
-      this.setLoading(false);
-      this.toast.error(e.error.error.message)
-
-
-    } else {
-      this.setLoading(false);
-      this.toast.error(e.error.message)
+    if (e.status === 401) {
+      localStorage.clear();
+      this.router.navigateByUrl('/auth/login');
+      return;
     }
+
+    // اگه status == 400 یا از سمت body اومده بود
+    if (e.status === 400 || e.error?.statuscode === 400) {
+      this.toast.error(e.error?.message || 'داده نامعتبر است');
+      return;
+    }
+
+    if (e.status === 500) {
+      this.toast.error(e.error?.message || 'خطای داخلی سرور');
+      return;
+    }
+
+    // بقیه‌ی خطاها
+    this.toast.error(e.error?.message || 'خطای ناشناخته');
   }
 
   dataAll: any = []

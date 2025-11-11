@@ -1,4 +1,4 @@
-import {Component, Injector, Input, OnInit} from '@angular/core';
+import {Component, Injector, input, Input, OnInit} from '@angular/core';
 import {BaseService} from "../../../../../../shared/services/base.service";
 import {CoursesService} from "../../services/courses.service";
 import {TypeClasses} from "../../../../../my-educational-system/pages/classes/services/classes.service";
@@ -9,7 +9,8 @@ import {TypeClasses} from "../../../../../my-educational-system/pages/classes/se
   styleUrl: './detail-courses.component.scss'
 })
 export class DetailCoursesComponent extends BaseService implements OnInit{
-  @Input('itemSelect') itemSelect : any
+  // @Input('itemSelect') itemSelect : any
+  itemSelect = input()
   eventId:any
   selectedEventMaster:any
   selectEpisode:any =  {id: 1,title : 'فصل اول - مقدمه'}
@@ -29,8 +30,8 @@ export class DetailCoursesComponent extends BaseService implements OnInit{
   getEventDetails(){
     console.log(this.userService.getUser())
     let body = {
-      "eventId":this.eventId,
-      "personId": 12
+      "eventId":+this.eventId,
+      // "personId": this.personId
     }
     this.coursesService.getEventDetails(body).subscribe((data:any)=>{
       this.data = data.data
@@ -38,7 +39,6 @@ export class DetailCoursesComponent extends BaseService implements OnInit{
     })
   }
   changeEventMaster(data:any,index:any,type:any){
-    console.log(data,index,type)
     if (data[index + type]){
       this.selectedEventMaster = data[index + type]
 

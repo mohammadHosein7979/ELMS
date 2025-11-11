@@ -21,7 +21,11 @@ import {
 } from "./pages/question-bank/list-question/list-question.component";
 import { CreateQuestionComponent } from './pages/question-bank/create-question/create-question.component';
 import { MainQuestionBankComponent } from './pages/question-bank/main-question-bank/main-question-bank.component';
-import {NzAutocompleteComponent, NzAutocompleteTriggerDirective} from "ng-zorro-antd/auto-complete";
+import {
+  NzAutocompleteComponent,
+  NzAutocompleteOptionComponent,
+  NzAutocompleteTriggerDirective
+} from "ng-zorro-antd/auto-complete";
 import {ProgressCircleComponent} from "../../components/progress-circle/progress-circle.component";
 import {CKEditorModule} from "@ckeditor/ckeditor5-angular";
 import { MainCourseManagementComponent } from './pages/course-management/main-course-management/main-course-management.component';
@@ -29,6 +33,7 @@ import {CreateCourseComponent} from "./pages/course-management/create-course/cre
 import {
   TypeSelectedCourseComponent
 } from "./pages/course-management/components/type-selected-course/type-selected-course.component";
+import {ListCourseComponent} from "./pages/course-management/list-course/list-course.component";
 
 @NgModule({
   declarations: [
@@ -36,6 +41,7 @@ import {
     MainTestsComponent,
     ListQuestionComponent,
     CreateQuestionComponent,
+    ListCourseComponent,
     MainQuestionBankComponent,
     MainCourseManagementComponent,
     CreateCourseComponent,
@@ -58,6 +64,7 @@ import {
     ProgressCircleComponent,
     CKEditorModule,
     TypeSelectedCourseComponent,
+    NzAutocompleteOptionComponent,
   ],
 })
 export class MyEducationalSystemModule {

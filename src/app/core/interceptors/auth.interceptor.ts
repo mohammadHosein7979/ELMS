@@ -20,21 +20,27 @@ export class AuthInterceptor implements HttpInterceptor {
     let req = request.clone({ withCredentials: true });
 
     // گرفتن personId از userService
-    const personId = this.userService.personId;
+    const personid = this.userService.personId;
+    console.log(personid,this.userService.personId)
     const skip = ['/Login', '/Register', '/CreateSession'].some(path =>
       req.url.includes(path)
     );
 
+
     // فقط برای درخواست‌هایی که نیاز به personId دارند
-    if (personId && !skip) {
+    if (personid && !skip) {
       if (req.body && typeof req.body === 'object') {
         req = req.clone({
-          body: { ...req.body, personId }
+          body: { ...req.body,  personid }
         });
+        console.log(req)
+
       } else {
         req = req.clone({
-          setHeaders: { personId: personId.toString() }
+          setHeaders: { personid: personid.toString() }
         });
+        console.log(req)
+
       }
     }
 

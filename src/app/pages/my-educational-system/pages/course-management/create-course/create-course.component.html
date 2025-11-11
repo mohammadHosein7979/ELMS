@@ -26,16 +26,12 @@
             <div class=" d-flex gap-2 align-items-center">
               <img src="assets/image/searchIcon.svg">
               <div class="example-input w-100">
-                <input
-                  placeholder='جست و جو'
-                  nz-input
-                  [(ngModel)]="inputValue"
-                  (ngModelChange)="onChangeStepOne($event)"
-                  [nzAutocomplete]="auto"
-                  class="create-question-4"
-                />
-                <nz-autocomplete [nzOverlayClassName]="'autocompleteCreateQuestion'" [nzDataSource]="filteredOptions"
-                                 #auto></nz-autocomplete>
+                <nz-select class="w-100" nzShowSearch nzAllowClear nzPlaceHolder="Select a person" formControlName="courseId">
+                  @for (item of dataCourse;track item.id){
+                    <nz-option [nzLabel]="item?.name" [nzValue]="item?.id"></nz-option>
+
+                  }
+                </nz-select>
               </div>
               <img src="assets/image/reloadIcon.svg">
             </div>
@@ -79,28 +75,37 @@
             </p>
           </div>
           <div class="d-flex gap-5 flex-column flex-lg-row justify-content-evenly">
-            <div (click)="changeType(1)" class="text-center cursorPointer">
-              <img src="assets/image/my-educational-system/Group345.svg"
-                   class="{{form?.value?.type != 1 ? 'opacity-50' : ''}}">
-              <h3 class="color-1 font-12 font-family-bold">
-                دوره آفلاین
-              </h3>
+            @for (item of dataEventType;track item?.id){
+              <div (click)="changeType(item?.id)" class="text-center cursorPointer">
+                <img src="assets/image/my-educational-system/Group345.svg"
+                     class="{{form?.value?.eventTypeId != item?.id ? 'opacity-50' : ''}}">
+                <h3 class="color-1 font-12 font-family-bold">
+                  {{item?.name}}
+                </h3>
 
-            </div>
-            <div (click)="changeType(2)" class="text-center cursorPointer">
-              <img src="assets/image/my-educational-system/Group343.svg"
-                   class="{{form?.value?.type != 2 ? 'opacity-50' : ''}}">
-              <h3 class="color-1 font-12 font-family-bold">
-                دوره آنلاین
-              </h3>
-            </div>
-            <div (click)="changeType(3)" class="text-center cursorPointer">
-              <img src="assets/image/my-educational-system/Group344.svg"
-                   class="{{form?.value?.type != 3 ? 'opacity-50' : ''}}">
-              <h3 class="color-1 font-12 font-family-bold">
-                دوره حضوری
-              </h3>
-            </div>
+              </div>
+
+            }
+            @if (form?.value?.eventTypeId == 1){
+              <input formControlName="link" class="input-style" nz-input placeholder="" type="text">
+            } @else if (form?.value?.eventTypeId == 3) {
+              <input formControlName="location" class="input-style" nz-input placeholder="" type="text">
+
+            }
+<!--            <div (click)="changeType(2)" class="text-center cursorPointer">-->
+<!--              <img src="assets/image/my-educational-system/Group343.svg"-->
+<!--                   class="{{form?.value?.eventTypeId != 2 ? 'opacity-50' : ''}}">-->
+<!--              <h3 class="color-1 font-12 font-family-bold">-->
+<!--                دوره آنلاین-->
+<!--              </h3>-->
+<!--            </div>-->
+<!--            <div (click)="changeType(3)" class="text-center cursorPointer">-->
+<!--              <img src="assets/image/my-educational-system/Group344.svg"-->
+<!--                   class="{{form?.value?.eventTypeId != 3 ? 'opacity-50' : ''}}">-->
+<!--              <h3 class="color-1 font-12 font-family-bold">-->
+<!--                دوره حضوری-->
+<!--              </h3>-->
+<!--            </div>-->
 
           </div>
           <div>
@@ -131,18 +136,18 @@
                     <h3 class="font-family-regular font-14 color-1 opacity-50 w-100">
                       نام دوره :
                     </h3>
-                    <input class="input-style" nz-input placeholder="" type="text" />
+                    <input class="input-style" nz-input placeholder="" type="text" formControlName="title"/>
                   </div>
                   <div class="d-flex justify-content-between gap-2 mb-3">
                     <h3 class="font-family-regular font-14 color-1 opacity-50 w-100">
                       مدت زمان آموزش :
                     </h3>
                     <div class="d-flex justify-content-between gap-2 w-100">
-                      <input class="input-style text-center" nz-input placeholder="00" type="text" />
-                      <span class="font-20 color-1 opacity-50 font-family-bold">
-                        :
-                      </span>
-                      <input class="input-style" nz-input placeholder="00" type="text" />
+                      <input class="input-style text-center" nz-input placeholder="00" type="number" formControlName="duration"/>
+<!--                      <span class="font-20 color-1 opacity-50 font-family-bold">-->
+<!--                        :-->
+<!--                      </span>-->
+<!--                      <input class="input-style" nz-input placeholder="00" type="text" />-->
 
                     </div>
                   </div>
@@ -150,7 +155,7 @@
                     <h3 class="font-family-regular font-14 color-1 opacity-50 w-100">
                       هزینه دوره آموزشی :
                     </h3>
-                    <input class="input-style" nz-input placeholder="0" type="text" />
+                    <input class="input-style" nz-input placeholder="0" type="number" formControlName="price"/>
                   </div>
                 </div>
                 <div class="col-12 col-lg-6">
@@ -184,7 +189,7 @@
 
             </div>
             <div class="col-12 col-lg-3">
-             <app-type-selected-course [type]="form?.value?.type"/>
+             <app-type-selected-course [type]="form?.value?.eventTypeId"/>
             </div>
           </div>
           <div>
@@ -208,10 +213,10 @@
           </div>
           <div class="row align-items-center">
             <div class="col-12 col-lg-9">
-              <ckeditor [config]="config" [editor]="Editor"></ckeditor>
+              <ckeditor formControlName="description" [config]="config" [editor]="Editor"></ckeditor>
             </div>
             <div class="col-12 col-lg-3">
-              <app-type-selected-course [type]="form?.value?.type"/>
+              <app-type-selected-course [type]="form?.value?.eventTypeId"/>
             </div>
           </div>
           <div>
@@ -236,10 +241,10 @@
           </div>
           <div class="row align-items-center">
             <div class="col-12 col-lg-9">
-              <ckeditor [config]="config" [editor]="Editor"></ckeditor>
+              <ckeditor formControlName="adminDescription" [config]="config" [editor]="Editor"></ckeditor>
             </div>
             <div class="col-12 col-lg-3">
-              <app-type-selected-course [type]="form?.value?.type"/>
+              <app-type-selected-course [type]="form?.value?.eventTypeId"/>
             </div>
           </div>
           <div>
@@ -607,7 +612,7 @@
               </div>
             </div>
             <div class="col-12 col-lg-3">
-              <app-type-selected-course [type]="form?.value?.type"/>
+              <app-type-selected-course [type]="form?.value?.eventTypeId"/>
             </div>
 
           </div>
@@ -679,7 +684,7 @@
 
             </div>
             <div class="col-12 col-lg-3">
-              <app-type-selected-course [type]="form?.value?.type"/>
+              <app-type-selected-course [type]="form?.value?.eventTypeId"/>
             </div>
           </div>
           <div>
@@ -691,11 +696,11 @@
         <!--      end step 8-->
 
         <div class="d-flex gap-2 justify-content-center">
-          <button *ngIf="step != 7" (click)="changeStep('next')"
+          <button type="button"  *ngIf="step != 7" (click)="changeStep('next')"
                   class="bg-color-10 border-color-10 border-radius-10 px-3 py-1 text-white font-family-bold font-14">
             مرحله بعد
           </button>
-          <button *ngIf="step == 7"
+          <button type="button" (click)="submit()" *ngIf="step == 7"
                   class="bg-color-10 border-color-10 border-radius-10 px-3 py-1 text-white font-family-bold font-14">
             ثبت نهایی
           </button>
@@ -703,11 +708,11 @@
 <!--                  class="bg-color-10 border-color-10 border-radius-10 px-3 py-1 text-white font-family-bold font-14">-->
 <!--            ثبت و ورود سوال-->
 <!--          </button>-->
-          <button (click)="changeStep('prev')" [disabled]="step == 1"
+          <button type="button" (click)="changeStep('prev')" [disabled]="step == 1"
                   class="create-question-5 border-radius-10 px-3 py-1 text-white font-family-bold font-14 {{step == 1 && 'opacity-25'}} ">
             مرحله قبل
           </button>
-          <button [disabled]="step == 1"
+          <button  type="button"  [disabled]="step == 1"
                   class="create-question-6 border-radius-10 px-3 py-1 text-white font-family-bold font-14 {{step == 1 && 'opacity-25'}} ">
             شروع مجدد
           </button>
