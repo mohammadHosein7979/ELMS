@@ -6,6 +6,9 @@ import {MainQuestionBankComponent} from "./pages/question-bank/main-question-ban
 import {
   MainCourseManagementComponent
 } from "./pages/course-management/main-course-management/main-course-management.component";
+import {
+  CreateHeadlineCourseComponent
+} from "./pages/course-management/pages/create-headline-course/create-headline-course.component";
 
 
 const routes: Routes = [
@@ -13,6 +16,7 @@ const routes: Routes = [
       {path: 'tests', component: MainTestsComponent},
       {path: 'question-bank', component: MainQuestionBankComponent},
       {path: 'course-management', component: MainCourseManagementComponent},
+      {path: 'course-management/create-headline-course/:id', component: CreateHeadlineCourseComponent},
 
 ]
 

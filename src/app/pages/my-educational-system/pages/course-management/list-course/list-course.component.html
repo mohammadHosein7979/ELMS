@@ -48,10 +48,27 @@
 
     </div>
   </div>
-  @for (item of data;track  item?.id){
-    <div class="mb-12 bg-white mb-2 border-radius-8 p-3">
-        {{item.eventId}}
+  @if (data){
+    @for (item of data;track  item?.id){
+      <div class="mb-12 bg-white mb-2 border-radius-8 p-3 d-flex justify-content-between align-items-center" >
+        <p>
+          {{item.event?.title}}
+
+        </p>
+        <button routerLink="create-headline-course/{{item.event?.id}}" type="button" class="border-radius-8 border-color-3 bg-white color-3">
+          سر فصل ها
+        </button>
+      </div>
+    } @empty {
+      هیچ دوره ای ندارید
+    }
+
+  } @else {
+    <div class="mb-12 bg-white mb-2 border-radius-8 p-3 d-flex justify-content-between align-items-center" >
+      <nz-skeleton  [nzParagraph]="{rows: 2}"></nz-skeleton>
+
     </div>
+
   }
 
 </div>

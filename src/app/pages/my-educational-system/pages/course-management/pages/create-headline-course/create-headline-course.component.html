@@ -1,0 +1,160 @@
+<div>
+  <br/>
+  <br/>
+
+  <div class="create-question-1 overflow-hidden">
+    <div class="bg-color-10 py-3 px-4 create-question-2">
+      <h2 class=" text-white font-family-bold font-20 ">
+        فرایند ایجاد دوره
+      </h2>
+
+    </div>
+    <div class="bg-white py-4 px-3 create-question-11">
+
+      <div class="mb-5">
+        <h3 class="font-family-bold font-14 color-1 mb-1">
+          سر فصل های آموزشی
+        </h3>
+        <p class="color-1 opacity-50 font-family-regular font-12">
+          در این بخش عنوان هر فصل مدت زمان ارائه فصل و جزئیات فصل را وارد کنید
+        </p>
+      </div>
+      <div class="row align-items-center">
+        <div class="col-12 ">
+          <div class="row">
+            <div class="col-12 col-lg-6">
+              <form [formGroup]="formHeadline" (ngSubmit)="submitHeadline()">
+                <div class="d-flex gap-2 create-course-5 mb-2">
+                  <input nz-input class="input-style create-course-2" formControlName="name" placeholder="عنوان فصل"
+                         type="text"/>
+                  <input
+                    class="input-style create-course-3"
+                    nz-input
+                    placeholder="00.00.00"
+                    formControlName="duration"
+                    maxlength="8"
+                    (input)="onTimeInput($event)"
+                  />
+                  <button nz-button
+                          class="create-course-4 color-1 font-family-regular font-14 border-radius-5  create-course-6  mb-2 px-4">
+                    {{ editModeHeadline.flag ? 'ذخیره' : 'ثبت' }}
+                  </button>
+
+                </div>
+              </form>
+              <div class="border-color-2 border-radius-5 p-2 create-course-9 overflow-y-scroll">
+                @for (item of dataCourseManagement; track item?.id; let index = $index) {
+                  <div>
+                    <div
+                      class="d-flex gap-1 justify-content-between py-12 px-1 {{dataSelectHeadline?.id == item?.id ? 'create-headline-course-1' : ''}}">
+                      <div class="d-flex gap-1 w-100 ">
+                        <img src="assets/image/my-educational-system/Frame460.svg">
+                        <p class="font-family-regular color-1 font-14 cursorPointer w-100"
+                           (click)="selectHeadline(item)">
+                          {{ item?.name }}
+                        </p>
+                      </div>
+                      <div class="d-flex gap-1">
+                        <p class="font-family-regular color-1 font-14">
+                          {{ item?.duration }}
+                        </p>
+                        <div class="d-flex gap-2 create-course-7">
+                          <img src="assets/image/my-educational-system/Frame461.svg"
+                               class="cursorPointer"
+                               (click)="editCourseManagement(item,index)">
+                          <img src="assets/image/my-educational-system/Frame459.svg"
+                               class="cursorPointer"
+                               (click)="removeCourseManagement(item,index)">
+                        </div>
+                      </div>
+                    </div>
+                    <hr class="create-course-8"/>
+                  </div>
+                } @empty {
+                  هیچ سر فصلی ندارید.
+                }
+
+              </div>
+            </div>
+            <div class="col-12 col-lg-6">
+              <form [formGroup]="formHeadlineDetail" (ngSubmit)="submitHeadlineDetail()">
+
+                <div class="d-flex gap-2 create-course-5 mb-2">
+                  <input nz-input class="input-style create-course-10" placeholder="عنوان جزئبات " type="text"
+                         formControlName="name"/>
+                  <input
+                    class="input-style create-course-3"
+                    nz-input
+                    placeholder="00.00.00"
+                    formControlName="duration"
+                    maxlength="8"
+                    (input)="onTimeInput($event)"
+                  />
+                  <button nz-button [disabled]="!dataSelectHeadline"
+                          class="create-course-4 color-1 font-family-regular font-14 border-radius-5  create-course-6  mb-2 px-4">
+                    ثبت
+                  </button>
+
+
+                </div>
+              </form>
+
+              <div class="border-color-2 border-radius-5 p-2 create-course-9 overflow-y-scroll">
+                @for (item of dataHeadLineDetail; track item?.id; let index = $index) {
+                  <div>
+                    <div class="d-flex gap-1 justify-content-between py-12 px-1">
+                      <div class="d-flex gap-1 w-100">
+                        <img src="assets/image/my-educational-system/Frame460.svg">
+                        <p class="font-family-regular color-1 font-14 w-100">
+                          {{ item?.name }}
+                        </p>
+                      </div>
+                      <div class="d-flex gap-1">
+                        <div class="d-flex gap-2 create-course-7">
+                          <img src="assets/image/my-educational-system/Frame461.svg"
+                               class="cursorPointer"
+                               (click)="editCourseManagementDetail(item,index)">
+                          <img src="assets/image/my-educational-system/Frame459.svg"
+                               class="cursorPointer"
+                               (click)="removeCourseManagementDetail(item,index)">
+
+                        </div>
+                      </div>
+
+
+                    </div>
+                    <hr class="create-course-8"/>
+                  </div>
+
+                } @empty {
+                  @if (dataSelectHeadline) {
+                    جزئبات
+                      وجود ندارد
+                  } @else {
+                    <p>
+                      لطفا یه سر فصل را انتخاب کنید
+
+
+                    </p>
+                  }
+                }
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+      <div>
+        <br/>
+        <br/>
+        <br/>
+      </div>
+
+
+      <div class="d-flex gap-2 justify-content-center">
+      </div>
+
+    </div>
+  </div>
+</div>

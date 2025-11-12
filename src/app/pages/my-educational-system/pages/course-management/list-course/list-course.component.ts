@@ -18,10 +18,11 @@ export class ListCourseComponent extends BaseService implements OnInit{
   }
 
   ngOnInit() {
-    this.courseManagementService.getEventMaster().subscribe((data:any)=>{
+    this.courseManagementService.getEventMaster({personID : this.personId}).subscribe((data:any)=>{
       this.data = data.data;
     })
   }
+
 
   @ViewChild(SwiperComponent) swiper: any;
 }

@@ -264,3 +264,9 @@ app-slider-education{
     padding-left: 20px;
   }
 }
+.ant-select-transparent{
+  .ant-select-selector{
+    background: transparent !important;
+
+  }
+}

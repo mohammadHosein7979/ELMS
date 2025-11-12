@@ -66,22 +66,40 @@ export class HttpService {
       .pipe(catchError(this.formatErrors));
   }
 
-  deleteHttp(url: string,body:any = '') {
-    let headers = new HttpHeaders().set('accept', 'application/json');
-    headers = new HttpHeaders().set('accept', 'application/json').append('accept-language', 'fa');
+  // deleteHttp(url: string,body:any = '') {
+  //   let headers = new HttpHeaders().set('accept', 'application/json');
+  //   headers = new HttpHeaders().set('accept', 'application/json').append('accept-language', 'fa');
+  //
+  //   if (url.indexOf('http') !== 0) {
+  //     url = this.apiUrl + url
+  //   }
+  //   if (url.indexOf('https') === -1) {
+  //     url = url.replace('http', 'https')
+  //   }
+  //   const params = new HttpParams({fromObject: body});
+  //
+  //   return this.httpClient.delete(url, {
+  //     headers: headers,
+  //     withCredentials: true,
+  //     params
+  //   }).pipe(catchError(this.formatErrors));
+  // }
+  deleteHttp(url: string, body: any = '') {
+    let headers = new HttpHeaders()
+      .set('accept', 'application/json')
+      .append('accept-language', 'fa');
 
-    if (url.indexOf('http') !== 0) {
-      url = this.apiUrl + url
+    if (!url.startsWith('http')) {
+      url = this.apiUrl + url;
     }
-    if (url.indexOf('https') === -1) {
-      url = url.replace('http', 'https')
+    if (url.startsWith('http:')) {
+      url = url.replace('http:', 'https:');
     }
-    const params = new HttpParams({fromObject: body});
 
     return this.httpClient.delete(url, {
-      headers: headers,
+      headers,
       withCredentials: true,
-      params
+      body // ✅ حالا بدنه ارسال می‌شود
     }).pipe(catchError(this.formatErrors));
   }
 

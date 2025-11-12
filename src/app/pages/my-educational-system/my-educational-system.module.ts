@@ -34,6 +34,9 @@ import {
   TypeSelectedCourseComponent
 } from "./pages/course-management/components/type-selected-course/type-selected-course.component";
 import {ListCourseComponent} from "./pages/course-management/list-course/list-course.component";
+import {
+  CreateHeadlineCourseComponent
+} from "./pages/course-management/pages/create-headline-course/create-headline-course.component";
 
 @NgModule({
   declarations: [
@@ -42,6 +45,7 @@ import {ListCourseComponent} from "./pages/course-management/list-course/list-co
     ListQuestionComponent,
     CreateQuestionComponent,
     ListCourseComponent,
+    CreateHeadlineCourseComponent,
     MainQuestionBankComponent,
     MainCourseManagementComponent,
     CreateCourseComponent,

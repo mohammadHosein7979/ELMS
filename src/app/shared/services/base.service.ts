@@ -84,6 +84,12 @@ export class BaseService {
   post(url: string, data: any) {
     return this.http.postHttp(url, data)
   }
+  put(url: string, data: any) {
+    return this.http.putHttp(url, data)
+  }
+  delete(url: string, data: any) {
+    return this.http.deleteHttp(url, data)
+  }
 
   postByServices(url: string, data: any, cache: boolean = false) {
     this.loading = true

@@ -96,7 +96,7 @@ export class CreateCourseComponent extends BaseService implements OnInit {
   changeStep(type: string) {
 
     if (type == 'next') {
-      if (this.step < 7) {
+      if (this.step < 6) {
         this.step = this.step + 1
       }
     } else {
