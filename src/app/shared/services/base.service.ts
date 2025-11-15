@@ -81,8 +81,8 @@ export class BaseService {
     return this.http.getCacheHttp(url)
   }
 
-  post(url: string, data: any) {
-    return this.http.postHttp(url, data)
+  post(url: string, data: any, extraHeaders: any=null) {
+    return this.http.postHttp(url, data,extraHeaders)
   }
   put(url: string, data: any) {
     return this.http.putHttp(url, data)
@@ -134,11 +134,31 @@ export class BaseService {
   }
 
   deleteItem(data: any, id: any, path: string) {
-    this.http.deleteHttp('/services/app/' + path + '/Delete?Id=' + id).subscribe((item: any) => {
-      let index: any = data.findIndex((i: any) => i.id == id)
-      data.splice(index, 1)
-    })
+    const loadingKey = `delete_${id}`;
+
+    this.setLoading(loadingKey, true);
+    this.http.deleteHttp(path, {id: id}).subscribe({
+      next: (item: any) => {
+        let index: any = data.findIndex((i: any) => i.id == id);
+        data.splice(index, 1);
+        this.setLoading(loadingKey, false);
+      },
+      error: (error) => {
+        this.setLoading(loadingKey, false);
+      }
+    });
   }
+  isLoadingDelete(key: string): boolean {
+    return this.loadingStates.get(`delete_${key}`) || false;
+  }
+
+  private loadingStates = new Map<string, boolean>();
+
+  setLoading(key: string, isLoading: boolean): void {
+    this.loadingStates.set(key, isLoading);
+  }
+
+
 
   setDataSelectedRow(data: any) {
     if (data.id == this.dataSelectedRow?.id) {

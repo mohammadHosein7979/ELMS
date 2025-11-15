@@ -28,7 +28,13 @@ export class CardQuestionComponent extends BaseService{
   @Input('data') override data : any
   @Input('dataAll')  dataAll : any
   @Input('id') id : any
+  editQuestion(questionId: number) {
+    const route = `/panel/my-educational-system/question-bank/edit/${questionId}`;
+    this.router.navigate([route]);
 
-  protected readonly TypeQuestion = TypeQuestionBank;
+    // اگر نیاز دارید route map را هم آپدیت کنید
+    // this.layoutService.changeRoutMap(route);
+  }
+
   protected readonly MicroService = MicroService;
 }

@@ -1,6 +1,6 @@
 <div class="bg-white border-radius-20 p-12">
-  <h3 class="color-1 font-family-bold font-14 mb-3">
-    {{data?.title}}
+  <h3 class="color-1 font-family-bold font-14 mb-3" [innerHTML]="data?.title">
+
   </h3>
   <div class="row mb-4">
     @for (item of data?.answers;track item?.id){
@@ -16,15 +16,25 @@
   </div>
   <div class="d-flex align-items-center gap-2 flex-column flex-lg-row justify-content-lg-between mb-2 pe-lg-4">
     <div class="d-flex align-items-center gap-2">
-      <button  class="card-question-1 border-radius-10 px-3 py-2 color-10 font-family-bold font-14 ">
+      <button  (click)="editQuestion(data?.id)" class="card-question-1 border-radius-10 px-3 py-2 color-10 font-family-bold font-14 ">
         <img src="assets/image/my-educational-system/i-exam-multiple-choice-svgrepo-com.svg" class="me-2">
         ویرایش
       </button>
-      <button (click)="deleteItem(dataAll,data?.id,'/courseapi/Question/Report')" class="card-question-1 border-radius-10 px-3 py-2 color-10 font-family-bold font-14">
-        <img src="assets/image/my-educational-system/i-exam-multiple-choice-svgrepo-com.svg" class="me-2">
+      <button
+        (click)="deleteItem(dataAll, data?.id, `/${MicroService.course}/Question/Delete`)"
+        [disabled]="isLoadingDelete(data?.id)"
+        class="card-question-1 border-radius-10 px-3 py-2 color-10 font-family-bold font-14 position-relative"
+        [class.opacity-50]="isLoadingDelete(data?.id)">
 
-        حذف
-
+        @if (isLoadingDelete(data?.id)) {
+          <div class="spinner-border spinner-border-sm text-danger me-2" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+          در حال حذف...
+        } @else {
+          <img src="assets/image/my-educational-system/i-exam-multiple-choice-svgrepo-com.svg" class="me-2">
+          حذف
+        }
       </button>
     </div>
     <div>

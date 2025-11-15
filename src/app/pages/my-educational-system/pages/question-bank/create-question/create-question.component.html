@@ -6,7 +6,7 @@
     <div class="create-question-1 overflow-hidden">
       <div class="bg-color-10 py-3 px-4 create-question-2">
         <h2 class=" text-white font-family-bold font-20 ">
-          فرایند ساخت سوال
+          {{ isEditMode ? 'ویرایش سوال' : 'فرایند ساخت سوال' }}
         </h2>
 
       </div>
@@ -240,7 +240,7 @@
             مرحله بعد
           </button>
           <button *ngIf="step == 5" type="submit"  class="bg-color-10 border-color-10 border-radius-10 px-3 py-1 text-white font-family-bold font-14">
-            ثبت نهایی
+            {{ isEditMode ? 'بروزرسانی سوال' : 'ثبت نهایی' }}
           </button>
           <button *ngIf="step == 5"  type="button" class="bg-color-10 border-color-10 border-radius-10 px-3 py-1 text-white font-family-bold font-14">
             ثبت و ورود سوال

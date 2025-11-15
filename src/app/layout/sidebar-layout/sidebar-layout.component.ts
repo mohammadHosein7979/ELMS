@@ -106,8 +106,8 @@ export class SidebarLayoutComponent extends BaseService implements OnInit{
             title : 'بانک سوالات',
             iconSelect : 'questionBankSelect.svg',
             iconDeSelect :'OnlineClassesDeSelect.svg',
-            routerChildOne:'/my-educational-system/question-bank?type='+TypeQuestionBank.create,
-            router: '/my-educational-system/question-bank?type='+TypeQuestionBank.list,
+            routerChildOne:'/my-educational-system/question-bank/'+TypeQuestionBank.create,
+            router: '/my-educational-system/question-bank/'+TypeQuestionBank.list,
           },
           {
             id : '36',
