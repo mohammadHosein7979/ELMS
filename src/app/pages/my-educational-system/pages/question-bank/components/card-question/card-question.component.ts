@@ -12,27 +12,24 @@ import {
 } from "../../../../../../components/presence-and-absence/presence-and-absence.component";
 import {TypeQuestionBank} from "../../services/question-bank.service";
 import {ProgressCircleComponent} from "../../../../../../components/progress-circle/progress-circle.component";
+import {BaseService} from "../../../../../../shared/services/base.service";
+import {MicroService} from "../../../../../../shared/enum/enum";
 
 @Component({
   selector: 'app-card-question',
   templateUrl: './card-question.component.html',
   styleUrl: './card-question.component.scss',
   imports: [
-    NgIf,
-    RouterLink,
-    EnteringClassComponent,
-    OnlineClassLinkComponent,
-    ClassLinkConnectionComponent,
-    LocationComponent,
-    PresenceAndAbsenceComponent,
     ProgressCircleComponent
   ],
   standalone: true
 })
-export class CardQuestionComponent {
+export class CardQuestionComponent extends BaseService{
 
-  @Input('data') data : any
+  @Input('data') override data : any
+  @Input('dataAll')  dataAll : any
   @Input('id') id : any
 
   protected readonly TypeQuestion = TypeQuestionBank;
+  protected readonly MicroService = MicroService;
 }

@@ -113,10 +113,7 @@ export class CreateQuestionComponent extends BaseService implements OnInit{
   }
 
   onsubmit(){
-
     this.questionBankService.insertQuestion(this.formSend.value).subscribe(()=>{
-
     })
-    console.log(this.formSend.value)
   }
 }

@@ -10,6 +10,9 @@ export enum EnumEducationType {
   Offline = 0,
   InPerson = 2,
 }
+export enum MicroService {
+  course = 'courseapi'
+}
 
 @Injectable({
   providedIn: 'root'

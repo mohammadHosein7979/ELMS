@@ -1,5 +1,5 @@
 import {Component, inject, Inject, Injector, Input} from '@angular/core';
-import {BaseService, microService} from "../../shared/services/base.service";
+import {BaseService} from "../../shared/services/base.service";
 import {NzButtonComponent} from "ng-zorro-antd/button";
 import { Location } from '@angular/common';
 import {NzInputDirective} from "ng-zorro-antd/input";
@@ -40,11 +40,8 @@ export class FileUploadComponent extends BaseService{
       .pipe(finalize(() => (this.loadingUpload = false)))
       .subscribe({
         next: res => {
-          console.log('Upload done:', res);
-          this.parent.form.get('file')?.setValue(res); // ذخیره نتیجه در فرم والد
-        },
-        error: err => console.error('Upload error:', err),
-      });
+          this.parent.form.get(this.controlName)?.setValue(res?.data?.id);
+        }});
   }
 
 }

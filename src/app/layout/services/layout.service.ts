@@ -49,7 +49,6 @@ export class LayoutService {
       // let data = urlArray[urlArray.length-1]
       // this.url = data.split(/([0-9]+)/)
     }
-    console.log(this.url)
     this.approvalStageMessage = new BehaviorSubject( this.url);
     return   this.currentApprovalStageMessage = this.approvalStageMessage.asObservable();
 
@@ -57,7 +56,6 @@ export class LayoutService {
   changeRoutMap(item:any){
     this.url = item
     this.approvalStageMessage.next(item)
-    console.log(this.url)
     if (item != '/'){
       this.router.navigateByUrl('/panel'+item)
     }else {

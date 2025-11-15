@@ -185,7 +185,7 @@
                     <h3 class="font-family-regular font-14 color-1 opacity-50 w-100">
                       عکس دوره :
                     </h3>
-                    <app-file-upload/>
+                    <app-file-upload [controlName]="'mediaId'"/>
                   </div>
                 </div>
                 <div class="col-12 col-lg-6">
@@ -305,23 +305,24 @@
                       عنوان دوره
                     </h3>
                     <p class="font-family-regular font-14 color-1">
-                      تدبری در قرآن
+                      {{form.value.title}}
                     </p>
                   </div>
-                  <div class="mb-2">
-                    <h3 class="font-family-bold font-14 color-1">
-                      تعداد فصل های دوره
-                    </h3>
-                    <p class="font-family-regular font-14 color-1">
-                      4 فصل
-                    </p>
-                  </div>
+<!--                  <div class="mb-2">-->
+<!--                    <h3 class="font-family-bold font-14 color-1">-->
+<!--                      تعداد فصل های دوره-->
+<!--                    </h3>-->
+<!--                    <p class="font-family-regular font-14 color-1">-->
+<!--                      4 فصل-->
+<!--                    </p>-->
+<!--                  </div>-->
                   <div class="mb-2">
                     <h3 class="font-family-bold font-14 color-1">
                       زمان آموزش
                     </h3>
                     <p class="font-family-regular font-14 color-1">
-                      110 ساعت 20 دقیقه
+                      {{form.value.duration}}
+                      دقیقه
                     </p>
                   </div>
                   <div class="mb-2">
@@ -329,7 +330,8 @@
                       هزینه دوره
                     </h3>
                     <p class="font-family-regular font-14 color-1">
-                      2,500,000 تومان
+                      {{form.value.price}}
+                      تومان
                     </p>
                   </div>
                 </div>
@@ -337,13 +339,11 @@
                   <h3 class="font-family-bold font-14 color-1">
                     توضیحات تکمیلی شما
                   </h3>
-                  <p class="font-family-regular font-14 color-1">
-                    توضیحات تکمیلی آموزشی شما که برای کاربران نمایش داده می شود توضیحات تکمیلی آموزشی شما که برای کاربران نمایش داده می شود توضیحات تکمیلی آموزشی شما که برای کاربران نمایش داده می شود توضیحات تکمیلی آموزشی شما که برای کاربر
+                  <p class="font-family-regular font-14 color-1" [innerHTML]="form.value?.description">
+
                   </p>
                 </div>
               </div>
-
-
             </div>
             <div class="col-12 col-lg-3">
               <app-type-selected-course [type]="form?.value?.eventTypeId"/>

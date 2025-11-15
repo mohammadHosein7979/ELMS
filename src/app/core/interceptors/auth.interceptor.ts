@@ -21,34 +21,25 @@ export class AuthInterceptor implements HttpInterceptor {
 
     // گرفتن personId از userService
     const personid = this.userService.personId;
-    console.log(personid,this.userService.personId)
     const skip = ['/Login', '/Register', '/CreateSession','/UploadFileBinery'].some(path =>
       req.url.includes(path)
     );
-    console.log(req.url)
-
-
     // فقط برای درخواست‌هایی که نیاز به personId دارند
     if (personid && !skip) {
       if (req.body && typeof req.body === 'object') {
         req = req.clone({
           body: { ...req.body,  personid }
         });
-        console.log(req)
-
       } else {
         req = req.clone({
           setHeaders: { personid: personid.toString() }
         });
-        console.log(req)
-
       }
     }
 
     return next.handle(req).pipe(
       catchError((err: HttpErrorResponse) => {
         if (err.status === 401) {
-          console.warn('Unauthorized → redirecting to login');
           this.userService.clear();
           this.router.navigate(['/login']);
         }

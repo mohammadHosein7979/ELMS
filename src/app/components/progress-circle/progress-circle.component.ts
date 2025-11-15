@@ -20,7 +20,6 @@ export class ProgressCircleComponent implements OnInit,AfterViewInit{
   bgSelected : any
 
   ngAfterViewInit() {
-    console.log(1)
     if (this.value < 25){
       this.bgSelected = '77D99E'
     }else if(this.value >=25 && this.value <=50){

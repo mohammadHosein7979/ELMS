@@ -25,10 +25,15 @@ constructor(injector:Injector) {
 
     return this.http.postHttp(`/mediaapi/api/v1/Media/Add`, metaBody).pipe(
       switchMap((meta:any) => {
-        console.log(meta)
         const formData = new FormData();
         formData.append('file', file);
-        formData.append('meta', JSON.stringify({"IdMedia":meta?.data?.id}));
+        formData.append('meta', JSON.stringify(
+          {
+          "IdMedia":meta?.data?.id,
+            "PathFile":"D:",
+            "PartNumber":1
+        }
+        ));
         return this.httpClient.post(`${environment.apiUrl}/mediaapi/api/v1/ParticleMedia/UploadFileBinery`, formData);
       })
     );

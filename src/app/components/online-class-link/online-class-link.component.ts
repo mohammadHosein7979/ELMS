@@ -1,6 +1,7 @@
 import {Component, Input} from '@angular/core';
-import {BaseService, microService} from "../../shared/services/base.service";
+import {BaseService} from "../../shared/services/base.service";
 import {NzButtonComponent} from "ng-zorro-antd/button";
+import {MicroService} from "../../shared/enum/enum";
 
 @Component({
   selector: 'app-online-class-link',
@@ -21,7 +22,7 @@ export class OnlineClassLinkComponent extends BaseService{
       eventID : this.event?.id,
       link : linkInput.value
     }
-    this.put(`/${microService.course}/Event/ChangeLinkEvent`, body).subscribe((data:any)=>{
+    this.put(`/${MicroService.course}/Event/ChangeLinkEvent`, body).subscribe((data:any)=>{
       this.notification.success('عملیات با موفقیت انجام شد');
 
     })

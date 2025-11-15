@@ -293,13 +293,10 @@ export class HomePageComponent   {
 
 
   swipePrevGoft(e: any) {
-    console.log(e)
     e.swiperRef.slidePrev();
   }
 
   swipeNextGoft(e: any) {
-    console.log(e)
-
     e.swiperRef.slideNext();
   }
 }

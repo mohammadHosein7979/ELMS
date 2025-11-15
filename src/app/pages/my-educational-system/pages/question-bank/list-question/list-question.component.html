@@ -47,7 +47,7 @@
   </div>
   @for (item of data;track item?.id){
     <div class="mb-12">
-      <app-card-question [data]="item" [id]="1"/>
+      <app-card-question [dataAll]="data" [data]="item" [id]="1"/>
     </div>
   }
 </div>

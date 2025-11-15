@@ -1,5 +1,6 @@
 import {Injectable} from "@angular/core";
-import {BaseService, microService} from "../../../../../shared/services/base.service";
+import {BaseService} from "../../../../../shared/services/base.service";
+import {MicroService} from "../../../../../shared/enum/enum";
 
 
 export enum TypeQuestionBank {
@@ -13,7 +14,10 @@ export enum TypeQuestionBank {
 export class QuestionBankService extends BaseService{
 
   insertQuestion(body :any) {
-    return this.post(`/${microService.course}/Question/Insert`, body)
+    return this.post(`/${MicroService.course}/Question/Insert`, body)
+  }
+  questionReport(body :any) {
+    return this.post(`/${MicroService.course}/Question/Report`, body)
   }
 
 

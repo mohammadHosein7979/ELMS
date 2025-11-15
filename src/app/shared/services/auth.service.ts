@@ -33,10 +33,8 @@ export class AuthService {
       .pipe(
         tap(() => {
           this.sessionCreated = true;
-          console.log('Session created.');
         }),
         catchError((err) => {
-          console.error('Failed to create session', err);
           return of(false);
         })
       );
@@ -56,11 +54,9 @@ export class AuthService {
       })
       .pipe(
         tap(() => {
-          console.log('Login success');
           this.currentUserSubject.next({ username });
         }),
         catchError((err) => {
-          console.error('Login failed', err);
           throw err;
         })
       );
@@ -96,12 +92,10 @@ export class AuthService {
       .postHttp(`/usermanagement/Internal/Register`, body)
       .pipe(
         tap((res:any) => {
-          console.log('Register success', res);
           this.currentUserSubject.next(res.data);
           this.userService.setUser(res.data);
         }),
         catchError((err) => {
-          console.error('Register failed', err);
           throw err;
         })
       );

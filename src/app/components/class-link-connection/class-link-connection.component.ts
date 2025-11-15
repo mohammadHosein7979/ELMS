@@ -1,5 +1,6 @@
 import {Component, Input} from '@angular/core';
-import {BaseService, microService} from "../../shared/services/base.service";
+import {BaseService} from "../../shared/services/base.service";
+import {MicroService} from "../../shared/enum/enum";
 
 @Component({
   selector: 'app-class-link-connection',
@@ -19,7 +20,7 @@ export class ClassLinkConnectionComponent extends BaseService{
       eventId : this.eventId,
       link : this.link
     }
-    this.post(`${microService.course}/Event/ChangeLinkEvent`, body).subscribe((data:any)=>{
+    this.post(`${MicroService.course}/Event/ChangeLinkEvent`, body).subscribe((data:any)=>{
 
     })
   }

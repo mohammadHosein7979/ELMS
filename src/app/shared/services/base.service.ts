@@ -230,6 +230,3 @@ export class BaseService {
     return item.id || index;
   }
 }
-export enum microService {
-  course = 'courseapi'
-}
