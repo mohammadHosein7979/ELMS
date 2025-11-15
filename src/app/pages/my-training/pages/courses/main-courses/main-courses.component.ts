@@ -5,9 +5,10 @@ import { Subject } from 'rxjs';
 import { takeUntil, debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-main-courses',
-  templateUrl: './main-courses.component.html',
-  styleUrls: ['./main-courses.component.scss']
+    selector: 'app-main-courses',
+    templateUrl: './main-courses.component.html',
+    styleUrls: ['./main-courses.component.scss'],
+    standalone: false
 })
 export class MainCoursesComponent extends BaseService implements OnInit, OnDestroy {
   selectedEventId: number | null = null;

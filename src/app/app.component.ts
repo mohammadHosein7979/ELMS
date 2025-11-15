@@ -6,9 +6,10 @@ import {TokenService} from "./shared/services/token.service";
 import {AuthService} from "./shared/services/auth.service";
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrl: './app.component.scss',
+    standalone: false
 })
 export class AppComponent extends BaseService implements OnInit {
   title = 'Angular17Project';

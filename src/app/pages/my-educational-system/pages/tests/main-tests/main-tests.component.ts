@@ -6,9 +6,10 @@ import {SwiperComponent} from "swiper/angular";
 import {TypeTests} from "../services/tests.service";
 
 @Component({
-  selector: 'app-main-tests',
-  templateUrl: './main-tests.component.html',
-  styleUrl: './main-tests.component.scss'
+    selector: 'app-main-tests',
+    templateUrl: './main-tests.component.html',
+    styleUrl: './main-tests.component.scss',
+    standalone: false
 })
 export class MainTestsComponent extends BaseService implements OnInit{
   type : any

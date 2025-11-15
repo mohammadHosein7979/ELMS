@@ -5,9 +5,10 @@ import {LayoutService} from "../../../../../layout/services/layout.service";
 import {CourseManagementService} from "../services/course-management.service";
 
 @Component({
-  selector: 'app-list-course',
-  templateUrl: './list-course.component.html',
-  styleUrl: './list-course.component.scss'
+    selector: 'app-list-course',
+    templateUrl: './list-course.component.html',
+    styleUrl: './list-course.component.scss',
+    standalone: false
 })
 export class ListCourseComponent extends BaseService implements OnInit{
   type : any

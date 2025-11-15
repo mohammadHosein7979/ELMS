@@ -1,6 +1,7 @@
 import { Pipe, PipeTransform } from '@angular/core';
 @Pipe({
-  name: 'fastrnumber'
+    name: 'fastrnumber',
+    standalone: false
 })
 export class fastrnumberPipe implements PipeTransform {
   transform(value: any): any {

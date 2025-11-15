@@ -2,9 +2,10 @@ import { Component } from '@angular/core';
 import {SwiperOptions} from "swiper";
 
 @Component({
-  selector: 'app-main-education',
-  templateUrl: './main-education.component.html',
-  styleUrl: './main-education.component.scss'
+    selector: 'app-main-education',
+    templateUrl: './main-education.component.html',
+    styleUrl: './main-education.component.scss',
+    standalone: false
 })
 export class MainEducationComponent {
 

@@ -10,18 +10,17 @@ import {TypeTests} from "../../services/tests.service";
 import {LocationComponent} from "../../../../../../components/location/location.component";
 
 @Component({
-  selector: 'app-card-tests-completed',
-  templateUrl: './card-tests-completed.component.html',
-  styleUrl: './card-tests-completed.component.scss',
-  imports: [
-    NgIf,
-    RouterLink,
-    EnteringClassComponent,
-    OnlineClassLinkComponent,
-    ClassLinkConnectionComponent,
-    LocationComponent
-  ],
-  standalone: true
+    selector: 'app-card-tests-completed',
+    templateUrl: './card-tests-completed.component.html',
+    styleUrl: './card-tests-completed.component.scss',
+    imports: [
+        NgIf,
+        RouterLink,
+        EnteringClassComponent,
+        OnlineClassLinkComponent,
+        ClassLinkConnectionComponent,
+        LocationComponent
+    ]
 })
 export class CardTestsCompletedComponent {
 

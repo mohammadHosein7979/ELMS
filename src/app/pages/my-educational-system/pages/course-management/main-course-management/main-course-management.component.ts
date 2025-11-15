@@ -5,9 +5,10 @@ import {SwiperComponent} from "swiper/angular";
 import {TypeCourseManagement} from "../services/course-management.service";
 
 @Component({
-  selector: 'app-main-course-management',
-  templateUrl: './main-course-management.component.html',
-  styleUrl: './main-course-management.component.scss'
+    selector: 'app-main-course-management',
+    templateUrl: './main-course-management.component.html',
+    styleUrl: './main-course-management.component.scss',
+    standalone: false
 })
 export class MainCourseManagementComponent  extends BaseService implements OnInit{
   type : any

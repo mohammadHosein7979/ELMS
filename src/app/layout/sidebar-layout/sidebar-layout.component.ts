@@ -7,9 +7,10 @@ import {TypeTests} from "../../pages/my-educational-system/pages/tests/services/
 import {TypeQuestionBank} from "../../pages/my-educational-system/pages/question-bank/services/question-bank.service";
 
 @Component({
-  selector: 'app-sidebar-layout',
-  templateUrl: './sidebar-layout.component.html',
-  styleUrl: './sidebar-layout.component.scss'
+    selector: 'app-sidebar-layout',
+    templateUrl: './sidebar-layout.component.html',
+    styleUrl: './sidebar-layout.component.scss',
+    standalone: false
 })
 export class SidebarLayoutComponent extends BaseService implements OnInit{
   menus: Array<any> = [];

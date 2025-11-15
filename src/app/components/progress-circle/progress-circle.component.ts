@@ -2,13 +2,12 @@ import {AfterViewInit, Component, Input, OnInit} from '@angular/core';
 import {NgStyle} from "@angular/common";
 
 @Component({
-  selector: 'app-progress-circle',
-  standalone: true,
-  imports: [
-    NgStyle
-  ],
-  templateUrl: './progress-circle.component.html',
-  styleUrl: './progress-circle.component.scss'
+    selector: 'app-progress-circle',
+    imports: [
+        NgStyle
+    ],
+    templateUrl: './progress-circle.component.html',
+    styleUrl: './progress-circle.component.scss'
 })
 export class ProgressCircleComponent implements OnInit,AfterViewInit{
   @Input('active') active : any = true

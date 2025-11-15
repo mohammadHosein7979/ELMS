@@ -5,9 +5,10 @@ import {SwiperComponent} from "swiper/angular";
 import {TypeQuestionBank} from "../services/question-bank.service";
 
 @Component({
-  selector: 'app-main-question-bank',
-  templateUrl: './main-question-bank.component.html',
-  styleUrl: './main-question-bank.component.scss'
+    selector: 'app-main-question-bank',
+    templateUrl: './main-question-bank.component.html',
+    styleUrl: './main-question-bank.component.scss',
+    standalone: false
 })
 export class MainQuestionBankComponent extends BaseService implements OnInit{
   type : any

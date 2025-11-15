@@ -16,13 +16,12 @@ import {BaseService} from "../../../../../../shared/services/base.service";
 import {MicroService} from "../../../../../../shared/enum/enum";
 
 @Component({
-  selector: 'app-card-question',
-  templateUrl: './card-question.component.html',
-  styleUrl: './card-question.component.scss',
-  imports: [
-    ProgressCircleComponent
-  ],
-  standalone: true
+    selector: 'app-card-question',
+    templateUrl: './card-question.component.html',
+    styleUrl: './card-question.component.scss',
+    imports: [
+        ProgressCircleComponent
+    ]
 })
 export class CardQuestionComponent extends BaseService{
 

@@ -16,24 +16,23 @@ import {NzStepComponent, NzStepsComponent} from "ng-zorro-antd/steps";
 import {ProgressCircleComponent} from "../../../../../../components/progress-circle/progress-circle.component";
 
 @Component({
-  selector: 'app-card-tests-uncorrected',
-  templateUrl: './card-tests-uncorrected.component.html',
-  styleUrl: './card-tests-uncorrected.component.scss',
-  imports: [
-    NgIf,
-    RouterLink,
-    EnteringClassComponent,
-    OnlineClassLinkComponent,
-    ClassLinkConnectionComponent,
-    LocationComponent,
-    PresenceAndAbsenceComponent,
-    NzTimelineComponent,
-    NzTimelineItemComponent,
-    NzStepsComponent,
-    NzStepComponent,
-    ProgressCircleComponent
-  ],
-  standalone: true
+    selector: 'app-card-tests-uncorrected',
+    templateUrl: './card-tests-uncorrected.component.html',
+    styleUrl: './card-tests-uncorrected.component.scss',
+    imports: [
+        NgIf,
+        RouterLink,
+        EnteringClassComponent,
+        OnlineClassLinkComponent,
+        ClassLinkConnectionComponent,
+        LocationComponent,
+        PresenceAndAbsenceComponent,
+        NzTimelineComponent,
+        NzTimelineItemComponent,
+        NzStepsComponent,
+        NzStepComponent,
+        ProgressCircleComponent
+    ]
 })
 export class CardTestsUncorrectedComponent {
 

@@ -4,13 +4,12 @@ import {NzButtonComponent} from "ng-zorro-antd/button";
 import {MicroService} from "../../shared/enum/enum";
 
 @Component({
-  selector: 'app-online-class-link',
-  standalone: true,
-  imports: [
-    NzButtonComponent
-  ],
-  templateUrl: './online-class-link.component.html',
-  styleUrl: './online-class-link.component.scss'
+    selector: 'app-online-class-link',
+    imports: [
+        NzButtonComponent
+    ],
+    templateUrl: './online-class-link.component.html',
+    styleUrl: './online-class-link.component.scss'
 })
 export class OnlineClassLinkComponent extends BaseService{
   @Input('event') event : any

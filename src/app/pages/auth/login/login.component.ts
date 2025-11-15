@@ -7,9 +7,10 @@ import {NzMessageService} from "ng-zorro-antd/message";
 import {HttpService} from "../../../shared/services/http.service";
 
 @Component({
-  selector: 'app-login',
-  styleUrl: './login.component.scss',
-  templateUrl: './login.component.html'
+    selector: 'app-login',
+    styleUrl: './login.component.scss',
+    templateUrl: './login.component.html',
+    standalone: false
 })
 export class LoginComponent implements OnInit {
   // تب‌ها

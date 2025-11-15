@@ -4,14 +4,13 @@ import {RouterLink} from "@angular/router";
 import {EnumEducationStatus, EnumEducationType} from "../../../../shared/enum/enum";
 
 @Component({
-  selector: 'app-card-education',
-  templateUrl: './card-education.component.html',
-  styleUrl: './card-education.component.scss',
-  imports: [
-    NgIf,
-    RouterLink
-  ],
-  standalone: true
+    selector: 'app-card-education',
+    templateUrl: './card-education.component.html',
+    styleUrl: './card-education.component.scss',
+    imports: [
+        NgIf,
+        RouterLink
+    ]
 })
 export class CardEducationComponent {
 

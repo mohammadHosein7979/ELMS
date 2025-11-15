@@ -4,9 +4,10 @@ import {SwiperHelperService} from "../../../shared/helperService/swiper-helper.s
 import {SwiperComponent} from "swiper/angular";
 
 @Component({
-  selector: 'app-home-page',
-  templateUrl: './home-page.component.html',
-  styleUrl: './home-page.component.scss'
+    selector: 'app-home-page',
+    templateUrl: './home-page.component.html',
+    styleUrl: './home-page.component.scss',
+    standalone: false
 })
 export class HomePageComponent   {
   dataPre:any = [

@@ -7,9 +7,10 @@ import {FormArray, FormControl, FormGroup, Validators} from "@angular/forms";
 import {QuestionBankService} from "../services/question-bank.service";
 
 @Component({
-  selector: 'app-create-question',
-  templateUrl: './create-question.component.html',
-  styleUrl: './create-question.component.scss'
+    selector: 'app-create-question',
+    templateUrl: './create-question.component.html',
+    styleUrl: './create-question.component.scss',
+    standalone: false
 })
 export class CreateQuestionComponent extends BaseService implements OnInit{
   constructor(injector: Injector, private courseManagementService: CourseManagementService, private questionBankService: QuestionBankService) {

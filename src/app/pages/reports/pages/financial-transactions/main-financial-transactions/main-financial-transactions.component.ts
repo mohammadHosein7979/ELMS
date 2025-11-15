@@ -4,9 +4,10 @@ import {LayoutService} from "../../../../../layout/services/layout.service";
 import {SwiperComponent} from "swiper/angular";
 
 @Component({
-  selector: 'app-main-financial-transactions',
-  templateUrl: './main-financial-transactions.component.html',
-  styleUrl: './main-financial-transactions.component.scss'
+    selector: 'app-main-financial-transactions',
+    templateUrl: './main-financial-transactions.component.html',
+    styleUrl: './main-financial-transactions.component.scss',
+    standalone: false
 })
 export class MainFinancialTransactionsComponent extends BaseService implements OnInit{
   type : any

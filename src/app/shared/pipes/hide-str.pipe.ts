@@ -1,7 +1,8 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'hideStr'
+    name: 'hideStr',
+    standalone: false
 })
 export class HideStrPipe implements PipeTransform {
 

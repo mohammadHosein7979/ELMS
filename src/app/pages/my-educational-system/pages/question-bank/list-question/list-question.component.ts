@@ -5,9 +5,10 @@ import {QuestionBankService, TypeQuestionBank} from "../services/question-bank.s
 import {LayoutService} from "../../../../../layout/services/layout.service";
 
 @Component({
-  selector: 'app-list-question',
-  templateUrl: './list-question.component.html',
-  styleUrl: './list-question.component.scss'
+    selector: 'app-list-question',
+    templateUrl: './list-question.component.html',
+    styleUrl: './list-question.component.scss',
+    standalone: false
 })
 export class ListQuestionComponent extends BaseService implements OnInit{
   type : any

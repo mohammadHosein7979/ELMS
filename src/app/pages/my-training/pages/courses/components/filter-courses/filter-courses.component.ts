@@ -6,9 +6,10 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-filter-courses',
-  templateUrl: './filter-courses.component.html',
-  styleUrls: ['./filter-courses.component.scss']
+    selector: 'app-filter-courses',
+    templateUrl: './filter-courses.component.html',
+    styleUrls: ['./filter-courses.component.scss'],
+    standalone: false
 })
 export class FilterCoursesComponent extends BaseService implements OnInit, OnDestroy {
   swiperConfig: SwiperOptions = {

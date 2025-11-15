@@ -1,9 +1,10 @@
 import {Component, Input} from '@angular/core';
 
 @Component({
-  selector: 'app-item-courses',
-  templateUrl: './item-courses.component.html',
-  styleUrl: './item-courses.component.scss'
+    selector: 'app-item-courses',
+    templateUrl: './item-courses.component.html',
+    styleUrl: './item-courses.component.scss',
+    standalone: false
 })
 export class ItemCoursesComponent {
   @Input('data') data : any

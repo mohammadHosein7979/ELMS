@@ -4,9 +4,10 @@ import {CourseManagementService} from "../../services/course-management.service"
 import {BaseService} from "../../../../../../shared/services/base.service";
 
 @Component({
-  selector: 'app-create-headline-course',
-  templateUrl: './create-headline-course.component.html',
-  styleUrl: './create-headline-course.component.scss'
+    selector: 'app-create-headline-course',
+    templateUrl: './create-headline-course.component.html',
+    styleUrl: './create-headline-course.component.scss',
+    standalone: false
 })
 export class CreateHeadlineCourseComponent extends BaseService implements OnInit {
   constructor(injector: Injector, private courseManagementService: CourseManagementService) {

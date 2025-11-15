@@ -4,13 +4,12 @@ import {NzButtonComponent} from "ng-zorro-antd/button";
 import {MicroService} from "../../shared/enum/enum";
 
 @Component({
-  selector: 'app-like',
-  standalone: true,
-  imports: [
-    NzButtonComponent
-  ],
-  templateUrl: './like.component.html',
-  styleUrl: './like.component.scss'
+    selector: 'app-like',
+    imports: [
+        NzButtonComponent
+    ],
+    templateUrl: './like.component.html',
+    styleUrl: './like.component.scss'
 })
 export class LikeComponent extends BaseService{
   @Input('likeCount') likeCount :any

@@ -4,13 +4,12 @@ import {NzButtonComponent} from "ng-zorro-antd/button";
 import { Location } from '@angular/common';
 
 @Component({
-  selector: 'app-button-back',
-  standalone: true,
-  imports: [
-    NzButtonComponent
-  ],
-  templateUrl: './button-back.component.html',
-  styleUrl: './button-back.component.scss'
+    selector: 'app-button-back',
+    imports: [
+        NzButtonComponent
+    ],
+    templateUrl: './button-back.component.html',
+    styleUrl: './button-back.component.scss'
 })
 export class ButtonBackComponent extends BaseService{
   @Input('url') url :any

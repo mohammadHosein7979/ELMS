@@ -1,6 +1,7 @@
 import {Pipe, PipeTransform} from '@angular/core';
 @Pipe({
-  name: 'convertDate'
+    name: 'convertDate',
+    standalone: false
 })
 export class ConvertPricePipe implements PipeTransform {
   transform(value: any,type:string): any {

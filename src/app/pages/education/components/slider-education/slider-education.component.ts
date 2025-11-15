@@ -6,14 +6,13 @@ import {CommonModule} from "@angular/common";
 SwiperCore.use([Navigation, Thumbs]);
 
 @Component({
-  selector: 'app-slider-education',
-  templateUrl: './slider-education.component.html',
-  styleUrl: './slider-education.component.scss',
-  imports: [
-    SwiperModule,
-    CommonModule
-  ],
-  standalone: true
+    selector: 'app-slider-education',
+    templateUrl: './slider-education.component.html',
+    styleUrl: './slider-education.component.scss',
+    imports: [
+        SwiperModule,
+        CommonModule
+    ]
 })
 export class SliderEducationComponent implements OnInit{
   thumbsSwiper: any;

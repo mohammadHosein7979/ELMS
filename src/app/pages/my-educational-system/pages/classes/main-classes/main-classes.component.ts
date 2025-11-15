@@ -8,9 +8,10 @@ import {data} from "autoprefixer";
 import {finalize} from "rxjs";
 
 @Component({
-  selector: 'app-main-classes',
-  templateUrl: './main-classes.component.html',
-  styleUrl: './main-classes.component.scss'
+    selector: 'app-main-classes',
+    templateUrl: './main-classes.component.html',
+    styleUrl: './main-classes.component.scss',
+    standalone: false
 })
 export class MainClassesComponent extends BaseService implements OnInit{
   type : any

@@ -7,9 +7,10 @@ import {CourseManagementService} from "../services/course-management.service";
 import {finalize} from "rxjs";
 
 @Component({
-  selector: 'app-create-course',
-  templateUrl: './create-course.component.html',
-  styleUrl: './create-course.component.scss'
+    selector: 'app-create-course',
+    templateUrl: './create-course.component.html',
+    styleUrl: './create-course.component.scss',
+    standalone: false
 })
 export class CreateCourseComponent extends BaseService implements OnInit {
   constructor(injector: Injector, private courseManagementService: CourseManagementService) {

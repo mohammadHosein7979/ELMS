@@ -13,19 +13,18 @@ import {
 } from "../../../../../../components/presence-and-absence/presence-and-absence.component";
 
 @Component({
-  selector: 'app-card-classes',
-  templateUrl: './card-classes.component.html',
-  styleUrl: './card-classes.component.scss',
-  imports: [
-    NgIf,
-    RouterLink,
-    EnteringClassComponent,
-    OnlineClassLinkComponent,
-    ClassLinkConnectionComponent,
-    LocationComponent,
-    PresenceAndAbsenceComponent
-  ],
-  standalone: true
+    selector: 'app-card-classes',
+    templateUrl: './card-classes.component.html',
+    styleUrl: './card-classes.component.scss',
+    imports: [
+        NgIf,
+        RouterLink,
+        EnteringClassComponent,
+        OnlineClassLinkComponent,
+        ClassLinkConnectionComponent,
+        LocationComponent,
+        PresenceAndAbsenceComponent
+    ]
 })
 export class CardClassesComponent {
 

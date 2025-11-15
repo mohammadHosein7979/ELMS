@@ -4,9 +4,10 @@ import { CoursesService } from "../../services/courses.service";
 import { TypeClasses } from "../../../../../my-educational-system/pages/classes/services/classes.service";
 
 @Component({
-  selector: 'app-detail-courses',
-  templateUrl: './detail-courses.component.html',
-  styleUrls: ['./detail-courses.component.scss']
+    selector: 'app-detail-courses',
+    templateUrl: './detail-courses.component.html',
+    styleUrls: ['./detail-courses.component.scss'],
+    standalone: false
 })
 export class DetailCoursesComponent extends BaseService implements OnChanges {
   @Input() itemSelect: any;

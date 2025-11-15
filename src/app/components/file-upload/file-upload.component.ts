@@ -8,18 +8,17 @@ import {FileUploadService} from "../../shared/services/file-upload.service";
 import {finalize} from "rxjs";
 
 @Component({
-  selector: 'app-file-upload',
-  standalone: true,
-  imports: [
-    NzButtonComponent,
-    NzInputDirective,
-    ReactiveFormsModule,
-  ],
-  templateUrl: './file-upload.component.html',
-  viewProviders: [
-    { provide: ControlContainer, useExisting: FormGroupDirective }
-  ],
-  styleUrl: './file-upload.component.scss'
+    selector: 'app-file-upload',
+    imports: [
+        NzButtonComponent,
+        NzInputDirective,
+        ReactiveFormsModule,
+    ],
+    templateUrl: './file-upload.component.html',
+    viewProviders: [
+        { provide: ControlContainer, useExisting: FormGroupDirective }
+    ],
+    styleUrl: './file-upload.component.scss'
 })
 export class FileUploadComponent extends BaseService{
   @Input('controlName') controlName :any

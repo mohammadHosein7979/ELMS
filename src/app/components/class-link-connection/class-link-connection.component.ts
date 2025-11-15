@@ -3,11 +3,10 @@ import {BaseService} from "../../shared/services/base.service";
 import {MicroService} from "../../shared/enum/enum";
 
 @Component({
-  selector: 'app-class-link-connection',
-  standalone: true,
-  imports: [],
-  templateUrl: './class-link-connection.component.html',
-  styleUrl: './class-link-connection.component.scss'
+    selector: 'app-class-link-connection',
+    imports: [],
+    templateUrl: './class-link-connection.component.html',
+    styleUrl: './class-link-connection.component.scss'
 })
 export class ClassLinkConnectionComponent extends BaseService{
   @Input('active') active : any = true

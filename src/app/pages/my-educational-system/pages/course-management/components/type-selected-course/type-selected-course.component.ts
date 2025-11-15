@@ -12,14 +12,12 @@ import {
 } from "../../../../../../components/presence-and-absence/presence-and-absence.component";
 
 @Component({
-  selector: 'app-type-selected-course',
-  templateUrl: './type-selected-course.component.html',
-  styleUrl: './type-selected-course.component.scss',
-  imports: [
-    NgIf,
-
-  ],
-  standalone: true
+    selector: 'app-type-selected-course',
+    templateUrl: './type-selected-course.component.html',
+    styleUrl: './type-selected-course.component.scss',
+    imports: [
+        NgIf,
+    ]
 })
 export class TypeSelectedCourseComponent {
 
