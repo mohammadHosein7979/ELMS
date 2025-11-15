@@ -4,7 +4,6 @@ import {landingRoutingModule} from "./landing-routing.module";
 import {CommonModule} from "@angular/common";
 import {SwiperModule} from "swiper/angular";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {SharedModule} from "primeng/api";
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import {SliderEducationComponent} from "../pages/education/components/slider-education/slider-education.component";
 import {
@@ -26,7 +25,6 @@ import {NzTabComponent, NzTabSetComponent} from "ng-zorro-antd/tabs";
     SwiperModule,
     ReactiveFormsModule,
     FormsModule,
-    SharedModule,
     SliderEducationComponent,
     CardPreProductionEducationComponent,
     CardEducationComponent,
