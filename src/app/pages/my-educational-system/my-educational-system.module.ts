@@ -37,6 +37,8 @@ import {ListCourseComponent} from "./pages/course-management/list-course/list-co
 import {
   CreateHeadlineCourseComponent
 } from "./pages/course-management/pages/create-headline-course/create-headline-course.component";
+import {ButtonBackComponent} from "../../components/button-back/button-back.component";
+import {FileUploadComponent} from "../../components/file-upload/file-upload.component";
 
 @NgModule({
   declarations: [
@@ -69,6 +71,8 @@ import {
     CKEditorModule,
     TypeSelectedCourseComponent,
     NzAutocompleteOptionComponent,
+    ButtonBackComponent,
+    FileUploadComponent,
   ],
 })
 export class MyEducationalSystemModule {

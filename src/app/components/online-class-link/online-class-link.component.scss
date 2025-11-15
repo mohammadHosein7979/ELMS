@@ -5,3 +5,24 @@
   width: calc(100% - 40px);
   border : 0
 }
+.parent {
+  display: flex;
+  gap: 8px; /* فاصله بین آیتم‌ها */
+  align-items: center; /* تراز عمودی */
+}
+
+.parent button {
+  flex: 0 0 auto; /* اندازه فقط به اندازه محتوا */
+  white-space: nowrap; /* جلوگیری از شکستن متن */
+}
+
+.parent .middle {
+  min-width: 0; /* مهم برای جلوگیری از overflow */
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.class-link-connection-1{
+  background: #77D99E;
+  border:1px solid #77D99E;
+}

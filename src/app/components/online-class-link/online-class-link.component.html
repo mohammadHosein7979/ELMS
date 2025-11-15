@@ -1,8 +1,20 @@
-<div class="online-class-link-1 border-radius-10 p-2 d-flex align-items-center gap-2 h-100  {{link ? '' : 'opacity-25'}}">
-  <div class="d-flex gap-1 ">
-    <img src="assets/image/my-educational-system/iconGoogleMeet.svg">
-    <img src="assets/image/my-educational-system/Adobe_Connect_icon.svg">
+<div class="parent">
+  <button nz-button [disabled]="!linkInput.value" (click)="openLink(linkInput)"
+          class="middle font-family-regular font-14 text-white
+           bg-color-12 border-color-12 px-3 py-2 border-radius-10 ">
+    ورود به کلاس
+  </button>
+
+  <div class="online-class-link-1 w-100 border-radius-10 p-2 d-flex align-items-center gap-2 h-100">
+    <div class="d-flex gap-1 ">
+      <img src="assets/image/my-educational-system/iconGoogleMeet.svg">
+      <img src="assets/image/my-educational-system/Adobe_Connect_icon.svg">
+    </div>
+    <input #linkInput [value]="event?.link" type="text" class="online-class-link-2 text-end font-family-regular">
+
   </div>
-  <p type="text" class="online-class-link-2 text-end font-family-regular">{{link ? link : 'لینک کلاس آنلاین'}}</p>
+  <button nz-button [disabled]="!linkInput.value" (click)="changeLinkEvent(linkInput)" class="font-family-regular font-14 color-1 class-link-connection-1 px-3 py-2 border-radius-10 ">
+    اتصال لینک کلاس
+  </button>
 
 </div>

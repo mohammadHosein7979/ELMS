@@ -13,8 +13,8 @@ export class MainCourseManagementComponent  extends BaseService implements OnIni
   type : any
 
   dataType : any =[
-    {id:1,type : TypeCourseManagement.listCourse,title : 'لیست دوره',image : 'i-exam-multiple-choice-svgrepo-com.svg'},
-    {id:2,type : TypeCourseManagement.createCourse,title : 'ایجاد دوره',image : 'exam-svgrepo-com.svg'},
+    {id:1,type : TypeCourseManagement.listCourse,routerLink : '/panel/my-educational-system/course-management',title : 'لیست دوره',image : 'i-exam-multiple-choice-svgrepo-com.svg'},
+    {id:2,type : TypeCourseManagement.createCourse,routerLink : '/panel/my-educational-system/course-management/create',title : 'ایجاد دوره',image : 'exam-svgrepo-com.svg'},
   ]
 
   constructor(injector:Injector,protected layoutService:LayoutService) {

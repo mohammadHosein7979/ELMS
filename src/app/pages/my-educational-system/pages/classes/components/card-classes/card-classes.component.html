@@ -83,16 +83,16 @@
     </div>
   </div>
   <div *ngIf="data?.event?.eventTypeId == TypeClasses.online" class="d-flex gap-2 mt-3 flex-column flex-lg-row">
-    <div class="text-nowrap">
-      <app-entering-class [link]="data?.event?.link"/>
-    </div>
+<!--    <div class="text-nowrap">-->
+<!--      <app-entering-class [link]="data?.event?.link"/>-->
+<!--    </div>-->
     <div class="w-100">
-      <app-online-class-link [link]="data?.event?.link"/>
+      <app-online-class-link [event]="data?.event"/>
     </div>
-    <div class="text-nowrap">
-      <app-class-link-connection  [link]="data?.event?.link" [eventId]="data?.event?.id" [active]="false"/>
+<!--    <div class="text-nowrap">-->
+<!--      <app-class-link-connection  [link]="data?.event?.link" [eventId]="data?.event?.id" [active]="false"/>-->
 
-    </div>
+<!--    </div>-->
   </div>
   <div class="mt-3" *ngIf="data?.event?.eventTypeId == TypeClasses.faceToFace">
     <div class="border-radius-10 p-2 d-flex justify-content-between card-classes-7 align-items-center mb-2">

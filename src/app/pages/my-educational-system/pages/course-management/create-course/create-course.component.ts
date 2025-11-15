@@ -4,6 +4,7 @@ import Editor from "@ckeditor/ckeditor5-build-classic";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {BaseService} from "../../../../../shared/services/base.service";
 import {CourseManagementService} from "../services/course-management.service";
+import {finalize} from "rxjs";
 
 @Component({
   selector: 'app-create-course',
@@ -16,7 +17,10 @@ export class CreateCourseComponent extends BaseService implements OnInit {
   }
 
   formSend !: FormGroup
-  dataCourse: any
+  dataCourse: any = {
+    data: [],
+    loading: false
+  }
   dataEventType: any
   step: any = 1
   listAnswer: any = [
@@ -40,8 +44,11 @@ export class CreateCourseComponent extends BaseService implements OnInit {
   }
 
   getCourse() {
+    this.dataCourse.loading = true
     this.courseManagementService.getCourse().subscribe((data: any) => {
-      this.dataCourse = data.data;
+      this.dataCourse.data = data.data;
+      this.dataCourse.loading = false
+
     })
   }
 
@@ -54,6 +61,7 @@ export class CreateCourseComponent extends BaseService implements OnInit {
   createForm() {
     this.formSend = this.fb.group({
       eventTypeId: [1],
+      fileId: [null],
       courseId: [null, Validators.required],
       title: [null, Validators.required],
       price: [null, Validators.required],
@@ -65,8 +73,6 @@ export class CreateCourseComponent extends BaseService implements OnInit {
       capacity: [1],
       description: [null],
       adminDescription: [null],
-
-
 
 
       "location": [''],
@@ -83,8 +89,8 @@ export class CreateCourseComponent extends BaseService implements OnInit {
   changeType(value: any) {
     this.form.patchValue({
       eventTypeId: value,
-      link : null,
-      location : null,
+      link: null,
+      location: null,
     })
 
   }
@@ -107,10 +113,14 @@ export class CreateCourseComponent extends BaseService implements OnInit {
 
   }
 
-  submit(){
-    console.log(this.form.value)
-    this.courseManagementService.insertEvent({dto:this.form.value}).subscribe((data: any) => {
+  submit() {
+    this.loadingButton = true
+    this.courseManagementService.insertEvent({dto: this.form.value}).pipe(
+      finalize(() => this.loadingButton = false)
+    ).subscribe((data: any) => {
 
+      this.notification.success('با موفقیت ذخیره شد.')
+      this.router.navigateByUrl('/panel/my-educational-system/course-management')
     })
   }
 

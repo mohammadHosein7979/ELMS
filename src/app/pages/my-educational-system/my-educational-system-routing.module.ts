@@ -9,6 +9,7 @@ import {
 import {
   CreateHeadlineCourseComponent
 } from "./pages/course-management/pages/create-headline-course/create-headline-course.component";
+import {CreateCourseComponent} from "./pages/course-management/create-course/create-course.component";
 
 
 const routes: Routes = [
@@ -16,6 +17,7 @@ const routes: Routes = [
       {path: 'tests', component: MainTestsComponent},
       {path: 'question-bank', component: MainQuestionBankComponent},
       {path: 'course-management', component: MainCourseManagementComponent},
+      {path: 'course-management/create', component: CreateCourseComponent},
       {path: 'course-management/create-headline-course/:id', component: CreateHeadlineCourseComponent},
 
 ]

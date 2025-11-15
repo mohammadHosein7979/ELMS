@@ -1,0 +1,7 @@
+
+<div>
+  <input  formControlName="{{controlName}}" type="file" (change)="onFileSelected($event)" nz-input />
+  <button nz-button [disabled]="loading">
+    {{ loading ? 'در حال آپلود...' : 'آپلود فایل' }}
+  </button>
+</div>

@@ -45,16 +45,9 @@
 
     </div>
   </div>
+  @for (item of data;track item?.id){
     <div class="mb-12">
-      <app-card-question [id]="1"/>
+      <app-card-question [data]="item" [id]="1"/>
     </div>
-    <div class="mb-12">
-      <app-card-question [id]="2"/>
-    </div>    <div class="mb-12">
-      <app-card-question [id]="3"/>
-    </div>    <div class="mb-12">
-      <app-card-question [id]="4"/>
-    </div>    <div class="mb-12">
-      <app-card-question [id]="5"/>
-    </div>
+  }
 </div>

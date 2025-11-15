@@ -145,7 +145,7 @@ export class HttpService {
     // }
     return this.httpClient.put(url, params, {
       headers: headers
-    });
+    }).pipe(catchError(this.formatErrors));
   }
 
   scrollTop() {

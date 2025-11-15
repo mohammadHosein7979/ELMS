@@ -19,7 +19,7 @@ export class ListQuestionComponent extends BaseService implements OnInit{
 
   ngOnInit() {
     this.post(`/${microService.course}/Question/Report`,null).subscribe((data:any)=>{
-
+      this.data = data?.data
     })
   }
 

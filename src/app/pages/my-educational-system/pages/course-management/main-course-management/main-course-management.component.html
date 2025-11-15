@@ -10,7 +10,7 @@
     >
       @for (item of dataType;track item){
         <ng-template swiperSlide>
-          <div (click)="changeType(item)" class="cursorPointer border-radius-10 p-2 {{item.type == type ? 'main-course-management-1' : ''}} color-10 font-14 font-family-regular">
+          <div routerLink="{{item?.routerLink}}" class="cursorPointer border-radius-10 p-2 {{item.type == type ? 'main-course-management-1' : ''}} color-10 font-14 font-family-regular">
             <img src="assets/image/my-educational-system/{{item?.image}}" class="me-2">
             {{item?.title}}
           </div>
@@ -21,13 +21,13 @@
 
   </div>
   <div>
-    @if(type == TypeCourseManagement.createCourse){
-      <div class="mb-12">
-        <app-create-course/>
-      </div>
+<!--    @if(type == TypeCourseManagement.createCourse){-->
+<!--      <div class="mb-12">-->
+<!--        <app-create-course/>-->
+<!--      </div>-->
 
-    } @else if (type == TypeCourseManagement.listCourse){
+<!--    } @else if (type == TypeCourseManagement.listCourse){-->
       <app-list-course/>
-    }
+<!--    }-->
   </div>
 </div>

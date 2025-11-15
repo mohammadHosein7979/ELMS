@@ -22,9 +22,10 @@ export class AuthInterceptor implements HttpInterceptor {
     // گرفتن personId از userService
     const personid = this.userService.personId;
     console.log(personid,this.userService.personId)
-    const skip = ['/Login', '/Register', '/CreateSession'].some(path =>
+    const skip = ['/Login', '/Register', '/CreateSession','/UploadFileBinery'].some(path =>
       req.url.includes(path)
     );
+    console.log(req.url)
 
 
     // فقط برای درخواست‌هایی که نیاز به personId دارند
