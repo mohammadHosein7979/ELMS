@@ -1,10 +1,8 @@
 import {Component, Injector, OnInit, ViewChild} from '@angular/core';
 import {BaseService} from "../../../../../shared/services/base.service";
 import {SwiperComponent} from "swiper/angular";
-import {Params} from "@angular/router";
 import {LayoutService} from "../../../../../layout/services/layout.service";
 import {ClassesService, TypeClasses} from "../services/classes.service";
-import {data} from "autoprefixer";
 import {finalize} from "rxjs";
 
 @Component({

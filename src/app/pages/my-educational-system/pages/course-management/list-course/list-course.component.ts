@@ -1,7 +1,6 @@
 import {Component, Injector, OnInit, ViewChild} from '@angular/core';
 import {SwiperComponent} from "swiper/angular";
 import {BaseService} from "../../../../../shared/services/base.service";
-import {LayoutService} from "../../../../../layout/services/layout.service";
 import {CourseManagementService} from "../services/course-management.service";
 
 @Component({

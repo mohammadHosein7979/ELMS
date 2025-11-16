@@ -3,7 +3,6 @@ import { SwiperOptions } from "swiper";
 import { BaseService } from "../../../../../../shared/services/base.service";
 import { CoursesService } from "../../services/courses.service";
 import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
 
 @Component({
     selector: 'app-filter-courses',

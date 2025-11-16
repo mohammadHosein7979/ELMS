@@ -1,11 +1,9 @@
 import {Component, Injector, OnInit} from '@angular/core';
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
-import Editor from "@ckeditor/ckeditor5-build-classic";
 import {CourseManagementService} from "../../course-management/services/course-management.service";
 import {BaseService} from "../../../../../shared/services/base.service";
 import {FormArray, FormControl, FormGroup, Validators} from "@angular/forms";
 import {QuestionBankService} from "../services/question-bank.service";
-import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-create-question',

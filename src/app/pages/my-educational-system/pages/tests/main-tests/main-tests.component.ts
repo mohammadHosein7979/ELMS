@@ -1,6 +1,5 @@
 import {Component, Injector, OnInit, ViewChild} from '@angular/core';
 import {BaseService} from "../../../../../shared/services/base.service";
-import {TypeClasses} from "../../classes/services/classes.service";
 import {LayoutService} from "../../../../../layout/services/layout.service";
 import {SwiperComponent} from "swiper/angular";
 import {TypeTests} from "../services/tests.service";

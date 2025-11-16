@@ -1,7 +1,6 @@
 import {Component, Injector, OnInit} from '@angular/core';
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
-import Editor from "@ckeditor/ckeditor5-build-classic";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import { FormGroup, Validators} from "@angular/forms";
 import {BaseService} from "../../../../../shared/services/base.service";
 import {CourseManagementService} from "../services/course-management.service";
 import {finalize} from "rxjs";

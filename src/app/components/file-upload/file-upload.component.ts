@@ -1,9 +1,8 @@
-import {Component, inject, Inject, Injector, Input} from '@angular/core';
+import {Component, inject, Injector, Input} from '@angular/core';
 import {BaseService} from "../../shared/services/base.service";
 import {NzButtonComponent} from "ng-zorro-antd/button";
-import { Location } from '@angular/common';
 import {NzInputDirective} from "ng-zorro-antd/input";
-import {ControlContainer, FormGroup, FormGroupDirective, FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {ControlContainer, FormGroupDirective, ReactiveFormsModule} from "@angular/forms";
 import {FileUploadService} from "../../shared/services/file-upload.service";
 import {finalize} from "rxjs";
 

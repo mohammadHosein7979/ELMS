@@ -79,7 +79,7 @@
 <!--            @for (item of dataEventType;track item?.id){-->
 <!--              <div (click)="changeType(item?.id)" class="text-center cursorPointer">-->
 <!--                <img src="assets/image/my-educational-system/Group345.svg"-->
-<!--                     class="{{form?.value?.eventTypeId != item?.id ? 'opacity-50' : ''}}">-->
+<!--                     class="{{form.value?.eventTypeId != item?.id ? 'opacity-50' : ''}}">-->
 <!--                <h3 class="color-1 font-12 font-family-bold">-->
 <!--                  {{item?.name}}-->
 <!--                </h3>-->
@@ -89,14 +89,14 @@
 <!--            }-->
             <div (click)="changeType(1)" class="text-center cursorPointer">
               <img src="assets/image/my-educational-system/Group343.svg"
-                   class="{{form?.value?.eventTypeId != 1 ? 'opacity-50' : ''}}">
+                   class="{{form.value?.eventTypeId != 1 ? 'opacity-50' : ''}}">
               <h3 class="color-1 font-12 font-family-bold">
                 دوره آنلاین
               </h3>
             </div>
             <div (click)="changeType(2)" class="text-center cursorPointer">
               <img src="assets/image/my-educational-system/Group345.svg"
-                   class="{{form?.value?.eventTypeId != 2 ? 'opacity-50' : ''}}">
+                   class="{{form.value?.eventTypeId != 2 ? 'opacity-50' : ''}}">
               <h3 class="color-1 font-12 font-family-bold">
                 دوره آفلاین
               </h3>
@@ -106,7 +106,7 @@
 
             <div (click)="changeType(3)" class="text-center cursorPointer">
               <img src="assets/image/my-educational-system/Group344.svg"
-                   class="{{form?.value?.eventTypeId != 3 ? 'opacity-50' : ''}}">
+                   class="{{form.value?.eventTypeId != 3 ? 'opacity-50' : ''}}">
               <h3 class="color-1 font-12 font-family-bold">
                 دوره حضوری
               </h3>
@@ -117,12 +117,12 @@
           <br/>
           <div class="row justify-content-center">
             <div class="col-12 col-lg-9">
-              @if (form?.value?.eventTypeId == 1){
+              @if (form.value?.eventTypeId == 1){
                 <label class="label-form">
                   لینک
                 </label>
                 <input formControlName="link" class="input-style" nz-input placeholder="" type="text">
-              } @else if (form?.value?.eventTypeId == 3) {
+              } @else if (form.value?.eventTypeId == 3) {
                 <label class="label-form">
                   آدرس
                 </label>
@@ -219,7 +219,7 @@
 
             </div>
             <div class="col-12 col-lg-3">
-             <app-type-selected-course [type]="form?.value?.eventTypeId"/>
+             <app-type-selected-course [type]="form.value?.eventTypeId"/>
             </div>
           </div>
           <div>
@@ -246,7 +246,7 @@
               <ckeditor formControlName="description" [config]="config" [editor]="Editor"></ckeditor>
             </div>
             <div class="col-12 col-lg-3">
-              <app-type-selected-course [type]="form?.value?.eventTypeId"/>
+              <app-type-selected-course [type]="form.value?.eventTypeId"/>
             </div>
           </div>
           <div>
@@ -274,7 +274,7 @@
               <ckeditor formControlName="adminDescription" [config]="config" [editor]="Editor"></ckeditor>
             </div>
             <div class="col-12 col-lg-3">
-              <app-type-selected-course [type]="form?.value?.eventTypeId"/>
+              <app-type-selected-course [type]="form.value?.eventTypeId"/>
             </div>
           </div>
           <div>
@@ -346,7 +346,7 @@
               </div>
             </div>
             <div class="col-12 col-lg-3">
-              <app-type-selected-course [type]="form?.value?.eventTypeId"/>
+              <app-type-selected-course [type]="form.value?.eventTypeId"/>
             </div>
           </div>
           <div>

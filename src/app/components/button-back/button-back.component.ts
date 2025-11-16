@@ -1,4 +1,4 @@
-import {Component, inject, Inject, Input} from '@angular/core';
+import {Component, inject, input} from '@angular/core';
 import {BaseService} from "../../shared/services/base.service";
 import {NzButtonComponent} from "ng-zorro-antd/button";
 import { Location } from '@angular/common';
@@ -12,14 +12,11 @@ import { Location } from '@angular/common';
     styleUrl: './button-back.component.scss'
 })
 export class ButtonBackComponent extends BaseService{
-  @Input('url') url :any
+  url = input('')
   private location = inject(Location);
-
-
-
   back(){
-      if (this.url){
-        this.router.navigateByUrl(this.url)
+      if (this.url()){
+        this.router.navigateByUrl(this.url())
       }else {
         this.location.back();
       }

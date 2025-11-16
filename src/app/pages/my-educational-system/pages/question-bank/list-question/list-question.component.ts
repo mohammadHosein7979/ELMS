@@ -2,7 +2,6 @@ import {Component, Injector, OnInit, ViewChild} from '@angular/core';
 import {SwiperComponent} from "swiper/angular";
 import {BaseService} from "../../../../../shared/services/base.service";
 import {QuestionBankService, TypeQuestionBank} from "../services/question-bank.service";
-import {LayoutService} from "../../../../../layout/services/layout.service";
 
 @Component({
     selector: 'app-list-question',

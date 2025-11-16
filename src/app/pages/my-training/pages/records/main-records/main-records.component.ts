@@ -1,6 +1,5 @@
 import {Component, Injector, OnInit} from '@angular/core';
 import {BaseService} from "../../../../../shared/services/base.service";
-import {CoursesService} from "../../courses/services/courses.service";
 import {RecordsService} from "../services/records.service";
 
 @Component({

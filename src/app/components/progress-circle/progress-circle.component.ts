@@ -1,11 +1,8 @@
 import {AfterViewInit, Component, Input, OnInit} from '@angular/core';
-import {NgStyle} from "@angular/common";
 
 @Component({
     selector: 'app-progress-circle',
-    imports: [
-        NgStyle
-    ],
+    imports: [],
     templateUrl: './progress-circle.component.html',
     styleUrl: './progress-circle.component.scss'
 })

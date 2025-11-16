@@ -19,9 +19,7 @@ export class ClassLinkConnectionComponent extends BaseService{
       eventId : this.eventId,
       link : this.link
     }
-    this.post(`${MicroService.course}/Event/ChangeLinkEvent`, body).subscribe((data:any)=>{
-
-    })
+    this.post(`${MicroService.course}/Event/ChangeLinkEvent`, body).subscribe(()=>{})
   }
 
 }

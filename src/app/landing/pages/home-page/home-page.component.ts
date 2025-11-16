@@ -1,4 +1,4 @@
-import {Component, OnChanges, SimpleChanges, ViewChild} from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
 import {SwiperOptions} from "swiper";
 import {SwiperHelperService} from "../../../shared/helperService/swiper-helper.service";
 import {SwiperComponent} from "swiper/angular";
