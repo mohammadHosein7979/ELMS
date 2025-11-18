@@ -28,7 +28,12 @@ export class CourseManagementService extends BaseService {
   insertEvent(body :any) {
     return this.post(`/${MicroService.course}/Event/Insert`, body)
   }
-
+  updateEvent(body :any) {
+    return this.put(`/${MicroService.course}/Event/Update`, body)
+  }
+  getEvent(body :any) {
+    return this.post(`/${MicroService.course}/Event/Report`, body)
+  }
 
 
   getEventHeadline(filter:any) {

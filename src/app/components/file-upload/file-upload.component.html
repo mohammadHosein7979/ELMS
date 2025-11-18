@@ -1,7 +1,132 @@
+<div class="w-100">
+  <!-- حالت عادی - وقتی آواتار وجود ندارد -->
+  <div *ngIf="!avatar" class="upload-container">
+    <!-- نوع image -->
+    <div *ngIf="type == 'image'" class="upload-section">
+      <input
+        type="file"
+        (change)="onFileSelected($event,3)"
+        [disabled]="loadingUpload"
+        accept="image/*"
+        style="display: none"
+        #fileInputImage
+      >
 
-<div>
-  <input   type="file" (change)="onFileSelected($event)" nz-input />
-  <button nz-button [disabled]="loadingUpload">
-    {{ loadingUpload ? 'در حال آپلود...' : 'آپلود فایل' }}
-  </button>
+      <button
+        nz-button
+        nzType="primary"
+        (click)="fileInputImage.click()"
+        [disabled]="loadingUpload"
+      >
+        {{ loadingUpload ? 'در حال آپلود...' : 'انتخاب تصویر' }}
+      </button>
+    </div>
+
+    <!-- نوع media -->
+    <div *ngIf="type == 'media'" class="upload-section">
+      <input
+        type="file"
+        (change)="onFileSelected($event,10004)"
+        [disabled]="loadingUpload"
+        accept="*/*"
+        style="display: none"
+        #fileInputMedia
+      >
+
+      <button
+        nz-button
+        nzType="primary"
+        (click)="fileInputMedia.click()"
+        [nzLoading]="loadingUpload"
+        [disabled]="loadingUpload"
+      >
+        {{ loadingUpload ? 'در حال آپلود...' : 'انتخاب فایل' }}
+      </button>
+    </div>
+
+    <!-- نوار پیشرفت -->
+    <div *ngIf="showProgress" class="progress-container">
+      <nz-progress
+        [nzPercent]="uploadProgress"
+        [nzShowInfo]="true"
+        nzStatus="active"
+      ></nz-progress>
+      <div class="progress-text">
+        {{ uploadProgress.toFixed(1) }}% کامل شده
+      </div>
+    </div>
+  </div>
+
+  <!-- حالت نمایش آواتار - وقتی آواتار وجود دارد -->
+  <div *ngIf="avatar" class="avatar-container">
+    <div class="avatar-wrapper d-flex gap-2 align-items-center">
+      <img 
+        [src]="avatar" 
+        alt="آواتار" 
+        class="avatar-image"
+        (click)="openImagePreview()"
+      />
+      
+      <div class="d-flex flex-column gap-1">
+          <!-- دکمه حذف -->
+      <button
+        nz-button
+        nzType="primary"
+        nzDanger
+        nzSize="small"
+        class="delete-btn"
+        (click)="onDeleteAvatar()"
+      >
+        <span nz-icon nzType="delete"></span>
+        حذف
+      </button>
+
+      <!-- دکمه تغییر -->
+      <button
+        nz-button
+        nzType="default"
+        nzSize="small"
+        class="change-btn"
+        (click)="openFileSelector()"
+        [disabled]="loadingUpload"
+      >
+        <span nz-icon nzType="edit"></span>
+        تغییر
+      </button>
+      </div>
+    </div>
+
+    <!-- نوار پیشرفت برای حالت آواتار -->
+    <div *ngIf="showProgress" class="progress-container">
+      <nz-progress
+        [nzPercent]="uploadProgress"
+        [nzShowInfo]="true"
+        nzStatus="active"
+      ></nz-progress>
+      <div class="progress-text">
+        {{ uploadProgress.toFixed(1) }}% کامل شده
+      </div>
+    </div>
+  </div>
+
+  <!-- Input های فایل مخفی -->
+  <input
+    *ngIf="type === 'image'"
+    type="file"
+    (change)="onFileSelected($event,3)"
+    [disabled]="loadingUpload"
+    accept="image/*"
+    style="display: none"
+    #fileInputImage
+  >
+
+  <input
+    *ngIf="type === 'media'"
+    type="file"
+    (change)="onFileSelected($event,10004)"
+    [disabled]="loadingUpload"
+    accept="*/*"
+    style="display: none"
+    #fileInputMedia
+  >
 </div>

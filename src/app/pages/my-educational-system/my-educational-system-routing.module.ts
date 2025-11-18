@@ -30,6 +30,7 @@ const routes: Routes = [
   },
   {path: 'course-management', component: MainCourseManagementComponent},
   {path: 'course-management/create', component: CreateCourseComponent},
+  {path: 'course-management/edit/:id', component: CreateCourseComponent},
   {path: 'course-management/create-headline-course/:id', component: CreateHeadlineCourseComponent},
 
 ]

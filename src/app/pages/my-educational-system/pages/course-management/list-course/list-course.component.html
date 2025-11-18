@@ -49,15 +49,24 @@
     </div>
   </div>
   @if (data){
-    @for (item of data;track  item?.id){
+    @for (item of data;track  item?.id;let index = $index) {
       <div class="mb-12 bg-white mb-2 border-radius-8 p-3 d-flex justify-content-between align-items-center" >
         <p class="font-family-bold color-1">
           {{item.event?.title}}
 
         </p>
-        <button routerLink="create-headline-course/{{item.event?.id}}" type="button" class="font-family-regular px-2 py-1 border-radius-8 border-color-3 bg-white color-3">
+        <div class="d-flex gap-2">
+             <button routerLink="create-headline-course/{{item.event?.id}}" type="button" class="font-family-regular px-2 py-1 border-radius-8 border-color-3 bg-white color-3">
           سر فصل ها
         </button>
+        <button routerLink="edit/{{item.event?.id}}" type="button" class="font-family-regular px-2 py-1 border-radius-8 border-color-10 bg-white color-10">
+          ویرایش
+        </button>
+         <button nz-button [nzLoading]="isLoadingDelete(item.event?.id)"  type="button" (click)="deleteItem(data,item.event?.id, `/${MicroService.course}/Event/Delete`)" class="font-family-regular px-2 py-1 border-radius-8 border-color-11 bg-white color-11">
+          حذف
+        </button>
+        </div>
+     
       </div>
     } @empty {
       هیچ دوره ای ندارید

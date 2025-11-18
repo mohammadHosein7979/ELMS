@@ -5,7 +5,7 @@
   <div class="create-question-1 overflow-hidden">
     <div class="bg-color-10 py-3 px-4 create-question-2 d-flex justify-content-between">
       <h2 class=" text-white font-family-bold font-20 ">
-        فرایند ایجاد دوره
+        {{ isEditMode ? 'ویرایش دوره' : 'فرایند ایجاد دوره' }}
       </h2>
       <app-button-back/>
 
@@ -175,7 +175,7 @@
 
                     </div>
                   </div>
-                  <div class="d-flex justify-content-between gap-2">
+                  <div class="d-flex justify-content-between gap-2 mb-3">
                     <h3 class="font-family-regular font-14 color-1 opacity-50 w-100">
                       هزینه دوره آموزشی :
                     </h3>
@@ -185,7 +185,7 @@
                     <h3 class="font-family-regular font-14 color-1 opacity-50 w-100">
                       عکس دوره :
                     </h3>
-                    <app-file-upload [controlName]="'mediaId'"/>
+                    <app-file-upload class="w-100" [avatar]="dataDefault?.avatar" [controlName]="'mediaId'"/>
                   </div>
                 </div>
                 <div class="col-12 col-lg-6">
@@ -356,29 +356,23 @@
           </div>
         </div>
         <!--      end step 8-->
-
         <div class="d-flex gap-2 justify-content-center">
-          <button type="button"  *ngIf="step != 6" (click)="changeStep('next')"
+          <button type="button" *ngIf="step != 6" (click)="changeStep('next')"
                   class="bg-color-10 border-color-10 border-radius-10 px-3 py-1 text-white font-family-bold font-14">
             مرحله بعد
           </button>
           <button nz-button [nzLoading]="loadingButton" type="button" (click)="submit()" *ngIf="step == 6"
                   class="bg-color-10 border-color-10 border-radius-10 px-3 py-1 text-white font-family-bold font-14">
-            ثبت نهایی
+            {{ isEditMode ? 'ویرایش نهایی' : 'ثبت نهایی' }}
           </button>
-<!--          <button *ngIf="step == 7"-->
-<!--                  class="bg-color-10 border-color-10 border-radius-10 px-3 py-1 text-white font-family-bold font-14">-->
-<!--            ثبت و ورود سوال-->
-<!--          </button>-->
           <button type="button" (click)="changeStep('prev')" [disabled]="step == 1"
                   class="create-question-5 border-radius-10 px-3 py-1 text-white font-family-bold font-14 {{step == 1 && 'opacity-25'}} ">
             مرحله قبل
           </button>
-          <button  type="button"  [disabled]="step == 1"
+          <button type="button" (click)="resetForm()" [disabled]="step == 1"
                   class="create-question-6 border-radius-10 px-3 py-1 text-white font-family-bold font-14 {{step == 1 && 'opacity-25'}} ">
             شروع مجدد
           </button>
-
         </div>
 
       </div>
