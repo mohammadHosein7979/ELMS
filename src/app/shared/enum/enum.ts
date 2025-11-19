@@ -7,8 +7,8 @@ export enum EnumEducationStatus {
 }
 export enum EnumEducationType {
   Online = 1,
-  Offline = 0,
-  InPerson = 2,
+  Offline = 2,
+  InPerson = 3,
 }
 export enum MicroService {
   course = 'courseapi',

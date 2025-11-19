@@ -1,17 +1,12 @@
 import {Injectable} from "@angular/core";
-import {BaseService} from "../../../../../shared/services/base.service";
-import {MicroService} from "../../../../../shared/enum/enum";
+import { BaseService } from "../../../shared/services/base.service";
+import { MicroService } from "../../../shared/enum/enum";
 
-
-export enum TypeCourseManagement {
-  createCourse = 'createCourse',
-  listCourse = 'ListCourse',
-}
 
 @Injectable({
   providedIn: 'root'
 })
-export class CourseManagementService extends BaseService {
+export class EducationService extends BaseService {
 
   getEventMaster(body:any) {
     return this.get(`/${MicroService.course}/Masters/Report`,{},body)
