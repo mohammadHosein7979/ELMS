@@ -132,7 +132,7 @@
                 <div class="d-flex gap-2 create-course-5 mb-2">
                   <input nz-input class="input-style create-course-10" placeholder="عنوان ویدیو " type="text"
                     formControlName="name" />
-                  <app-file-upload [controlName]="'mediaID'" [type]="'media'" />
+                  <app-file-upload [disable]="dataSelectHeadlineDetail == null"  [controlName]="'mediaID'" [type]="'media'" />
                   <input nz-input class="input-style create-course-10" placeholder="لینک " type="text"
                     formControlName="link" />
                   <input nz-input class="input-style create-course-10" placeholder="مکان " type="text"
@@ -140,7 +140,7 @@
                   <input nz-input class="input-style create-course-10" placeholder="ظرفیت " type="text"
                     formControlName="capacity" />
 
-                  <button nz-button [disabled]="!dataSelectHeadlineDetail"
+                  <button nz-button [disabled]="dataSelectHeadlineDetail == null"
                     class="create-course-4 color-1 font-family-regular font-14 border-radius-5  create-course-6  mb-2 px-4">
                     ثبت
                   </button>
@@ -180,7 +180,7 @@
                 وجود ندارد
                 } @else {
                 <p>
-                  لطفا یه سر فصل را انتخاب کنید
+                  لطفا یه جزئبات  را انتخاب کنید
 
 
                 </p>

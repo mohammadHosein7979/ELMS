@@ -1,50 +1,46 @@
 <div class="container">
   <div class="bg-white p-3 border-radius-20 mb-4">
     <div class="d-flex gap-3 align-items-end flex-wrap flex-lg-nowrap">
-      <div class="w-100">
-        <label class="label-form">
-          عنوان درسی
-        </label>
-        <nz-select ngModel="lucy" class="input-style">
-          <nz-option nzValue="jack" nzLabel="Jack"></nz-option>
-          <nz-option nzValue="lucy" nzLabel="Lucy"></nz-option>
-          <nz-option nzValue="disabled" nzLabel="Disabled" nzDisabled></nz-option>
-        </nz-select>
-      </div>
-      <div class="w-100">
-        <label class="label-form">
-          وضعیت سوال
-        </label>
-        <nz-select ngModel="lucy" class="input-style">
-          <nz-option nzValue="jack" nzLabel="Jack"></nz-option>
-          <nz-option nzValue="lucy" nzLabel="Lucy"></nz-option>
-          <nz-option nzValue="disabled" nzLabel="Disabled" nzDisabled></nz-option>
-        </nz-select>
-      </div>
-      <div class="w-100">
-        <label class="label-form">
-          سختی سوال
-        </label>
-        <nz-select ngModel="lucy" class="input-style">
-          <nz-option nzValue="jack" nzLabel="Jack"></nz-option>
-          <nz-option nzValue="lucy" nzLabel="Lucy"></nz-option>
-          <nz-option nzValue="disabled" nzLabel="Disabled" nzDisabled></nz-option>
-        </nz-select>
-      </div>
-      <div class="w-100">
-        <label class="label-form">
-          جست و جو در متن
-        </label>
-        <input class="input-style" nz-input placeholder="متن خود را وارد کنید" type="text"/>
-      </div>
-      <div class="w-100 main-online-classes-2">
+      <form [formGroup]="filterForm" class="d-flex gap-3 align-items-end flex-wrap flex-lg-nowrap">
 
-        <button nz-button
-                class="text-white font-family-bold font-14 border-radius-10 bg-color-10 border-color-10 h-35 mb-2 px-4">
-          فیلتر کن
-        </button>
+        <div class="w-100">
+          <label class="label-form">عنوان درسی</label>
+          <nz-select formControlName="title" class="input-style">
+            <nz-option nzValue="jack" nzLabel="Jack"></nz-option>
+            <nz-option nzValue="lucy" nzLabel="Lucy"></nz-option>
+          </nz-select>
+        </div>
 
-      </div>
+        <div class="w-100">
+          <label class="label-form">وضعیت سوال</label>
+          <nz-select formControlName="status" class="input-style">
+            <nz-option nzValue="1" nzLabel="فعال"></nz-option>
+            <nz-option nzValue="0" nzLabel="غیرفعال"></nz-option>
+          </nz-select>
+        </div>
+
+        <div class="w-100">
+          <label class="label-form">سختی سوال</label>
+          <nz-select formControlName="level" class="input-style">
+            <nz-option nzValue="easy" nzLabel="آسان"></nz-option>
+            <nz-option nzValue="mid" nzLabel="متوسط"></nz-option>
+            <nz-option nzValue="hard" nzLabel="سخت"></nz-option>
+          </nz-select>
+        </div>
+
+        <div class="w-100">
+          <label class="label-form">جست‌وجو در متن</label>
+          <input formControlName="search" class="input-style" nz-input placeholder="متن خود را وارد کنید" />
+        </div>
+
+        <div class="w-100 main-online-classes-2">
+          <button nz-button class="text-white font-family-bold font-14 border-radius-10 bg-color-10 border-color-10 h-35 mb-2 px-4"
+                  (click)="applyFilter()">
+            فیلتر کن
+          </button>
+        </div>
+
+      </form>
 
     </div>
   </div>
@@ -66,7 +62,7 @@
           حذف
         </button>
         </div>
-     
+
       </div>
     } @empty {
       هیچ دوره ای ندارید

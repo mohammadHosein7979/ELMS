@@ -10,6 +10,7 @@ import {NzProgressComponent} from "ng-zorro-antd/progress";
 import {NzIconDirective} from "ng-zorro-antd/icon";
 import {MicroService} from "../../shared/enum/enum";
 import { environment } from '../../../environments/environment';
+import { FileUploader } from '../../shared/services/file-upload';
 
 @Component({
     selector: 'app-file-upload',
@@ -28,23 +29,59 @@ import { environment } from '../../../environments/environment';
     styleUrl: './file-upload.component.scss'
 })
 export class FileUploadComponent extends BaseService{
+  @Input('disable') disable: boolean = false;
   @Input('controlName') controlName: any;
   @Input('avatar') avatar: any;
   @Input('type') type: any = 'image';
-  
+
   @ViewChild('fileInputImage') fileInputImage!: ElementRef<HTMLInputElement>;
   @ViewChild('fileInputMedia') fileInputMedia!: ElementRef<HTMLInputElement>;
-  
+
   private uploadService = inject(FileUploadService);
   loadingUpload = false;
   uploadProgress = 0;
   showProgress = false;
 
-  constructor(injector: Injector, private parent: FormGroupDirective) {
+  constructor(injector: Injector, private parent: FormGroupDirective,private fileUploader: FileUploader) {
     super(injector);
   }
 
-  onFileSelected(event: Event, idMediaType: number) {
+  // onFileSelected(event: Event, idMediaType: number) {
+  //   const file = (event.target as HTMLInputElement).files?.[0];
+  //   if (!file) return;
+
+  //   this.loadingUpload = true;
+  //   this.showProgress = true;
+  //   this.uploadProgress = 0;
+
+  //   this.uploadService
+  //     .uploadFile(file, idMediaType, (progress) => {
+  //       this.uploadProgress = progress;
+  //     })
+  //     .pipe(finalize(() => {
+  //       this.loadingUpload = false;
+  //       // بعد از 2 ثانیه نوار پیشرفت مخفی شود
+  //       setTimeout(() => {
+  //         this.showProgress = false;
+  //       }, 2000);
+  //     }))
+  //     .subscribe({
+  //       next: (res) => {
+
+  //         // استفاده از ID از Media/Add
+  //         this.parent.form.get(this.controlName)?.setValue(res.mediaAddResponse?.data?.id);
+  //         setTimeout(() => {
+  //           this.avatar = `${environment.apiUrl}/${MicroService.mediaapi}/api/File/DownloadFile?IDMedia=${res.mediaAddResponse?.data?.id}`;
+  //         }, 0);
+
+  //         this.notification.success('فایل با موفقیت آپلود شد');
+  //       },
+  //       error: (err) => {
+  //         this.notification.error('خطا در آپلود فایل');
+  //       }
+  //     });
+  // }
+   onFileSelected(event: Event, idMediaType: number) {
     const file = (event.target as HTMLInputElement).files?.[0];
     if (!file) return;
 
@@ -52,32 +89,34 @@ export class FileUploadComponent extends BaseService{
     this.showProgress = true;
     this.uploadProgress = 0;
 
-    this.uploadService
-      .uploadFile(file, idMediaType, (progress) => {
+    this.fileUploader.uploadFile(
+      file,
+      idMediaType,
+      (progress) => {
         this.uploadProgress = progress;
-      })
-      .pipe(finalize(() => {
+      }
+    ).subscribe({
+      next: (result) => {
+        if (result.fileUrl !== "0") {
+          // موفقیت آمیز
+          this.parent.form.get(this.controlName)?.setValue(result.idMedia);
+          this.avatar = result.fileUrl;
+          this.notification.success(result.message);
+        } else {
+          // خطا
+          this.notification.error(result.message);
+        }
+      },
+      error: (result) => {
+        this.notification.error(result.message);
+      },
+      complete: () => {
         this.loadingUpload = false;
-        // بعد از 2 ثانیه نوار پیشرفت مخفی شود
         setTimeout(() => {
           this.showProgress = false;
         }, 2000);
-      }))
-      .subscribe({
-        next: (res) => {
-    
-          // استفاده از ID از Media/Add
-          this.parent.form.get(this.controlName)?.setValue(res.mediaAddResponse?.data?.id);
-          setTimeout(() => {
-            this.avatar = `${environment.apiUrl}/${MicroService.mediaapi}/api/File/DownloadFile?IDMedia=${res.mediaAddResponse?.data?.id}`;
-          }, 0);
-     
-          this.notification.success('فایل با موفقیت آپلود شد');
-        },
-        error: (err) => {
-          this.notification.error('خطا در آپلود فایل');
-        }
-      });
+      }
+    });
   }
 
   onDeleteAvatar() {
@@ -100,7 +139,7 @@ export class FileUploadComponent extends BaseService{
   openImagePreview() {
     if (this.avatar) {
       window.open(this.avatar, '_blank');
-  
+
     }
 }
 }

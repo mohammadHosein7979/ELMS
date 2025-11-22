@@ -39,6 +39,7 @@ import {
 } from "./pages/course-management/pages/create-headline-course/create-headline-course.component";
 import {ButtonBackComponent} from "../../components/button-back/button-back.component";
 import {FileUploadComponent} from "../../components/file-upload/file-upload.component";
+import {ListTestsComponent} from "./pages/tests/list-tests/list-tests.component";
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import {FileUploadComponent} from "../../components/file-upload/file-upload.comp
     CreateHeadlineCourseComponent,
     MainQuestionBankComponent,
     MainCourseManagementComponent,
+    ListTestsComponent,
     CreateCourseComponent,
   ],
   imports: [

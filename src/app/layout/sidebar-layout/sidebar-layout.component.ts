@@ -97,9 +97,9 @@ export class SidebarLayoutComponent extends BaseService implements OnInit{
             title : 'آزمون ها',
             iconSelect : 'testSelect.svg',
             iconDeSelect :'testDeSelect.svg',
-            routerChildOne:'/my-educational-system/tests?type='+TypeTests.uncorrected,
-            routerChildTwo:'/my-educational-system/tests?type='+TypeTests.completed,
-            router: '/my-educational-system/tests?type='+TypeTests.notHeld,
+            routerChildOne:'/my-educational-system/tests/'+TypeTests.uncorrected,
+            routerChildTwo:'/my-educational-system/tests/'+TypeTests.completed,
+            router: '/my-educational-system/tests/'+TypeTests.notHeld,
           },
           {
             id : '35',

@@ -35,7 +35,7 @@
 
       </div>
     </div>
-    <div class="mt-5" *ngIf="dataEducation && dataEducation.length > 0">
+    <div class="mt-5" *ngIf="dataEvents && dataEvents.length > 0">
       <h3 class="font-24 font-family-bold color-1 mb-4">
         دوره های آموزشی محبوب
       </h3>
@@ -48,7 +48,7 @@
 
           class=""
         >
-          @for (item of dataEducation; track item) {
+          @for (item of dataEvents; track item) {
             <ng-template swiperSlide>
               <app-card-education [data]="item"/>
             </ng-template>
@@ -64,7 +64,7 @@
 
       </div>
     </div>
-    <div class="mt-5">
+    <!-- <div class="mt-5">
       <h3 class="font-24 font-family-bold color-1 mb-4">
         دوره های آموزشی
       </h3>
@@ -80,7 +80,7 @@
 
                 class=""
               >
-                @for (item of dataEducation; track item) {
+                @for (item of dataEvents; track item) {
                   <ng-template swiperSlide>
                     <app-card-education [data]="item"/>
                   </ng-template>
@@ -108,7 +108,7 @@
 
                 class=""
               >
-                @for (item of dataEducation; track item) {
+                @for (item of dataEvents; track item) {
                   <ng-template swiperSlide>
                     <app-card-education [data]="item"/>
                   </ng-template>
@@ -136,7 +136,7 @@
 
                 class=""
               >
-                @for (item of dataEducation; track item) {
+                @for (item of dataEvents; track item) {
                   <ng-template swiperSlide>
                     <app-card-education [data]="item"/>
                   </ng-template>
@@ -164,7 +164,7 @@
 
                 class=""
               >
-                @for (item of dataEducation; track item) {
+                @for (item of dataEvents; track item) {
                   <ng-template swiperSlide>
                     <app-card-education [data]="item"/>
                   </ng-template>
@@ -184,7 +184,7 @@
           </nz-tab>
         </nz-tabset>
       </div>
-    </div>
+    </div> -->
     <div class="mt-5">
       <h3 class="font-24 font-family-bold color-1 mb-4">
         مسیر های یادگیری
@@ -199,7 +199,7 @@
 
             class=""
           >
-            @for (item of dataEducation; track item) {
+            @for (item of dataEvents; track item) {
               <ng-template swiperSlide>
                 <div class="text-center">
                   <img src="assets/image/remove/Frame161.svg" class="w-100 home-page-1">
@@ -311,7 +311,7 @@
 
       </div>
     </div>
-    <div class="mt-5">
+    <!-- <div class="mt-5">
       <h3 class="font-24 font-family-regular color-1 mb-4 text-center">
         تدبر زندگی از زبان شما و مسئولین
       </h3>
@@ -324,7 +324,7 @@
             (slideChange)="onSlideChangeGoft($event)"
             class="swiperGoft"
           >
-            <!--            @for (item of dataEducation; track item) {-->
+                      @for (item of dataEducation; track item) {
             <ng-template swiperSlide>
               <div>
                 <div
@@ -405,7 +405,7 @@
             </ng-template>
 
 
-            <!--            }-->
+                       }
           </swiper>
           <div class="position-absolute home-page-3">
             <div class="flex-column d-flex align-items-center justify-content-center">
@@ -420,7 +420,7 @@
 
         </div>
       </div>
-    </div>
+    </div> -->
     <div class="mt-5">
 
     </div>

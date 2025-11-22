@@ -20,6 +20,7 @@
         </div>
 
         <!-- وضعیت -->
+         
         <div class="w-100">
           <label class="label-form">وضعیت سؤال</label>
           <nz-select
@@ -67,7 +68,7 @@
           <button
             nz-button
             nzType="default"
-            class="font-14 border-radius-10 h-35 px-4"
+            class="font-14 border-radius-10 h-35  px-4"
             (click)="clearAllFilters()">
 
             پاک کردن همه
@@ -80,11 +81,10 @@
 
   @for (item of data; track item?.id) {
     <div class="mb-12">
-      <app-card-question
-        [dataAll]="data"
+      <app-card-tests-completed
         [data]="item"
         [id]="1">
-      </app-card-question>
+      </app-card-tests-completed>
     </div>
   }
 </div>

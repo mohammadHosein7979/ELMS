@@ -2,16 +2,16 @@ import { Component, Injector, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { BaseService } from '../../../../../shared/services/base.service';
 import { CourseManagementService } from '../../course-management/services/course-management.service';
-import { QuestionBankService } from '../services/question-bank.service';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import {TestsService} from "../services/tests.service";
 
 @Component({
-  selector: 'app-list-question',
-  templateUrl: './list-question.component.html',
-  styleUrl: './list-question.component.scss',
+  selector: 'app-list-tests',
+  templateUrl: './list-tests.component.html',
+  styleUrl: './list-tests.component.scss',
   standalone: false
 })
-export class ListQuestionComponent extends BaseService implements OnInit {
+export class ListTestsComponent extends BaseService implements OnInit {
   dataCourse: any = [];
   filterForm!: FormGroup;
 
@@ -32,8 +32,7 @@ export class ListQuestionComponent extends BaseService implements OnInit {
 
   constructor(
     injector: Injector,
-    private questionBankService: QuestionBankService,
-    private courseManagementService: CourseManagementService,
+    private testsService: TestsService,
   ) {
     super(injector);
     this.initForm();
@@ -50,10 +49,9 @@ export class ListQuestionComponent extends BaseService implements OnInit {
 
   ngOnInit() {
     this.subscribeToQueryParams();
-    this.questionReport();
-    this.corseReport();
+    this.examReport();
     this.subscribeToFormChanges();
-    
+
   }
 
   private subscribeToQueryParams() {
@@ -93,6 +91,7 @@ export class ListQuestionComponent extends BaseService implements OnInit {
       .subscribe(() => this.updateUrlAndRefresh());
   }
 
+
   updateUrlAndRefresh() {
     const v = this.filterForm.value;
 
@@ -108,10 +107,10 @@ export class ListQuestionComponent extends BaseService implements OnInit {
       queryParams
     });
 
-    this.questionReport();
+    this.examReport();
   }
 
-  questionReport() {
+  examReport() {
     const f = this.filterForm.value;
 
     const filterParams: any = { filter: {} };
@@ -133,16 +132,11 @@ export class ListQuestionComponent extends BaseService implements OnInit {
       filterParams.filter.titleList = [f.search];
     }
 
-    this.questionBankService.questionReport(filterParams).subscribe((data: any) => {
+    this.testsService.examReport(filterParams).subscribe((data: any) => {
       this.data = data?.data;
     });
   }
 
-  corseReport() {
-    this.courseManagementService.getCourse().subscribe((data: any) => {
-      this.dataCourse = data?.data;
-    });
-  }
 
   clearAllFilters() {
     this.filterForm.patchValue({

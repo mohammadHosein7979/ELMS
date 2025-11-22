@@ -1,20 +1,31 @@
 <div class="container py-12">
   <div class="d-flex justify-content-between gap-2 align-items-center">
-      <img src="assets/image/logoTitle.svg">
+    <img src="assets/image/logoTitle.svg">
     <div class="d-flex gap-3">
       @for (item of headerLayoutLandingService.listMenu;track item){
-        <p routerLink="{{item?.url}}" class="cursorPointer font-family-regular font-14 color-1 d-flex align-items-center gap-1">
-          <img src="{{item?.image}}">
-          {{item?.title}}
-        </p>
+      <p routerLink="{{item?.url}}"
+        class="cursorPointer font-family-regular font-14 color-1 d-flex align-items-center gap-1">
+        <img src="{{item?.image}}">
+        {{item?.title}}
+      </p>
       }
 
     </div>
     <div>
-      <button routerLink="/auth/login" class="bg-color-13 border-color-13 border-radius-10 font-family-regular font-14 color-1 px-2 py-1">
+      @if (userService.getUser()) {
+      <button routerLink="/panel"
+        class="bg-color-13 border-color-13 border-radius-10 font-family-regular font-14 color-1 px-2 py-1">
+        <img src="assets/image/landing/user-svgrepo-com.svg">
+       حساب کاربری
+      </button>
+      }@else {
+      <button routerLink="/auth/login"
+        class="bg-color-13 border-color-13 border-radius-10 font-family-regular font-14 color-1 px-2 py-1">
         <img src="assets/image/landing/user-svgrepo-com.svg">
         ورود / عضویت
       </button>
+      }
+
     </div>
   </div>
 </div>

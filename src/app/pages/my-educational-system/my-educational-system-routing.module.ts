@@ -12,11 +12,12 @@ import {
 import {CreateCourseComponent} from "./pages/course-management/create-course/create-course.component";
 import {ListQuestionComponent} from "./pages/question-bank/list-question/list-question.component";
 import {CreateQuestionComponent} from "./pages/question-bank/create-question/create-question.component";
+import {ListTestsComponent} from "./pages/tests/list-tests/list-tests.component";
+import {TypeTests} from "./pages/tests/services/tests.service";
 
 
 const routes: Routes = [
   {path: 'classes', component: MainClassesComponent},
-  {path: 'tests', component: MainTestsComponent},
   // {path: 'question-bank', component: MainQuestionBankComponent},
   {
     path: 'question-bank',
@@ -26,6 +27,18 @@ const routes: Routes = [
       {path: 'list', component: ListQuestionComponent},
       {path: 'create', component: CreateQuestionComponent},
       { path: 'edit/:id', component: CreateQuestionComponent }
+    ]
+  },
+  {
+    path: 'tests',
+    component: MainTestsComponent,
+    children: [
+      {path: '', redirectTo: 'list', pathMatch: 'full'},
+      {path: TypeTests.notHeld, component: ListTestsComponent},
+      {path: TypeTests.uncorrected, component: ListTestsComponent},
+      {path: TypeTests.completed, component: ListTestsComponent},
+      // {path: 'create', component: CreateTestsComponent},
+      // { path: 'edit/:id', component: CreateQuestionComponent }
     ]
   },
   {path: 'course-management', component: MainCourseManagementComponent},

@@ -6,7 +6,7 @@
       <input
         type="file"
         (change)="onFileSelected($event,3)"
-        [disabled]="loadingUpload"
+        [disabled]="loadingUpload "
         accept="image/*"
         style="display: none"
         #fileInputImage
@@ -40,7 +40,7 @@
         nzType="primary"
         (click)="fileInputMedia.click()"
         [nzLoading]="loadingUpload"
-        [disabled]="loadingUpload"
+        [disabled]="loadingUpload|| disable"
       >
         {{ loadingUpload ? 'در حال آپلود...' : 'انتخاب فایل' }}
       </button>
@@ -62,13 +62,13 @@
   <!-- حالت نمایش آواتار - وقتی آواتار وجود دارد -->
   <div *ngIf="avatar" class="avatar-container">
     <div class="avatar-wrapper d-flex gap-2 align-items-center">
-      <img 
-        [src]="avatar" 
-        alt="آواتار" 
+      <img
+        [src]="avatar"
+        alt="آواتار"
         class="avatar-image"
         (click)="openImagePreview()"
       />
-      
+
       <div class="d-flex flex-column gap-1">
           <!-- دکمه حذف -->
       <button

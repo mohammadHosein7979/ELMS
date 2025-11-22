@@ -27,6 +27,8 @@ export class MainQuestionBankComponent extends BaseService implements OnInit {
   // چک کردن active بودن آیتم منو
   isActive(item: any): boolean {
     const currentUrl = this.router.url;
+    console.log(this.router.url,`/tests/${item.route}`);
+
     return currentUrl.includes(`/question-bank/${item.route}`);
   }
 

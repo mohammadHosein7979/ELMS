@@ -1,3 +1,4 @@
+
 <div class="container">
   <div class="bg-white p-2 border-radius-20 mb-3">
     <swiper
@@ -8,60 +9,22 @@
       [spaceBetween]="10"
       class="MainOnlineClassesComponent"
     >
-      @for (item of dataType;track item){
+      @for (item of dataType; track item) {
         <ng-template swiperSlide>
-          <div (click)="changeType(item)" class="cursorPointer border-radius-10 p-2 {{item.type == type ? 'main-online-classes-1' : ''}} color-10 font-14 font-family-regular">
+          <div
+            (click)="changeType(item)"
+            class="cursorPointer border-radius-10 p-2 {{isActive(item) ? 'main-online-classes-1' : ''}} color-10 font-14 font-family-regular"
+          >
             <img src="assets/image/my-educational-system/{{item?.image}}" class="me-2">
             {{item?.title}}
           </div>
         </ng-template>
       }
-
     </swiper>
-
   </div>
-  <div class="bg-white p-3 border-radius-20 mb-4">
-    <div class="d-flex gap-3 align-items-end flex-wrap flex-lg-nowrap">
-      <div class="w-100">
-        <label class="label-form">
-          زمان آزمون
-        </label>
-        <nz-select ngModel="lucy" class="input-style">
-          <nz-option nzValue="jack" nzLabel="Jack"></nz-option>
-          <nz-option nzValue="lucy" nzLabel="Lucy"></nz-option>
-          <nz-option nzValue="disabled" nzLabel="Disabled" nzDisabled></nz-option>
-        </nz-select>
-      </div>
-      <div class="w-100">
-        <label class="label-form">
-          نوع آزمون
-        </label>
-        <nz-select ngModel="lucy" class="input-style">
-          <nz-option nzValue="jack" nzLabel="Jack"></nz-option>
-          <nz-option nzValue="lucy" nzLabel="Lucy"></nz-option>
-          <nz-option nzValue="disabled" nzLabel="Disabled" nzDisabled></nz-option>
-        </nz-select>
-      </div>
-      <div class="w-100">
-        <label class="label-form">
-          جست و جو در متن
-        </label>
-        <input class="input-style" nz-input placeholder="متن خود را وارد کنید" type="text" />
-      </div>
-      <div class="w-100 main-online-classes-2">
 
-        <button nz-button class="text-white font-family-bold font-14 border-radius-10 bg-color-10 border-color-10 h-35 mb-2 px-4" >فیلتر کن</button>
-
-      </div>
-
-    </div>
+  <div>
+    <!-- اینجا router-outlet اضافه می‌شود -->
+    <router-outlet></router-outlet>
   </div>
-  @if(type == TypeTests.notHeld){
-    <app-card-tests-not-held />
-
-  } @else if (type == TypeTests.uncorrected){
-    <app-card-tests-uncorrected/>
-  } @else {
-    <app-card-tests-completed/>
-  }
 </div>

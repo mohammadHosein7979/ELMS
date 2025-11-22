@@ -1,121 +1,47 @@
-import {Component, ViewChild} from '@angular/core';
-import {SwiperOptions} from "swiper";
-import {SwiperHelperService} from "../../../shared/helperService/swiper-helper.service";
-import {SwiperComponent} from "swiper/angular";
+import { Component, Injector, OnInit, ViewChild } from '@angular/core';
+import { SwiperOptions } from "swiper";
+import { SwiperHelperService } from "../../../shared/helperService/swiper-helper.service";
+import { SwiperComponent } from "swiper/angular";
+import { BaseService } from '../../../shared/services/base.service';
+import { EducationService } from '../../../pages/education/services/education.service';
 
 @Component({
-    selector: 'app-home-page',
-    templateUrl: './home-page.component.html',
-    styleUrl: './home-page.component.scss',
-    standalone: false
+  selector: 'app-home-page',
+  templateUrl: './home-page.component.html',
+  styleUrl: './home-page.component.scss',
+  standalone: false
 })
-export class HomePageComponent   {
-  dataPre:any = [
+export class HomePageComponent extends BaseService implements OnInit {
+  dataPre: any = [
     {
-      cover  : 'assets/image/remove/1WJ7bUXuAtcTS9TWQsNTBAa7EqUtNYz7weUVjiTq_thumb.jfif',
-      ostadImage :['assets/image/remove/Frame63.png','assets/image/remove/Frame29.png'],
-      title : 'تدبری در زیارت عاشورا',
-      time : '20:10:00',
-      type : 'دوره آنلاین'
+      cover: 'assets/image/remove/1WJ7bUXuAtcTS9TWQsNTBAa7EqUtNYz7weUVjiTq_thumb.jfif',
+      ostadImage: ['assets/image/remove/Frame63.png', 'assets/image/remove/Frame29.png'],
+      title: 'تدبری در زیارت عاشورا',
+      time: '20:10:00',
+      type: 'دوره آنلاین'
     },
     {
-      cover  : 'assets/image/remove/Frame63.png',
-      ostadImage :['assets/image/remove/Frame63.png','assets/image/remove/Frame29.png'],
-      title : 'کربلا  در تاریخ',
-      time : '21:30:10',
-      type : 'دوره ضبط شده'
+      cover: 'assets/image/remove/Frame63.png',
+      ostadImage: ['assets/image/remove/Frame63.png', 'assets/image/remove/Frame29.png'],
+      title: 'کربلا  در تاریخ',
+      time: '21:30:10',
+      type: 'دوره ضبط شده'
     },
     {
-      cover  : 'assets/image/remove/Frame63.png',
-      ostadImage :['assets/image/remove/Frame63.png','assets/image/remove/Frame29.png'],
-      title : 'کربلا  در   تاریخ',
-      time : '21:30:11',
-      type : 'دوره   ضبط شده'
+      cover: 'assets/image/remove/Frame63.png',
+      ostadImage: ['assets/image/remove/Frame63.png', 'assets/image/remove/Frame29.png'],
+      title: 'کربلا  در   تاریخ',
+      time: '21:30:11',
+      type: 'دوره   ضبط شده'
     },
   ]
   @ViewChild(SwiperComponent) swiperEducationP: any;
 
-  dataEducation:any = [
-    {
-      cover  : 'assets/image/remove/1WJ7bUXuAtcTS9TWQsNTBAa7EqUtNYz7weUVjiTq_thumb.jfif',
-      title : 'تاریخ بعثت',
-      description : 'همیشه در طول تاریخ حلقه های گمشده ای وجود داشته ',
-      count : '100 آموزش',
-      nafar : '3/4(1K)',
-      status : '0',
-      type : '0',
-      time : '100 ساعت',
-      orginalPrice : '1,500,000',
-      price : '500,000',
-    },
-    {
-      cover  : 'assets/image/remove/1WJ7bUXuAtcTS9TWQsNTBAa7EqUtNYz7weUVjiTq_thumb.jfif',
-      title : 'تاریخ بعثت',
-      description : 'همیشه در طول تاریخ حلقه های گمشده ای وجود داشته ',
-      count : '100 آموزش',
-      nafar : '3/4(1K)',
-      status : '1',
-      date : '1403/10/10',
-      type : '1',
-      time : '100 ساعت',
-      orginalPrice : '1,500,000',
-      price : '500,000',
-    },
-    {
-      cover  : 'assets/image/remove/1WJ7bUXuAtcTS9TWQsNTBAa7EqUtNYz7weUVjiTq_thumb.jfif',
-      title : 'تاریخ بعثت',
-      description : 'همیشه در طول تاریخ حلقه های گمشده ای وجود داشته ',
-      count : '100 آموزش',
-      nafar : '3/4(1K)',
-      status : '1',
-      date : '1403/10/10',
-      type : '2',
-      time : '100 ساعت',
-      orginalPrice : '1,500,000',
-      price : '500,000',
-    },
-    {
-      cover  : 'assets/image/remove/1WJ7bUXuAtcTS9TWQsNTBAa7EqUtNYz7weUVjiTq_thumb.jfif',
-      title : 'تاریخ بعثت',
-      description : 'همیشه در طول تاریخ حلقه های گمشده ای وجود داشته ',
-      count : '100 آموزش',
-      nafar : '3/4(1K)',
-      status : '2',
-      type : '0',
-      time : '100 ساعت',
-      orginalPrice : '1,500,000',
-      price : '500,000',
-    },
-    {
-      cover  : 'assets/image/remove/1WJ7bUXuAtcTS9TWQsNTBAa7EqUtNYz7weUVjiTq_thumb.jfif',
-      title : 'تاریخ بعثت',
-      description : 'همیشه در طول تاریخ حلقه های گمشده ای وجود داشته ',
-      count : '100 آموزش',
-      nafar : '3/4(1K)',
-      status : '2',
-      date : '1403/10/10',
-      type : '1',
-      time : '100 ساعت',
-      orginalPrice : '1,500,000',
-      price : '500,000',
-    },
-    {
-      cover  : 'assets/image/remove/1WJ7bUXuAtcTS9TWQsNTBAa7EqUtNYz7weUVjiTq_thumb.jfif',
-      title : 'تاریخ بعثت',
-      description : 'همیشه در طول تاریخ حلقه های گمشده ای وجود داشته ',
-      count : '100 آموزش',
-      nafar : '3/4(1K)',
-      status : '1',
-      date : '1403/10/10',
-      type : '0',
-      time : '100 ساعت',
-      orginalPrice : '1,500,000',
-      price : '500,000',
-    },
-  ]
+
+  dataEvents: any = []  
 
   swiperConfig: SwiperOptions = {
-    a11y: {enabled: true},
+    a11y: { enabled: true },
     direction: 'horizontal',
     keyboard: true,
     mousewheel: true,
@@ -132,24 +58,24 @@ export class HomePageComponent   {
     breakpoints: {
       279: {
         slidesPerView: 1.3,
-        spaceBetween : 24
+        spaceBetween: 24
       },
       768: {
         slidesPerView: 3.3,
-        spaceBetween : 24
+        spaceBetween: 24
       },
       1052: {
         slidesPerView: 5.2,
-        spaceBetween : 24
+        spaceBetween: 24
       },
       1600: {
         slidesPerView: 5.2,
-        spaceBetween : 24
+        spaceBetween: 24
       }
     }
   };
   swiperConfig2: SwiperOptions = {
-    a11y: {enabled: true},
+    a11y: { enabled: true },
     direction: 'horizontal',
     keyboard: true,
     mousewheel: true,
@@ -166,24 +92,24 @@ export class HomePageComponent   {
     breakpoints: {
       279: {
         slidesPerView: 1.3,
-        spaceBetween : 90
+        spaceBetween: 90
       },
       768: {
         slidesPerView: 3.3,
-        spaceBetween : 90
+        spaceBetween: 90
       },
       1052: {
         slidesPerView: 5.2,
-        spaceBetween : 90
+        spaceBetween: 90
       },
       1600: {
         slidesPerView: 5.2,
-        spaceBetween : 90
+        spaceBetween: 90
       }
     }
   };
   swiperConfig3: SwiperOptions = {
-    a11y: {enabled: true},
+    a11y: { enabled: true },
     direction: 'vertical',
     keyboard: true,
     mousewheel: true,
@@ -218,10 +144,20 @@ export class HomePageComponent   {
     }
   };
 
-  constructor(private swiperHelperService: SwiperHelperService) {
+
+
+  constructor(injector: Injector, protected educationService: EducationService, private swiperHelperService: SwiperHelperService) {
+    super(injector);
   }
+  ngOnInit(): void {
+    this.getEvents()
 
-
+  }
+  getEvents() {
+    this.educationService.getEvent({ "filter": { "status": 3 } }).subscribe((data: any) => {
+      this.dataEvents = data.data
+    })
+  }
 
   onSlideChangeEducationP(e: any) {
     let swiperPrev: any;

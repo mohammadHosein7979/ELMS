@@ -54,12 +54,12 @@ export class CreateHeadlineCourseComponent extends BaseService implements OnInit
     flag: false,
     index: null
   };
-    editModeSession: any = {
+  editModeSession: any = {
     flag: false,
     index: null
   };
   dataSelectHeadline: any;
-dataSelectHeadlineDetail: any;
+  dataSelectHeadlineDetail: any;
 
   ngOnInit() {
     this.eventId = +this.route.snapshot.params['id']
@@ -72,10 +72,10 @@ dataSelectHeadlineDetail: any;
 
 
 
- submitSession() {
-  this.formSession.patchValue({
-    eventId: this.eventId
-  })
+  submitSession() {
+    this.formSession.patchValue({
+      eventId: this.eventId
+    })
     if (this.editModeSession.flag) {
       this.courseManagementService.updateSession({ dto: this.formSession.value }).subscribe((data: any) => {
         this.dataSession[this.editModeSession.index] = data.data
@@ -186,17 +186,17 @@ dataSelectHeadlineDetail: any;
       this.dataHeadLineDetail.splice(index, 1)
     })
   }
-selectHeadlineDetail(item: any) {
+  selectHeadlineDetail(item: any) {
     if (this.dataSelectHeadlineDetail == item) {
-      this.dataSelectHeadlineDetail = null 
-            this.dataSession = []
+      this.dataSelectHeadlineDetail = null
+      this.dataSession = []
 
-    }else {
-      this.dataSelectHeadlineDetail = item 
-            this.getSession()
+    } else {
+      this.dataSelectHeadlineDetail = item
+      this.getSession()
 
     }
-  } 
+  }
 
 
 
@@ -211,6 +211,8 @@ selectHeadlineDetail(item: any) {
       this.dataSelectHeadline = null
       this.dataHeadLineDetail = []
       this.dataSession = []
+      this.dataSelectHeadlineDetail = null
+
     } else {
       this.dataSelectHeadline = item
       this.getHeadlineDetail()
