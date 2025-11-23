@@ -284,11 +284,11 @@ export class FileUploadService extends BaseService {
   }
 
   // معادل Media_GenerateMedia
-  generateMedia(mediaId: any): Observable<any> {
+  generateMedia(mediaId: any,type:number): Observable<any> {
     return this.get(
-      `${environment.apiUrl}/mediaapi/api/v1/ParticleMedia/Generate`,
+      `${environment.apiUrl}/mediaapi/api/v1/ParticleMedia/${type==10004 ? 'GenerateVideo' : 'Generate'}`,
       {},
-      { "mediaId": mediaId }
+      { "IDMedia": mediaId }
     );
   }
 

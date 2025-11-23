@@ -1,8 +1,9 @@
-import { Component, Injector, OnInit } from '@angular/core';
-import { FormGroup, Validators } from "@angular/forms";
-import { CourseManagementService } from "../../services/course-management.service";
-import { BaseService } from "../../../../../../shared/services/base.service";
-import { e } from '@angular/cdk/portal-directives.d-BoG39gYN';
+import {Component, Injector, OnInit} from '@angular/core';
+import {FormGroup, Validators} from "@angular/forms";
+import {CourseManagementService} from "../../services/course-management.service";
+import {BaseService} from "../../../../../../shared/services/base.service";
+import {environment} from "../../../../../../../environments/environment";
+import {MicroService} from "../../../../../../shared/enum/enum";
 
 @Component({
   selector: 'app-create-headline-course',
@@ -70,14 +71,12 @@ export class CreateHeadlineCourseComponent extends BaseService implements OnInit
   }
 
 
-
-
   submitSession() {
     this.formSession.patchValue({
       eventId: this.eventId
     })
     if (this.editModeSession.flag) {
-      this.courseManagementService.updateSession({ dto: this.formSession.value }).subscribe((data: any) => {
+      this.courseManagementService.updateSession({dto: this.formSession.value}).subscribe((data: any) => {
         this.dataSession[this.editModeSession.index] = data.data
         this.formSession.reset({
           eventHeadlineDetailID: this.dataSelectHeadlineDetail.id,
@@ -95,9 +94,9 @@ export class CreateHeadlineCourseComponent extends BaseService implements OnInit
 
         eventHeadlineDetailID: this.dataSelectHeadlineDetail.id
       })
-      this.courseManagementService.insertSession({ dto: this.formSession.value }).subscribe((data: any) => {
+      this.courseManagementService.insertSession({dto: this.formSession.value}).subscribe((data: any) => {
         this.dataSession.push(data?.data)
-        this.formHeadline.reset({
+        this.formSession.reset({
           eventId: this.eventId,
           id: 0
         })
@@ -108,41 +107,33 @@ export class CreateHeadlineCourseComponent extends BaseService implements OnInit
   }
 
   getSession() {
-    this.courseManagementService.getSession({ filter: { eventHeadlineDetailIdList: [this.dataSelectHeadlineDetail?.id] } }).subscribe((data: any) => {
+    this.courseManagementService.getSession({filter: {eventHeadlineDetailIdList: [this.dataSelectHeadlineDetail?.id]}}).subscribe((data: any) => {
       this.dataSession = data?.data;
     })
   }
+
+  dataSelectSession: any
 
 
   editSession(item: any, index: any) {
     this.editModeSession.flag = true
     this.editModeSession.index = index
     this.formSession.patchValue(item)
+    this.dataSelectSession = item
   }
 
   removeSession(item: any, index: number) {
-    this.courseManagementService.removeSession({ id: item?.id }).subscribe((data: any) => {
+    this.courseManagementService.removeSession({id: item?.id}).subscribe((data: any) => {
       this.dataSession.splice(index, 1)
+      this.notification.success('با موفقیت حذف شد .')
+
     })
   }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
   submitHeadlineDetail() {
     if (this.editModeHeadlineDetail.flag) {
-      this.courseManagementService.updateEventHeadlineDetail({ dto: this.formHeadlineDetail.value }).subscribe((data: any) => {
+      this.courseManagementService.updateEventHeadlineDetail({dto: this.formHeadlineDetail.value}).subscribe((data: any) => {
         this.dataHeadLineDetail[this.editModeHeadlineDetail.index] = data.data
         this.formHeadlineDetail.reset({
           eventHeadlineId: this.dataSelectHeadline.id,
@@ -156,7 +147,7 @@ export class CreateHeadlineCourseComponent extends BaseService implements OnInit
         index: this.dataHeadLineDetail.length,
         eventHeadlineId: this.dataSelectHeadline.id
       })
-      this.courseManagementService.insertEventHeadlineDetail({ dto: this.formHeadlineDetail.value }).subscribe((data: any) => {
+      this.courseManagementService.insertEventHeadlineDetail({dto: this.formHeadlineDetail.value}).subscribe((data: any) => {
         this.dataHeadLineDetail.push(data?.data)
         this.formHeadline.reset({
           eventId: this.eventId,
@@ -169,7 +160,7 @@ export class CreateHeadlineCourseComponent extends BaseService implements OnInit
   }
 
   getHeadlineDetail() {
-    this.courseManagementService.getEventHeadlineDetail({ filter: { eventHeadlineIdList: [this.dataSelectHeadline?.id] } }).subscribe((data: any) => {
+    this.courseManagementService.getEventHeadlineDetail({filter: {eventHeadlineIdList: [this.dataSelectHeadline?.id]}}).subscribe((data: any) => {
       this.dataHeadLineDetail = data?.data;
     })
   }
@@ -182,15 +173,20 @@ export class CreateHeadlineCourseComponent extends BaseService implements OnInit
   }
 
   removeCourseManagementDetail(item: any, index: number) {
-    this.courseManagementService.removeEventHeadlineDetail({ id: item?.id }).subscribe((data: any) => {
+    this.courseManagementService.removeEventHeadlineDetail({id: item?.id}).subscribe((data: any) => {
+      this.notification.success('با موفقیت حذف شد .')
       this.dataHeadLineDetail.splice(index, 1)
     })
   }
+
   selectHeadlineDetail(item: any) {
     if (this.dataSelectHeadlineDetail == item) {
       this.dataSelectHeadlineDetail = null
       this.dataSession = []
-
+      this.formSession.reset({
+        eventId: this.eventId,
+        id: 0
+      })
     } else {
       this.dataSelectHeadlineDetail = item
       this.getSession()
@@ -199,19 +195,16 @@ export class CreateHeadlineCourseComponent extends BaseService implements OnInit
   }
 
 
-
-
-
-
-
-
-
   selectHeadline(item: any) {
     if (this.dataSelectHeadline == item) {
       this.dataSelectHeadline = null
       this.dataHeadLineDetail = []
       this.dataSession = []
       this.dataSelectHeadlineDetail = null
+      this.formSession.reset({
+        eventId: this.eventId,
+        id: 0
+      })
 
     } else {
       this.dataSelectHeadline = item
@@ -220,14 +213,14 @@ export class CreateHeadlineCourseComponent extends BaseService implements OnInit
   }
 
   getEventHeadline() {
-    this.courseManagementService.getEventHeadline({ filter: { eventIdList: [this.eventId] } }).subscribe((data: any) => {
+    this.courseManagementService.getEventHeadline({filter: {eventIdList: [this.eventId]}}).subscribe((data: any) => {
       this.dataCourseManagement = data.data
     })
   }
 
   submitHeadline() {
     if (this.editModeHeadline.flag) {
-      this.courseManagementService.updateEventHeadline({ dto: this.formHeadline.value }).subscribe((data: any) => {
+      this.courseManagementService.updateEventHeadline({dto: this.formHeadline.value}).subscribe((data: any) => {
         this.dataCourseManagement[this.editModeHeadline.index] = data.data
         this.formHeadline.reset({
           eventId: this.eventId,
@@ -240,7 +233,7 @@ export class CreateHeadlineCourseComponent extends BaseService implements OnInit
       this.formHeadline.patchValue({
         index: this.dataCourseManagement.length
       })
-      this.courseManagementService.insertEventHeadline({ dto: this.formHeadline.value }).subscribe((data: any) => {
+      this.courseManagementService.insertEventHeadline({dto: this.formHeadline.value}).subscribe((data: any) => {
         this.dataCourseManagement.push(data?.data)
         this.formHeadline.reset({
           eventId: this.eventId,
@@ -259,7 +252,8 @@ export class CreateHeadlineCourseComponent extends BaseService implements OnInit
   }
 
   removeCourseManagement(item: any, index: number) {
-    this.courseManagementService.removeEventHeadline({ id: item?.id }).subscribe((data: any) => {
+    this.courseManagementService.removeEventHeadline({id: item?.id}).subscribe((data: any) => {
+      this.notification.success('با موفقیت حذف شد .')
       this.dataCourseManagement.splice(index, 1)
     })
   }
@@ -283,4 +277,6 @@ export class CreateHeadlineCourseComponent extends BaseService implements OnInit
   }
 
 
+  protected readonly environment = environment;
+  protected readonly MicroService = MicroService;
 }

@@ -73,9 +73,6 @@ export class MainCoursesComponent extends BaseService implements OnInit, OnDestr
   private applyFilters(params: any) {
     const filterType = params['filter'];
     const eventId = params['eventId'];
-
-    console.log('Applying filters:', { filterType, eventId });
-
     // فیلتر کردن داده‌ها
     if (filterType) {
       const filterId = parseInt(filterType, 10);

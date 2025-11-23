@@ -19,6 +19,9 @@ export class CourseManagementService extends BaseService {
 
 
 
+  getConfig(body :any={}) {
+    return this.post(`/${MicroService.course}/Config/Report`, body)
+  }
   getCourse(body :any={}) {
     return this.post(`/${MicroService.course}/Course/Report`, body)
   }

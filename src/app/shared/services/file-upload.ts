@@ -23,7 +23,7 @@ export class FileUploader {
   constructor(private uploadService: FileUploadService) {}
 
   uploadFile(
-    file: File, 
+    file: File,
     type: number,
     onProgress?: (percent: number) => void,
     onComplete?: (result: UploadResult) => void
@@ -65,7 +65,7 @@ export class FileUploader {
           return this.uploadChunks(file, IDMedia, chunkCount, onProgress).pipe(
             switchMap(() => {
               // Step 3: Generate Media
-              return this.uploadService.generateMedia(IDMedia).pipe(
+              return this.uploadService.generateMedia(IDMedia,type).pipe(
                 switchMap((generateResponse: any) => {
                   const result: UploadResult = {
                     fileUrl: `${environment.apiUrl}/${MicroService.mediaapi}/api/File/DownloadFile?IDMedia=${IDMedia}`,

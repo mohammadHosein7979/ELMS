@@ -62,13 +62,16 @@
   <!-- حالت نمایش آواتار - وقتی آواتار وجود دارد -->
   <div *ngIf="avatar" class="avatar-container">
     <div class="avatar-wrapper d-flex gap-2 align-items-center">
-      <img
-        [src]="avatar"
-        alt="آواتار"
-        class="avatar-image"
+      <button
+        nz-button
+        type="button"
+        nzType="primary"
         (click)="openImagePreview()"
-      />
-
+        [nzLoading]="loadingUpload"
+        [disabled]="loadingUpload|| disable"
+      >
+        مشاهده فایل
+      </button>
       <div class="d-flex flex-column gap-1">
           <!-- دکمه حذف -->
       <button

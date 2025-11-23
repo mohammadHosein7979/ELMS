@@ -1,4 +1,4 @@
-import {Component, inject, Injector, Input, ViewChild, ElementRef} from '@angular/core';
+import {Component, inject, Injector, Input, ViewChild, ElementRef, OnChanges, SimpleChanges} from '@angular/core';
 import {BaseService} from "../../shared/services/base.service";
 import {NzButtonComponent} from "ng-zorro-antd/button";
 import {NzInputDirective} from "ng-zorro-antd/input";
@@ -9,30 +9,30 @@ import {NgIf} from "@angular/common";
 import {NzProgressComponent} from "ng-zorro-antd/progress";
 import {NzIconDirective} from "ng-zorro-antd/icon";
 import {MicroService} from "../../shared/enum/enum";
-import { environment } from '../../../environments/environment';
-import { FileUploader } from '../../shared/services/file-upload';
+import {environment} from '../../../environments/environment';
+import {FileUploader} from '../../shared/services/file-upload';
 
 @Component({
-    selector: 'app-file-upload',
+  selector: 'app-file-upload',
   imports: [
     NzButtonComponent,
-    NzInputDirective,
     ReactiveFormsModule,
     NgIf,
     NzProgressComponent,
     NzIconDirective
   ],
-    templateUrl: './file-upload.component.html',
-    viewProviders: [
-        { provide: ControlContainer, useExisting: FormGroupDirective }
-    ],
-    styleUrl: './file-upload.component.scss'
+  templateUrl: './file-upload.component.html',
+  viewProviders: [
+    {provide: ControlContainer, useExisting: FormGroupDirective}
+  ],
+  styleUrl: './file-upload.component.scss'
 })
-export class FileUploadComponent extends BaseService{
+export class FileUploadComponent extends BaseService implements OnChanges {
   @Input('disable') disable: boolean = false;
   @Input('controlName') controlName: any;
-  @Input('avatar') avatar: any;
   @Input('type') type: any = 'image';
+  @Input('mediaId') mediaId: any;
+  avatar: string | null = null;
 
   @ViewChild('fileInputImage') fileInputImage!: ElementRef<HTMLInputElement>;
   @ViewChild('fileInputMedia') fileInputMedia!: ElementRef<HTMLInputElement>;
@@ -42,46 +42,38 @@ export class FileUploadComponent extends BaseService{
   uploadProgress = 0;
   showProgress = false;
 
-  constructor(injector: Injector, private parent: FormGroupDirective,private fileUploader: FileUploader) {
+  // ${environment.apiUrl}/${MicroService.mediaapi}/api/File/DownloadFile?IDMedia=
+  constructor(injector: Injector, private parent: FormGroupDirective, private fileUploader: FileUploader) {
     super(injector);
   }
 
-  // onFileSelected(event: Event, idMediaType: number) {
-  //   const file = (event.target as HTMLInputElement).files?.[0];
-  //   if (!file) return;
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['mediaId']) {
+      this.updateAvatar();
+    }
+  }
 
-  //   this.loadingUpload = true;
-  //   this.showProgress = true;
-  //   this.uploadProgress = 0;
+  private updateAvatar(): void {
+    if (this.isValidMediaId(this.mediaId)) {
+      this.avatar = `${environment.apiUrl}/${MicroService.mediaapi}/api/File/DownloadFile?IDMedia=${this.mediaId}`;
+    } else {
+      this.avatar = this.getDefaultAvatar(); // متد برای آواتار پیش‌فرض
+    }
+  }
 
-  //   this.uploadService
-  //     .uploadFile(file, idMediaType, (progress) => {
-  //       this.uploadProgress = progress;
-  //     })
-  //     .pipe(finalize(() => {
-  //       this.loadingUpload = false;
-  //       // بعد از 2 ثانیه نوار پیشرفت مخفی شود
-  //       setTimeout(() => {
-  //         this.showProgress = false;
-  //       }, 2000);
-  //     }))
-  //     .subscribe({
-  //       next: (res) => {
+  private isValidMediaId(id: any): boolean {
+    return id !== null &&
+      id !== undefined &&
+      id !== '' &&
+      !isNaN(id) && // اگر عددی است
+      id > 0; // اگر باید بزرگتر از صفر باشد
+  }
 
-  //         // استفاده از ID از Media/Add
-  //         this.parent.form.get(this.controlName)?.setValue(res.mediaAddResponse?.data?.id);
-  //         setTimeout(() => {
-  //           this.avatar = `${environment.apiUrl}/${MicroService.mediaapi}/api/File/DownloadFile?IDMedia=${res.mediaAddResponse?.data?.id}`;
-  //         }, 0);
+  private getDefaultAvatar(): any {
+    return null;
+  }
 
-  //         this.notification.success('فایل با موفقیت آپلود شد');
-  //       },
-  //       error: (err) => {
-  //         this.notification.error('خطا در آپلود فایل');
-  //       }
-  //     });
-  // }
-   onFileSelected(event: Event, idMediaType: number) {
+  onFileSelected(event: Event, idMediaType: number) {
     const file = (event.target as HTMLInputElement).files?.[0];
     if (!file) return;
 
@@ -141,5 +133,5 @@ export class FileUploadComponent extends BaseService{
       window.open(this.avatar, '_blank');
 
     }
-}
+  }
 }

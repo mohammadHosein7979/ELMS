@@ -21,7 +21,6 @@ export class AppComponent extends BaseService implements OnInit {
     // this.authService.initialize();
     // this.seoService.boot();
     this.auth.loadUser().subscribe(() => {
-      console.log('User loaded on app init');
     });
 
     this.UpdateService.checkForUpdate();

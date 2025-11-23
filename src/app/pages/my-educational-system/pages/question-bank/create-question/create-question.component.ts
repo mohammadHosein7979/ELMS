@@ -60,14 +60,12 @@ export class CreateQuestionComponent extends BaseService implements OnInit {
         idList:[questionId]
       }}).subscribe({
       next: (questionData: any) => {
-        console.log(questionData);
         if (questionData?.data && questionData.data?.length > 0) {
           this.populateForm(questionData.data[0]);
 
         }
       },
       error: (error) => {
-        console.error('Error loading question data:', error);
         this.notification.error('خطا در بارگذاری داده‌های سوال');
       }
     });

@@ -17,6 +17,7 @@ export class CreateCourseComponent extends BaseService implements OnInit {
   isEditMode: boolean = false;
   courseId: number | null = null;
   dataDefault:any
+  dataConfig:any
 
   constructor(
     injector: Injector,
@@ -51,6 +52,7 @@ export class CreateCourseComponent extends BaseService implements OnInit {
     this.createForm();
     this.getCourse();
     this.getEventType();
+    this.getConfig();
   }
 
   checkEditMode() {
@@ -114,6 +116,11 @@ export class CreateCourseComponent extends BaseService implements OnInit {
   getEventType() {
     this.courseManagementService.getEventType().subscribe((data: any) => {
       this.dataEventType = data.data;
+    })
+  }
+  getConfig() {
+    this.courseManagementService.getConfig().subscribe((data: any) => {
+      this.dataConfig = data.data;
     })
   }
 
