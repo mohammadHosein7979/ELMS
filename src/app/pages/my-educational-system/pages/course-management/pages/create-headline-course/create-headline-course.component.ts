@@ -108,7 +108,10 @@ export class CreateHeadlineCourseComponent extends BaseService implements OnInit
       eventId: this.eventId
     })
     if (this.editModeSession.flag) {
-      this.courseManagementService.updateSession({dto: this.formSession.value}).subscribe((data: any) => {
+      let form = this.formSession.value
+      form.startDateTime =  this.convertJalaliToGregorian(this.formSession.value?.startDateTime)
+
+      this.courseManagementService.updateSession({dto: form}).subscribe((data: any) => {
         this.dataSession[this.editModeSession.index] = data.data
         this.formSession.reset({
           eventHeadlineDetailID: this.dataSelectHeadlineDetail.id,
@@ -126,7 +129,10 @@ export class CreateHeadlineCourseComponent extends BaseService implements OnInit
 
         eventHeadlineDetailID: this.dataSelectHeadlineDetail.id
       })
-      this.courseManagementService.insertSession({dto: this.formSession.value}).subscribe((data: any) => {
+      let form = this.formSession.value
+      form.startDateTime =  this.convertJalaliToGregorian(this.formSession.value?.startDateTime)
+
+      this.courseManagementService.insertSession({dto: form}).subscribe((data: any) => {
         this.dataSession.push(data?.data)
         this.formSession.reset({
           eventId: this.eventId,
@@ -150,7 +156,9 @@ export class CreateHeadlineCourseComponent extends BaseService implements OnInit
   editSession(item: any, index: any) {
     this.editModeSession.flag = true
     this.editModeSession.index = index
-    this.formSession.patchValue(item)
+    this.formSession.patchValue({
+      ...item,startDateTime : item.startDateTimeShamsi
+    })
     this.dataSelectSession = item
   }
 
@@ -305,7 +313,9 @@ export class CreateHeadlineCourseComponent extends BaseService implements OnInit
     value = value.slice(0, 8);
     input.value = value;
   }
+  dateOnSelectStart(e: any) {
 
+  }
 
   protected readonly environment = environment;
   protected readonly MicroService = MicroService;

@@ -15,6 +15,7 @@ import {HttpClient, HttpParams} from "@angular/common/http";
 import {catchError} from "rxjs/operators";
 import {NzTableQueryParams} from "ng-zorro-antd/table";
 import {FormBuilder} from "@angular/forms";
+import dayjs from "dayjs";
 @Injectable({
   providedIn: 'root'
 })
@@ -249,4 +250,15 @@ export class BaseService {
   trackByFn(index:any, item:any): number {
     return item.id || index;
   }
+  convertJalaliToGregorian(jalaliDate: string): string {
+    // ورودی مثل 1403/08/15 یا 1403-08-15
+    const d = dayjs(jalaliDate, { jalali: true });
+
+    if (!d.isValid()) {
+      throw new Error('تاریخ نامعتبر است');
+    }
+
+    return d.locale('en').format('YYYY-MM-DD'); // خروجی میلادی
+  }
+
 }

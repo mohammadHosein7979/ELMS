@@ -41,6 +41,7 @@ import {ButtonBackComponent} from "../../components/button-back/button-back.comp
 import {FileUploadComponent} from "../../components/file-upload/file-upload.component";
 import {ListTestsComponent} from "./pages/tests/list-tests/list-tests.component";
 import {ThousandsSeparatorDirective} from "../../shared/directives/thousands-separator.directive";
+import {NgPersianDatepickerModule} from "ng-persian-datepicker";
 
 
 @NgModule({
@@ -56,29 +57,30 @@ import {ThousandsSeparatorDirective} from "../../shared/directives/thousands-sep
     ListTestsComponent,
     CreateCourseComponent,
   ],
-    imports: [
-        CommonModule,
-        myEducationalSystemRoutingModule,
-        HttpClientModule,
-        SwiperModule,
-        ReactiveFormsModule,
-        FormsModule,
-        SharedModule,
-        CardClassesComponent,
-        CardTestsNotHeldComponent,
-        CardTestsUncorrectedComponent,
-        CardTestsCompletedComponent,
-        CardQuestionComponent,
-        NzAutocompleteTriggerDirective,
-        NzAutocompleteComponent,
-        ProgressCircleComponent,
-        CKEditorModule,
-        TypeSelectedCourseComponent,
-        NzAutocompleteOptionComponent,
-        ButtonBackComponent,
-        FileUploadComponent,
-        ThousandsSeparatorDirective,
-    ],
+  imports: [
+    CommonModule,
+    myEducationalSystemRoutingModule,
+    HttpClientModule,
+    SwiperModule,
+    ReactiveFormsModule,
+    FormsModule,
+    SharedModule,
+    CardClassesComponent,
+    CardTestsNotHeldComponent,
+    CardTestsUncorrectedComponent,
+    CardTestsCompletedComponent,
+    CardQuestionComponent,
+    NzAutocompleteTriggerDirective,
+    NzAutocompleteComponent,
+    ProgressCircleComponent,
+    CKEditorModule,
+    TypeSelectedCourseComponent,
+    NzAutocompleteOptionComponent,
+    ButtonBackComponent,
+    FileUploadComponent,
+    ThousandsSeparatorDirective,
+    NgPersianDatepickerModule,
+  ],
 })
 export class MyEducationalSystemModule {
 }

@@ -137,8 +137,14 @@
                     formControlName="link" />
                   <input *ngIf="dataEvent?.eventTypeId == 3" nz-input class="input-style create-course-10" placeholder="مکان " type="text"
                     formControlName="location" />
-<!--                  <input nz-input class="input-style create-course-10" placeholder="ظرفیت " type="text"-->
-<!--                    formControlName="capacity" />-->
+                  <input nz-input class="input-style create-course-10" placeholder="ظرفیت " type="text"
+                    formControlName="capacity" />
+                  <ng-persian-datepicker [uiIsVisible]="false" [dateInitValue]="false" (dateOnSelect)="dateOnSelectStart($event)"
+                                         id="e"
+                                         class="position-relative d-inline-block w-100 detail-roadmap-4 detail-roadmap-6 cursorAll">
+                    <input id="i" class="input-style" type="text" formControlName="startDateTime"/>
+                  </ng-persian-datepicker>
+<!--                  <app-jalali-picker formControlName="startDateTime"></app-jalali-picker>-->
 
                   <button nz-button [disabled]="dataSelectHeadlineDetail == null"
                     class="create-course-4 color-1 font-family-regular font-14 border-radius-5  create-course-6  mb-2 px-4">
