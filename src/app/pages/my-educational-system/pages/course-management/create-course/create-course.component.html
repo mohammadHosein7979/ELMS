@@ -76,17 +76,6 @@
             </p>
           </div>
           <div class="d-flex gap-5 flex-column flex-lg-row justify-content-evenly">
-<!--            @for (item of dataEventType;track item?.id){-->
-<!--              <div (click)="changeType(item?.id)" class="text-center cursorPointer">-->
-<!--                <img src="assets/image/my-educational-system/Group345.svg"-->
-<!--                     class="{{form.value?.eventTypeId != item?.id ? 'opacity-50' : ''}}">-->
-<!--                <h3 class="color-1 font-12 font-family-bold">-->
-<!--                  {{item?.name}}-->
-<!--                </h3>-->
-
-<!--              </div>-->
-
-<!--            }-->
             <div (click)="changeType(1)" class="text-center cursorPointer">
               <img src="assets/image/my-educational-system/Group343.svg"
                    class="{{form.value?.eventTypeId != 1 ? 'opacity-50' : ''}}">
@@ -168,18 +157,20 @@
                     </h3>
                     <div class="d-flex justify-content-between gap-2 w-100">
                       <input class="input-style text-center" nz-input placeholder="00" type="number" formControlName="duration"/>
-<!--                      <span class="font-20 color-1 opacity-50 font-family-bold">-->
-<!--                        :-->
-<!--                      </span>-->
-<!--                      <input class="input-style" nz-input placeholder="00" type="text" />-->
-
                     </div>
                   </div>
                   <div class="d-flex justify-content-between gap-2 mb-3">
                     <h3 class="font-family-regular font-14 color-1 opacity-50 w-100">
                       هزینه دوره آموزشی :
                     </h3>
-                    <input class="input-style" nz-input placeholder="0" type="number" formControlName="price"/>
+                    <input
+                      class="input-style"
+                      nz-input
+                      placeholder="0"
+                      type="text"
+                      formControlName="price"
+                      appThousandsSeparator
+                    />
                   </div>
                   <div class="d-flex justify-content-between gap-2">
                     <h3 class="font-family-regular font-14 color-1 opacity-50 w-100">
@@ -189,37 +180,37 @@
                   </div>
                 </div>
                 <div class="col-12 col-lg-6">
-                   <div class="d-flex justify-content-between align-items-center gap-2 mb-3 input-height">
-                     <h3 class="font-family-regular font-14 color-1 opacity-50 w-100">
-                       مالیات :
-                     </h3>
-                     <p class="opacity-50 color-1 font-family-regular font-12">
-                       0
-                     </p>
-                   </div>
-                   <div class="d-flex justify-content-between gap-2 mb-3 align-items-center input-height">
-                     <h3 class="font-family-regular font-14 color-1 opacity-50 w-100">
-                       سهم تدبر :
-                     </h3>
-                     <p class="opacity-50 color-1 font-family-regular font-12">
-                       0
-                     </p>
-                   </div>
-                   <div class="d-flex justify-content-between gap-2 align-items-center input-height">
-                     <h3 class="font-family-regular font-14 color-1 opacity-50 w-100">
-                       خالص دریافتی :
-                     </h3>
-                     <p class="opacity-50 color-1 font-family-regular font-12">
-                       0
-                     </p>
-                   </div>
+                  <div class="d-flex justify-content-between align-items-center gap-2 mb-3 input-height">
+                    <h3 class="font-family-regular font-14 color-1 opacity-50 w-100">
+                      مالیات ({{ taxRate * 100 }}%) :
+                    </h3>
+                    <p class="opacity-50 color-1 font-family-regular font-12">
+                      {{ taxAmount | number }} تومان
+                    </p>
+                  </div>
+                  <div class="d-flex justify-content-between gap-2 mb-3 align-items-center input-height">
+                    <h3 class="font-family-regular font-14 color-1 opacity-50 w-100">
+                      سهم سایت ({{ siteRate * 100 }}%) :
+                    </h3>
+                    <p class="opacity-50 color-1 font-family-regular font-12">
+                      {{ siteShare | number }} تومان
+                    </p>
+                  </div>
+                  <div class="d-flex justify-content-between gap-2 align-items-center input-height">
+                    <h3 class="font-family-regular font-14 color-1 opacity-50 w-100">
+                      خالص دریافتی :
+                    </h3>
+                    <p class="opacity-50 color-1 font-family-regular font-12">
+                      {{ netIncome | number }} تومان
+                    </p>
+                  </div>
                 </div>
               </div>
 
 
             </div>
             <div class="col-12 col-lg-3">
-             <app-type-selected-course [type]="form.value?.eventTypeId"/>
+              <app-type-selected-course [type]="form.value?.eventTypeId"/>
             </div>
           </div>
           <div>
@@ -308,14 +299,6 @@
                       {{form.value.title}}
                     </p>
                   </div>
-<!--                  <div class="mb-2">-->
-<!--                    <h3 class="font-family-bold font-14 color-1">-->
-<!--                      تعداد فصل های دوره-->
-<!--                    </h3>-->
-<!--                    <p class="font-family-regular font-14 color-1">-->
-<!--                      4 فصل-->
-<!--                    </p>-->
-<!--                  </div>-->
                   <div class="mb-2">
                     <h3 class="font-family-bold font-14 color-1">
                       زمان آموزش
@@ -330,7 +313,16 @@
                       هزینه دوره
                     </h3>
                     <p class="font-family-regular font-14 color-1">
-                      {{form.value.price}}
+                      {{form.value?.price | number}}
+                      تومان
+                    </p>
+                  </div>
+                  <div class="mb-2">
+                    <h3 class="font-family-bold font-14 color-1">
+                      خالص دریافتی
+                    </h3>
+                    <p class="font-family-regular font-14 color-1">
+                      {{netIncome | number}}
                       تومان
                     </p>
                   </div>
@@ -355,7 +347,8 @@
             <br/>
           </div>
         </div>
-        <!--      end step 8-->
+        <!--      end step 6-->
+
         <div class="d-flex gap-2 justify-content-center">
           <button type="button" *ngIf="step != 6" (click)="changeStep('next')"
                   class="bg-color-10 border-color-10 border-radius-10 px-3 py-1 text-white font-family-bold font-14">

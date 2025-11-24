@@ -40,6 +40,7 @@ import {
 import {ButtonBackComponent} from "../../components/button-back/button-back.component";
 import {FileUploadComponent} from "../../components/file-upload/file-upload.component";
 import {ListTestsComponent} from "./pages/tests/list-tests/list-tests.component";
+import {ThousandsSeparatorDirective} from "../../shared/directives/thousands-separator.directive";
 
 
 @NgModule({
@@ -55,28 +56,29 @@ import {ListTestsComponent} from "./pages/tests/list-tests/list-tests.component"
     ListTestsComponent,
     CreateCourseComponent,
   ],
-  imports: [
-    CommonModule,
-    myEducationalSystemRoutingModule,
-    HttpClientModule,
-    SwiperModule,
-    ReactiveFormsModule,
-    FormsModule,
-    SharedModule,
-    CardClassesComponent,
-    CardTestsNotHeldComponent,
-    CardTestsUncorrectedComponent,
-    CardTestsCompletedComponent,
-    CardQuestionComponent,
-    NzAutocompleteTriggerDirective,
-    NzAutocompleteComponent,
-    ProgressCircleComponent,
-    CKEditorModule,
-    TypeSelectedCourseComponent,
-    NzAutocompleteOptionComponent,
-    ButtonBackComponent,
-    FileUploadComponent,
-  ],
+    imports: [
+        CommonModule,
+        myEducationalSystemRoutingModule,
+        HttpClientModule,
+        SwiperModule,
+        ReactiveFormsModule,
+        FormsModule,
+        SharedModule,
+        CardClassesComponent,
+        CardTestsNotHeldComponent,
+        CardTestsUncorrectedComponent,
+        CardTestsCompletedComponent,
+        CardQuestionComponent,
+        NzAutocompleteTriggerDirective,
+        NzAutocompleteComponent,
+        ProgressCircleComponent,
+        CKEditorModule,
+        TypeSelectedCourseComponent,
+        NzAutocompleteOptionComponent,
+        ButtonBackComponent,
+        FileUploadComponent,
+        ThousandsSeparatorDirective,
+    ],
 })
 export class MyEducationalSystemModule {
 }

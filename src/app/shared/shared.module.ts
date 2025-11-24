@@ -33,6 +33,7 @@ import {
 import {
   FooterLayoutLandingComponent
 } from "../landing/layout-landing/footer-layout-landing/footer-layout-landing.component";
+import {ThousandsSeparatorPipe} from "./pipes/thousands-separator.pipe";
 
 // import {SpinnerComponent} from "./spinner/spinner.component";
 
@@ -44,6 +45,7 @@ export function playerFactory() {
   declarations: [
     TranslatePipe,
     fastrnumberPipe,
+    ThousandsSeparatorPipe,
     HideStrPipe,
     HeaderLayoutComponent,
     FooterLayoutComponent,
@@ -56,6 +58,7 @@ export function playerFactory() {
   ],
   exports: [
     TranslatePipe,
+    ThousandsSeparatorPipe,
     fastrnumberPipe,
     HideStrPipe,
     HeaderLayoutComponent,

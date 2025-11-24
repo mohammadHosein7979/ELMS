@@ -25,6 +25,7 @@ import {FileUploader} from '../../shared/services/file-upload';
   viewProviders: [
     {provide: ControlContainer, useExisting: FormGroupDirective}
   ],
+  standalone: true,
   styleUrl: './file-upload.component.scss'
 })
 export class FileUploadComponent extends BaseService implements OnChanges {

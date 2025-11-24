@@ -4,6 +4,7 @@ import {CourseManagementService} from "../../services/course-management.service"
 import {BaseService} from "../../../../../../shared/services/base.service";
 import {environment} from "../../../../../../../environments/environment";
 import {MicroService} from "../../../../../../shared/enum/enum";
+import {finalize, forkJoin} from "rxjs";
 
 @Component({
   selector: 'app-create-headline-course',
@@ -16,6 +17,7 @@ export class CreateHeadlineCourseComponent extends BaseService implements OnInit
     super(injector)
   }
 
+  dataEvent: any
   dataCourseManagement: any = []
   dataHeadLineDetail: any = []
   dataSession: any = []
@@ -67,7 +69,37 @@ export class CreateHeadlineCourseComponent extends BaseService implements OnInit
     this.formHeadline.patchValue({
       eventId: this.eventId,
     })
-    this.getEventHeadline()
+
+    const eventRequest = this.getEvent();
+    const configRequest = this.getEventHeadline();
+
+    let requests = [ eventRequest, configRequest];
+
+    forkJoin(requests).subscribe({
+      next: (results: any[]) => {
+        // مدیریت نتایج بر اساس ترتیب
+        let eventRequest, EventHeadlineResult;
+        [eventRequest, EventHeadlineResult] = results;
+        // پردازش سایر نتایج
+        if (eventRequest) {
+          this.dataEvent = eventRequest.data[0];
+        }
+        if (EventHeadlineResult) {
+          this.dataCourseManagement = EventHeadlineResult.data;
+        }
+
+        console.log(this.dataEvent,this.dataCourseManagement)
+
+      },
+      error: (error) => {
+        this.notification.error('خطا در بارگذاری داده‌ها');
+      }
+    });
+
+  }
+
+  getEvent(){
+    return this.courseManagementService.getEvent({ filter: { idList: [this.eventId] } })
   }
 
 
@@ -213,9 +245,7 @@ export class CreateHeadlineCourseComponent extends BaseService implements OnInit
   }
 
   getEventHeadline() {
-    this.courseManagementService.getEventHeadline({filter: {eventIdList: [this.eventId]}}).subscribe((data: any) => {
-      this.dataCourseManagement = data.data
-    })
+   return  this.courseManagementService.getEventHeadline({filter: {eventIdList: [this.eventId]}})
   }
 
   submitHeadline() {

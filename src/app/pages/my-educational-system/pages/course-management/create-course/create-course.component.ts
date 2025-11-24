@@ -1,58 +1,153 @@
-import {Component, Injector, OnInit} from '@angular/core';
+import { Component, Injector, OnInit } from '@angular/core';
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
-import { FormGroup, Validators} from "@angular/forms";
-import {BaseService} from "../../../../../shared/services/base.service";
-import {CourseManagementService} from "../services/course-management.service";
-import {finalize} from "rxjs";
+import { FormGroup, Validators } from "@angular/forms";
+import { BaseService } from "../../../../../shared/services/base.service";
+import { CourseManagementService } from "../services/course-management.service";
+import { finalize } from "rxjs";
 import { ActivatedRoute } from '@angular/router';
+import { forkJoin, of } from 'rxjs';
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-create-course',
   templateUrl: './create-course.component.html',
-  styleUrl: './create-course.component.scss',
+  styleUrls: ['./create-course.component.scss'],
   standalone: false
 })
 export class CreateCourseComponent extends BaseService implements OnInit {
 
   isEditMode: boolean = false;
   courseId: number | null = null;
-  dataDefault:any
-  dataConfig:any
+  dataDefault: any;
+  dataConfig: any;
 
   constructor(
     injector: Injector,
     private courseManagementService: CourseManagementService,
   ) {
-    super(injector)
+    super(injector);
   }
 
-  formSend !: FormGroup
+  formSend!: FormGroup;
   dataCourse: any = {
     data: [],
     loading: false
-  }
-  dataEventType: any
-  step: any = 1
-  listAnswer: any = [
-    {id: 1, answerTrue: false},
-    {id: 2, answerTrue: true},
-    {id: 3, answerTrue: false},
-    {id: 4, answerTrue: false},
-  ]
-  public Editor = ClassicEditor
+  };
+  dataEventType: any;
+  step: any = 1;
+  public Editor = ClassicEditor;
   public config = {
     language: {
       ui: 'fa',
       content: 'ar'
     }
-  }
+  };
+
+  // متغیرهای محاسبات مالی
+  taxAmount: number = 0;
+  siteShare: number = 0;
+  netIncome: number = 0;
+
+  // ضرایب پیش فرض
+  taxRate: number = 0; // 15%
+  siteRate: number = 0; // 15%
 
   ngOnInit() {
-    this.checkEditMode();
+    this.initializeData();
+  }
+
+  initializeData() {
     this.createForm();
-    this.getCourse();
-    this.getEventType();
-    this.getConfig();
+    this.checkEditMode();
+
+    // ایجاد observable ها
+    const courseRequest = this.getCourse();
+    const eventTypeRequest = this.getEventType();
+    const configRequest = this.getConfig();
+
+    let requests = [courseRequest, eventTypeRequest, configRequest];
+
+    // اگر در حالت edit هستیم، loadCourseData را اضافه می‌کنیم
+    if (this.isEditMode && this.courseId) {
+      const courseDataRequest = this.loadCourseData();
+      requests = [courseDataRequest, ...requests];
+    }
+
+    // اجرای تمام درخواست‌ها به صورت موازی
+    forkJoin(requests).subscribe({
+      next: (results: any[]) => {
+        // مدیریت نتایج بر اساس ترتیب
+        let courseDataResult, courseResult, eventTypeResult, configResult;
+
+        if (this.isEditMode && this.courseId) {
+          [courseDataResult, courseResult, eventTypeResult, configResult] = results;
+
+          // پردازش داده‌های دوره برای حالت edit
+          if (courseDataResult && courseDataResult.data && courseDataResult.data.length > 0) {
+            this.dataDefault = courseDataResult.data[0];
+            this.populateForm(courseDataResult.data[0]);
+          }
+        } else {
+          [courseResult, eventTypeResult, configResult] = results;
+        }
+
+        // پردازش سایر نتایج
+        if (courseResult) {
+          this.dataCourse.data = courseResult.data;
+        }
+        if (eventTypeResult) {
+          this.dataEventType = eventTypeResult.data;
+        }
+        if (configResult) {
+          this.dataConfig = configResult.data;
+          this.setConfigRates();
+        }
+
+        // تنظیم گوش دادن به تغییرات قیمت
+
+        // اگر قیمت وجود دارد، محاسبات را انجام بده
+        if (this.formSend.value.price) {
+          this.calculateFinancials(this.formSend.value.price);
+        }
+        this.setupPriceCalculation();
+
+      },
+      error: (error) => {
+        this.notification.error('خطا در بارگذاری داده‌ها');
+      }
+    });
+  }
+
+  setConfigRates() {
+
+
+    if (this.dataConfig ) {
+      this.dataConfig.forEach((config: any) => {
+        if (config.key === 'tax') {
+          this.taxRate = parseInt(config.value) / 100;
+        } else if (config.key === 'profit') {
+          this.siteRate = parseInt(config.value) / 100;
+        }
+      });
+    }
+  }
+
+  calculateFinancials(price: number) {
+    if (!price || price <= 0) {
+      this.taxAmount = 0;
+      this.siteShare = 0;
+      this.netIncome = 0;
+      return;
+    }
+
+    // محاسبه مالیات
+    this.taxAmount = Math.round(price * this.taxRate);
+
+    // محاسبه سهم سایت
+    this.siteShare = Math.round(price * this.siteRate);
+
+    // محاسبه خالص دریافتی
+    this.netIncome = price - this.taxAmount - this.siteShare;
   }
 
   checkEditMode() {
@@ -60,7 +155,6 @@ export class CreateCourseComponent extends BaseService implements OnInit {
       if (params['id']) {
         this.isEditMode = true;
         this.courseId = +params['id'];
-        this.loadCourseData();
       }
     });
   }
@@ -68,15 +162,13 @@ export class CreateCourseComponent extends BaseService implements OnInit {
   loadCourseData() {
     if (this.courseId) {
       this.dataCourse.loading = true;
-      this.courseManagementService.getEvent({filter: {idList: [this.courseId]}})
-        .pipe(finalize(() => this.dataCourse.loading = false))
-        .subscribe((data: any) => {
-          if (data.data && data.data.length > 0) {
-            this.dataDefault = data.data[0]
-            this.populateForm(data.data[0]);
-          }
-        });
+      return this.courseManagementService.getEvent({ filter: { idList: [this.courseId] } })
+        .pipe(
+          finalize(() => this.dataCourse.loading = false)
+        );
     }
+    // بازگرداندن observable خالی
+    return of({ data: [] });
   }
 
   populateForm(courseData: any) {
@@ -106,22 +198,18 @@ export class CreateCourseComponent extends BaseService implements OnInit {
   }
 
   getCourse() {
-    this.dataCourse.loading = true
-    this.courseManagementService.getCourse().subscribe((data: any) => {
-      this.dataCourse.data = data.data;
-      this.dataCourse.loading = false
-    })
+    this.dataCourse.loading = true;
+    return this.courseManagementService.getCourse().pipe(
+      finalize(() => this.dataCourse.loading = false)
+    );
   }
 
   getEventType() {
-    this.courseManagementService.getEventType().subscribe((data: any) => {
-      this.dataEventType = data.data;
-    })
+    return this.courseManagementService.getEventType();
   }
+
   getConfig() {
-    this.courseManagementService.getConfig().subscribe((data: any) => {
-      this.dataConfig = data.data;
-    })
+    return this.courseManagementService.getConfig();
   }
 
   createForm() {
@@ -155,7 +243,7 @@ export class CreateCourseComponent extends BaseService implements OnInit {
       eventTypeId: value,
       link: null,
       location: null,
-    })
+    });
   }
 
   get form() {
@@ -165,11 +253,11 @@ export class CreateCourseComponent extends BaseService implements OnInit {
   changeStep(type: string) {
     if (type == 'next') {
       if (this.step < 6) {
-        this.step = this.step + 1
+        this.step = this.step + 1;
       }
     } else {
       if (this.step > 1) {
-        this.step = this.step - 1
+        this.step = this.step - 1;
       }
     }
   }
@@ -183,8 +271,8 @@ export class CreateCourseComponent extends BaseService implements OnInit {
     this.loadingButton = true;
 
     const submitObservable = this.isEditMode
-      ? this.courseManagementService.updateEvent({dto: {...this.form.value, id: this.courseId}})
-      : this.courseManagementService.insertEvent({dto: this.form.value});
+      ? this.courseManagementService.updateEvent({ dto: { ...this.form.value, id: this.courseId } })
+      : this.courseManagementService.insertEvent({ dto: this.form.value });
 
     submitObservable.pipe(
       finalize(() => this.loadingButton = false)
@@ -199,6 +287,9 @@ export class CreateCourseComponent extends BaseService implements OnInit {
     if (confirm('آیا از شروع مجدد فرم اطمینان دارید؟')) {
       this.formSend.reset();
       this.step = 1;
+      this.taxAmount = 0;
+      this.siteShare = 0;
+      this.netIncome = 0;
       this.formSend.patchValue({
         eventTypeId: 1,
         capacity: 1,
@@ -209,5 +300,21 @@ export class CreateCourseComponent extends BaseService implements OnInit {
         masterId: this.personId
       });
     }
+  }
+
+  priceValue: number = 0;
+
+  setupPriceCalculation() {
+    // گوش دادن به تغییرات فیلد قیمت
+    this.formSend.get('price')?.valueChanges.subscribe(price => {
+      this.priceValue = price || 0;
+      this.calculateFinancials(price);
+    });
+  }
+
+  // متد برای زمانی که کاربر در input تایپ می‌کند
+  onPriceInput(event: any) {
+    const value = event.target.value.replace(/,/g, '');
+    this.formSend.patchValue({ price: value ? parseInt(value) : null });
   }
 }

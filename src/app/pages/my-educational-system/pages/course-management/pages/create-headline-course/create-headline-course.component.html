@@ -130,15 +130,15 @@
               <form [formGroup]="formSession" (ngSubmit)="submitSession()">
 
                 <div class="d-flex gap-2 create-course-5 mb-2">
-                  <input nz-input class="input-style create-course-10" placeholder="عنوان ویدیو " type="text"
+                  <input nz-input class="input-style create-course-10" placeholder="عنوان بخش " type="text"
                     formControlName="name" />
-                  <app-file-upload [mediaId]="formSession?.value?.mediaID" [disable]="dataSelectHeadlineDetail == null"  [controlName]="'mediaID'" [type]="'media'" />
-                  <input nz-input class="input-style create-course-10" placeholder="لینک " type="text"
+                  <app-file-upload *ngIf="dataEvent?.eventTypeId == 2" [mediaId]="formSession?.value?.mediaID" [disable]="dataSelectHeadlineDetail == null"  [controlName]="'mediaID'" [type]="'media'" />
+                  <input *ngIf="dataEvent?.eventTypeId == 1" nz-input class="input-style create-course-10" placeholder="لینک " type="text"
                     formControlName="link" />
-                  <input nz-input class="input-style create-course-10" placeholder="مکان " type="text"
+                  <input *ngIf="dataEvent?.eventTypeId == 3" nz-input class="input-style create-course-10" placeholder="مکان " type="text"
                     formControlName="location" />
-                  <input nz-input class="input-style create-course-10" placeholder="ظرفیت " type="text"
-                    formControlName="capacity" />
+<!--                  <input nz-input class="input-style create-course-10" placeholder="ظرفیت " type="text"-->
+<!--                    formControlName="capacity" />-->
 
                   <button nz-button [disabled]="dataSelectHeadlineDetail == null"
                     class="create-course-4 color-1 font-family-regular font-14 border-radius-5  create-course-6  mb-2 px-4">
@@ -176,7 +176,7 @@
 
                 } @empty {
                 @if (dataSelectHeadlineDetail) {
-                جزئبات
+                  بخش
                 وجود ندارد
                 } @else {
                 <p>
