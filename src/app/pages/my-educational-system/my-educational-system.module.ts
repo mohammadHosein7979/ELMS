@@ -42,6 +42,7 @@ import {FileUploadComponent} from "../../components/file-upload/file-upload.comp
 import {ListTestsComponent} from "./pages/tests/list-tests/list-tests.component";
 import {ThousandsSeparatorDirective} from "../../shared/directives/thousands-separator.directive";
 import {NgPersianDatepickerModule} from "ng-persian-datepicker";
+import { PersianDatepickerComponent } from "../../components/persian-datepicker/persian-datepicker.component";
 
 
 @NgModule({
@@ -80,7 +81,8 @@ import {NgPersianDatepickerModule} from "ng-persian-datepicker";
     FileUploadComponent,
     ThousandsSeparatorDirective,
     NgPersianDatepickerModule,
-  ],
+    PersianDatepickerComponent
+],
 })
 export class MyEducationalSystemModule {
 }

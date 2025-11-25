@@ -110,27 +110,25 @@ export class CreateHeadlineCourseComponent extends BaseService implements OnInit
     if (this.editModeSession.flag) {
       let form = this.formSession.value
       form.startDateTime =  this.convertJalaliToGregorian(this.formSession.value?.startDateTime)
-
+      form.endDateTime =  this.convertJalaliToGregorian(this.formSession.value?.endDateTime)
       this.courseManagementService.updateSession({dto: form}).subscribe((data: any) => {
         this.dataSession[this.editModeSession.index] = data.data
         this.formSession.reset({
           eventHeadlineDetailID: this.dataSelectHeadlineDetail.id,
           eventId: this.eventId,
-
           id: 0
         })
         this.editModeSession.flag = false
       })
-
     } else {
       this.formSession.patchValue({
         index: this.dataSession.length,
         eventId: this.eventId,
-
         eventHeadlineDetailID: this.dataSelectHeadlineDetail.id
       })
       let form = this.formSession.value
       form.startDateTime =  this.convertJalaliToGregorian(this.formSession.value?.startDateTime)
+      form.endDateTime =  this.convertJalaliToGregorian(this.formSession.value?.endDateTime)
 
       this.courseManagementService.insertSession({dto: form}).subscribe((data: any) => {
         this.dataSession.push(data?.data)
@@ -138,7 +136,6 @@ export class CreateHeadlineCourseComponent extends BaseService implements OnInit
           eventId: this.eventId,
           id: 0
         })
-
       })
 
     }
@@ -157,7 +154,7 @@ export class CreateHeadlineCourseComponent extends BaseService implements OnInit
     this.editModeSession.flag = true
     this.editModeSession.index = index
     this.formSession.patchValue({
-      ...item,startDateTime : item.startDateTimeShamsi
+      ...item,startDateTime : item.startDateTimeShamsi, endDateTime : item.endDateTimeShamsi
     })
     this.dataSelectSession = item
   }
@@ -166,6 +163,11 @@ export class CreateHeadlineCourseComponent extends BaseService implements OnInit
     this.courseManagementService.removeSession({id: item?.id}).subscribe((data: any) => {
       this.dataSession.splice(index, 1)
       this.notification.success('با موفقیت حذف شد .')
+      this.dataSelectSession = null
+      this.formSession.reset({
+        eventId: this.eventId,
+        id: 0
+      })
 
     })
   }
@@ -312,9 +314,6 @@ export class CreateHeadlineCourseComponent extends BaseService implements OnInit
     // فقط تا 8 کاراکتر
     value = value.slice(0, 8);
     input.value = value;
-  }
-  dateOnSelectStart(e: any) {
-
   }
 
   protected readonly environment = environment;

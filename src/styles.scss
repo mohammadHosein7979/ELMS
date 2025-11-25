@@ -270,3 +270,17 @@ app-slider-education{
 
   }
 }
+.swiperPopularEvents {
+.swiper-wrapper {
+  align-items: stretch; /* کل اسلایدها به یک قد کش می‌شن */
+}
+
+.swiper-slide {
+  height: auto !important;
+  display: flex;
+}
+
+.swiper-slide > .card {
+  flex: 1;
+}
+}

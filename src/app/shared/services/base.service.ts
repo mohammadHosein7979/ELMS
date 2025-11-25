@@ -251,14 +251,13 @@ export class BaseService {
     return item.id || index;
   }
   convertJalaliToGregorian(jalaliDate: string): string {
-    // ورودی مثل 1403/08/15 یا 1403-08-15
-    const d = dayjs(jalaliDate, { jalali: true });
+  const d = dayjs(jalaliDate, { jalali: true }, 'jYYYY/jMM/jDD HH:mm:ss');
 
-    if (!d.isValid()) {
-      throw new Error('تاریخ نامعتبر است');
-    }
-
-    return d.locale('en').format('YYYY-MM-DD'); // خروجی میلادی
+  if (!d.isValid()) {
+    throw new Error('تاریخ نامعتبر است');
   }
+return d.format('YYYY-MM-DD[T]HH:mm:ss');
 
+  // return d.locale('en').format('YYYY-MM-DD HH:mm:ss'); 
+}
 }

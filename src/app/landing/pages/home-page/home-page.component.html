@@ -1,7 +1,7 @@
 <div>
   <div class="container">
     <div>
-      <app-slider-education/>
+      <app-slider-education />
     </div>
     <div class="mt-5">
       <div class="row justify-content-center">
@@ -21,84 +21,75 @@
         </div>
       </div>
     </div>
-    <div class="mt-5">
+    <div *ngIf="dataPre && dataPre.length > 0" class="mt-5">
       <h3 class="font-24 font-family-bold color-1 mb-4">
         پیش تولید ویژه
       </h3>
 
       <div class="row px-4 px-lg-5">
         @for (item of dataPre; track item) {
-          <div class="col-12 col-lg-4">
-            <app-card-pre-production-education [data]="item"/>
-          </div>
+        <div class="col-12 col-lg-4">
+          <app-card-pre-production-education [data]="item" />
+        </div>
         }
 
       </div>
     </div>
-    <div class="mt-5" *ngIf="dataEvents && dataEvents.length > 0">
+    <div class="mt-5" *ngIf="dataPopularEvents && dataPopularEvents.length > 0">
       <h3 class="font-24 font-family-bold color-1 mb-4">
         دوره های آموزشی محبوب
       </h3>
       <div>
-        <swiper
-          style="--swiper-navigation-color: #fff;--swiper-pagination-color: #fff"
-          #swiperEducationP
-          [config]="swiperConfig"
-          (slideChange)="onSlideChangeEducationP($event)"
-
-          class=""
-        >
-          @for (item of dataEvents; track item) {
-            <ng-template swiperSlide>
-              <app-card-education [data]="item"/>
-            </ng-template>
+        <swiper style="--swiper-navigation-color: #fff;--swiper-pagination-color: #fff" #swiperEducationP
+          [config]="swiperConfig" (slideChange)="onSlideChangeEducationP($event)" class="swiperPopularEvents">
+          @for (item of dataPopularEvents; track item) {
+          <ng-template swiperSlide>
+            <app-card-education [data]="item" />
+          </ng-template>
           }
         </swiper>
         <div class="mt-4 d-flex justify-content-end">
           <div (click)="swipePrevEducationP(swiperEducationP)"
-               class="cursorPointer swiper-button-prev-EducationP d-inline-block mt-0 rotate-180 opacity-25"
-               id="SwiperPrevEducationP"></div>
+            class="cursorPointer swiper-button-prev-EducationP d-inline-block mt-0 rotate-180 opacity-25"
+            id="SwiperPrevEducationP"></div>
           <div (click)="swipeNextEducationP(swiperEducationP)"
-               class="cursorPointer swiper-button-next-EducationP d-inline-block mt-0" id="SwiperNextEducationP"></div>
+            class="cursorPointer swiper-button-next-EducationP d-inline-block mt-0" id="SwiperNextEducationP"></div>
         </div>
 
       </div>
     </div>
-    <!-- <div class="mt-5">
+    <div class="mt-5">
       <h3 class="font-24 font-family-bold color-1 mb-4">
         دوره های آموزشی
       </h3>
       <div>
-        <nz-tabset>
-          <nz-tab nzTitle="تدبر">
+        <nz-tabset (nzSelectedIndexChange)="getEventByCourseId($event)">
+          @for(item of dataCourses; track item) {
+          <nz-tab nzTitle="{{item.name}}">
             <div>
-              <swiper
-                style="--swiper-navigation-color: #fff;--swiper-pagination-color: #fff"
-                #swiperEducation
-                [config]="swiperConfig"
-                (slideChange)="onSlideChangeEducation($event)"
-
-                class=""
-              >
+              <swiper style="--swiper-navigation-color: #fff;--swiper-pagination-color: #fff" #swiperEducation
+                [config]="swiperConfig" (slideChange)="onSlideChangeEducation($event)" class="swiperPopularEvents">
                 @for (item of dataEvents; track item) {
-                  <ng-template swiperSlide>
-                    <app-card-education [data]="item"/>
-                  </ng-template>
+                <ng-template swiperSlide>
+                  <app-card-education [data]="item" />
+                </ng-template>
                 }
               </swiper>
               <div class="mt-4 d-flex justify-content-end">
                 <div (click)="swipePrevEducation(swiperEducation)"
-                     class="cursorPointer swiper-button-prev-EducationP d-inline-block mt-0 rotate-180 opacity-25"
-                     id="SwiperPrevEducation"></div>
+                  class="cursorPointer swiper-button-prev-EducationP d-inline-block mt-0 rotate-180 opacity-25"
+                  id="SwiperPrevEducation"></div>
                 <div (click)="swipeNextEducation(swiperEducation)"
-                     class="cursorPointer swiper-button-next-EducationP d-inline-block mt-0"
-                     id="SwiperNextEducation"></div>
+                  class="cursorPointer swiper-button-next-EducationP d-inline-block mt-0" id="SwiperNextEducation">
+                </div>
               </div>
 
             </div>
 
           </nz-tab>
-          <nz-tab nzTitle="تدبر زندگی">
+          }
+
+          <!-- <nz-tab nzTitle="تدبر زندگی">
             <div>
               <swiper
                 style="--swiper-navigation-color: #fff;--swiper-pagination-color: #fff"
@@ -181,47 +172,41 @@
 
             </div>
 
-          </nz-tab>
+          </nz-tab> -->
         </nz-tabset>
       </div>
-    </div> -->
-    <div class="mt-5">
+    </div>
+    <!-- <div class="mt-5">
       <h3 class="font-24 font-family-bold color-1 mb-4">
         مسیر های یادگیری
       </h3>
       <div>
         <div>
-          <swiper
-            style="--swiper-navigation-color: #fff;--swiper-pagination-color: #fff"
-            #swiperRoadMap
-            [config]="swiperConfig2"
-            (slideChange)="onSlideChangeRoadMap($event)"
-
-            class=""
-          >
+          <swiper style="--swiper-navigation-color: #fff;--swiper-pagination-color: #fff" #swiperRoadMap
+            [config]="swiperConfig2" (slideChange)="onSlideChangeRoadMap($event)" class="">
             @for (item of dataEvents; track item) {
-              <ng-template swiperSlide>
-                <div class="text-center">
-                  <img src="assets/image/remove/Frame161.svg" class="w-100 home-page-1">
-                  <p class="font-family-regular mt-2 font-20 color-1">
-                    تدبر
-                  </p>
-                </div>
-              </ng-template>
+            <ng-template swiperSlide>
+              <div class="text-center">
+                <img src="assets/image/remove/Frame161.svg" class="w-100 home-page-1">
+                <p class="font-family-regular mt-2 font-20 color-1">
+                  تدبر
+                </p>
+              </div>
+            </ng-template>
             }
           </swiper>
           <div class="mt-4 d-flex justify-content-end">
             <div (click)="swipePrevRoadMap(swiperRoadMap)"
-                 class="cursorPointer swiper-button-prev-EducationP d-inline-block mt-0 rotate-180 opacity-25"
-                 id="SwiperPrevRoadMap"></div>
+              class="cursorPointer swiper-button-prev-EducationP d-inline-block mt-0 rotate-180 opacity-25"
+              id="SwiperPrevRoadMap"></div>
             <div (click)="swipeNextRoadMap(swiperRoadMap)"
-                 class="cursorPointer swiper-button-next-EducationP d-inline-block mt-0" id="SwiperNextRoadMap"></div>
+              class="cursorPointer swiper-button-next-EducationP d-inline-block mt-0" id="SwiperNextRoadMap"></div>
           </div>
 
         </div>
 
       </div>
-    </div>
+    </div> -->
     <div class="mt-5">
       <h3 class="font-24 font-family-regular color-1 mb-4 text-center">
         ویژگی‌های دوره‌های تدبر زندگی چیست؟
@@ -273,7 +258,7 @@
             <img src="assets/image/landing/homePage/Frame5233.svg" class="mb-2">
             <p class="font-family-regular font-10 color-16">
               +6000 ساعت ویدئوی
-              <br/>
+              <br />
               آموزشی رایگان
             </p>
           </div>
@@ -283,7 +268,7 @@
             <img src="assets/image/landing/homePage/Frame5234.svg" class="mb-2">
             <p class="font-family-regular font-10 color-16">
               امکان شرکت در دوره های
-              <br/>
+              <br />
               آموزشی آنلاین
             </p>
           </div>
@@ -293,7 +278,7 @@
             <img src="assets/image/landing/homePage/Frame5235.svg" class="mb-2">
             <p class="font-family-regular font-10 color-16">
               امکان شرکت در دوره های
-              <br/>
+              <br />
               آموزشی حضوری
             </p>
           </div>
@@ -303,7 +288,7 @@
             <img src="assets/image/landing/homePage/Frame5236.svg" class="mb-2">
             <p class="font-family-regular font-10 color-16">
               ارائه گواهی نامه معتبر و
-              <br/>
+              <br />
               رسمی برای سازمان های دولتی
             </p>
           </div>
@@ -424,6 +409,5 @@
     <div class="mt-5">
 
     </div>
-
   </div>
 </div>

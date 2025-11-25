@@ -89,10 +89,12 @@
               <div class="border-color-2 border-radius-5 p-2 create-course-9 overflow-y-scroll">
                 @for (item of dataHeadLineDetail; track item?.id; let index = $index) {
                 <div>
-                  <div class="d-flex gap-1 justify-content-between py-12 px-1 {{dataSelectHeadlineDetail?.id == item?.id ? 'create-headline-course-1' : ''}}">
+                  <div
+                    class="d-flex gap-1 justify-content-between py-12 px-1 {{dataSelectHeadlineDetail?.id == item?.id ? 'create-headline-course-1' : ''}}">
                     <div class="d-flex gap-1 w-100">
                       <img src="assets/image/my-educational-system/Frame460.svg">
-                      <p (click)="selectHeadlineDetail(item)" class="font-family-regular color-1 font-14 w-100 cursorPointer">
+                      <p (click)="selectHeadlineDetail(item)"
+                        class="font-family-regular color-1 font-14 w-100 cursorPointer">
                         {{ item?.name }}
                       </p>
                     </div>
@@ -125,29 +127,50 @@
                 }
               </div>
             </div>
-            <nz-divider/>
+            <nz-divider />
             <div class="col-12">
               <form [formGroup]="formSession" (ngSubmit)="submitSession()">
 
-                <div class="d-flex gap-2 create-course-5 mb-2">
-                  <input nz-input class="input-style create-course-10" placeholder="عنوان بخش " type="text"
-                    formControlName="name" />
-                  <app-file-upload *ngIf="dataEvent?.eventTypeId == 2" [mediaId]="formSession?.value?.mediaID" [disable]="dataSelectHeadlineDetail == null"  [controlName]="'mediaID'" [type]="'media'" />
-                  <input *ngIf="dataEvent?.eventTypeId == 1" nz-input class="input-style create-course-10" placeholder="لینک " type="text"
-                    formControlName="link" />
-                  <input *ngIf="dataEvent?.eventTypeId == 3" nz-input class="input-style create-course-10" placeholder="مکان " type="text"
-                    formControlName="location" />
-                  <input nz-input class="input-style create-course-10" placeholder="ظرفیت " type="text"
-                    formControlName="capacity" />
-                  <ng-persian-datepicker [uiIsVisible]="false" [dateInitValue]="false" (dateOnSelect)="dateOnSelectStart($event)"
-                                         id="e"
-                                         class="position-relative d-inline-block w-100 detail-roadmap-4 detail-roadmap-6 cursorAll">
-                    <input id="i" class="input-style" type="text" formControlName="startDateTime"/>
-                  </ng-persian-datepicker>
-<!--                  <app-jalali-picker formControlName="startDateTime"></app-jalali-picker>-->
+                <div class="d-flex gap-2 create-course-5 mb-2 align-items-end">
+                  <div class="w-100">
+                    <label class="font-family-regular font-12 color-1 mb-1 d-block">نام جلسه</label>
+                    <input nz-input class="input-style create-course-10" placeholder="عنوان بخش " type="text"
+                      formControlName="name" />
+                  </div>
+                  <div class="w-100" *ngIf="dataEvent?.eventTypeId == 2">
+                    <label class="font-family-regular font-12 color-1 mb-1 d-block">فایل</label>
+                    <app-file-upload [mediaId]="formSession?.value?.mediaID"
+                      [disable]="dataSelectHeadlineDetail == null" [controlName]="'mediaID'" [type]="'media'" />
+                  </div>
 
+                  <div class="w-100" *ngIf="dataEvent?.eventTypeId == 1">
+                    <label class="font-family-regular font-12 color-1 mb-1 d-block">لینک</label>
+                    <input nz-input class="input-style create-course-10" placeholder="لینک " type="text"
+                      formControlName="link" />
+                  </div>
+
+                  <div class="w-100" *ngIf="dataEvent?.eventTypeId == 3">
+                    <label class="font-family-regular font-12 color-1 mb-1 d-block">مکان</label>
+                    <input nz-input class="input-style create-course-10" placeholder="مکان " type="text"
+                      formControlName="location" />
+                  </div>
+
+                  <div class="w-100">
+                    <label class="font-family-regular font-12 color-1 mb-1 d-block">ظرفیت</label>
+                    <input nz-input class="input-style create-course-10" placeholder="ظرفیت " type="text"
+                      formControlName="capacity" />
+                  </div>
+
+                  <div class="w-100">
+                    <label class="font-family-regular font-12 color-1 mb-1 d-block">زمان شروع</label>
+                    <app-persian-datepicker [constrolName]="'startDateTime'" [placeholder]="'زمان شروع'" />
+                  </div>
+                  <div class="w-100">
+                    <label class="font-family-regular font-12 color-1 mb-1 d-block">زمان پایان</label>
+                    <app-persian-datepicker [constrolName]="'endDateTime'" [placeholder]="'زمان شروع'" />
+                  </div>
                   <button nz-button [disabled]="dataSelectHeadlineDetail == null"
-                    class="create-course-4 color-1 font-family-regular font-14 border-radius-5  create-course-6  mb-2 px-4">
+                    class="create-course-4 color-1 font-family-regular font-14 border-radius-5  create-course-6 px-4">
                     ثبت
                   </button>
 
@@ -156,42 +179,82 @@
               </form>
 
               <div class="border-color-2 border-radius-5 p-2 create-course-9 overflow-y-scroll">
-                @for (item of dataSession; track item?.id; let index = $index) {
-                <div>
-                  <div class="d-flex gap-1 justify-content-between py-12 px-1">
-                    <div class="d-flex gap-1 w-100">
-                      <img src="assets/image/my-educational-system/Frame460.svg">
-                      <p class="font-family-regular color-1 font-14 w-100">
-                        {{ item?.name }}
+                <!-- @for (item of dataSession; track item?.id; let index = $index) { -->
+                <div class="table-container">
+                  <table class="sessions-table">
+                    <thead>
+                      <tr>
+                        <th>نام جلسه</th>
+                        @if(dataEvent?.eventTypeId == 2) {
+                        <th>فایل</th>
+                        } @else if(dataEvent?.eventTypeId == 1) {
+                        <th>لینک</th>
+                        } @else if(dataEvent?.eventTypeId == 3) {
+                        <th>مکان</th>
+                        }
+
+                        <th>تاریخ شروع</th>
+                        <th>تاریخ پایان</th>
+
+                        <th class="actions-header">عملیات</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      @for (item of dataSession; track item?.id; let index = $index) {
+                      <tr>
+                        <td class="session-name">
+                          <div class="d-flex gap-1 align-items-center">
+                            <img src="assets/image/my-educational-system/Frame460.svg" alt="آیکون جلسه">
+                            <span class="font-family-regular color-1 font-14">{{ item?.name }}</span>
+                          </div>
+                        </td>
+                        @if(dataEvent?.eventTypeId == 2) {
+                        <td class="session-file">
+                          <a class="font-family-regular color-6 font-14" [href]="`${environment.apiUrl}/${MicroService.mediaapi}/api/File/DownloadFile?IDMedia=${item?.mediaID}`" target="_blank">
+                            مشاهده فایل
+                          </a>
+                        </td>
+                        } @else if(dataEvent?.eventTypeId == 1) {
+                        <td class="session-link">
+                          <a class="font-family-regular color-6 font-14" [href]="item?.link" target="_blank">
+                            {{ item?.link }}
+                          </a>
+                        </td>
+                        } @else if(dataEvent?.eventTypeId == 3) {
+                        <td class="session-location">
+                          <span class="font-family-regular color-1 font-14">{{ item?.location }}</span>
+                        </td>
+                        }
+                        <td class="session-date">
+                          <span class="font-family-regular color-1 font-14">{{ item?.startDateTimeShamsi }}</span>
+                        </td>
+                        <td class="session-date">
+                          <span class="font-family-regular color-1 font-14">{{ item?.endDateTimeShamsi }}</span>
+                        </td>
+                        <td class="session-actions">
+                          <div class="d-flex gap-2 create-course-7">
+                            <img src="assets/image/my-educational-system/Frame461.svg" class="cursorPointer"
+                              alt="ویرایش" (click)="editSession(item,index)">
+                            <img src="assets/image/my-educational-system/Frame459.svg" class="cursorPointer" alt="حذف"
+                              (click)="removeSession(item,index)">
+                          </div>
+                        </td>
+                      </tr>
+                      } @empty {
+                      @if (dataSelectHeadlineDetail) {
+                      بخش
+                      وجود ندارد
+                      } @else {
+                      <p>
+                        لطفا یه جزئبات را انتخاب کنید
                       </p>
-                    </div>
-                    <div class="d-flex gap-1">
-                      <div class="d-flex gap-2 create-course-7">
-                        <img src="assets/image/my-educational-system/Frame461.svg" class="cursorPointer"
-                          (click)="editSession(item,index)">
-                        <img src="assets/image/my-educational-system/Frame459.svg" class="cursorPointer"
-                          (click)="removeSession(item,index)">
-
-                      </div>
-                    </div>
-
-
-                  </div>
-                  <hr class="create-course-8" />
+                      }
+                      }
+                    </tbody>
+                  </table>
                 </div>
 
-                } @empty {
-                @if (dataSelectHeadlineDetail) {
-                  بخش
-                وجود ندارد
-                } @else {
-                <p>
-                  لطفا یه جزئبات  را انتخاب کنید
 
-
-                </p>
-                }
-                }
               </div>
             </div>
           </div>

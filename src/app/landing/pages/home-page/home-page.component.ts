@@ -12,33 +12,13 @@ import { EducationService } from '../../../pages/education/services/education.se
   standalone: false
 })
 export class HomePageComponent extends BaseService implements OnInit {
-  dataPre: any = [
-    {
-      cover: 'assets/image/remove/1WJ7bUXuAtcTS9TWQsNTBAa7EqUtNYz7weUVjiTq_thumb.jfif',
-      ostadImage: ['assets/image/remove/Frame63.png', 'assets/image/remove/Frame29.png'],
-      title: 'تدبری در زیارت عاشورا',
-      time: '20:10:00',
-      type: 'دوره آنلاین'
-    },
-    {
-      cover: 'assets/image/remove/Frame63.png',
-      ostadImage: ['assets/image/remove/Frame63.png', 'assets/image/remove/Frame29.png'],
-      title: 'کربلا  در تاریخ',
-      time: '21:30:10',
-      type: 'دوره ضبط شده'
-    },
-    {
-      cover: 'assets/image/remove/Frame63.png',
-      ostadImage: ['assets/image/remove/Frame63.png', 'assets/image/remove/Frame29.png'],
-      title: 'کربلا  در   تاریخ',
-      time: '21:30:11',
-      type: 'دوره   ضبط شده'
-    },
-  ]
+  dataPre: any = []
+  dataPopularEvents: any = []
   @ViewChild(SwiperComponent) swiperEducationP: any;
 
 
   dataEvents: any = []  
+  dataCourses: any = []  
 
   swiperConfig: SwiperOptions = {
     a11y: { enabled: true },
@@ -150,15 +130,38 @@ export class HomePageComponent extends BaseService implements OnInit {
     super(injector);
   }
   ngOnInit(): void {
-    this.getEvents()
+    this.getPopularEvents()
+        this.getPreEvents()
+        this.getCourses()
+
 
   }
-  getEvents() {
-    this.educationService.getEvent({ "filter": { "status": 3 } }).subscribe((data: any) => {
+  getPopularEvents() {
+    this.educationService.getEvent(null).subscribe((data: any) => {
+      this.dataPopularEvents = data.data
+    })
+  }
+  getEvents(id:number) {
+    this.educationService.getEvent({ "filter": { "status": 3 ,"courseIdList":[id]} }).subscribe((data: any) => {
       this.dataEvents = data.data
     })
   }
+  getPreEvents() {
+    this.educationService.getEvent({ "filter": { "status": 0 } }).subscribe((data: any) => {
+      this.dataPre = data.data
+    })
+  }
+    getCourses() {
+    this.educationService.getCourse().subscribe((data: any) => {
+      this.dataCourses = data.data
+    })
+  }
 
+  getEventByCourseId(id:number){
+    console.log(id)
+        this.getEvents(id)
+
+  }
   onSlideChangeEducationP(e: any) {
     let swiperPrev: any;
     let swiperNext: any;
