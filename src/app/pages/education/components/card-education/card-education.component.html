@@ -7,7 +7,7 @@
     </div>
     <div
       class="border-radius-4 px-2 py-1 position-absolute card-education-3 text-white font-family-regular
-     font-10 {{data?.price > 0 && 'card-education-4' }} {{data?.isFull && 'card-education-5' }} {{data?.status ==EnumEducationStatus.Register && 'card-education-6' }}">
+     font-10  {{data?.isFull ?'card-education-5' : data?.finalPrice > 0 ? 'card-education-4' : 'card-education-6'}}">
       @if(data?.eventTypeId == EnumEducationType.Offline){
       <img src="assets/image/education/Vector6.svg" class="me-1">
       آفلاین
@@ -153,13 +153,13 @@
     </div>
 
     <div class="text-center">
-      <a routerLink
+      <button nz-button [disabled]="data?.isFull" (click)="buyEvent()"
         class="d-inline-block border-radius-5 px-4 py-2 text-white font-10 fit-content
-       font-family-regular {{data?.price > 0 && 'bg-color-3'}} {{data?.status == EnumEducationStatus.Register && 'bg-color-8'}} {{data?.isFull && 'bg-color-2'}}">
+       font-family-regular  {{data?.isFull ?'bg-color-2' : data?.finalPrice > 0 ? 'bg-color-3' : 'bg-color-8'}}">
         @if(data?.isFull){
         تکمیل ظرفیت
 
-        } @else if ( data?.price > 0){
+        } @else if ( data?.finalPrice > 0){
         خرید دوره
 
         } @else {
@@ -167,7 +167,7 @@
 
         }
 
-      </a>
+      </button>
     </div>
   </div>
 </div>

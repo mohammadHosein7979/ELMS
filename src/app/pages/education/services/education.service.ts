@@ -29,6 +29,9 @@ export class EducationService extends BaseService {
   getEvent(body :any) {
     return this.post(`/${MicroService.course}/Event/Report`, body)
   }
+  getPopularEvents(body :any) {
+    return this.get(`/${MicroService.course}/Event/PopularEvents`, body)
+  }
 
 
 
@@ -84,6 +87,13 @@ export class EducationService extends BaseService {
   }
   removeEventHeadlineDetail(body:any) {
     return this.delete(`/${MicroService.course}/EventHeadlineDetail/Delete`, body)
+  }
+
+
+
+
+  eventStudentInsert(body :any) { 
+    return this.post(`/${MicroService.course}/EventStudent/Insert`, body)
   }
 
 

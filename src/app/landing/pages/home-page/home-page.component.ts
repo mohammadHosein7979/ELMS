@@ -137,7 +137,7 @@ export class HomePageComponent extends BaseService implements OnInit {
 
   }
   getPopularEvents() {
-    this.educationService.getEvent(null).subscribe((data: any) => {
+    this.educationService.getPopularEvents(null).subscribe((data: any) => {
       this.dataPopularEvents = data.data
     })
   }
