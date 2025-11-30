@@ -3,7 +3,7 @@ import {Injectable, Injector} from '@angular/core';
 import {ToastrService} from "ngx-toastr";
 import {TokenService} from "./token.service";
 import {StorageService} from "../helperService/storage.service";
-import {catchError, shareReplay, throwError} from "rxjs";
+import {catchError, Observable, shareReplay, throwError} from "rxjs";
 import {environment} from "../../../environments/environment";
 import {BaseService} from "./base.service";
 import {Router} from "@angular/router";
@@ -30,22 +30,49 @@ export class HttpService {
     this.apiUrl = `${environment.apiUrl}`;
   }
 
-  getHttp(url: string, body: any = '', extraHeaders?: Record<string, string>) {
-    // هدر پایه
-    let headers = new HttpHeaders()
-      .set('accept', 'application/json')
-      .append('accept-language', 'fa');
+  // getHttp(url: string, body: any = '', extraHeaders?: Record<string, string>) {
+  //   // هدر پایه
+  //   let headers = new HttpHeaders()
+  //     .set('accept', 'application/json')
+  //     .append('accept-language', 'fa');
+  //
+  //   // اضافه کردن هدرهای سفارشی در صورت وجود
+  //   if (extraHeaders && typeof extraHeaders === 'object') {
+  //     Object.entries(extraHeaders).forEach(([key, value]) => {
+  //       if (value !== undefined && value !== null) {
+  //         headers = headers.append(key, value.toString());
+  //       }
+  //     });
+  //   }
+  //
+  //   // اصلاح URL
+  //   if (url.indexOf('http') !== 0) {
+  //     url = this.apiUrl + url;
+  //   }
+  //   if (url.indexOf('https') === -1) {
+  //     url = url.replace('http', 'https');
+  //   }
+  //
+  //   // پارامترهای GET
+  //   const params = new HttpParams({ fromObject: body });
+  //
+  //   // ارسال درخواست
+  //   return this.httpClient
+  //     .get(url, {
+  //       headers,
+  //       withCredentials: true,
+  //       params
+  //     })
+  //     .pipe(catchError(this.formatErrors));
+  // }
+  getHttp(
+    url: string,
+    body: any = '',
+    extraHeaders?: Record<string, string>,
+    opts: { responseType?: 'json' | 'text' | 'arraybuffer' | 'blob' } = { responseType: 'json' }
+  ): Observable<any> {
 
-    // اضافه کردن هدرهای سفارشی در صورت وجود
-    if (extraHeaders && typeof extraHeaders === 'object') {
-      Object.entries(extraHeaders).forEach(([key, value]) => {
-        if (value !== undefined && value !== null) {
-          headers = headers.append(key, value.toString());
-        }
-      });
-    }
-
-    // اصلاح URL
+    // Normalize URL
     if (url.indexOf('http') !== 0) {
       url = this.apiUrl + url;
     }
@@ -53,19 +80,49 @@ export class HttpService {
       url = url.replace('http', 'https');
     }
 
-    // پارامترهای GET
+    // Default headers based on desired responseType
+    let headers = new HttpHeaders()
+      .set('accept-language', 'fa');
+
+    // set a sensible Accept header unless caller overrides it in extraHeaders
+    if (!extraHeaders || !Object.keys(extraHeaders).some(k => k.toLowerCase() === 'accept')) {
+      if (opts.responseType === 'json') {
+        headers = headers.set('accept', 'application/json');
+      } else if (opts.responseType === 'text') {
+        headers = headers.set('accept', 'text/plain');
+      } else {
+        // for blob/arraybuffer use a permissive accept
+        headers = headers.set('accept', '*/*');
+      }
+    }
+
+    // Merge extraHeaders (caller headers override defaults)
+    if (extraHeaders && typeof extraHeaders === 'object') {
+      Object.entries(extraHeaders).forEach(([key, value]) => {
+        if (value !== undefined && value !== null) {
+          // use set() so caller can override any header
+          headers = headers.set(key, value.toString());
+        }
+      });
+    }
+
+    // Build params from body (for GET)
     const params = new HttpParams({ fromObject: body });
 
-    // ارسال درخواست
-    return this.httpClient
-      .get(url, {
-        headers,
-        withCredentials: true,
-        params
-      })
-      .pipe(catchError(this.formatErrors));
-  }
+    // Make request with requested responseType
+    const responseType = opts.responseType || 'json';
 
+    return this.httpClient.get(url, {
+      headers,
+      withCredentials: true,
+      params,
+      // Typescript needs a cast because Angular overloads responseType
+      responseType: responseType as any
+    })
+      .pipe(
+        catchError(this.formatErrors)
+      );
+  }
   // deleteHttp(url: string,body:any = '') {
   //   let headers = new HttpHeaders().set('accept', 'application/json');
   //   headers = new HttpHeaders().set('accept', 'application/json').append('accept-language', 'fa');

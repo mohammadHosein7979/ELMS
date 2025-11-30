@@ -15,31 +15,33 @@ import {LikeComponent} from "../../components/like/like.component";
 import {EnteringClassComponent} from "../../components/entering-class/entering-class.component";
 import {NzTimelineComponent, NzTimelineItemComponent} from "ng-zorro-antd/timeline";
 import {StatusRecordComponent} from "./pages/components/status-record/status-record.component";
+import {VideoPlayerComponent} from "../../components/video-player/video-player.component";
 
 @NgModule({
   declarations: [
 
     MainCoursesComponent,
-       MainRoadmapComponent,
-       FilterCoursesComponent,
-       ItemCoursesComponent,
-       MainRecordsComponent,
-       DetailCoursesComponent
+    MainRoadmapComponent,
+    FilterCoursesComponent,
+    ItemCoursesComponent,
+    MainRecordsComponent,
+    DetailCoursesComponent
   ],
-    imports: [
-        CommonModule,
-        myTrainingRoutingModule,
-        HttpClientModule,
-        SwiperModule,
-        ReactiveFormsModule,
-        FormsModule,
-        SharedModule,
-        LikeComponent,
-        EnteringClassComponent,
-        NzTimelineComponent,
-        NzTimelineItemComponent,
-        StatusRecordComponent,
-    ],
+  imports: [
+    CommonModule,
+    myTrainingRoutingModule,
+    HttpClientModule,
+    SwiperModule,
+    ReactiveFormsModule,
+    FormsModule,
+    SharedModule,
+    LikeComponent,
+    EnteringClassComponent,
+    NzTimelineComponent,
+    NzTimelineItemComponent,
+    StatusRecordComponent,
+    VideoPlayerComponent,
+  ],
 })
 export class MyTrainingModule {
 }

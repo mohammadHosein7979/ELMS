@@ -107,7 +107,7 @@
       <div>
         <div>
           <nz-timeline>
-            @for (item of data?.eventHeadlines; track item) {
+            @for (item of data?.eventHeadlines; track item;let i = $index) {
               <nz-timeline-item>
                 <div (click)="changeEpisode(item)" class="cursorPointer d-flex justify-content-between">
                   <h3 class="color-1 font-family-regular font-16">{{ item?.name }}</h3>
@@ -127,15 +127,40 @@
                 </div>
                 <div class="mt-3" *ngIf="selectEpisode?.id == item?.id">
                   @for (eventHeadlineDetail of item?.eventHeadlineDetails; track eventHeadlineDetail) {
-                    <div class="d-flex justify-content-between mb-3">
+                    <div class="d-flex justify-content-between mb-3" (click)="selectHeadlineDetail(eventHeadlineDetail)">
                       <h3 class="color-1 font-family-regular font-12">
-                        فصل اول -
+                        فصل
+                        {{i + 1}}
+                        -
                         {{ eventHeadlineDetail?.name }}
                       </h3>
                       <h3 class="color-2 font-family-regular font-12">
                         {{eventHeadlineDetail?.duration}}
                       </h3>
                     </div>
+                    <div class="mt-3 ps-4" *ngIf="dataSelectHeadlineDetail?.id ==eventHeadlineDetail?.id">
+                      @for (session of dataSession; track session) {
+                        @if (session.mediaID > 0){
+                          <app-video-player *ngIf="session.mediaID" [mediaID]="session.mediaID"/>
+                        } @else {
+                          <div class="d-flex justify-content-between mb-3" (click)="selectHeadlineDetail(eventHeadlineDetail)">
+                            <h3 class="color-1 font-family-regular font-12">
+                              <!--                            فصل-->
+                              <!--                            {{i + 1}}-->
+                              <!--                            - -->
+                              {{ session?.name }}
+                            </h3>
+                            <h3 class="color-2 font-family-regular font-12">
+                              {{session?.duration}}
+                            </h3>
+                          </div>
+
+                        }
+
+
+                      }
+                    </div>
+
 
                   }
                 </div>

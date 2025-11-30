@@ -64,6 +64,20 @@ export class DetailCoursesComponent extends BaseService implements OnChanges {
       this.selectEpisode = item;
     }
   }
+  dataSelectHeadlineDetail:any
+  dataSession:any
+
+  selectHeadlineDetail(item: any): void {
+    this.dataSelectHeadlineDetail = item;
+    this.getAllSession()
+  }
+  getAllSession(){
+      this.coursesService.getSession({"filter" : {"eventHeadlineDetailIdList" : [this.dataSelectHeadlineDetail?.id]}}).subscribe({
+        next: (data: any) => {
+          this.dataSession = data?.data;
+        }
+      })
+  }
 
   protected readonly TypeClasses = TypeClasses;
 }

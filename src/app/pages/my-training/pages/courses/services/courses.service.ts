@@ -17,6 +17,10 @@ import {MicroService} from "../../../../../shared/enum/enum";
    return  this.post(`/${MicroService.course}/EventStudent/EventDetails`,body)
   }
 
+  getSession(body:any){
+   return  this.post(`/${MicroService.course}/Session/Report`,body)
+  }
+
 
 
 }
