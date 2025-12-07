@@ -283,3 +283,14 @@ app-slider-education{
   flex: 1;
 }
 }
+
+
+.ant-form-item{
+    //   flex-direction: column !important;
+    // width: 100% !important;
+        width: 100% !important;
+    display: inline-block !important;
+}
+.ant-form-item-label{
+  display: block !important;
+}

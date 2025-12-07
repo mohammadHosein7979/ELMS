@@ -1,15 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Injector, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import {AuthService} from "../../../shared/services/auth.service";
+import { BaseService } from '../../../shared/services/base.service';
 
 @Component({
     selector: 'app-register',
     templateUrl: './register.component.html',
+        styleUrl: './register.component.scss',
+
     standalone: false
 })
-export class RegisterComponent implements OnInit {
-  loading = false;
+export class RegisterComponent extends BaseService implements OnInit {
+
+loadingRegister:boolean = false
+  isRegister : boolean = false
   error: string | null = null;
 
   form = this.fb.group({
@@ -20,15 +25,10 @@ export class RegisterComponent implements OnInit {
     Name: ['', Validators.required]
   });
 
-  constructor(
-    private fb: FormBuilder,
-    private auth: AuthService,
-    private router: Router
-  ) {}
 
   ngOnInit() {
     // حتماً قبل لاگین session بساز
-    this.auth.createSession().subscribe();
+    this.authService.createSession().subscribe();
   }
 
   submit() {
@@ -37,15 +37,16 @@ export class RegisterComponent implements OnInit {
       return;
     }
 
-    this.loading = true;
+    this.loadingRegister = true;
     this.error = null;
-    this.auth.register(this.form.value!).subscribe({
+    this.authService.register(this.form.value!).subscribe({
       next: () => {
-        this.loading = false;
-        this.router.navigate(['/dashboard']);
+        this.loadingRegister = false;
+        this.notification.success('ثبت نام با موفقیت انجام شد');
+        this.router.navigate(['/auth/login']);// بعد از ثبت نام ببر به صفحه لاگین
       },
       error: (err) => {
-        this.loading = false;
+        this.loadingRegister = false;
         if (err.status === 401) {
           this.error = 'نام کاربری یا رمز عبور اشتباه است';
         } else {
@@ -53,5 +54,10 @@ export class RegisterComponent implements OnInit {
         }
       }
     });
+  }
+
+
+  changeForm(){
+    this.isRegister = !this.isRegister
   }
 }

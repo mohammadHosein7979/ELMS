@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {IndexLayoutComponent} from "./layout/index-layout/index-layout.component";
-import {AuthGuardService} from "./shared/services/auth-gaurd.service";
 import {
   IndexLayoutLandingComponent
 } from "./landing/layout-landing/index-layout-landing/index-layout-landing.component";

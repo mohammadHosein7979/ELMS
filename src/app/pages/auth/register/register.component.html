@@ -1,34 +1,114 @@
-<div class="login-container">
-  <h2>ثبت نام </h2>
+<div class="login-page">
+  <nz-card class="login-card">
+    <h3 class="text-center mb-4 font-family-bold font-24"> 
+      صفحه ثبت نام
+    </h3>
+    <form (ngSubmit)="submit()" [formGroup]="form" novalidate>
+      <nz-form-item>
+        <nz-form-label class="d-block">شماره موبایل</nz-form-label>
+        <nz-form-control >
+          <input nz-input formControlName="Phone" placeholder="مثلاً 09121234567" />
+    
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label class="d-block" >نام</nz-form-label>
+        <nz-form-control >
+          <input nz-input formControlName="Name" placeholder="نام" />
+  
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label >نام خانوادگی</nz-form-label>
+        <nz-form-control >
+          <input nz-input formControlName="Family" placeholder="نام خانوادگی" />
+  
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label >کد ملی</nz-form-label>
+        <nz-form-control >
+          <input nz-input formControlName="Ncode" placeholder="کد ملی" />
+        
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label >رمز عبور</nz-form-label>
+        <nz-form-control>
+          <input nz-input formControlName="Password" placeholder="رمز عبور" />
+      
+        </nz-form-control>
+      </nz-form-item>
+      <div *ngIf="error" class="color-11 font-family-bold mb-3">{{ error }}</div>
+ <button [nzLoading]="loadingRegister" nz-button nzType="primary"
+                [disabled]="form.invalid">
+                      {{ loadingRegister ? 'در حال ثبت نام...' : 'ثبت نام' }}
 
-  <form (ngSubmit)="submit()" [formGroup]="form" novalidate>
-    <div>
-      <label>شماره موبایل:</label>
-      <input type="text" formControlName="Phone" placeholder="مثلاً 0912..." />
-    </div>
-    <div>
-      <label>نام:</label>
-      <input type="text" formControlName="Name" placeholder="مثلاً 0912..." />
-    </div>
-    <div>
-      <label>نام خانوادگی:</label>
-      <input type="text" formControlName="Family" placeholder="مثلاً 0912..." />
-    </div>
-    <div>
-      <label>کد ملی:</label>
-      <input type="text" formControlName="Ncode" placeholder="مثلاً 0912..." />
-    </div>
+              </button>
 
-    <div>
-      <label>رمز عبور:</label>
-      <input type="password" formControlName="Password" />
-    </div>
 
-    <div *ngIf="error" class="error">{{ error }}</div>
-
-    <button type="submit" [disabled]="loading">
-      {{ loading ? 'در حال ورود...' : 'ورود' }}
-    </button>
-  </form>
+    
+    </form>
+  </nz-card>
 </div>
 
+
+
+
+<!-- <div class="container " id="container">
+  <div *ngIf="isRegister" class="form-container sign-up-container">
+    <form (ngSubmit)="submit()" [formGroup]="form" novalidate>
+      <h1 class="font-family-bold font-24">فرم ثبت نام</h1>
+      <div>
+        <label>شماره موبایل:</label>
+        <input type="text" formControlName="Phone" placeholder="مثلاً 0912..." />
+      </div>
+      <div>
+        <label>نام:</label>
+        <input type="text" formControlName="Name" placeholder="مثلاً 0912..." />
+      </div>
+      <div>
+        <label>نام خانوادگی:</label>
+        <input type="text" formControlName="Family" placeholder="مثلاً 0912..." />
+      </div>
+      <div>
+        <label>کد ملی:</label>
+        <input type="text" formControlName="Ncode" placeholder="مثلاً 0912..." />
+      </div>
+
+      <div>
+        <label>رمز عبور:</label>
+        <input type="password" formControlName="Password" />
+      </div>
+      <button type="submit" [disabled]="loading">
+        {{ loading ? 'در حال ورود...' : 'ورود' }}
+      </button>
+    </form>
+  </div>
+  <div *ngIf="!isRegister" class="form-container sign-in-container">
+    <app-login/>
+    
+  </div>
+  <div class="overlay-container end-0" *ngIf="isRegister">
+    <div class="overlay-panel overlay-left">
+      <h1>Welcome Back!</h1>
+      <p>To keep connected with us please login with your personal info</p>
+      <button (click)="changeForm()" id="signIn">ورود</button>
+    </div>
+  </div>
+  <div class="overlay-container" *ngIf="!isRegister">
+    <div class="overlay-panel overlay-right">
+      <p class="font-family-bold  font-24 mb-3">برای ثبت نام کلیک کنید</p>
+      <button id="signUp" (click)="changeForm()">ثبت نام</button>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>
+    Created with <i class="fa fa-heart"></i> by
+    <a target="_blank" href="https://florin-pop.com">Florin Pop</a>
+    - Read how I created this and how you can join the challenge
+    <a target="_blank" href="https://www.florin-pop.com/blog/2019/03/double-slider-sign-in-up-form/">here</a>.
+  </p>
+</footer> -->

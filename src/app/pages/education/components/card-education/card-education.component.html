@@ -153,7 +153,12 @@
     </div>
 
     <div class="text-center">
-      <button nz-button [disabled]="data?.isFull" (click)="buyEvent()"
+      <button routerLink="/course/detail/{{data?.id}}" class="d-inline-block border-radius-5 px-4 py-2 text-white font-10 fit-content cursorPointer
+       font-family-regular  bg-color-3 border-color-3">
+               مشاهده دوره
+
+      </button>
+      <!-- <button nz-button [disabled]="data?.isFull" (click)="buyEvent()"
         class="d-inline-block border-radius-5 px-4 py-2 text-white font-10 fit-content
        font-family-regular  {{data?.isFull ?'bg-color-2' : data?.finalPrice > 0 ? 'bg-color-3' : 'bg-color-8'}}">
         @if(data?.isFull){
@@ -167,7 +172,7 @@
 
         }
 
-      </button>
+      </button> -->
     </div>
   </div>
 </div>

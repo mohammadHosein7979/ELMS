@@ -75,6 +75,7 @@ export class AuthService {
         catchError((err) => {
           this.currentUserSubject.next(null);
           this.loaded = true;
+          localStorage.clear()
           return of(null);
         })
       );

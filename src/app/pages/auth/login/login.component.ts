@@ -114,10 +114,14 @@ export class LoginComponent implements OnInit {
         // حالا پروفایل کاربر را load کن تا personId تنظیم شود
         this.auth.loadUser().subscribe({
           next: () => {
-            this.router.navigate(['/panel']); // مقصد دلخواه
+            window.location.href = '/panel';
+
+            // this.router.navigate(['/panel']); // مقصد دلخواه
           },
           error: () => {
-            this.router.navigate(['/']);
+            window.location.href = '/';
+
+            // this.router.navigate(['/']);
           }
         });
       },
@@ -168,7 +172,8 @@ export class LoginComponent implements OnInit {
     ).subscribe({
       next: () => {
         // this.loading = false;
-        this.router.navigate(['/panel']);
+        window.location.href = '/panel';
+        // this.router.navigate(['/panel']);
       },
       error: (err) => {
         // this.loading = false;
