@@ -121,5 +121,8 @@ export class DetailEducationComponent extends BaseService implements OnInit {
       this.data.isFull = true;
     })
   }
+  goEvent(){
+
+  }
   protected readonly TypeClasses = TypeClasses;
 }

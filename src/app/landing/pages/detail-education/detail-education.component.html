@@ -172,21 +172,32 @@
             </div>
 
           </div>
-          <button nz-button [disabled]="data?.isFull" (click)="buyEvent()"
-                  class="d-inline-block mt-3 w-100 border-radius-8 px-4 py-4 text-white font-14 fit-content
+          @if (data?.isRegister){
+            <button nz-button (click)="goEvent()"
+                    class="d-inline-block mt-3 w-100 border-radius-8 px-4 py-4 text-white font-14 fit-content
+                    font-family-regular  bg-color-3">
+             ورود به دوره
+
+            </button>
+
+          } @else {
+            <button nz-button [disabled]="data?.isFull" (click)="buyEvent()"
+                    class="d-inline-block mt-3 w-100 border-radius-8 px-4 py-4 text-white font-14 fit-content
                     font-family-regular  {{data?.isFull ?'bg-color-2' : data?.finalPrice > 0 ? 'bg-color-3' : 'bg-color-8'}}">
-            @if (data?.isFull) {
-              تکمیل ظرفیت
+              @if (data?.isFull) {
+                تکمیل ظرفیت
 
-            } @else if (data?.finalPrice > 0) {
-              خرید دوره
+              } @else if (data?.finalPrice > 0) {
+                خرید دوره
 
-            } @else {
-              عضویت در دوره
+              } @else {
+                عضویت در دوره
 
-            }
+              }
 
-          </button>
+            </button>
+
+          }
         </div>
 
 
