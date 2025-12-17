@@ -1,0 +1,52 @@
+import {Component, effect, Injector, OnInit} from '@angular/core';
+import {BaseService} from "../../shared/services/base.service";
+import {FormGroup, Validators} from "@angular/forms";
+import {finalize} from "rxjs";
+import {MicroService} from "../../shared/enum/enum";
+
+@Component({
+    selector: 'app-profile',
+    styleUrl: './profile.component.scss',
+    templateUrl: './profile.component.html',
+    standalone: false
+})
+export class ProfileComponent extends BaseService implements OnInit {
+  loadingProfile:boolean = false
+  constructor(injector:Injector) {
+    super(injector);
+    effect(() => {
+      const user = this.authService.dataUser();
+
+      if (!user || Object.keys(user).length === 0) return;
+
+      this.formProfile.patchValue(user);
+    });
+  }
+  formProfile: FormGroup = this.fb.group({
+    id: [null],
+    name: [null, [Validators.required]],
+    family: [null, [Validators.required]],
+    "ncode": null,
+    "unixTimeBirthDate": null,
+    "gender": null,
+    "avatar": null,
+    "mobile": null,
+  });
+
+  ngOnInit() {
+
+
+  }
+  submitForm() {
+    this.loadingProfile = true
+    console.log(this.formProfile.value)
+    this.put(`/${MicroService.usermanagement}/Person/Update`,this.formProfile.value).pipe(
+      finalize(()=>{
+        this.loadingProfile = false
+
+      })).subscribe(()=>{
+
+    })
+  }
+
+}

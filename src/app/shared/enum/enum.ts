@@ -13,6 +13,7 @@ export enum EnumEducationType {
 export enum MicroService {
   course = 'courseapi',
   mediaapi = 'mediaapi',
+  usermanagement = 'usermanagement',
 }
 
 @Injectable({

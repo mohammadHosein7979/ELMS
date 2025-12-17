@@ -294,3 +294,9 @@ app-slider-education{
 .ant-form-item-label{
   display: block !important;
 }
+.ant-select{
+  border: 1px solid #d9d9d9;
+  border-radius: 2px;
+  transition: all 0.3s;
+  width: 100%;
+}

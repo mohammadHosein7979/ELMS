@@ -5,12 +5,15 @@ import {
   IndexLayoutLandingComponent
 } from "./landing/layout-landing/index-layout-landing/index-layout-landing.component";
 import {AuthGuard} from "./core/guards/auth.guard";
+import {RegisterComponent} from "./pages/auth/register/register.component";
+import {ProfileComponent} from "./pages/profile/profile.component";
 
 const routes: Routes = [
   {
     path: 'panel',
     component:IndexLayoutComponent,
     children: [
+      {path: 'profile', component: ProfileComponent},
       {path: '',loadChildren: () => import('./pages/education/education.module').then(m => m.EducationModule), canActivate: [AuthGuard] },
       {path: 'my-training',loadChildren: () => import('./pages/my-training/my-training.module').then(m => m.MyTrainingModule), canActivate: [AuthGuard] },
       {path: 'my-educational-system',loadChildren: () => import('./pages/my-educational-system/my-educational-system.module').then(m => m.MyEducationalSystemModule), canActivate: [AuthGuard] },

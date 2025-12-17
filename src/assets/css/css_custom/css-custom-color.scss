@@ -15,7 +15,7 @@ $color-13: #FCC429; //dd
 $color-14: #093B3B; //dd
 $color-15: #1E1E1E; //dd
 $color-16: #494949; //dd
-$color-17: #ABABAB;
+$color-17: #77D99E; //dd
 $color-18: #C7C9D9;
 
 
@@ -117,7 +117,7 @@ $color-18: #C7C9D9;
   background: $color-16;
 }
 .bg-color-17 {
-  background: $color-17;
+  background: $color-17 !important;
 }
 .border-color-1{
   border: 1px solid $color-1;

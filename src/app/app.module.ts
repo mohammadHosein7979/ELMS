@@ -12,11 +12,15 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { HTTP_INTERCEPTORS } from "@angular/common/http";
 import {CustomErrorHandlerService} from "./shared/services/CustomErrorHandler.service";
 import {AuthInterceptor} from "./core/interceptors/auth.interceptor";
+import {ProfileComponent} from "./pages/profile/profile.component";
+import {PersianDatepickerComponent} from "./components/persian-datepicker/persian-datepicker.component";
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    ProfileComponent,
+
   ],
   imports: [
     CommonModule,
@@ -33,6 +37,7 @@ import {AuthInterceptor} from "./core/interceptors/auth.interceptor";
       // or after 30 seconds (whichever comes first).
       registrationStrategy: 'registerWhenStable:30000'
     }),
+    PersianDatepickerComponent,
 
   ],
   providers: [UpdateService, provideAnimationsAsync(),

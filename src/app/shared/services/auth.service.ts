@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable, signal} from '@angular/core';
 import { BehaviorSubject, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -13,6 +13,7 @@ export class AuthService {
   private microService = `/usermanagement/Login`;
   private currentUserSubject = new BehaviorSubject<any>(null);
   currentUser$ = this.currentUserSubject.asObservable();
+  dataUser = signal<any | null>(null);
   private sessionCreated = false;
   private loaded = false;
 
@@ -69,6 +70,7 @@ export class AuthService {
       .pipe(
         tap((user: any) => {
           this.currentUserSubject.next(user.data);
+          this.dataUser.set(user.data)
           this.loaded = true;
           this.userService.setUser(user.data);
         }),
