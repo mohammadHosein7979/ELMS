@@ -20,5 +20,12 @@ import { ControlContainer, FormGroupDirective, FormsModule, ReactiveFormsModule 
 })
 export class PersianDatepickerComponent extends BaseService {
   constrolName = input('')
+  dateFormat = input('jYYYY/jMM/jDD HH:mm:ss')
   placeholder = input('')
+  timeFlag = input(false)
+  timeShowFlag = input(false)
+
+  dd(){
+    console.log(this.constrolName())
+  }
 }

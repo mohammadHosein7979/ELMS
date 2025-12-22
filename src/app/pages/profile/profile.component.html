@@ -7,27 +7,27 @@
         </div>
         <form [formGroup]="formProfile" (ngSubmit)="submitForm()">
 
-        <div class="px-3 pb-3">
-          <div>
-            <div class="profile-1 bg-white border-radius-50 p-2 position-relative">
-              <img [src]="formProfile.value?.avatar" class="w-100 h-100 border-radius-50">
+          <div class="px-3 pb-3">
+            <div>
+              <div class="profile-1 bg-white border-radius-50 p-2 position-relative">
+                <img [src]="formProfile.value?.avatar" class="w-100 h-100 border-radius-50">
+              </div>
             </div>
-          </div>
             <div class="row">
               <div class="col-12 col-lg-3">
                 <nz-form-item>
-                  <nz-form-label class="d-block" >نام</nz-form-label>
-                  <nz-form-control >
-                    <input nz-input formControlName="name" placeholder="نام" />
+                  <nz-form-label class="d-block">نام</nz-form-label>
+                  <nz-form-control>
+                    <input nz-input formControlName="name" placeholder="نام"/>
 
                   </nz-form-control>
                 </nz-form-item>
               </div>
               <div class="col-12 col-lg-3">
                 <nz-form-item>
-                  <nz-form-label >نام خانوادگی</nz-form-label>
-                  <nz-form-control >
-                    <input nz-input formControlName="family" placeholder="نام خانوادگی" />
+                  <nz-form-label>نام خانوادگی</nz-form-label>
+                  <nz-form-control>
+                    <input nz-input formControlName="family" placeholder="نام خانوادگی"/>
 
                   </nz-form-control>
                 </nz-form-item>
@@ -35,9 +35,9 @@
               </div>
               <div class="col-12 col-lg-3">
                 <nz-form-item>
-                  <nz-form-label >کد ملی</nz-form-label>
-                  <nz-form-control >
-                    <input nz-input formControlName="ncode" placeholder="کد ملی" />
+                  <nz-form-label>کد ملی</nz-form-label>
+                  <nz-form-control>
+                    <input nz-input formControlName="ncode" placeholder="کد ملی"/>
 
                   </nz-form-control>
                 </nz-form-item>
@@ -46,15 +46,19 @@
               </div>
               <div class="col-12 col-lg-3">
                 <nz-form-item>
-                  <nz-form-label >تاریخ تولد</nz-form-label>
-                  <app-persian-datepicker [constrolName]="'unixTimeBirthDate'" [placeholder]="'زمان شروع'" />
+                  <nz-form-label>تاریخ تولد</nz-form-label>
+                  <app-persian-datepicker [dateFormat]="'jYYYY/jMM/jDD'"
+                                          [timeFlag]="false"
+                                          [timeShowFlag]="false"
+                                          [constrolName]="'unixTimeBirthDate'"
+                                          [placeholder]="'تاریخ تولد'"/>
                 </nz-form-item>
 
 
               </div>
               <div class="col-12 col-lg-3">
                 <nz-form-item>
-                  <nz-form-label >جنسیت</nz-form-label>
+                  <nz-form-label>جنسیت</nz-form-label>
                   <nz-select formControlName="gender" nzAllowClear nzPlaceHolder="Choose">
                     <nz-option [nzValue]="true" nzLabel="مرد"></nz-option>
                     <nz-option [nzValue]="false" nzLabel="زن"></nz-option>
@@ -65,37 +69,38 @@
               </div>
               <div class="col-12 col-lg-3">
                 <nz-form-item>
-                  <nz-form-label >شماره تماس</nz-form-label>
-                  <nz-form-control >
-                    <input nz-input formControlName="mobile" placeholder="شماره تماس" />
+                  <nz-form-label>شماره تماس</nz-form-label>
+                  <nz-form-control>
+                    <input nz-input  dir="ltr" formControlName="mobile" placeholder="شماره تماس"/>
 
                   </nz-form-control>
                 </nz-form-item>
 
 
               </div>
-<!--              <div class="col-12 col-lg-6">-->
-<!--                <nz-form-item>-->
-<!--                  <nz-form-label >شماره تماس</nz-form-label>-->
-<!--                  <nz-form-control >-->
-<!--                    <input nz-input formControlName="mobile" placeholder="شماره تماس" />-->
+              <!--              <div class="col-12 col-lg-6">-->
+              <!--                <nz-form-item>-->
+              <!--                  <nz-form-label >شماره تماس</nz-form-label>-->
+              <!--                  <nz-form-control >-->
+              <!--                    <input nz-input formControlName="mobile" placeholder="شماره تماس" />-->
 
-<!--                  </nz-form-control>-->
-<!--                </nz-form-item>-->
+              <!--                  </nz-form-control>-->
+              <!--                </nz-form-item>-->
 
 
-<!--              </div>-->
+              <!--              </div>-->
 
             </div>
-          <div class="">
-            <button [nzLoading]="loadingProfile" nz-button class="bg-color-17 border-radius-8 font-family-regular font-16 color-1"
-                    [disabled]="formProfile.invalid">
-              {{ loadingProfile ? 'در حال ذخیره...' : 'ذخیره تغییرات' }}
+            <div class="">
+              <button [nzLoading]="loadingProfile" nz-button
+                      class="bg-color-17 border-radius-8 font-family-regular font-16 color-1"
+                      [disabled]="formProfile.invalid">
+                {{ loadingProfile ? 'در حال ذخیره...' : 'ذخیره تغییرات' }}
 
-            </button>
+              </button>
+            </div>
+
           </div>
-
-        </div>
         </form>
 
       </div>

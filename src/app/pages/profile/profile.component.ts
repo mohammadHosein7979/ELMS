@@ -16,10 +16,12 @@ export class ProfileComponent extends BaseService implements OnInit {
     super(injector);
     effect(() => {
       const user = this.authService.dataUser();
-
       if (!user || Object.keys(user).length === 0) return;
-
-      this.formProfile.patchValue(user);
+      const patchedUser = {
+        ...user,
+        unixTimeBirthDate: this.unixToJalaliString(user.unixTimeBirthDate)
+      };
+      this.formProfile.patchValue(patchedUser);
     });
   }
   formProfile: FormGroup = this.fb.group({
@@ -39,13 +41,18 @@ export class ProfileComponent extends BaseService implements OnInit {
   }
   submitForm() {
     this.loadingProfile = true
-    console.log(this.formProfile.value)
-    this.put(`/${MicroService.usermanagement}/Person/Update`,this.formProfile.value).pipe(
+    const payload = {
+      ...this.formProfile.value,
+      unixTimeBirthDate: this.jalaliStringToUnix(
+        this.formProfile.value.unixTimeBirthDate
+      )
+    };
+    this.put(`/${MicroService.usermanagement}/Person/Update`,payload).pipe(
       finalize(()=>{
         this.loadingProfile = false
 
       })).subscribe(()=>{
-
+        this.notification.success('اطلاعات با موفقیت ذخیره شد .')
     })
   }
 

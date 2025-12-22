@@ -1,10 +1,9 @@
-import {Injectable, Injector, OnInit, signal} from "@angular/core";
+import {Injectable, Injector} from "@angular/core";
 import {HttpService} from "./http.service";
 import {AuthService} from "./auth.service";
 import {NotifyService} from "../helperService/notification.service";
 import {StorageService} from "../helperService/storage.service";
-import {map, Observable, of, shareReplay} from "rxjs";
-import {NzNotificationService} from "ng-zorro-antd/notification";
+import {map, Observable} from "rxjs";
 import {UserService} from "./user.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {TokenService} from "./token.service";
@@ -12,10 +11,11 @@ import {JwtService} from "./jwt.service";
 import {Title} from "@angular/platform-browser";
 import {UtilService} from "./util.service";
 import {HttpClient, HttpParams} from "@angular/common/http";
-import {catchError} from "rxjs/operators";
 import {NzTableQueryParams} from "ng-zorro-antd/table";
 import {FormBuilder} from "@angular/forms";
 import dayjs from "dayjs";
+import moment from 'moment-jalaali';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -24,7 +24,7 @@ export class BaseService {
   isSubmitting = false;
   loadingTable: boolean = true
   loadingButton: boolean = false
-  personId:any = null
+  personId: any = null
 
   dataSelectedRow: any = ''
 
@@ -64,16 +64,16 @@ export class BaseService {
   }
 
 
-  get(url: string,body:any = '',extraHeaders?: Record<string, string>) {
+  get(url: string, body: any = '', extraHeaders?: Record<string, string>) {
     this.loading = true
-    let http = this.http.getHttp(url,body,extraHeaders)
+    let http = this.http.getHttp(url, body, extraHeaders)
     this.loading = false
     return http
   }
 
-  getByServices(url: string, cache: boolean = false,body:any=null) {
+  getByServices(url: string, cache: boolean = false, body: any = null) {
     this.loading = true
-    let http = cache ? this.http.getCacheHttp('/services/app' + url) : this.http.getHttp('/services/app' + url,body)
+    let http = cache ? this.http.getCacheHttp('/services/app' + url) : this.http.getHttp('/services/app' + url, body)
     this.loading = false
     return http
   }
@@ -82,12 +82,14 @@ export class BaseService {
     return this.http.getCacheHttp(url)
   }
 
-  post(url: string, data: any, extraHeaders: any=null) {
-    return this.http.postHttp(url, data,extraHeaders)
+  post(url: string, data: any, extraHeaders: any = null) {
+    return this.http.postHttp(url, data, extraHeaders)
   }
+
   put(url: string, data: any) {
     return this.http.putHttp(url, data)
   }
+
   delete(url: string, data: any) {
     return this.http.deleteHttp(url, data)
   }
@@ -149,6 +151,7 @@ export class BaseService {
       }
     });
   }
+
   isLoadingDelete(key: string): boolean {
     return this.loadingStates.get(`delete_${key}`) || false;
   }
@@ -158,7 +161,6 @@ export class BaseService {
   setLoading(key: string, isLoading: boolean): void {
     this.loadingStates.set(key, isLoading);
   }
-
 
 
   setDataSelectedRow(data: any) {
@@ -220,7 +222,7 @@ export class BaseService {
     if (filters && filters.length > 0) {
       filters.forEach(filter => {
         // filter.value.forEach(value => {
-          params = params.append(filter.key, filter.value);
+        params = params.append(filter.key, filter.value);
         // });
       });
     }
@@ -231,33 +233,48 @@ export class BaseService {
 
   visible = '';
 
-  reset(type:any): void {
+  reset(type: any): void {
     // this.searchValue = '';
-    this.search('',type);
+    this.search('', type);
   }
 
 
-  search(value:any='',key : any = ''): void {
+  search(value: any = '', key: any = ''): void {
     this.visible = key;
-    let value2:any = this.filter.find((i:any)=>i.key == key)
-    if (value2){
+    let value2: any = this.filter.find((i: any) => i.key == key)
+    if (value2) {
       value2.value = value
-    }else {
-      this.filter.push({key : key,value: value})
+    } else {
+      this.filter.push({key: key, value: value})
     }
     this.loadDataFromServer(this.pageIndex, this.pageSize, null, null, this.filter);
   }
-  trackByFn(index:any, item:any): number {
+
+  trackByFn(index: any, item: any): number {
     return item.id || index;
   }
+
   convertJalaliToGregorian(jalaliDate: string): string {
-  const d = dayjs(jalaliDate, { jalali: true }, 'jYYYY/jMM/jDD HH:mm:ss');
+    const d = dayjs(jalaliDate, {jalali: true}, 'jYYYY/jMM/jDD HH:mm:ss');
 
-  if (!d.isValid()) {
-    throw new Error('تاریخ نامعتبر است');
+    if (!d.isValid()) {
+      throw new Error('تاریخ نامعتبر است');
+    }
+    return d.format('YYYY-MM-DD[T]HH:mm:ss');
+
+    // return d.locale('en').format('YYYY-MM-DD HH:mm:ss');
   }
-return d.format('YYYY-MM-DD[T]HH:mm:ss');
-
-  // return d.locale('en').format('YYYY-MM-DD HH:mm:ss'); 
-}
+  unixToJalaliDate(unix: number): Date | null {
+    console.log(unix)
+    if (!unix) return null;
+    return moment(unix).toDate();
+  }
+  unixToJalaliString(unix: number | null,time:boolean = false): string | null {
+    if (!unix) return null;
+    return moment(unix).format(time ? 'jYYYY/jMM/jDD HH:mm:ss' : 'jYYYY/jMM/jDD');
+  }
+  jalaliStringToUnix(value: string | null): number | null {
+    if (!value) return null;
+    return moment(value, 'jYYYY/jMM/jDD HH:mm:ss').valueOf();
+  }
 }
