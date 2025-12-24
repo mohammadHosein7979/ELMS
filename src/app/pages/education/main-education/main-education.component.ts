@@ -19,7 +19,7 @@ export class MainEducationComponent extends BaseService implements OnInit {
     {
       cover: 'assets/image/remove/1WJ7bUXuAtcTS9TWQsNTBAa7EqUtNYz7weUVjiTq_thumb.jfif',
       ostadImage: ['assets/image/remove/Frame63.png', 'assets/image/remove/Frame63.png'],
-      title: 'تدبری در زیارت عاشورا',
+      title: 'یونیفای ی در زیارت عاشورا',
       time: '20:10:00',
       type: 'دوره آنلاین'
     },

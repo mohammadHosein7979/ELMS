@@ -69,7 +69,7 @@ export class FileUploader {
                 switchMap((generateResponse: any) => {
                   const result: UploadResult = {
                     fileUrl: `${environment.apiUrl}/${MicroService.mediaapi}/api/File/DownloadFile?IDMedia=${IDMedia}`,
-                    message: 'آپلود انجام شد',
+                    message: 'آپلود انجامع  شد',
                     idMedia: IDMedia
                   };
                   return [result];

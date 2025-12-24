@@ -105,7 +105,7 @@ export class CreateCourseComponent extends BaseService implements OnInit {
 
         // تنظیم گوش دادن به تغییرات قیمت
 
-        // اگر قیمت وجود دارد، محاسبات را انجام بده
+        // اگر قیمت وجود دارد، محاسبات را انجامع  بده
         if (this.formSend.value.price) {
           this.calculateFinancials(this.formSend.value.price);
         }

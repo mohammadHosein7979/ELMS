@@ -42,7 +42,7 @@ loadingRegister:boolean = false
     this.authService.register(this.form.value!).subscribe({
       next: () => {
         this.loadingRegister = false;
-        this.notification.success('ثبت نام با موفقیت انجام شد');
+        this.notification.success('ثبت نام با موفقیت انجامع  شد');
         this.router.navigate(['/auth/login']);// بعد از ثبت نام ببر به صفحه لاگین
       },
       error: (err) => {

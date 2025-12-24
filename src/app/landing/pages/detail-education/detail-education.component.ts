@@ -117,7 +117,7 @@ export class DetailEducationComponent extends BaseService implements OnInit {
         personId:this.personId,
         isRegister: true
       }}).subscribe((res: any) => {
-      this.notification.success('ثبت نام با موفقیت انجام شد');
+      this.notification.success('ثبت نام با موفقیت انجامع  شد');
       this.data.isFull = true;
     })
   }

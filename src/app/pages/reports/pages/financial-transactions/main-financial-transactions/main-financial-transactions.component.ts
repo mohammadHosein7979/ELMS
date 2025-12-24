@@ -14,15 +14,15 @@ export class MainFinancialTransactionsComponent extends BaseService implements O
 
   list : any =[
     {
-      id: 1 ,title : 'کلاس تدبری در زندگی',type : 'online', image : 'assets/image/remove/Frame388.png' , description : '' , status : 'ورود به کلاس',time : 'پنجشنبه 22 مرداد  ساعت 11:20'
+      id: 1 ,title : 'کلاس یونیفای ی در زندگی',type : 'online', image : 'assets/image/remove/Frame388.png' , description : '' , status : 'ورود به کلاس',time : 'پنجشنبه 22 مرداد  ساعت 11:20'
     },{
-      id: 2 ,title : 'کلاس تدبری در زندگی',type : 'online', image : 'assets/image/remove/Frame388.png' , description : '' , status : 'اتصال لینک کلاس',time : 'پنجشنبه 22 مرداد  ساعت 11:20',link: 'https://www.google.com/search?client=firefox-b-d&q=googel+meet'
+      id: 2 ,title : 'کلاس یونیفای ی در زندگی',type : 'online', image : 'assets/image/remove/Frame388.png' , description : '' , status : 'اتصال لینک کلاس',time : 'پنجشنبه 22 مرداد  ساعت 11:20',link: 'https://www.google.com/search?client=firefox-b-d&q=googel+meet'
     },{
-      id: 3 ,title : 'کلاس تدبری در زندگی',type : 'offline', image : 'assets/image/remove/Frame388.png' , description : 'توضیحات دوره تدبری در زندگی ' , status : 'منتشر شده'
+      id: 3 ,title : 'کلاس یونیفای ی در زندگی',type : 'offline', image : 'assets/image/remove/Frame388.png' , description : 'توضیحات دوره یونیفای ی در زندگی ' , status : 'منتشر شده'
     },{
-      id: 4 ,title : 'کلاس تدبری در زندگی',type : 'offline', image : 'assets/image/remove/Frame388.png' , description : 'توضیحات دوره تدبری در زندگی ' , status : 'در حال بررسی'
+      id: 4 ,title : 'کلاس یونیفای ی در زندگی',type : 'offline', image : 'assets/image/remove/Frame388.png' , description : 'توضیحات دوره یونیفای ی در زندگی ' , status : 'در حال بررسی'
     },{
-      id: 5 ,title : 'کلاس تدبری در زندگی',type : 'face-to-face', image : 'assets/image/remove/Frame388.png' , description : 'توضیحات دوره تدبری در زندگی' ,time : 'تاریخ : پنج شنبه 22 مهر سال 1403' , lok:'قم - پردیسان - پارک علم و فناروری - مروارید 3 - واحد 6 - اتاق جلسات - شماره تماس (096569988776666)'
+      id: 5 ,title : 'کلاس یونیفای ی در زندگی',type : 'face-to-face', image : 'assets/image/remove/Frame388.png' , description : 'توضیحات دوره یونیفای ی در زندگی' ,time : 'تاریخ : پنج شنبه 22 مهر سال 1403' , lok:'قم - پردیسان - پارک علم و فناروری - مروارید 3 - واحد 6 - اتاق جلسات - شماره تماس (096569988776666)'
     },
   ]
 

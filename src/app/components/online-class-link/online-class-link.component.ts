@@ -29,7 +29,7 @@ export class OnlineClassLinkComponent extends BaseService implements OnChanges{
       link: this.linkValue
     }
     this.put(`/${MicroService.course}/Event/ChangeLinkEvent`, body).subscribe((data: any) => {
-      this.notification.success('عملیات با موفقیت انجام شد');
+      this.notification.success('عملیات با موفقیت انجامع  شد');
     })
   }
 
@@ -45,7 +45,7 @@ export class OnlineClassLinkComponent extends BaseService implements OnChanges{
   //     link : linkInput.value
   //   }
   //   this.put(`/${MicroService.course}/Event/ChangeLinkEvent`, body).subscribe((data:any)=>{
-  //     this.notification.success('عملیات با موفقیت انجام شد');
+  //     this.notification.success('عملیات با موفقیت انجامع  شد');
   //
   //   })
   // }
