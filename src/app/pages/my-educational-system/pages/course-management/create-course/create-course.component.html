@@ -3,7 +3,7 @@
   <br/>
 
   <div class="create-question-1 overflow-hidden">
-    <div class="bg-color-10 py-3 px-4 create-question-2 d-flex justify-content-between">
+    <div class="bg-color-8 py-3 px-4 create-question-2 d-flex justify-content-between">
       <h2 class=" text-white font-family-bold font-20 ">
         {{ isEditMode ? 'ویرایش دوره' : 'فرایند ایجاد دوره' }}
       </h2>
@@ -23,7 +23,7 @@
               با انتخاب یک گروه آموزشی یعنی قرار است یک دوره آموزشی در مورد گروه مورد نظر ایجاد کنید
             </p>
           </div>
-          <div class="border-color-10 border-radius-15 px-3 py-2 create-question-3">
+          <div class="border-color-8 border-radius-15 px-3 py-2 create-question-3">
             <div class=" d-flex gap-2 align-items-center">
               <img src="assets/image/searchIcon.svg">
               <div class="example-input w-100">
@@ -351,11 +351,11 @@
 
         <div class="d-flex gap-2 justify-content-center">
           <button type="button" *ngIf="step != 6" (click)="changeStep('next')"
-                  class="bg-color-10 border-color-10 border-radius-10 px-3 py-1 text-white font-family-bold font-14">
+                  class="bg-color-8 border-color-8 border-radius-10 px-3 py-1 text-white font-family-bold font-14">
             مرحله بعد
           </button>
           <button nz-button [nzLoading]="loadingButton" type="button" (click)="submit()" *ngIf="step == 6"
-                  class="bg-color-10 border-color-10 border-radius-10 px-3 py-1 text-white font-family-bold font-14">
+                  class="bg-color-8 border-color-8 border-radius-10 px-3 py-1 text-white font-family-bold font-14">
             {{ isEditMode ? 'ویرایش نهایی' : 'ثبت نهایی' }}
           </button>
           <button type="button" (click)="changeStep('prev')" [disabled]="step == 1"

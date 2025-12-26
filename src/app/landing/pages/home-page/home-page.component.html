@@ -7,16 +7,11 @@
       <div class="row justify-content-center">
         <div class="col-12 col-lg-8">
           <div class="text-center">
-            <img src="assets/image/landing/homePage/Frame16.svg" class="mb-3">
+            <img src="assets/image/logo.jpg" class="mb-3 home-page-7">
             <h3 class="color-1 font-24 font-family-bold mb-3">
-              درباره سیستم آموزشی یونیفای  زندگی
+              درباره سیستم آموزشی یونیفای
             </h3>
-            <p class="text-justify color-2 font-family-regular font-18">
-              “ سیستم جامع ع یونیفای  زندگی با هدف ارائه دوره های آموزشی یونیفای  در راستای دردسترس قرار گرفتن راحت تر آموزش ها در
-              سال 1390 با مدیریت سعید عباسی راه اندازی شد و تا به امروز بیش 1200 دوره آموزشی تولید و به هنر جویان خود
-              ارائه داده است که بیش از 5400 هنر جو فارغ التحصیل در این حوضه داشته است از این رو باور داریم که هر روز به
-              لطف خدای بزرگ در این راستا و وظیفه مهم قدم هم بزرگ و مهمی خواهیم برداشت “
-            </p>
+            <p class="text-justify color-2 font-family-regular font-18 home-page-6" [innerHTML]="about"></p>
           </div>
         </div>
       </div>
@@ -208,18 +203,19 @@
       </div>
     </div> -->
     <div class="mt-5">
-      <h3 class="font-24 font-family-regular color-1 mb-4 text-center">
-        ویژگی‌های دوره‌های یونیفای  زندگی چیست؟
-      </h3>
+      <nz-divider  class="font-20 font-family-bold color-8 text-center"  [nzText]="'ویژگی‌های دوره‌های یونیفای  زندگی چیست؟'"/>
+
       <div class="row justify-content-evenly">
         <div class="col-12 col-lg-3">
           <div class="text-center">
             <img src="assets/image/landing/homePage/Frame523.svg" class="mb-2">
             <h3 class="font-family-regular font-14 color-1 mb-2">
-              گواهی نامه یونیفای  زندگی
+              گواهی نامه یونیفای
             </h3>
             <p class="font-family-regular font-10 color-16">
-              ارائه گواهی‌نامه رسمی یونیفای  زندگی یا موسسه برگزارکننده دوره در صورت کسب نمره قبولی
+              آموزش کاربردی و پروژه‌محور
+              محتواها بر اساس نیازهای واقعی بازار رسانه طراحی شده و خروجی هر دوره، یک مهارت قابل اجراست.
+
             </p>
           </div>
         </div>
@@ -227,10 +223,11 @@
           <div class="text-center">
             <img src="assets/image/landing/homePage/Frame5231.svg" class="mb-2">
             <h3 class="font-family-regular font-14 color-1 mb-2">
-              تسهیل استخدام
+              اساتید مجرب و متخصصان فعال در بازار کار
+
             </h3>
             <p class="font-family-regular font-10 color-16">
-              شانس استخدام بیشتر برای فارغ‌التحصیلان دوره‌ها در مراکز مرتبط و موسسات
+              دوره‌ها توسط اساتید باتجربه و حرفه‌ای‌های شاغل در صنعت رسانه و تولید محتوا ارائه می‌شوند.
             </p>
           </div>
         </div>
@@ -238,28 +235,30 @@
           <div class="text-center">
             <img src="assets/image/landing/homePage/Frame5232.svg" class="mb-2">
             <h3 class="font-family-regular font-14 color-1 mb-2">
-              همیار یونیفای
+              ارزیابی واقعی مهارت
             </h3>
             <p class="font-family-regular font-10 color-16">
-              پاسخ‌گویی به سوالات و راهنمایی توسط استاد یا همیار دوره که توسط خود فرد انتخاب می شود
+              صدور گواهی آموزشی تنها پس از احراز توانمندی عملی دانش‌پذیر انجام می‌شود، نه صرفاً حضور در دوره.
             </p>
           </div>
         </div>
 
       </div>
     </div>
+
     <div class="mt-5">
-      <h3 class="font-24 font-family-regular color-1 mb-4 text-center">
-        چرا یونیفای  زندگی ؟
-      </h3>
+      <nz-divider  class="font-20 font-family-bold color-8 text-center"  [nzText]="'چرا یونیفای  زندگی ؟'"/>
+
+      <!--      <h3 class="font-24 font-family-regular color-1 mb-4 text-center">-->
+<!--        چرا یونیفای  زندگی ؟-->
+<!--      </h3>-->
       <div class="row justify-content-evenly">
         <div class="col-12 col-lg-3">
           <div class="text-center">
             <img src="assets/image/landing/homePage/Frame5233.svg" class="mb-2">
             <p class="font-family-regular font-10 color-16">
-              +6000 ساعت ویدئوی
-              <br />
-              آموزشی رایگان
+              برگزاری دوره‌های آزاد و مهارت‌محور
+
             </p>
           </div>
         </div>
@@ -267,9 +266,8 @@
           <div class="text-center">
             <img src="assets/image/landing/homePage/Frame5234.svg" class="mb-2">
             <p class="font-family-regular font-10 color-16">
-              امکان شرکت در دوره های
-              <br />
-              آموزشی آنلاین
+              اجرای دوره‌های مشترک آموزشی
+
             </p>
           </div>
         </div>
@@ -277,9 +275,8 @@
           <div class="text-center">
             <img src="assets/image/landing/homePage/Frame5235.svg" class="mb-2">
             <p class="font-family-regular font-10 color-16">
-              امکان شرکت در دوره های
-              <br />
-              آموزشی حضوری
+              شناسایی و توانمندسازی استعدادهای دانشجویی
+
             </p>
           </div>
         </div>
@@ -287,15 +284,30 @@
           <div class="text-center">
             <img src="assets/image/landing/homePage/Frame5236.svg" class="mb-2">
             <p class="font-family-regular font-10 color-16">
-              ارائه گواهی نامه معتبر و
-              <br />
-              رسمی برای سازمان های دولتی
+
+              صدور گواهی‌های مهارتی معتبر
+
             </p>
           </div>
         </div>
 
       </div>
     </div>
+    <div class="mt-5">
+      <nz-divider  class="font-20 font-family-bold color-8 text-center"  [nzText]="'بنیان‌گذار Uniphy'"/>
+
+      <div class="row justify-content-center">
+        <div class="col-12 col-lg-8">
+          <div class="text-center">
+            <p class="text-justify color-2 font-family-bold font-18 home-page-6 mb-3">
+              محمدهادی شکروی
+            </p>
+            <p class="text-justify color-2 font-family-regular font-18 home-page-6" [innerHTML]="about2"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- <div class="mt-5">
       <h3 class="font-24 font-family-regular color-1 mb-4 text-center">
         یونیفای  زندگی از زبان شما و مسئولین

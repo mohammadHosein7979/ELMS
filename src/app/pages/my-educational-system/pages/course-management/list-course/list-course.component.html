@@ -34,7 +34,7 @@
         </div>
 
         <div class="w-100 main-online-classes-2">
-          <button nz-button class="text-white font-family-bold font-14 border-radius-10 bg-color-10 border-color-10 h-35 mb-2 px-4"
+          <button nz-button class="text-white font-family-bold font-14 border-radius-10 bg-color-8 border-color-8 h-35 mb-2 px-4"
                   (click)="applyFilter()">
             فیلتر کن
           </button>
@@ -55,7 +55,7 @@
              <button routerLink="create-headline-course/{{item.event?.id}}" type="button" class="font-family-regular px-2 py-1 border-radius-8 border-color-3 bg-white color-3">
           سر فصل ها
         </button>
-        <button routerLink="edit/{{item.event?.id}}" type="button" class="font-family-regular px-2 py-1 border-radius-8 border-color-10 bg-white color-10">
+        <button routerLink="edit/{{item.event?.id}}" type="button" class="font-family-regular px-2 py-1 border-radius-8 border-color-8 bg-white color-8">
           ویرایش
         </button>
          <button nz-button [nzLoading]="isLoadingDelete(item.event?.id)"  type="button" (click)="deleteItem(data,item.event?.id, `/${MicroService.course}/Event/Delete`)" class="font-family-regular px-2 py-1 border-radius-8 border-color-11 bg-white color-11">

@@ -92,15 +92,15 @@ export class SidebarLayoutComponent extends BaseService implements OnInit{
             iconDeSelect :'OnlineClassesDeSelect.svg',
             router: '/my-educational-system/classes?type='+TypeClasses.faceToFace,
           },
-          {
-            id : '34',
-            title : 'آزمون ها',
-            iconSelect : 'testSelect.svg',
-            iconDeSelect :'testDeSelect.svg',
-            routerChildOne:'/my-educational-system/tests/'+TypeTests.uncorrected,
-            routerChildTwo:'/my-educational-system/tests/'+TypeTests.completed,
-            router: '/my-educational-system/tests/'+TypeTests.notHeld,
-          },
+          // {
+          //   id : '34',
+          //   title : 'آزمون ها',
+          //   iconSelect : 'testSelect.svg',
+          //   iconDeSelect :'testDeSelect.svg',
+          //   routerChildOne:'/my-educational-system/tests/'+TypeTests.uncorrected,
+          //   routerChildTwo:'/my-educational-system/tests/'+TypeTests.completed,
+          //   router: '/my-educational-system/tests/'+TypeTests.notHeld,
+          // },
           {
             id : '35',
             title : 'بانک سوالات',
@@ -118,19 +118,19 @@ export class SidebarLayoutComponent extends BaseService implements OnInit{
           },
         ]
       },
-      {
-        title : 'گزارشات',
-        id : '4',
-        subMenu : [
-          {
-            id : '41',
-            title : 'تراکنش های مالی',
-            iconSelect : 'Frame332.svg',
-            iconDeSelect :'Frame3313.svg',
-            router: '/reports/financial-transactions',
-          },
-        ]
-      },
+      // {
+      //   title : 'گزارشات',
+      //   id : '4',
+      //   subMenu : [
+      //     {
+      //       id : '41',
+      //       title : 'تراکنش های مالی',
+      //       iconSelect : 'Frame332.svg',
+      //       iconDeSelect :'Frame3313.svg',
+      //       router: '/reports/financial-transactions',
+      //     },
+      //   ]
+      // },
     ]
 
   }

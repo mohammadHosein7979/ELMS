@@ -1,6 +1,6 @@
 <div class="login-page">
   <nz-card class="login-card">
-    <h3 class="text-center mb-4 font-family-bold font-24"> 
+    <h3 class="text-center mb-4 font-family-bold font-24">
       صفحه ورود
     </h3>
     <nz-tabset [(nzSelectedIndex)]="activeTabIndex">
@@ -9,7 +9,10 @@
         <div class="tab-content" dir="ltr">
           <form nz-form [formGroup]="phoneForm" (ngSubmit)="sendOtp()" *ngIf="otpStep === 'enterPhone'">
             <nz-form-item>
-              <nz-form-label>شماره موبایل</nz-form-label>
+              <nz-form-label dir="rtl">
+                شماره موبایل
+
+              </nz-form-label>
               <nz-form-control class="d-inline-table">
                 <input nz-input formControlName="Phone" placeholder="مثلاً 09121234567" />
                 <!--                <nz-form-explain *ngIf="phoneForm.controls['phone'].touched && phoneForm.controls['phone'].invalid">-->
@@ -20,7 +23,7 @@
 
             <div class="actions">
               <button nz-button nzType="primary" [disabled]="otpSending" [nzLoading]="otpSending">دریافت کد</button>
-              <button class="bg-color-3 text-white border-color-3 px-3 py-1" routerLink="/auth/register">
+              <button class="bg-color-1 text-white border-color-1 px-3 py-1" routerLink="/auth/register">
                 ثبت نام
               </button>
             </div>
@@ -29,7 +32,7 @@
           <div *ngIf="otpStep === 'verifyCode'">
             <form nz-form [formGroup]="otpForm" (ngSubmit)="verifyOtp()">
               <nz-form-item>
-                <nz-form-label>کد تایید</nz-form-label>
+                <nz-form-label  dir="rtl">کد تایید</nz-form-label>
                 <nz-form-control>
                   <input nz-input formControlName="Code" placeholder="کد دریافتی را وارد کنید" />
                   <!--                  <nz-form-explain *ngIf="otpForm.controls['code'].touched && otpForm.controls['code'].invalid">-->
@@ -54,7 +57,7 @@
         <div class="tab-content" dir="ltr">
           <form nz-form [formGroup]="passwordForm" (ngSubmit)="loginWithPassword()">
             <nz-form-item>
-              <nz-form-label>شماره موبایل</nz-form-label>
+              <nz-form-label  dir="rtl">شماره موبایل</nz-form-label>
               <nz-form-control>
                 <input nz-input formControlName="username" placeholder="مثلاً 09121234567" />
                 <!--                <nz-form-explain *ngIf="passwordForm.controls['username'].touched && passwordForm.controls['username'].invalid">-->
@@ -64,7 +67,7 @@
             </nz-form-item>
 
             <nz-form-item>
-              <nz-form-label>رمز عبور</nz-form-label>
+              <nz-form-label  dir="rtl">رمز عبور</nz-form-label>
               <nz-form-control>
                 <input nz-input type="password" formControlName="password" />
                 <!--                <nz-form-explain *ngIf="passwordForm.controls['password'].touched && passwordForm.controls['password'].invalid">-->

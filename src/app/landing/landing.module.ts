@@ -11,6 +11,7 @@ import {
 } from "../pages/education/components/card-pre-production-education/card-pre-production-education.component";
 import {CardEducationComponent} from "../pages/education/components/card-education/card-education.component";
 import {NzTabComponent, NzTabSetComponent} from "ng-zorro-antd/tabs";
+import {NzDividerComponent} from "ng-zorro-antd/divider";
 
 
 @NgModule({
@@ -18,19 +19,20 @@ import {NzTabComponent, NzTabSetComponent} from "ng-zorro-antd/tabs";
 
     HomePageComponent
   ],
-  imports: [
-    CommonModule,
-    landingRoutingModule,
-    HttpClientModule,
-    SwiperModule,
-    ReactiveFormsModule,
-    FormsModule,
-    SliderEducationComponent,
-    CardPreProductionEducationComponent,
-    CardEducationComponent,
-    NzTabSetComponent,
-    NzTabComponent,
-  ],
+    imports: [
+        CommonModule,
+        landingRoutingModule,
+        HttpClientModule,
+        SwiperModule,
+        ReactiveFormsModule,
+        FormsModule,
+        SliderEducationComponent,
+        CardPreProductionEducationComponent,
+        CardEducationComponent,
+        NzTabSetComponent,
+        NzTabComponent,
+        NzDividerComponent,
+    ],
 })
 export class LandingModule {
 }

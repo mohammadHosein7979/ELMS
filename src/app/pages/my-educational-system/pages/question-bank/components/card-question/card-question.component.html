@@ -16,14 +16,14 @@
   </div>
   <div class="d-flex align-items-center gap-2 flex-column flex-lg-row justify-content-lg-between mb-2 pe-lg-4">
     <div class="d-flex align-items-center gap-2">
-      <button  (click)="editQuestion(data?.id)" class="card-question-1 border-radius-10 px-3 py-2 color-10 font-family-bold font-14 ">
+      <button  (click)="editQuestion(data?.id)" class="card-question-1 border-radius-10 px-3 py-2 color-8 font-family-bold font-14 ">
         <img src="assets/image/my-educational-system/i-exam-multiple-choice-svgrepo-com.svg" class="me-2">
         ویرایش
       </button>
       <button
         (click)="deleteItem(dataAll, data?.id, `/${MicroService.course}/Question/Delete`)"
         [disabled]="isLoadingDelete(data?.id)"
-        class="card-question-1 border-radius-10 px-3 py-2 color-10 font-family-bold font-14 position-relative"
+        class="card-question-1 border-radius-10 px-3 py-2 color-8 font-family-bold font-14 position-relative"
         [class.opacity-50]="isLoadingDelete(data?.id)">
 
         @if (isLoadingDelete(data?.id)) {

@@ -149,7 +149,7 @@ export class MainCoursesComponent extends BaseService implements OnInit, OnDestr
 
   getEventClass(event: any): string {
     const baseClasses = 'cursorPointer border-radius-10 p-2 item-courses-4 d-flex w-100 justify-content-between pe-4 mb-3';
-    const selectedClass = this.isEventSelected(event) ? 'border-color-10' : '';
+    const selectedClass = this.isEventSelected(event) ? 'border-color-8' : '';
     const typeClass = event.type === 1 ? 'item-courses-1' : 'item-courses-3';
 
     return `${baseClasses} ${selectedClass} ${typeClass}`;
