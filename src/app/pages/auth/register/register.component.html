@@ -1,58 +1,57 @@
 <div class="login-page">
   <nz-card class="login-card">
-    <h3 class="text-center mb-4 font-family-bold font-24"> 
+    <h3 class="text-center mb-4 font-family-bold font-24">
       صفحه ثبت نام
     </h3>
     <form (ngSubmit)="submit()" [formGroup]="form" novalidate>
-      <nz-form-item>
-        <nz-form-label class="d-block">شماره موبایل</nz-form-label>
-        <nz-form-control >
-          <input nz-input formControlName="Phone" placeholder="مثلاً 09121234567" />
-    
-        </nz-form-control>
-      </nz-form-item>
-      <nz-form-item>
-        <nz-form-label class="d-block" >نام</nz-form-label>
-        <nz-form-control >
-          <input nz-input formControlName="Name" placeholder="نام" />
-  
-        </nz-form-control>
-      </nz-form-item>
-      <nz-form-item>
-        <nz-form-label >نام خانوادگی</nz-form-label>
-        <nz-form-control >
-          <input nz-input formControlName="Family" placeholder="نام خانوادگی" />
-  
-        </nz-form-control>
-      </nz-form-item>
-      <nz-form-item>
-        <nz-form-label >کد ملی</nz-form-label>
-        <nz-form-control >
-          <input nz-input formControlName="Ncode" placeholder="کد ملی" />
-        
-        </nz-form-control>
-      </nz-form-item>
-      <nz-form-item>
-        <nz-form-label >رمز عبور</nz-form-label>
-        <nz-form-control>
-          <input nz-input formControlName="Password" placeholder="رمز عبور" />
-      
-        </nz-form-control>
-      </nz-form-item>
+      <div class="mb-3">
+        <p class="font-family-regular">
+          شماره موبایل
+          :
+        </p>
+
+        <input nz-input formControlName="Phone" placeholder="مثلاً 09121234567"/>
+      </div>
+
+      <div class="mb-3">
+        <p class="font-family-regular">
+          نام
+          :
+        </p>
+        <input nz-input formControlName="Name" placeholder="نام"/>
+      </div>
+      <div class="mb-3">
+        <p class="font-family-regular">
+          نام خانوادگی
+          :
+        </p>
+        <input nz-input formControlName="Family" placeholder="نام خانوادگی"/>
+      </div>
+      <div class="mb-3">
+        <p class="font-family-regular">
+          کد ملی
+          :
+        </p>
+        <input nz-input formControlName="Ncode" placeholder="کد ملی"/>
+      </div>
+      <div class="mb-3">
+        <p class="font-family-regular">
+          رمز عبور
+          :
+        </p>
+        <input nz-input formControlName="Password" placeholder="رمز عبور"/>
+      </div>
       <div *ngIf="error" class="color-11 font-family-bold mb-3">{{ error }}</div>
- <button [nzLoading]="loadingRegister" nz-button nzType="primary"
-                [disabled]="form.invalid">
-                      {{ loadingRegister ? 'در حال ثبت نام...' : 'ثبت نام' }}
+      <button [nzLoading]="loadingRegister" nz-button nzType="primary"
+              [disabled]="form.invalid">
+        {{ loadingRegister ? 'در حال ثبت نام...' : 'ثبت نام' }}
 
-              </button>
+      </button>
 
 
-    
     </form>
   </nz-card>
 </div>
-
-
 
 
 <!-- <div class="container " id="container">
@@ -87,7 +86,7 @@
   </div>
   <div *ngIf="!isRegister" class="form-container sign-in-container">
     <app-login/>
-    
+
   </div>
   <div class="overlay-container end-0" *ngIf="isRegister">
     <div class="overlay-panel overlay-left">

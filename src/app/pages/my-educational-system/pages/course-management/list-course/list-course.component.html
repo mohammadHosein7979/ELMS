@@ -47,10 +47,19 @@
   @if (data){
     @for (item of data;track  item?.id;let index = $index) {
       <div class="mb-12 bg-white mb-2 border-radius-8 p-3 d-flex justify-content-between align-items-center" >
-        <p class="font-family-bold color-1">
-          {{item.event?.title}}
+        <div class="d-flex gap-2 align-items-center">
+          <p class="font-family-bold color-1">
+            {{item.event?.title}}
 
-        </p>
+          </p>
+          <p class="font-family-regular border-color-3 font-12 border-radius-8 px-1 bg-color-3 text-white">
+            {{item.event?.eventTypeTitle}}
+
+          </p>
+
+
+
+        </div>
         <div class="d-flex gap-2">
              <button routerLink="create-headline-course/{{item.event?.id}}" type="button" class="font-family-regular px-2 py-1 border-radius-8 border-color-3 bg-white color-3">
           سر فصل ها

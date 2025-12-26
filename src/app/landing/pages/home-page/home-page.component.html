@@ -1,9 +1,9 @@
-<div>
+<div id="top">
   <div class="container">
-    <div>
-      <app-slider-education />
+    <div id="slider">
+      <app-slider-education/>
     </div>
-    <div class="mt-5">
+    <div class="mt-5" >
       <div class="row justify-content-center">
         <div class="col-12 col-lg-8">
           <div class="text-center">
@@ -23,32 +23,32 @@
 
       <div class="row px-4 px-lg-5">
         @for (item of dataPre; track item) {
-        <div class="col-12 col-lg-4">
-          <app-card-pre-production-education [data]="item" />
-        </div>
+          <div class="col-12 col-lg-4">
+            <app-card-pre-production-education [data]="item"/>
+          </div>
         }
 
       </div>
     </div>
-    <div class="mt-5" *ngIf="dataPopularEvents && dataPopularEvents.length > 0">
+    <div id="courses-section" class="mt-5" *ngIf="dataPopularEvents && dataPopularEvents.length > 0">
       <h3 class="font-24 font-family-bold color-1 mb-4">
         دوره های آموزشی محبوب
       </h3>
       <div>
         <swiper style="--swiper-navigation-color: #fff;--swiper-pagination-color: #fff" #swiperEducationP
-          [config]="swiperConfig" (slideChange)="onSlideChangeEducationP($event)" class="swiperPopularEvents">
+                [config]="swiperConfig" (slideChange)="onSlideChangeEducationP($event)" class="swiperPopularEvents">
           @for (item of dataPopularEvents; track item) {
-          <ng-template swiperSlide>
-            <app-card-education [data]="item" />
-          </ng-template>
+            <ng-template swiperSlide>
+              <app-card-education [data]="item"/>
+            </ng-template>
           }
         </swiper>
         <div class="mt-4 d-flex justify-content-end">
           <div (click)="swipePrevEducationP(swiperEducationP)"
-            class="cursorPointer swiper-button-prev-EducationP d-inline-block mt-0 rotate-180 opacity-25"
-            id="SwiperPrevEducationP"></div>
+               class="cursorPointer swiper-button-prev-EducationP d-inline-block mt-0 rotate-180 opacity-25"
+               id="SwiperPrevEducationP"></div>
           <div (click)="swipeNextEducationP(swiperEducationP)"
-            class="cursorPointer swiper-button-next-EducationP d-inline-block mt-0" id="SwiperNextEducationP"></div>
+               class="cursorPointer swiper-button-next-EducationP d-inline-block mt-0" id="SwiperNextEducationP"></div>
         </div>
 
       </div>
@@ -58,152 +58,67 @@
         دوره های آموزشی
       </h3>
       <div>
-        <nz-tabset (nzSelectedIndexChange)="getEventByCourseId($event)">
-          @for(item of dataCourses; track item) {
-          <nz-tab nzTitle="{{item.name}}">
-            <div>
-              <swiper style="--swiper-navigation-color: #fff;--swiper-pagination-color: #fff" #swiperEducation
-                [config]="swiperConfig" (slideChange)="onSlideChangeEducation($event)" class="swiperPopularEvents">
-                @for (item of dataEvents; track item) {
-                <ng-template swiperSlide>
-                  <app-card-education [data]="item" />
-                </ng-template>
-                }
-              </swiper>
-              <div class="mt-4 d-flex justify-content-end">
-                <div (click)="swipePrevEducation(swiperEducation)"
-                  class="cursorPointer swiper-button-prev-EducationP d-inline-block mt-0 rotate-180 opacity-25"
-                  id="SwiperPrevEducation"></div>
-                <div (click)="swipeNextEducation(swiperEducation)"
-                  class="cursorPointer swiper-button-next-EducationP d-inline-block mt-0" id="SwiperNextEducation">
-                </div>
-              </div>
-
-            </div>
-
-          </nz-tab>
-          }
-
-          <!-- <nz-tab nzTitle="یونیفای  زندگی">
-            <div>
-              <swiper
-                style="--swiper-navigation-color: #fff;--swiper-pagination-color: #fff"
-                #swiperEducation
-                [config]="swiperConfig"
-                (slideChange)="onSlideChangeEducation($event)"
-
-                class=""
-              >
-                @for (item of dataEvents; track item) {
-                  <ng-template swiperSlide>
-                    <app-card-education [data]="item"/>
-                  </ng-template>
-                }
-              </swiper>
-              <div class="mt-4 d-flex justify-content-end">
-                <div (click)="swipePrevEducation(swiperEducation)"
-                     class="cursorPointer swiper-button-prev-EducationP d-inline-block mt-0 rotate-180 opacity-25"
-                     id="SwiperPrevEducation"></div>
-                <div (click)="swipeNextEducation(swiperEducation)"
-                     class="cursorPointer swiper-button-next-EducationP d-inline-block mt-0"
-                     id="SwiperNextEducation"></div>
-              </div>
-
-            </div>
-
-          </nz-tab>
-          <nz-tab nzTitle="یونیفای  نو جوان">
-            <div>
-              <swiper
-                style="--swiper-navigation-color: #fff;--swiper-pagination-color: #fff"
-                #swiperEducation
-                [config]="swiperConfig"
-                (slideChange)="onSlideChangeEducation($event)"
-
-                class=""
-              >
-                @for (item of dataEvents; track item) {
-                  <ng-template swiperSlide>
-                    <app-card-education [data]="item"/>
-                  </ng-template>
-                }
-              </swiper>
-              <div class="mt-4 d-flex justify-content-end">
-                <div (click)="swipePrevEducation(swiperEducation)"
-                     class="cursorPointer swiper-button-prev-EducationP d-inline-block mt-0 rotate-180 opacity-25"
-                     id="SwiperPrevEducation"></div>
-                <div (click)="swipeNextEducation(swiperEducation)"
-                     class="cursorPointer swiper-button-next-EducationP d-inline-block mt-0"
-                     id="SwiperNextEducation"></div>
-              </div>
-
-            </div>
-
-          </nz-tab>
-          <nz-tab nzTitle="یونیفای  جوان">
-            <div>
-              <swiper
-                style="--swiper-navigation-color: #fff;--swiper-pagination-color: #fff"
-                #swiperEducation
-                [config]="swiperConfig"
-                (slideChange)="onSlideChangeEducation($event)"
-
-                class=""
-              >
-                @for (item of dataEvents; track item) {
-                  <ng-template swiperSlide>
-                    <app-card-education [data]="item"/>
-                  </ng-template>
-                }
-              </swiper>
-              <div class="mt-4 d-flex justify-content-end">
-                <div (click)="swipePrevEducation(swiperEducation)"
-                     class="cursorPointer swiper-button-prev-EducationP d-inline-block mt-0 rotate-180 opacity-25"
-                     id="SwiperPrevEducation"></div>
-                <div (click)="swipeNextEducation(swiperEducation)"
-                     class="cursorPointer swiper-button-next-EducationP d-inline-block mt-0"
-                     id="SwiperNextEducation"></div>
-              </div>
-
-            </div>
-
-          </nz-tab> -->
-        </nz-tabset>
-      </div>
-    </div>
-    <!-- <div class="mt-5">
-      <h3 class="font-24 font-family-bold color-1 mb-4">
-        مسیر های یادگیری
-      </h3>
-      <div>
-        <div>
-          <swiper style="--swiper-navigation-color: #fff;--swiper-pagination-color: #fff" #swiperRoadMap
-            [config]="swiperConfig2" (slideChange)="onSlideChangeRoadMap($event)" class="">
-            @for (item of dataEvents; track item) {
+        <swiper [config]="swiperConfig" class="m-0 easy-topical-search-swiper">
+          @for (item of dataCourses; track item) {
             <ng-template swiperSlide>
-              <div class="text-center">
-                <img src="assets/image/remove/Frame161.svg" class="w-100 home-page-1">
-                <p class="font-family-regular mt-2 font-20 color-1">
-                  یونیفای
-                </p>
-              </div>
+              <p
+                class="cursorPointer  {{selectedEvent.data?.id == item?.id ? 'font-family-bold color-8' : 'font-family-regular'}}"
+                (click)="getEventByCourseId(item)">
+                {{ item?.name }}
+
+              </p>
             </ng-template>
+          }
+        </swiper>
+
+        <div class="mt-3">
+          @if (selectedEvent?.loading) {
+            <nz-skeleton/>
+          } @else {
+            @if (dataEvents.length > 0) {
+
+              <swiper style="--swiper-navigation-color: #fff;--swiper-pagination-color: #fff" #swiperEducation
+                      [config]="swiperConfig" (slideChange)="onSlideChangeEducation($event)"
+                      class="swiperPopularEvents">
+                @for (item of dataEvents; track item) {
+                  <ng-template swiperSlide>
+                    <app-card-education [data]="item"/>
+                  </ng-template>
+                }
+              </swiper>
+            } @else {
+              <p class="font-family-bold">
+                <nz-empty
+                  [nzNotFoundContent]="contentTpl"
+                >
+                  <ng-template #contentTpl>
+                    دوره ای وجود ندارد.
+
+                  </ng-template>
+
+                </nz-empty>
+              </p>
             }
-          </swiper>
+          }
           <div class="mt-4 d-flex justify-content-end">
-            <div (click)="swipePrevRoadMap(swiperRoadMap)"
+            <div
+
+              (click)="swipePrevEducation()"
               class="cursorPointer swiper-button-prev-EducationP d-inline-block mt-0 rotate-180 opacity-25"
-              id="SwiperPrevRoadMap"></div>
-            <div (click)="swipeNextRoadMap(swiperRoadMap)"
-              class="cursorPointer swiper-button-next-EducationP d-inline-block mt-0" id="SwiperNextRoadMap"></div>
+              id="SwiperPrevEducation"></div>
+            <div (click)="swipeNextEducation()"
+
+                 class="cursorPointer swiper-button-next-EducationP d-inline-block mt-0" id="SwiperNextEducation">
+            </div>
           </div>
 
         </div>
 
       </div>
-    </div> -->
-    <div class="mt-5">
-      <nz-divider  class="font-20 font-family-bold color-8 text-center"  [nzText]="'ویژگی‌های دوره‌های یونیفای  زندگی چیست؟'"/>
+    </div>
+    <div id="about" class="mt-5">
+      <nz-divider class="font-20 font-family-bold color-8 text-center"
+                  [nzText]="'ویژگی‌های دوره‌های یونیفای'"/>
 
       <div class="row justify-content-evenly">
         <div class="col-12 col-lg-3">
@@ -245,13 +160,12 @@
 
       </div>
     </div>
-
     <div class="mt-5">
-      <nz-divider  class="font-20 font-family-bold color-8 text-center"  [nzText]="'چرا یونیفای  زندگی ؟'"/>
+      <nz-divider class="font-20 font-family-bold color-8 text-center" [nzText]="'چرا یونیفای  زندگی ؟'"/>
 
       <!--      <h3 class="font-24 font-family-regular color-1 mb-4 text-center">-->
-<!--        چرا یونیفای  زندگی ؟-->
-<!--      </h3>-->
+      <!--        چرا یونیفای  زندگی ؟-->
+      <!--      </h3>-->
       <div class="row justify-content-evenly">
         <div class="col-12 col-lg-3">
           <div class="text-center">
@@ -294,7 +208,7 @@
       </div>
     </div>
     <div class="mt-5">
-      <nz-divider  class="font-20 font-family-bold color-8 text-center"  [nzText]="'بنیان‌گذار Uniphy'"/>
+      <nz-divider class="font-20 font-family-bold color-8 text-center" [nzText]="'بنیان‌گذار Uniphy'"/>
 
       <div class="row justify-content-center">
         <div class="col-12 col-lg-8">
@@ -307,119 +221,150 @@
         </div>
       </div>
     </div>
-
-    <!-- <div class="mt-5">
-      <h3 class="font-24 font-family-regular color-1 mb-4 text-center">
-        یونیفای  زندگی از زبان شما و مسئولین
-      </h3>
-      <div class="row justify-content-center">
-        <div class="col-12 col-lg-8 position-relative">
-          <swiper
-            style="--swiper-navigation-color: #fff;--swiper-pagination-color: #fff"
-            #swiperGoft
-            [config]="swiperConfig3"
-            (slideChange)="onSlideChangeGoft($event)"
-            class="swiperGoft"
-          >
-                      @for (item of dataEducation; track item) {
-            <ng-template swiperSlide>
-              <div>
-                <div
-                  class="home-page-2 pe-3 ps-5 py-2 d-flex justify-content-between gap-2 align-items-center flex-column flex-lg-row">
-                  <div class="d-flex gap-2 align-items-center">
-                    <img src="assets/image/remove/Frame29.svg">
-                    <div>
-                      <h3 class="color-13 font-family-regular font-20">حضرت سید علی خامنه ای</h3>
-                      <h3 class="color-13 font-family-regular font-10">رهبر معظم انقلاب اسلامی ایران</h3>
-                    </div>
-                  </div>
-                  <div>
-                    <h3 class="color-13 font-family-regular font-20">26 مرداد سال 1404</h3>
-
-                  </div>
-                </div>
-                <div class="bg-white home-page-4 p-3">
-                  <p class="color-1 font-18 font-family-regular  line-height-30 home-page-5">
-                    وقتى انس با قرآن پيدا شد، مجال یونیفای  و تأمل و تفكر در معارف قرآن به دست خواهد آمد. قرآن را نمی شود
-                    سرسرى خواند و گذشت؛ قرآن احتياج دارد به یونیفای ، تكيه‌ بر روى هر كلمه‌اى از كلمات و هر تركيبى از تركيب
-                    هاى كلامى و لفظى. انسان هرچه بيشتر یونیفای  كند، تأمل كند، انس بيشترى پيدا كند، بهره‌ى بيشترى خواهد برد؛
-                    قرآن اينجور است
-                  </p>
-                </div>
-              </div>
-            </ng-template>
-            <ng-template swiperSlide>
-              <div>
-                <div
-                  class="home-page-2 pe-3 ps-5 py-2 d-flex justify-content-between gap-2 align-items-center flex-column flex-lg-row">
-                  <div class="d-flex gap-2 align-items-center">
-                    <img src="assets/image/remove/Frame29.svg">
-                    <div>
-                      <h3 class="color-13 font-family-regular font-20">حضرت سید علی خامنه ای</h3>
-                      <h3 class="color-13 font-family-regular font-10">رهبر معظم انقلاب اسلامی ایران</h3>
-                    </div>
-                  </div>
-                  <div>
-                    <h3 class="color-13 font-family-regular font-20">26 مرداد سال 1404</h3>
-
-                  </div>
-                </div>
-                <div class="bg-white home-page-4 p-3">
-                  <p class="color-1 font-18 font-family-regular  line-height-30 home-page-5">
-                    وقتى انس با قرآن پيدا شد، مجال یونیفای  و تأمل و تفكر در معارف قرآن به دست خواهد آمد. قرآن را نمی شود
-                    سرسرى خواند و گذشت؛ قرآن احتياج دارد به یونیفای ، تكيه‌ بر روى هر كلمه‌اى از كلمات و هر تركيبى از تركيب
-                    هاى كلامى و لفظى. انسان هرچه بيشتر یونیفای  كند، تأمل كند، انس بيشترى پيدا كند، بهره‌ى بيشترى خواهد برد؛
-                    قرآن اينجور است
-                  </p>
-                </div>
-              </div>
-            </ng-template>
-            <ng-template swiperSlide>
-              <div>
-                <div
-                  class="home-page-2 pe-3 ps-5 py-2 d-flex justify-content-between gap-2 align-items-center flex-column flex-lg-row">
-                  <div class="d-flex gap-2 align-items-center">
-                    <img src="assets/image/remove/Frame29.svg">
-                    <div>
-                      <h3 class="color-13 font-family-regular font-20">حضرت سید علی خامنه ای</h3>
-                      <h3 class="color-13 font-family-regular font-10">رهبر معظم انقلاب اسلامی ایران</h3>
-                    </div>
-                  </div>
-                  <div>
-                    <h3 class="color-13 font-family-regular font-20">26 مرداد سال 1404</h3>
-
-                  </div>
-                </div>
-                <div class="bg-white home-page-4 p-3">
-                  <p class="color-1 font-18 font-family-regular  line-height-30 home-page-5">
-                    وقتى انس با قرآن پيدا شد، مجال یونیفای  و تأمل و تفكر در معارف قرآن به دست خواهد آمد. قرآن را نمی شود
-                    سرسرى خواند و گذشت؛ قرآن احتياج دارد به یونیفای ، تكيه‌ بر روى هر كلمه‌اى از كلمات و هر تركيبى از تركيب
-                    هاى كلامى و لفظى. انسان هرچه بيشتر یونیفای  كند، تأمل كند، انس بيشترى پيدا كند، بهره‌ى بيشترى خواهد برد؛
-                    قرآن اينجور است
-                  </p>
-                </div>
-              </div>
-            </ng-template>
-
-
-                       }
-          </swiper>
-          <div class="position-absolute home-page-3">
-            <div class="flex-column d-flex align-items-center justify-content-center">
-              <div (click)="swipePrevGoft(swiperGoft)"
-                   class="cursorPointer swiper-button-prev-Goft d-inline-block mt-0 rotate-180 opacity-25"
-                   id="SwiperPrevGoft"></div>
-              <div (click)="swipeNextGoft(swiperGoft)"
-                   class="cursorPointer swiper-button-next-Goft d-inline-block" id="SwiperNextGoft"></div>
-            </div>
-
-          </div>
-
-        </div>
-      </div>
-    </div> -->
     <div class="mt-5">
 
     </div>
   </div>
 </div>
+<!-- <div class="mt-5">
+  <h3 class="font-24 font-family-bold color-1 mb-4">
+    مسیر های یادگیری
+  </h3>
+  <div>
+    <div>
+      <swiper style="--swiper-navigation-color: #fff;--swiper-pagination-color: #fff" #swiperRoadMap
+        [config]="swiperConfig2" (slideChange)="onSlideChangeRoadMap($event)" class="">
+        @for (item of dataEvents; track item) {
+        <ng-template swiperSlide>
+          <div class="text-center">
+            <img src="assets/image/remove/Frame161.svg" class="w-100 home-page-1">
+            <p class="font-family-regular mt-2 font-20 color-1">
+              یونیفای
+            </p>
+          </div>
+        </ng-template>
+        }
+      </swiper>
+      <div class="mt-4 d-flex justify-content-end">
+        <div (click)="swipePrevRoadMap(swiperRoadMap)"
+          class="cursorPointer swiper-button-prev-EducationP d-inline-block mt-0 rotate-180 opacity-25"
+          id="SwiperPrevRoadMap"></div>
+        <div (click)="swipeNextRoadMap(swiperRoadMap)"
+          class="cursorPointer swiper-button-next-EducationP d-inline-block mt-0" id="SwiperNextRoadMap"></div>
+      </div>
+
+    </div>
+
+  </div>
+</div> -->
+
+<!-- <div class="mt-5">
+  <h3 class="font-24 font-family-regular color-1 mb-4 text-center">
+    یونیفای  زندگی از زبان شما و مسئولین
+  </h3>
+  <div class="row justify-content-center">
+    <div class="col-12 col-lg-8 position-relative">
+      <swiper
+        style="--swiper-navigation-color: #fff;--swiper-pagination-color: #fff"
+        #swiperGoft
+        [config]="swiperConfig3"
+        (slideChange)="onSlideChangeGoft($event)"
+        class="swiperGoft"
+      >
+                  @for (item of dataEducation; track item) {
+        <ng-template swiperSlide>
+          <div>
+            <div
+              class="home-page-2 pe-3 ps-5 py-2 d-flex justify-content-between gap-2 align-items-center flex-column flex-lg-row">
+              <div class="d-flex gap-2 align-items-center">
+                <img src="assets/image/remove/Frame29.svg">
+                <div>
+                  <h3 class="color-13 font-family-regular font-20">حضرت سید علی خامنه ای</h3>
+                  <h3 class="color-13 font-family-regular font-10">رهبر معظم انقلاب اسلامی ایران</h3>
+                </div>
+              </div>
+              <div>
+                <h3 class="color-13 font-family-regular font-20">26 مرداد سال 1404</h3>
+
+              </div>
+            </div>
+            <div class="bg-white home-page-4 p-3">
+              <p class="color-1 font-18 font-family-regular  line-height-30 home-page-5">
+                وقتى انس با قرآن پيدا شد، مجال یونیفای  و تأمل و تفكر در معارف قرآن به دست خواهد آمد. قرآن را نمی شود
+                سرسرى خواند و گذشت؛ قرآن احتياج دارد به یونیفای ، تكيه‌ بر روى هر كلمه‌اى از كلمات و هر تركيبى از تركيب
+                هاى كلامى و لفظى. انسان هرچه بيشتر یونیفای  كند، تأمل كند، انس بيشترى پيدا كند، بهره‌ى بيشترى خواهد برد؛
+                قرآن اينجور است
+              </p>
+            </div>
+          </div>
+        </ng-template>
+        <ng-template swiperSlide>
+          <div>
+            <div
+              class="home-page-2 pe-3 ps-5 py-2 d-flex justify-content-between gap-2 align-items-center flex-column flex-lg-row">
+              <div class="d-flex gap-2 align-items-center">
+                <img src="assets/image/remove/Frame29.svg">
+                <div>
+                  <h3 class="color-13 font-family-regular font-20">حضرت سید علی خامنه ای</h3>
+                  <h3 class="color-13 font-family-regular font-10">رهبر معظم انقلاب اسلامی ایران</h3>
+                </div>
+              </div>
+              <div>
+                <h3 class="color-13 font-family-regular font-20">26 مرداد سال 1404</h3>
+
+              </div>
+            </div>
+            <div class="bg-white home-page-4 p-3">
+              <p class="color-1 font-18 font-family-regular  line-height-30 home-page-5">
+                وقتى انس با قرآن پيدا شد، مجال یونیفای  و تأمل و تفكر در معارف قرآن به دست خواهد آمد. قرآن را نمی شود
+                سرسرى خواند و گذشت؛ قرآن احتياج دارد به یونیفای ، تكيه‌ بر روى هر كلمه‌اى از كلمات و هر تركيبى از تركيب
+                هاى كلامى و لفظى. انسان هرچه بيشتر یونیفای  كند، تأمل كند، انس بيشترى پيدا كند، بهره‌ى بيشترى خواهد برد؛
+                قرآن اينجور است
+              </p>
+            </div>
+          </div>
+        </ng-template>
+        <ng-template swiperSlide>
+          <div>
+            <div
+              class="home-page-2 pe-3 ps-5 py-2 d-flex justify-content-between gap-2 align-items-center flex-column flex-lg-row">
+              <div class="d-flex gap-2 align-items-center">
+                <img src="assets/image/remove/Frame29.svg">
+                <div>
+                  <h3 class="color-13 font-family-regular font-20">حضرت سید علی خامنه ای</h3>
+                  <h3 class="color-13 font-family-regular font-10">رهبر معظم انقلاب اسلامی ایران</h3>
+                </div>
+              </div>
+              <div>
+                <h3 class="color-13 font-family-regular font-20">26 مرداد سال 1404</h3>
+
+              </div>
+            </div>
+            <div class="bg-white home-page-4 p-3">
+              <p class="color-1 font-18 font-family-regular  line-height-30 home-page-5">
+                وقتى انس با قرآن پيدا شد، مجال یونیفای  و تأمل و تفكر در معارف قرآن به دست خواهد آمد. قرآن را نمی شود
+                سرسرى خواند و گذشت؛ قرآن احتياج دارد به یونیفای ، تكيه‌ بر روى هر كلمه‌اى از كلمات و هر تركيبى از تركيب
+                هاى كلامى و لفظى. انسان هرچه بيشتر یونیفای  كند، تأمل كند، انس بيشترى پيدا كند، بهره‌ى بيشترى خواهد برد؛
+                قرآن اينجور است
+              </p>
+            </div>
+          </div>
+        </ng-template>
+
+
+                   }
+      </swiper>
+      <div class="position-absolute home-page-3">
+        <div class="flex-column d-flex align-items-center justify-content-center">
+          <div (click)="swipePrevGoft(swiperGoft)"
+               class="cursorPointer swiper-button-prev-Goft d-inline-block mt-0 rotate-180 opacity-25"
+               id="SwiperPrevGoft"></div>
+          <div (click)="swipeNextGoft(swiperGoft)"
+               class="cursorPointer swiper-button-next-Goft d-inline-block" id="SwiperNextGoft"></div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div> -->

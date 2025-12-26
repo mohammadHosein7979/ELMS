@@ -10,6 +10,7 @@ import { EducationService } from '../../services/education.service';
   selector: 'app-card-education',
   templateUrl: './card-education.component.html',
   styleUrl: './card-education.component.scss',
+  standalone:true,
   imports: [
     NgIf,
     RouterLink,

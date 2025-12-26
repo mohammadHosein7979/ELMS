@@ -6,20 +6,18 @@
     <nz-tabset [(nzSelectedIndex)]="activeTabIndex">
       <!-- Tab 1: Phone + OTP -->
       <nz-tab nzTitle="ورود با کد تایید">
-        <div class="tab-content" dir="ltr">
+        <div class="tab-content">
           <form nz-form [formGroup]="phoneForm" (ngSubmit)="sendOtp()" *ngIf="otpStep === 'enterPhone'">
-            <nz-form-item>
-              <nz-form-label dir="rtl">
-                شماره موبایل
+            <!--            <nz-form-item>-->
+            <!--              <nz-form-label dir="rtl">-->
+            <p class="font-family-regular">
+              شماره موبایل
+              :
 
-              </nz-form-label>
-              <nz-form-control class="d-inline-table">
-                <input nz-input formControlName="Phone" placeholder="مثلاً 09121234567" />
-                <!--                <nz-form-explain *ngIf="phoneForm.controls['phone'].touched && phoneForm.controls['phone'].invalid">-->
-                <!--                  شماره موبایل صحیح وارد کنید (مثال: 09xxxxxxxxx)-->
-                <!--                </nz-form-explain>-->
-              </nz-form-control>
-            </nz-form-item>
+            </p>
+
+            <input dir="ltr" nz-input formControlName="Phone" placeholder="مثلاً 09121234567"/>
+
 
             <div class="actions">
               <button nz-button nzType="primary" [disabled]="otpSending" [nzLoading]="otpSending">دریافت کد</button>
@@ -31,20 +29,19 @@
 
           <div *ngIf="otpStep === 'verifyCode'">
             <form nz-form [formGroup]="otpForm" (ngSubmit)="verifyOtp()">
-              <nz-form-item>
-                <nz-form-label  dir="rtl">کد تایید</nz-form-label>
-                <nz-form-control>
-                  <input nz-input formControlName="Code" placeholder="کد دریافتی را وارد کنید" />
-                  <!--                  <nz-form-explain *ngIf="otpForm.controls['code'].touched && otpForm.controls['code'].invalid">-->
-                  <!--                    کد معتبر وارد کنید-->
-                  <!--                  </nz-form-explain>-->
-                </nz-form-control>
-              </nz-form-item>
+              <p class="font-family-regular">
+                کد تایید
+                :
+              </p>
+
+              <input dir="ltr" nz-input formControlName="Code" placeholder="کد دریافتی را وارد کنید"/>
 
               <div class="actions">
                 <button nz-button nzType="primary" [disabled]="otpVerifying" [nzLoading]="otpVerifying">تأیید</button>
-                <button nz-button nzType="default" (click)="resendOtp()" [disabled]="resendDisabled">{{ resendText
-                  }}</button>
+                <button nz-button nzType="default" (click)="resendOtp()" [disabled]="resendDisabled">{{
+                    resendText
+                  }}
+                </button>
                 <button nz-button nzType="link" (click)="otpStep='enterPhone'">بازگشت</button>
               </div>
             </form>
@@ -54,31 +51,31 @@
 
       <!-- Tab 2: username + Password -->
       <nz-tab nzTitle="ورود با رمز عبور">
-        <div class="tab-content" dir="ltr">
+        <div class="tab-content">
           <form nz-form [formGroup]="passwordForm" (ngSubmit)="loginWithPassword()">
-            <nz-form-item>
-              <nz-form-label  dir="rtl">شماره موبایل</nz-form-label>
-              <nz-form-control>
-                <input nz-input formControlName="username" placeholder="مثلاً 09121234567" />
-                <!--                <nz-form-explain *ngIf="passwordForm.controls['username'].touched && passwordForm.controls['username'].invalid">-->
-                <!--                  شماره موبایل صحیح وارد کنید-->
-                <!--                </nz-form-explain>-->
-              </nz-form-control>
-            </nz-form-item>
+            <div class="mb-3">
+              <p class="font-family-regular">
+                شماره موبایل
+                :
+              </p>
+              <input dir="ltr" nz-input formControlName="username" placeholder="مثلاً 09121234567"/>
 
-            <nz-form-item>
-              <nz-form-label  dir="rtl">رمز عبور</nz-form-label>
-              <nz-form-control>
-                <input nz-input type="password" formControlName="password" />
-                <!--                <nz-form-explain *ngIf="passwordForm.controls['password'].touched && passwordForm.controls['password'].invalid">-->
-                <!--                  رمز عبور معتبر وارد کنید-->
-                <!--                </nz-form-explain>-->
-              </nz-form-control>
-            </nz-form-item>
+            </div>
+            <div>
+              <p class="font-family-regular">
+                رمز عبور
+                :
+              </p>
+              <input nz-input type="password" formControlName="password"/>
 
+            </div>
+            <!--                <nz-form-explain *ngIf="passwordForm.controls['password'].touched && passwordForm.controls['password'].invalid">-->
+            <!--                  رمز عبور معتبر وارد کنید-->
+            <!--                </nz-form-explain>-->
             <div class="actions">
               <button [nzLoading]="loadingButton" nz-button nzType="primary"
-                [disabled]="passwordForm.invalid">ورود</button>
+                      [disabled]="passwordForm.invalid">ورود
+              </button>
               <button class="bg-color-3 text-white border-color-3 px-3 py-1" routerLink="/auth/register">
                 ثبت نام
               </button>

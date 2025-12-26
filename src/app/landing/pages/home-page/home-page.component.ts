@@ -1,9 +1,9 @@
-import { Component, Injector, OnInit, ViewChild } from '@angular/core';
-import { SwiperOptions } from "swiper";
-import { SwiperHelperService } from "../../../shared/helperService/swiper-helper.service";
-import { SwiperComponent } from "swiper/angular";
-import { BaseService } from '../../../shared/services/base.service';
-import { EducationService } from '../../../pages/education/services/education.service';
+import {Component, Injector, OnInit, ViewChild} from '@angular/core';
+import {SwiperOptions} from "swiper";
+import {SwiperHelperService} from "../../../shared/helperService/swiper-helper.service";
+import {SwiperComponent} from "swiper/angular";
+import {BaseService} from '../../../shared/services/base.service';
+import {EducationService} from '../../../pages/education/services/education.service';
 
 @Component({
   selector: 'app-home-page',
@@ -13,18 +13,18 @@ import { EducationService } from '../../../pages/education/services/education.se
 })
 export class HomePageComponent extends BaseService implements OnInit {
   dataPre: any = []
-  about : any ='' +
+  about: any = '' +
     'دانشگاه مجازی رسانه و تولید محتوا\n' +
     '\n' +
     'Uniphy یک پلتفرم تخصصی آموزش مهارت‌محور در حوزه رسانه و تولید محتواست؛ جایی که آموزش‌های تخصصی با نیازهای واقعی بازار کار پیوند می‌خورند.\n' +
     'در این دانشگاه مجازی، دانش‌پذیران با آموزش‌های کاربردی، پروژه‌محور و به‌روز، مهارت‌های حرفه‌ای لازم برای ورود به بازار رسانه را کسب می‌کنند و هم‌زمان با تحصیل یا پس از آن، مسیر شغلی خود را می‌سازند.\n'
- about2:any=
-   'بنیان‌گذار پلتفرم Uniphy، دارای بیش از ۲۰ سال سابقه فعالیت حرفه‌ای در حوزه رسانه و تولید محتوای آموزشی است.\n' +
-   'ایشان مدیرمسئول کانون آگهی تبلیغاتی موج تصویر، کارگردان مجموعه‌های تلویزیونی و رسانه‌ای، دارای مدرک کارشناسی کارگردانی سینما، مدرس دانشگاه و برگزارکننده دوره‌های آموزشی تخصصی در زمینه کارگردانی، تدوین، جلوه‌های ویژه و تولید محتوا هستند.\n' +
-   '\n' +
-   'تجربه عملی در کنار آموزش دانشگاهی، زیربنای شکل‌گیری رویکرد مهارت‌محور Uniphy بوده است.\n' +
-   '\n' +
-   'Uniphy در مسیر تبدیل‌شدن به مرجع تخصصی آموزش رسانه و تولید محتوا در ایران و منطقه گام برمی‌دارد؛ با تمرکز بر آموزش بومی، توسعه دوره‌ها به زبان‌های دیگر و ایجاد شبکه‌ای از متخصصان، دانش‌پذیران و نهادهای آموزشی.\n'
+  about2: any =
+    'بنیان‌گذار پلتفرم Uniphy، دارای بیش از ۲۰ سال سابقه فعالیت حرفه‌ای در حوزه رسانه و تولید محتوای آموزشی است.\n' +
+    'ایشان مدیرمسئول کانون آگهی تبلیغاتی موج تصویر، کارگردان مجموعه‌های تلویزیونی و رسانه‌ای، دارای مدرک کارشناسی کارگردانی سینما، مدرس دانشگاه و برگزارکننده دوره‌های آموزشی تخصصی در زمینه کارگردانی، تدوین، جلوه‌های ویژه و تولید محتوا هستند.\n' +
+    '\n' +
+    'تجربه عملی در کنار آموزش دانشگاهی، زیربنای شکل‌گیری رویکرد مهارت‌محور Uniphy بوده است.\n' +
+    '\n' +
+    'Uniphy در مسیر تبدیل‌شدن به مرجع تخصصی آموزش رسانه و تولید محتوا در ایران و منطقه گام برمی‌دارد؛ با تمرکز بر آموزش بومی، توسعه دوره‌ها به زبان‌های دیگر و ایجاد شبکه‌ای از متخصصان، دانش‌پذیران و نهادهای آموزشی.\n'
 
   dataPopularEvents: any = []
   @ViewChild(SwiperComponent) swiperEducationP: any;
@@ -34,7 +34,7 @@ export class HomePageComponent extends BaseService implements OnInit {
   dataCourses: any = []
 
   swiperConfig: SwiperOptions = {
-    a11y: { enabled: true },
+    a11y: {enabled: true},
     direction: 'horizontal',
     keyboard: true,
     mousewheel: true,
@@ -67,114 +67,62 @@ export class HomePageComponent extends BaseService implements OnInit {
       }
     }
   };
-  swiperConfig2: SwiperOptions = {
-    a11y: { enabled: true },
-    direction: 'horizontal',
-    keyboard: true,
-    mousewheel: true,
-    scrollbar: false,
-    navigation: false,
-    // navigation: {
-    //   nextEl: '.swiper-button-next',
-    //   prevEl: '.swiper-button-prev',
-    // },
-    pagination: false,
-    autoplay: false,
-    loop: false,
-    updateOnWindowResize: true,
-    breakpoints: {
-      279: {
-        slidesPerView: 1.3,
-        spaceBetween: 90
-      },
-      768: {
-        slidesPerView: 3.3,
-        spaceBetween: 90
-      },
-      1052: {
-        slidesPerView: 5.2,
-        spaceBetween: 90
-      },
-      1600: {
-        slidesPerView: 5.2,
-        spaceBetween: 90
-      }
-    }
-  };
-  swiperConfig3: SwiperOptions = {
-    a11y: { enabled: true },
-    direction: 'vertical',
-    keyboard: true,
-    mousewheel: true,
-    scrollbar: false,
-    navigation: false,
-    // navigation: {
-    //   nextEl: '.swiper-button-next',
-    //   prevEl: '.swiper-button-prev',
-    // },
-    pagination: false,
-    autoplay: false,
-    loop: false,
-    freeMode: true,
-    watchSlidesProgress: true,
-    updateOnWindowResize: true,
-    breakpoints: {
-      279: {
-        slidesPerView: 1,
-        spaceBetween: 10
-
-      },
-      768: {
-        slidesPerView: 1,
-        spaceBetween: 10
-
-      },
-      1052: {
-        slidesPerView: 1,
-        spaceBetween: 10
-
-      }
-    }
-  };
-
 
 
   constructor(injector: Injector, protected educationService: EducationService, private swiperHelperService: SwiperHelperService) {
     super(injector);
   }
+
   ngOnInit(): void {
     this.getPopularEvents()
-        this.getPreEvents()
-        this.getCourses()
+    this.getPreEvents()
+    this.getCourses()
 
 
   }
+
   getPopularEvents() {
     this.educationService.getPopularEvents(null).subscribe((data: any) => {
       this.dataPopularEvents = data.data
     })
   }
-  getEvents(id:number) {
-    this.educationService.getEvent({ "filter": { "status": 3 ,"courseIdList":[id]} }).subscribe((data: any) => {
+  selectedEvent:any={
+    loading:true,
+    data:[]
+  }
+
+  getEvents(item: any) {
+    this.educationService.getEvent({"filter": {"status": 3, "courseIdList": [item?.id]}}).subscribe((data: any) => {
       this.dataEvents = data.data
+      console.log(this.dataEvents)
+      this.selectedEvent.loading = false
+
     })
   }
+
   getPreEvents() {
-    this.educationService.getEvent({ "filter": { "status": 0 } }).subscribe((data: any) => {
+    this.educationService.getEvent({"filter": {"status": 0}}).subscribe((data: any) => {
       this.dataPre = data.data
     })
   }
-    getCourses() {
+
+  getCourses() {
     this.educationService.getCourse().subscribe((data: any) => {
       this.dataCourses = data.data
+      this.getEventByCourseId(this.dataCourses[0])
     })
   }
+  @ViewChild('swiperEducation') swiper?: any;
 
-  getEventByCourseId(id:number){
-    console.log(id)
-        this.getEvents(id)
-
+  getEventByCourseId(item: any) {
+    this.selectedEvent.data = item
+    this.selectedEvent.loading = true
+    this.getEvents(item)
+    setTimeout(() => {
+      this.swiper?.swiperRef?.update();
+    },300);
   }
+
   onSlideChangeEducationP(e: any) {
     let swiperPrev: any;
     let swiperNext: any;
@@ -194,8 +142,6 @@ export class HomePageComponent extends BaseService implements OnInit {
   }
 
 
-
-
   onSlideChangeEducation(e: any) {
     let swiperPrev: any;
     let swiperNext: any;
@@ -205,15 +151,18 @@ export class HomePageComponent extends BaseService implements OnInit {
     this.swiperHelperService.swiperOpacity(e, swiperPrev, swiperNext)
   }
 
+  @ViewChild('swiperEducation', {static: false})
+  swiperEducation?: SwiperComponent;
 
-  swipePrevEducation(e: any) {
-    e.swiperRef.slidePrev();
+  swipePrevEducation() {
+    if (!this.swiperEducation?.swiperRef) return;
+    this.swiperEducation.swiperRef.slidePrev();
   }
 
-  swipeNextEducation(e: any) {
-    e.swiperRef.slideNext();
+  swipeNextEducation() {
+    if (!this.swiperEducation?.swiperRef) return;
+    this.swiperEducation.swiperRef.slideNext();
   }
-
 
 
   onSlideChangeRoadMap(e: any) {

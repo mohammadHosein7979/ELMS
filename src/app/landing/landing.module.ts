@@ -12,6 +12,8 @@ import {
 import {CardEducationComponent} from "../pages/education/components/card-education/card-education.component";
 import {NzTabComponent, NzTabSetComponent} from "ng-zorro-antd/tabs";
 import {NzDividerComponent} from "ng-zorro-antd/divider";
+import {NzSkeletonComponent} from "ng-zorro-antd/skeleton";
+import {NzEmptyComponent} from "ng-zorro-antd/empty";
 
 
 @NgModule({
@@ -19,20 +21,22 @@ import {NzDividerComponent} from "ng-zorro-antd/divider";
 
     HomePageComponent
   ],
-    imports: [
-        CommonModule,
-        landingRoutingModule,
-        HttpClientModule,
-        SwiperModule,
-        ReactiveFormsModule,
-        FormsModule,
-        SliderEducationComponent,
-        CardPreProductionEducationComponent,
-        CardEducationComponent,
-        NzTabSetComponent,
-        NzTabComponent,
-        NzDividerComponent,
-    ],
+  imports: [
+    CommonModule,
+    landingRoutingModule,
+    HttpClientModule,
+    SwiperModule,
+    ReactiveFormsModule,
+    FormsModule,
+    SliderEducationComponent,
+    CardPreProductionEducationComponent,
+    CardEducationComponent,
+    NzTabSetComponent,
+    NzTabComponent,
+    NzDividerComponent,
+    NzSkeletonComponent,
+    NzEmptyComponent,
+  ],
 })
 export class LandingModule {
 }

@@ -251,7 +251,7 @@ app-slider-education{
     max-height: 100%;
     height: 100%;
     display: flex;
-    justify-content: end;
+    justify-content: center;
   }
 }
 .MainOnlineClassesComponent {
@@ -299,4 +299,10 @@ app-slider-education{
   border-radius: 2px;
   transition: all 0.3s;
   width: 100%;
+}
+.easy-topical-search-swiper {
+  .swiper-slide {
+    width: fit-content !important;
+
+  }
 }
