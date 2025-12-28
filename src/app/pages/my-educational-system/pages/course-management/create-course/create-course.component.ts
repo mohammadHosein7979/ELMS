@@ -181,8 +181,8 @@ export class CreateCourseComponent extends BaseService implements OnInit {
       duration: courseData.duration,
       registrationStartDate: courseData.registrationStartDate,
       registrationEndDate: courseData.registrationEndDate,
-      startDateTime: courseData.startDateTime,
-      endDateTime: courseData.endDateTime,
+      startDateTime: courseData.startDateTimeShamsi,
+      endDateTime: courseData.endDateTimeShamsi,
       capacity: courseData.capacity,
       description: courseData.description,
       adminDescription: courseData.adminDescription,
@@ -269,10 +269,12 @@ export class CreateCourseComponent extends BaseService implements OnInit {
     }
 
     this.loadingButton = true;
-
+    let form = this.formSend.value
+    form.startDateTime =  this.convertJalaliToGregorian(this.formSend.value?.startDateTime)
+    form.endDateTime =  this.convertJalaliToGregorian(this.formSend.value?.endDateTime)
     const submitObservable = this.isEditMode
-      ? this.courseManagementService.updateEvent({ dto: { ...this.form.value, id: this.courseId } })
-      : this.courseManagementService.insertEvent({ dto: this.form.value });
+      ? this.courseManagementService.updateEvent({ dto: { ...form, id: this.courseId } })
+      : this.courseManagementService.insertEvent({ dto: form });
 
     submitObservable.pipe(
       finalize(() => this.loadingButton = false)

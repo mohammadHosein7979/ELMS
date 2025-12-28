@@ -1,0 +1,21 @@
+<ng-container *ngIf="control && control.invalid && (control.touched || submitted)">
+  <small class="error" *ngIf="control.errors?.['required']">
+    *
+    این فیلد الزامی است
+  </small>
+
+  <small class="error" *ngIf="control.errors?.['pattern']">
+    *
+    مقدار وارد شده معتبر نیست
+  </small>
+
+  <small class="error" *ngIf="control.errors?.['minlength']">
+    *
+    حداقل طول مجاز رعایت نشده
+  </small>
+
+  <small class="error" *ngIf="control.errors?.['maxlength']">
+    *
+    حداکثر طول مجاز رعایت نشده
+  </small>
+</ng-container>

@@ -31,7 +31,7 @@ export class ProfileComponent extends BaseService implements OnInit {
     "ncode": null,
     "unixTimeBirthDate": null,
     "gender": null,
-    "avatar": null,
+    avatar:[ null],
     "mobile": null,
   });
 
@@ -40,6 +40,7 @@ export class ProfileComponent extends BaseService implements OnInit {
 
   }
   submitForm() {
+    console.log(this.formProfile.value,this.formProfile.getRawValue())
     this.loadingProfile = true
     const payload = {
       ...this.formProfile.value,

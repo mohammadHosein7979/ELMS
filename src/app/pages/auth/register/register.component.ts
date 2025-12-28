@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import {AuthService} from "../../../shared/services/auth.service";
 import { BaseService } from '../../../shared/services/base.service';
+import {finalize} from "rxjs";
 
 @Component({
     selector: 'app-register',
@@ -39,14 +40,20 @@ loadingRegister:boolean = false
 
     this.loadingRegister = true;
     this.error = null;
-    this.authService.register(this.form.value!).subscribe({
-      next: () => {
+    this.authService.register(this.form.value!).pipe(
+      finalize(() => {
         this.loadingRegister = false;
-        this.notification.success('ثبت نام با موفقیت انجامع  شد');
-        this.router.navigate(['/auth/login']);// بعد از ثبت نام ببر به صفحه لاگین
+      })
+    ).subscribe({
+      next: (res:any) => {
+        if(res?.erroCode != 200){
+        this.error = res?.message;
+        }else {
+          this.notification.success('ثبت نام با موفقیت انجامع  شد');
+          this.router.navigate(['/auth/login']);// بعد از ثبت نام ببر به صفحه لاگین
+        }
       },
       error: (err) => {
-        this.loadingRegister = false;
         if (err.status === 401) {
           this.error = 'نام کاربری یا رمز عبور اشتباه است';
         } else {

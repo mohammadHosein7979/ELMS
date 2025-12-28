@@ -15,8 +15,13 @@
               <h4 class="font-family-bold font-16 color-1 text-no-wrap line-height-20 mb-2">
                 {{ data?.event?.title }}
               </h4>
+
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-12">
               <p [innerHTML]="data?.event?.description"
-                 class="color-9 font-family-regular font-14  text-no-wrap line-height-20">
+                 class="color-9 font-family-regular font-14 line-height-20">
 
               </p>
             </div>
@@ -144,7 +149,7 @@
           </div>
         </div>
         <div class="col-12 col-lg-3">
-          <div class="mb-3">
+          <div *ngIf="data?.isRegister" class="mb-3">
             <app-like [eventId]="data?.event?.id" [url]="'/EventStudent/EventLike'"
                       [likeCount]="data?.event?.likeCount"/>
           </div>

@@ -43,7 +43,7 @@
       </div>
       <div *ngIf="error" class="color-11 font-family-bold mb-3">{{ error }}</div>
       <button [nzLoading]="loadingRegister" nz-button nzType="primary"
-              [disabled]="form.invalid">
+             >
         {{ loadingRegister ? 'در حال ثبت نام...' : 'ثبت نام' }}
 
       </button>

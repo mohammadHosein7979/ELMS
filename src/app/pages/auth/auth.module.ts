@@ -7,20 +7,22 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {SharedModule} from "../../shared/shared.module";
 import {LoginComponent} from "./login/login.component";
 import {RegisterComponent} from "./register/register.component";
+import {FormErrorComponent} from "../../components/form-error/form-error.component";
 @NgModule({
   declarations: [
 
     LoginComponent,
     RegisterComponent
   ],
-  imports: [
-    CommonModule,
-    authRoutingModule,
-    HttpClientModule,
-    SwiperModule,
-    ReactiveFormsModule,
-    FormsModule,
-    SharedModule,
-  ],
+    imports: [
+        CommonModule,
+        authRoutingModule,
+        HttpClientModule,
+        SwiperModule,
+        ReactiveFormsModule,
+        FormsModule,
+        SharedModule,
+        FormErrorComponent,
+    ],
 })
 export class AuthModule { }

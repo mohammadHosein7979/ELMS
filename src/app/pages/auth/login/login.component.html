@@ -17,8 +17,11 @@
             </p>
 
             <input dir="ltr" nz-input formControlName="Phone" placeholder="مثلاً 09121234567"/>
-
-
+            <!-- پیام خطا -->
+            <app-form-error
+              [control]="phoneForm.get('Phone')"
+              [submitted]="formSubmitted">
+            </app-form-error>
             <div class="actions">
               <button nz-button nzType="primary" [disabled]="otpSending" [nzLoading]="otpSending">دریافت کد</button>
               <button class="bg-color-1 text-white border-color-1 px-3 py-1" routerLink="/auth/register">
@@ -35,7 +38,10 @@
               </p>
 
               <input dir="ltr" nz-input formControlName="Code" placeholder="کد دریافتی را وارد کنید"/>
-
+              <app-form-error
+                [control]="otpForm.get('Code')"
+                [submitted]="formSubmitted">
+              </app-form-error>
               <div class="actions">
                 <button nz-button nzType="primary" [disabled]="otpVerifying" [nzLoading]="otpVerifying">تأیید</button>
                 <button nz-button nzType="default" (click)="resendOtp()" [disabled]="resendDisabled">{{
@@ -59,7 +65,10 @@
                 :
               </p>
               <input dir="ltr" nz-input formControlName="username" placeholder="مثلاً 09121234567"/>
-
+              <app-form-error
+                [control]="passwordForm.get('username')"
+                [submitted]="formSubmitted">
+              </app-form-error>
             </div>
             <div>
               <p class="font-family-regular">
@@ -67,7 +76,10 @@
                 :
               </p>
               <input nz-input type="password" formControlName="password"/>
-
+              <app-form-error
+                [control]="passwordForm.get('password')"
+                [submitted]="formSubmitted">
+              </app-form-error>
             </div>
             <!--                <nz-form-explain *ngIf="passwordForm.controls['password'].touched && passwordForm.controls['password'].invalid">-->
             <!--                  رمز عبور معتبر وارد کنید-->

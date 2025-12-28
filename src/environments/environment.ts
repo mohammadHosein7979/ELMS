@@ -4,7 +4,7 @@
 // The list of which env maps to which file can be found in `angular-cli.json`.
 export const environment = {
   production: false,
-  apiUrl: 'https://api.uniphy.ir',
+  apiUrl: 'https://api.openr.ir',
   appName: 'tadaborzendegi',
   i18nPrefix: '',
   defaultLanguage: 'fa',

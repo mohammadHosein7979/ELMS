@@ -1,16 +1,16 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, Validators} from '@angular/forms';
+import {Router} from '@angular/router';
 import {AuthService} from "../../../shared/services/auth.service";
 import {finalize, interval, Subscription} from "rxjs";
 import {NzMessageService} from "ng-zorro-antd/message";
 import {HttpService} from "../../../shared/services/http.service";
 
 @Component({
-    selector: 'app-login',
-    styleUrl: './login.component.scss',
-    templateUrl: './login.component.html',
-    standalone: false
+  selector: 'app-login',
+  styleUrl: './login.component.scss',
+  templateUrl: './login.component.html',
+  standalone: false
 })
 export class LoginComponent implements OnInit {
   // تب‌ها
@@ -48,7 +48,8 @@ export class LoginComponent implements OnInit {
     private auth: AuthService,
     private msg: NzMessageService,
     private router: Router
-  ) {}
+  ) {
+  }
 
   ngOnInit(): void {
     // حتماً سشن اولیه ساخته شود تا کوکی ست شود
@@ -59,11 +60,14 @@ export class LoginComponent implements OnInit {
     this.countdownSub?.unsubscribe();
   }
 
+  formSubmitted = false;
+
   /* =======================
      OTP (phone -> code) flow
      ======================= */
 
   sendOtp() {
+    this.formSubmitted = true;
     if (this.phoneForm.invalid) {
       this.phoneForm.markAllAsTouched();
       return;
@@ -73,8 +77,12 @@ export class LoginComponent implements OnInit {
     // TODO: جای این endpoint رو با endpoint واقعی بک‌اند تنظیم کن
     // مثال فرضی: POST /Login/SendOtp  body: { phone }
     const url = `${this.apiBase}/Login/LoginPhone`; // اگر endpoint متفاوت است تغییر بده
-    this.http.postHttp(url,  null, {Phone : this.phoneForm.value.Phone}).pipe(
-      finalize(() => this.otpSending = false)
+    this.http.postHttp(url, null, {Phone: this.phoneForm.value.Phone}).pipe(
+      finalize(() => {
+        this.otpSending = false
+        this.formSubmitted = false;
+
+      })
     ).subscribe({
       next: (res: any) => {
         // فرض می‌کنیم سرور موفقیت را نشان می‌دهد
@@ -90,6 +98,8 @@ export class LoginComponent implements OnInit {
   }
 
   verifyOtp() {
+    this.formSubmitted = true;
+
     if (this.otpForm.invalid) {
       this.otpForm.markAllAsTouched();
       return;
@@ -102,10 +112,11 @@ export class LoginComponent implements OnInit {
     // TODO: جای این endpoint رو با endpoint واقعی بک‌اند تنظیم کن
     // مثال فرضی: POST /Login/VerifyOtp  body: { phone, code }
     const url = `${this.apiBase}/Login/LoginPhoneAcept`; // اگر endpoint متفاوت است تغییر بده
-    this.http.postHttp(url, null, {Phone : Phone , Code : Code}).pipe(
+    this.http.postHttp(url, null, {Phone: Phone, Code: Code}).pipe(
       finalize(() => {
         this.otpVerifying = false
-          this.loadingButton = false
+        this.loadingButton = false
+        this.formSubmitted = false;
       })
     ).subscribe({
       next: (res: any) => {
@@ -155,18 +166,21 @@ export class LoginComponent implements OnInit {
      Password flow (phone + password)
      ======================= */
   loginWithPassword() {
+    this.formSubmitted = true
     if (this.passwordForm.invalid) {
       this.passwordForm.markAllAsTouched();
       return;
     }
     this.loadingButton = true
 
-    const { username, password } = this.passwordForm.value;
+    const {username, password} = this.passwordForm.value;
 
 
     this.auth.login(username!, password!).pipe(
       finalize(() => {
         this.loadingButton = false
+        this.formSubmitted = false
+
 
       })
     ).subscribe({
