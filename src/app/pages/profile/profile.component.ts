@@ -3,6 +3,7 @@ import {BaseService} from "../../shared/services/base.service";
 import {FormGroup, Validators} from "@angular/forms";
 import {finalize} from "rxjs";
 import {MicroService} from "../../shared/enum/enum";
+import {environment} from '../../../environments/environment';
 
 @Component({
     selector: 'app-profile',
@@ -46,7 +47,8 @@ export class ProfileComponent extends BaseService implements OnInit {
       ...this.formProfile.value,
       unixTimeBirthDate: this.jalaliStringToUnix(
         this.formProfile.value.unixTimeBirthDate
-      )
+      ),
+      avatar:this.formProfile.value.avatar.toString()
     };
     this.put(`/${MicroService.usermanagement}/Person/Update`,payload).pipe(
       finalize(()=>{
@@ -57,4 +59,6 @@ export class ProfileComponent extends BaseService implements OnInit {
     })
   }
 
+  protected readonly environment = environment;
+  protected readonly MicroService = MicroService;
 }
