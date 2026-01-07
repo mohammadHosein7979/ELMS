@@ -28,6 +28,7 @@ const routes: Routes = [
     component:IndexLayoutLandingComponent,
     children: [
       {path: '',loadChildren: () => import('./landing/landing.module').then(m => m.LandingModule)},
+      {path: 'payment',loadChildren: () => import('./pages/payment/payment.module').then(m => m.PaymentModule)},
     ],
     // canActivate: [AuthGuardService]
   },

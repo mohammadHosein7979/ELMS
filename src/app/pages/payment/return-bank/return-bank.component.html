@@ -1,0 +1,73 @@
+<div id="ss" class="bg-white">
+<!--  <app-header-layout class="" id="header1" [data]="bgback"></app-header-layout>-->
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 col-lg-4">
+          <div  class="row justify-content-center mb-2" *ngIf="data.status == true">
+            <div class="col-10">
+              <br>
+              <div class="text-center">
+                <img src="assets/image/Group201711.png" class="w-75">
+              </div>
+              <h3 class="font-family-bold color-1 font-18 mt-4 text-center">
+                پرداخت شما با موفقیت انجام شد.
+              </h3>
+            </div>
+            <div class="col-12">
+            </div>
+            <div class="col-12">
+              <hr class="bank-index-2">
+              <p class="bank-index-4">
+                مبلغ پرداخت شده
+                <span class="float-end  bank-index-3">
+          {{data.price}} تومان
+        </span>
+              </p>
+              <hr class="bank-index-2">
+              <p class="bank-index-4">
+                شماره پیگیری
+                <span class="float-end  bank-index-5">
+{{data.tracking}}
+        </span>
+              </p>
+
+
+            </div>
+          </div>
+          <div  class="row justify-content-center" *ngIf="data.status == false">
+            <div class="col-10">
+              <br>
+              <br>
+              <div class="text-center">
+                <img src="assets/image/Group20172.svg" class="w-75">
+              </div>
+              <h3 class="color-4 font-family-bold font-18 mt-4 text-center">
+                متأسفانه پرداخت شما ناموفق بود.
+              </h3>
+            </div>
+            <hr>
+            <div class="col-12 mt-3">
+              <h6 class="font-family-regular font-16 color-3 text-center line-height-30">
+                در صورت کسر وجه از حساب شما نهایتا تا 72 ساعت آینده این وجه به حساب شما بازمی‌گردد.
+              </h6>
+
+            </div>
+          </div>
+          <div class="row mt-5">
+            <div class="col-12">
+              <div class="border-radius-8 bg-color-8 text-white py-2 font-family-bold font-16 text-center   cursorAll"  (click)="goToDashboard(data.status)">
+                بازگشت به میزکار
+              </div>
+            </div>
+          </div>
+          <br>
+          <br>
+        </div>
+
+      </div>
+
+    </div>
+
+<!--    <app-footer-layout></app-footer-layout>-->
+
+</div>
