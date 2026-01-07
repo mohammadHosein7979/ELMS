@@ -113,8 +113,10 @@
             </defs>
           </svg>
           هزینه دوره :
-          {{data?.price}}
-          تومان
+          {{data?.price==0 ? 'رایگان' : data?.price}}
+          @if (data?.price!=0){
+            تومان
+          }
         </h3>
         <h3 class="font-10 font-family-regular color-1">
           <svg
@@ -142,8 +144,11 @@
             </defs>
           </svg>
           سهم شما :
-          {{data?.finalPrice}}
-          تومان
+          {{data?.finalPrice==0 ? 'رایگان' : data?.finalPrice}}
+          @if (data?.finalPrice!=0){
+            تومان
+          }
+
         </h3>
         <h3 *ngIf="data?.type == EnumEducationType.Offline"
           class="card-education-10 font-10 font-family-regular color-1">
@@ -153,9 +158,19 @@
     </div>
 
     <div class="text-center">
-      <button routerLink="/course/detail/{{data?.id}}" class="d-inline-block border-radius-5 px-4 py-2 text-white font-10 fit-content cursorPointer
-       font-family-regular  bg-color-3 border-color-3">
-               مشاهده دوره
+      <button nz-button routerLink="/course/detail/{{data?.id}}" class="d-inline-block border-radius-5 px-4 py-2 text-white font-10 fit-content cursorPointer
+       font-family-regular  {{data?.isFull ?'bg-color-2' : data?.finalPrice > 0 ? 'bg-color-3' : 'bg-color-8'}}">
+        @if(data?.isFull){
+          تکمیل ظرفیت
+
+        } @else if ( data?.finalPrice > 0){
+          خرید دوره
+
+        } @else {
+          عضویت در دوره
+
+        }
+<!--               مشاهده دوره-->
 
       </button>
       <!-- <button nz-button [disabled]="data?.isFull" (click)="buyEvent()"

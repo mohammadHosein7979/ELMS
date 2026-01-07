@@ -15,6 +15,7 @@ import {EducationService} from "../../../pages/education/services/education.serv
   selector: 'app-detail-education',
   templateUrl: './detail-education.component.html',
   styleUrl: './detail-education.component.scss',
+  standalone: true,
   imports: [
     NgIf,
     NzTimelineItemComponent,
@@ -93,15 +94,10 @@ export class DetailEducationComponent extends BaseService implements OnInit {
   }
   buyEvent() {
     if (this.userService.personId){
-      if (this.data?.isFull) {
+      if (this.data?.event?.isFull) {
         return;
       } else {
-        if (this.data?.finalPrice > 0) {
-          // go to buy page
-        } else {
-          // go to register page
-          this.eventStudentInsert();
-        }
+        this.eventStudentInsert();
       }
     }else {
       this.notification.error('لطفا ابتدا ثبت نام کنید.')
@@ -111,18 +107,30 @@ export class DetailEducationComponent extends BaseService implements OnInit {
 
 
   }
+  loadingButtonBuy:boolean=false
+
   eventStudentInsert() {
-    this.educationService.eventStudentInsert({dto:{
-        eventId: this.data.id,
-        personId:this.personId,
-        isRegister: true
-      }}).subscribe((res: any) => {
-      this.notification.success('ثبت نام با موفقیت انجامع  شد');
-      this.data.isFull = true;
+    this.loadingButtonBuy = true
+
+    this.educationService.eventStudentInsert({
+      eventId: this.data?.event.id,
+      personId:this.personId,
+      isRegister: true
+    }).subscribe((res: any) => {
+      this.loadingButtonBuy = false
+
+      if (res?.data?.paymentUrl){
+        window.location.href = res?.data?.paymentUrl
+      }else {
+        this.data.event.isRegister = true
+        this.notification.success('ثبت نام با موفقیت انجامع  شد');
+        this.data.event.isFull = true;
+      }
+
     })
   }
   goEvent(){
-
+    this.router.navigateByUrl('/panel/my-training/courses?eventId='+this.data?.event.id)
   }
   protected readonly TypeClasses = TypeClasses;
 }

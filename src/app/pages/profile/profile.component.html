@@ -8,12 +8,20 @@
         <form [formGroup]="formProfile" (ngSubmit)="submitForm()">
 
           <div class="px-3 pb-3">
+
+
             <div>
               <div class="profile-1 bg-white border-radius-50 p-2 position-relative">
-                <img class="w-100 h-100 border-radius-50" [src]="formProfile.value?.avatar ? formProfile.value?.avatar: '/assets/image/user-128.svg'">
+                <img class="w-100 h-100 border-radius-50" [src]="formProfile.value?.avatar ? environment.apiUrl+'/'+MicroService.mediaapi+'/api/File/DownloadFile?IDMedia='+formProfile.value?.avatar : '/assets/image/user-128.svg'">
               </div>
             </div>
             <div class="row">
+              <div class="col-12 col-lg-3">
+                <app-file-upload [mediaId]="formProfile?.value?.avatar"
+                                [controlName]="'avatar'" [type]="'image'" />
+
+
+              </div>
               <div class="col-12 col-lg-3">
                 <nz-form-item>
                   <nz-form-label>نام خانوادگی</nz-form-label>

@@ -92,9 +92,7 @@ export class EducationService extends BaseService {
 
 
 
-  eventStudentInsert(body :any) { 
-    return this.post(`/${MicroService.course}/EventStudent/Insert`, body)
+  eventStudentInsert(body :any) {
+    return this.post(`/${MicroService.course}/EventRegister/Insert`, body)
   }
-
-
 }

@@ -180,7 +180,7 @@
             </div>
 
           </div>
-          @if (data?.isRegister){
+          @if (data?.event?.isRegister){
             <button nz-button (click)="goEvent()"
                     class="d-inline-block mt-3 w-100 border-radius-8 px-4 py-4 text-white font-14 fit-content
                     font-family-regular  bg-color-3">
@@ -189,13 +189,13 @@
             </button>
 
           } @else {
-            <button nz-button [disabled]="data?.isFull" (click)="buyEvent()"
-                    class="d-inline-block mt-3 w-100 border-radius-8 px-4 py-4 text-white font-14 fit-content
-                    font-family-regular  {{data?.isFull ?'bg-color-2' : data?.finalPrice > 0 ? 'bg-color-3' : 'bg-color-8'}}">
-              @if (data?.isFull) {
+            <button nz-button [nzSize]="'large'" [nzLoading]="loadingButtonBuy" [disabled]="data?.event?.isFull" (click)="buyEvent()"
+                    class=" mt-3 w-100 border-radius-8 px-4  text-white font-14 fit-content
+                    font-family-regular  {{data?.event?.isFull ?'bg-color-2' : data?.event?.finalPrice > 0 ? 'bg-color-3' : 'bg-color-8'}}">
+              @if (data?.event?.isFull) {
                 تکمیل ظرفیت
 
-              } @else if (data?.finalPrice > 0) {
+              } @else if (data?.event?.finalPrice > 0) {
                 خرید دوره
 
               } @else {
